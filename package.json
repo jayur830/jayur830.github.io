@@ -3,22 +3,44 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "setup": "yarn dlx @yarnpkg/sdks vscode",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.6",
     "@next/font": "13.1.5",
-    "@types/node": "18.11.18",
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
-    "eslint": "8.32.0",
-    "eslint-config-next": "13.1.5",
+    "dayjs": "^1.11.7",
+    "lodash": "^4.17.21",
     "next": "13.1.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.4"
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
+    "@types/lodash": "^4",
+    "@types/node": "18.11.18",
+    "@types/prettier": "^2",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "8.32.0",
+    "eslint-config-next": "13.1.5",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^9.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.3",
+    "sass": "^1.57.1",
+    "simple-git-hooks": "^2.8.1",
+    "typescript": "4.9.3"
   },
   "packageManager": "yarn@3.3.1"
 }

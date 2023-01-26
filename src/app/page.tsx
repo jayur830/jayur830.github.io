@@ -1,8 +1,12 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+import Link from 'next/link';
+import { Inter } from '@next/font/google';
 
-const inter = Inter({ subsets: ['latin'] })
+import NextLogo from '../../public/next.svg';
+import ThirteenLogo from '../../public/thirteen.svg';
+import VercelLogo from '../../public/vercel.svg';
+import styles from '../styles/page.module.scss';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   return (
@@ -18,31 +22,29 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
+            By{` `}
+            <VercelLogo
               width={100}
               height={24}
-              priority
+              className={styles.vercelLogo}
             />
           </a>
         </div>
       </div>
 
       <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
+        <NextLogo
           width={180}
           height={37}
-          priority
+          className={styles.logo}
         />
         <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
+          <ThirteenLogo
+            width={40}
+            height={31}
+          />
         </div>
+        <Link href="/a">Go to a</Link>
       </div>
 
       <div className={styles.grid}>
@@ -55,9 +57,7 @@ export default function Home() {
           <h2 className={inter.className}>
             Docs <span>-&gt;</span>
           </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
+          <p className={inter.className}>Find in-depth information about Next.js features and API.</p>
         </a>
 
         <a
@@ -81,11 +81,9 @@ export default function Home() {
           <h2 className={inter.className}>
             Deploy <span>-&gt;</span>
           </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
+          <p className={inter.className}>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
         </a>
       </div>
     </main>
-  )
+  );
 }

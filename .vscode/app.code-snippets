@@ -1,0 +1,22 @@
+{
+  "Functional Component": {
+    "scope": "javascriptreact,typescriptreact",
+		"prefix": "fc",
+		"body": [
+			"// import package modules",
+			"",
+			"// Import global modules",
+			"",
+			"// Import local modules",
+			"",
+			"export default function ${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}}() {",
+			"  return (",
+			"    <div>",
+			"      Hello",
+			"    </div>",
+			"  );",
+			"}",
+			""
+		]
+  },
+}

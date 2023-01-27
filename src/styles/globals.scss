@@ -35,3 +35,8 @@ body {
   transition: background-color 0.3s ease;
   font-family: 'Regular';
 }
+
+a {
+  text-decoration: none;
+  color: unset;
+}

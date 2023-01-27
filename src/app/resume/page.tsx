@@ -1,23 +1,29 @@
 'use client';
 // import package modules
-import { Fragment } from 'react';
+import { Fragment, useCallback } from 'react';
 import Image from 'next/image';
 import { GitHub, Language, Schedule } from '@mui/icons-material';
 import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineOppositeContent, TimelineSeparator } from '@mui/lab';
 import { timelineItemClasses } from '@mui/lab/TimelineItem';
-import { Card, Grid, IconButton, styled, Typography } from '@mui/material';
+import { Card, Grid, IconButton, styled, Typography, useTheme } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import dayjs from 'dayjs';
 
-import { LogoBadge } from '@/components';
 // Import global modules
+import { LogoBadge } from '@/components';
 import { nest } from '@/utils';
 
 // Import local modules
 import { Provider, useContext } from './Provider';
 
 function Resume() {
+  const theme = useTheme();
   const data = useContext((value) => value.data);
+
+  const getTenure = useCallback((startDate: string, endDate?: string) => {
+    const months = dayjs(endDate).endOf('month').diff(startDate, 'month') + 1;
+    return months >= 12 ? (months % 12 === 0 ? `${months / 12}년` : `${Math.floor(months / 12)}년 ${months % 12}개월`) : `${months}개월`;
+  }, []);
 
   return (
     <>
@@ -50,7 +56,8 @@ function Resume() {
         alignItems="center"
         gap={6}
         paddingX={6}
-        paddingY={2}
+        paddingTop={2}
+        paddingBottom={20}
       >
         {data.resumeList.map((resume, i) => (
           <StyledCard
@@ -73,13 +80,27 @@ function Resume() {
                     height={50}
                   />
                 )}
-                <Typography
-                  fontWeight={700}
-                  fontSize={24}
-                  letterSpacing={-1}
+                <Grid
+                  display="flex"
+                  alignItems="flex-end"
+                  gap={1}
                 >
-                  {resume.name}
-                </Typography>
+                  <Typography
+                    fontWeight={700}
+                    fontSize={24}
+                    letterSpacing={-1}
+                  >
+                    {resume.name}
+                  </Typography>
+                  <Typography
+                    fontWeight={700}
+                    fontSize={20}
+                    letterSpacing={-1}
+                    color={theme.palette.mode === 'dark' ? grey['400'] : grey['700']}
+                  >
+                    {`(${resume.startDate} ~ ${resume.endDate ?? '재직 중'}, ${getTenure(resume.startDate, resume.endDate)})`}
+                  </Typography>
+                </Grid>
               </Grid>
               {resume.website && (
                 <IconButton
@@ -105,7 +126,7 @@ function Resume() {
               <Fragment key={j}>
                 <Typography
                   fontWeight={700}
-                  fontSize={18}
+                  fontSize={22}
                   letterSpacing={-1}
                 >
                   {carrier.groupName}
@@ -140,7 +161,7 @@ function Resume() {
                       <StyledTimelineContent whiteSpace="pre-line">
                         <Typography
                           fontWeight={700}
-                          fontSize={16}
+                          fontSize={20}
                           letterSpacing={-1}
                         >
                           {item.name}
@@ -154,7 +175,7 @@ function Resume() {
                             marginBottom={3}
                           >
                             {item.techList.map((tech, l) => {
-                              const Component = LogoBadge[tech as keyof typeof LogoBadge];
+                              const Component = LogoBadge[tech];
                               return <Component key={l} />;
                             })}
                           </Grid>
@@ -162,7 +183,7 @@ function Resume() {
                         {item.description && (
                           <Typography
                             fontWeight={400}
-                            fontSize={14}
+                            fontSize={18}
                             letterSpacing={-0.5}
                           >
                             {item.description}
@@ -183,11 +204,13 @@ function Resume() {
 
 export default nest(Provider, Resume);
 
-const StyledCard = styled(Card)({
+const StyledCard = styled(Card)(({ theme }) => ({
   width: 1000,
+  borderColor: theme.palette.mode === 'dark' ? grey['700'] : grey['400'],
   borderRadius: 10,
   padding: 32,
-});
+  transition: 'background-color 0.3s ease',
+}));
 
 const GithubIcon = styled(GitHub)(({ theme }) => ({
   width: 40,
@@ -218,13 +241,13 @@ const LoadingTimelineDot = styled(StyledTimelineDot)({
   padding: 0,
 });
 
-const StyledTimelineOppositeContent = styled(TimelineOppositeContent)({
-  fontSize: 12,
-  color: grey['700'],
-  flex: 0.07,
+const StyledTimelineOppositeContent = styled(TimelineOppositeContent)(({ theme }) => ({
+  fontSize: 14,
+  color: theme.palette.mode === 'dark' ? grey['300'] : grey['700'],
+  flex: 0.1,
   paddingTop: 0,
   paddingLeft: 0,
-});
+}));
 
 const StyledTimelineContent = styled(TimelineContent)({
   paddingTop: 0,

@@ -35,6 +35,7 @@ export default function APage() {
       <LogoBadge.AntDesign />
       <LogoBadge.Storybook />
       <LogoBadge.MUi />
+      <LogoBadge.Redux />
     </Grid>
   );
 }

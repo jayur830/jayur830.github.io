@@ -12,6 +12,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/lab": "^5.0.0-alpha.117",
     "@mui/material": "^5.11.6",
     "@next/font": "13.1.5",
     "dayjs": "^1.11.7",

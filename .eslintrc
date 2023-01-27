@@ -68,6 +68,7 @@
     "@typescript-eslint/restrict-template-expressions": "off",
     "no-unused-vars": "off",
     "import/extensions": "off",
+    "jsx-a11y/alt-text": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "import/no-extraneous-dependencies": "off",
     "@typescript-eslint/no-unused-expressions": "off",
@@ -82,6 +83,7 @@
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/restrict-plus-operands": "off",
     "@typescript-eslint/unbound-method": "off",
+    "@typescript-eslint/no-empty-interface": "off",
     "import/no-anonymous-default-export": [2, { "allowObject": true }],
     "no-case-declarations": "off",
     "simple-import-sort/imports": [
@@ -89,21 +91,9 @@
       {
         "groups": [
           // Packages `react` related packages come first.
-          ["^react", "^next", "^@next", "^constate", "^@apollo/client", "^antd", "^@ant-design/icons", "^styled-components", "^dayjs", "^lodash", "^@?\\w"],
+          ["^react", "^next", "^@next", "^@apollo/client", "^@mui", "^dayjs", "^lodash", "^@?\\w"],
           // Internal packages.
-          [
-            "^@src/assets",
-            "^@src/configs",
-            "^@src/theme",
-            "^@src/graphql",
-            "^@src/graphql/scheme",
-            "^@src/graphql/queries",
-            "^@src/graphql/mutations",
-            "^@src/layouts",
-            "^@src/context",
-            "^@src/components",
-            "^@src/hooks"
-          ],
+          ["^@/"],
           // Side effect imports.
           ["^\\u0000"],
           // Other relative imports. Put same-folder imports and `.` last.
@@ -112,7 +102,6 @@
       }
     ],
     "simple-import-sort/exports": "warn",
-    // "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",
       {

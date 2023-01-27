@@ -4,6 +4,7 @@
 		"prefix": "fc",
 		"body": [
 			"// import package modules",
+			"import { Grid, styled } from '@mui/material';",
 			"",
 			"// Import global modules",
 			"",
@@ -11,11 +12,29 @@
 			"",
 			"export default function ${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}}() {",
 			"  return (",
-			"    <div>",
-			"      Hello",
-			"    </div>",
+			"    <Grid>",
+			"      $1",
+			"    </Grid>",
 			"  );",
 			"}",
+			""
+		]
+  },
+  "Context Provider": {
+    "scope": "javascript,typescript",
+		"prefix": "cp",
+		"body": [
+			"import { useState } from 'react';",
+			"",
+			"import { createProvider } from '@/utils';",
+			"",
+			"function use${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}}() {",
+			"  const [count, setCount] = useState<number>(0);",
+			"  ",
+			"  return { count, setCount };",
+			"}",
+			"",
+			"export const { Provider, useContext } = createProvider(use$1);",
 			""
 		]
   },

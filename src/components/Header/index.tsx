@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { DensityMedium } from '@mui/icons-material';
-import { Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, styled, Switch } from '@mui/material';
+import { Box, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, styled, Switch } from '@mui/material';
 
 import { values } from '@/configs';
 import { useContext } from '@/contexts/Provider';
@@ -23,12 +23,16 @@ export default function Header() {
         justifyContent="space-between"
         alignItems="center"
       >
-        <IconButton
-          size="large"
-          onClick={() => setOpen(true)}
-        >
-          <DensityMedium />
-        </IconButton>
+        {process.env.NODE_ENV === 'development' ? (
+          <IconButton
+            size="large"
+            onClick={() => setOpen(true)}
+          >
+            <DensityMedium />
+          </IconButton>
+        ) : (
+          <Box height={48} />
+        )}
         <AntSwitch onChange={(_, checked) => setDarkMode(checked)} />
       </Grid>
       <Drawer

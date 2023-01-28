@@ -1,44 +1,12 @@
 // Import package modules
 import { useMemo } from 'react';
-import { StaticImageData } from 'next/image';
 
 // Import global modules
-import { LogoBadge } from '@/components';
 import { Logo } from '@/components/LogoBadge';
+import { Resume } from '@/types/data';
 import { createProvider } from '@/utils';
 
 // Import local modules
-
-export interface CarrierItem {
-  name: string;
-  completed: boolean;
-  startDate: string;
-  endDate: string;
-  techList: (keyof typeof LogoBadge)[];
-  description: string;
-}
-
-export interface ResumeItem {
-  name: string;
-  logo?: {
-    src: StaticImageData | string;
-    alt: string;
-  };
-  startDate: string;
-  endDate?: string;
-  website?: string;
-  description?: string;
-  carrierList: {
-    groupName?: string;
-    list: CarrierItem[];
-  }[];
-}
-
-export interface Resume {
-  title: string;
-  github?: string;
-  resumeList: ResumeItem[];
-}
 
 function useResume() {
   const data: Resume = useMemo(
@@ -51,7 +19,8 @@ function useResume() {
           logo: {
             src: 'https://drive.google.com/uc?export=view&id=1TaPXXe9xAZPrnWSPVIYRYXsMpZnP__ai',
             alt: 'ENlighten',
-            width: 301,
+            width: 494,
+            height: 82,
           },
           startDate: '2022-03',
           website: 'https://enlighten.kr',
@@ -117,7 +86,8 @@ function useResume() {
           logo: {
             src: 'https://drive.google.com/uc?export=view&id=1Z458ShBcBqJmXB8XzCNQ_iehf2XGNtbP',
             alt: 'WIZAI',
-            width: 114,
+            width: 174,
+            height: 76,
           },
           startDate: '2020-07',
           endDate: '2022-03',

@@ -69,9 +69,9 @@ const StyledChip = styled(Chip)<{ 'background-color': string; 'text-color'?: str
   backgroundColor: props['background-color'],
   borderRadius: 3,
   color: props['text-color'] ?? theme.palette.common.white,
-  fontSize: 12,
+  fontSize: theme.breakpoints.down('sm') ? 10 : 12,
   fontWeight: 400,
-  height: 22,
+  height: theme.breakpoints.down('sm') ? 18 : 22,
   cursor: 'pointer',
   ['.MuiChip-icon']: {
     paddingLeft: 3,

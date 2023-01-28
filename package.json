@@ -53,8 +53,7 @@
     "typescript": "4.9.3"
   },
   "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged",
-    "pre-push": "yarn build"
+    "pre-commit": "yarn lint-staged"
   },
   "lint-staged": {
     "!(*test).{ts,tsx}": [

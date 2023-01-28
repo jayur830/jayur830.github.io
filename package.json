@@ -9,9 +9,7 @@
     "build": "rm -rf ./.next && rm -rf ./docs && next build && next export -o docs && touch ./docs/.nojekyll",
     "start": "next start",
     "preview": "http-server ./docs -p 8080",
-    "lint": "next lint --fix --config ./.eslintrc --ignore-path ./.eslintignore . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|md)\" --ignore-path ./.prettierignore",
-    "simple-git-hooks": "simple-git-hooks",
-    "postinstall": "yarn simple-git-hooks"
+    "lint": "next lint --fix --config ./.eslintrc --ignore-path ./.eslintignore . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|md)\" --ignore-path ./.prettierignore"
   },
   "dependenciesMeta": {
     "next@13.1.5": {

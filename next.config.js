@@ -8,7 +8,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  pageExtensions: ['page.js', 'page.jsx', 'page.ts', 'page.tsx'],
+  pageExtensions: ['page.js', 'page.jsx', 'page.ts', 'page.tsx', 'api.js', 'api.jsx', 'api.ts', 'api.tsx'],
   sassOptions: {
     includePaths: [path.join(__dirname, 'src', 'styles')],
   },
@@ -19,17 +19,23 @@ const nextConfig = {
       use: ['@svgr/webpack'],
     });
 
+    config.module.rules.push({
+      test: /\.(gql|graphql)$/i,
+      exclude: /node_modules/,
+      loader: 'graphql-tag/loader',
+    });
+
     return config;
   },
-  redirects() {
-    return [
-      {
-        source: '/:path((?!resume$).*)',
-        destination: '/resume',
-        permanent: true,
-      },
-    ];
-  },
+  // redirects() {
+  //   return [
+  //     {
+  //       source: '/:path((?!resume$).*)',
+  //       destination: '/resume',
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 };
 
 module.exports = nextConfig;

@@ -14,7 +14,7 @@ function Resume() {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const data = useContext((value) => value.data);
+  const resumeData = useContext((value) => value.resumeData);
 
   return (
     <>
@@ -30,11 +30,11 @@ function Resume() {
           fontSize={sm ? 26 : 36}
           fontWeight={700}
         >
-          {data.title}
+          {resumeData?.title}
         </Typography>
-        {data.github && (
+        {resumeData?.github && (
           <IconButton
-            href={data.github}
+            href={resumeData?.github}
             target="_blank"
           >
             <GithubIcon />
@@ -50,7 +50,7 @@ function Resume() {
         paddingTop={2}
         paddingBottom={20}
       >
-        {data.resumeList.map((resume, i) => (
+        {(resumeData?.resumeList ?? []).map((resume, i) => (
           <ResumeCard
             key={i}
             data={resume}

@@ -33,33 +33,6 @@ export default function LogoBadge() {
   return <></>;
 }
 
-export enum Logo {
-  React = 'React',
-  ReactNative = 'ReactNative',
-  Sass = 'Sass',
-  Vue = 'Vue',
-  Java = 'Java',
-  Python = 'Python',
-  Docker = 'Docker',
-  MySQL = 'MySQL',
-  Spring = 'Spring',
-  SpringBoot = 'SpringBoot',
-  NextJS = 'NextJS',
-  ApolloClient = 'ApolloClient',
-  PostgreSQL = 'PostgreSQL',
-  Oracle = 'Oracle',
-  MongoDB = 'MongoDB',
-  Yarn = 'Yarn',
-  Vite = 'Vite',
-  AntDesign = 'AntDesign',
-  Storybook = 'Storybook',
-  MUi = 'MUi',
-  Redux = 'Redux',
-  TypeScript = 'TypeScript',
-  Nginx = 'Nginx',
-  ApacheTomcat = 'ApacheTomcat',
-}
-
 const LinkButton = styled(Link)({
   display: 'flex',
   textDecoration: 'none',

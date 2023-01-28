@@ -1,0 +1,30 @@
+query Resume {
+  resume: getResume {
+    title
+    github
+    resumeList {
+      name
+      logo {
+        src
+        alt
+        width
+        height
+      }
+      startDate
+      endDate
+      website
+      description
+      carrierList {
+        groupName
+        list {
+          name
+          completed
+          startDate
+          endDate
+          techList
+          description
+        }
+      }
+    }
+  }
+}

@@ -7,14 +7,14 @@ import { Card, Grid, IconButton, styled, Typography, useMediaQuery, useTheme } f
 import { grey } from '@mui/material/colors';
 import dayjs from 'dayjs';
 
-// Import local modules
-import { ResumeItem } from '@/types/data';
+import { ResumeQuery } from '@/graphql/graphql';
 
+// Import local modules
 // Import global modules
 import LogoBadge from '../LogoBadge';
 
 export interface ResumeCardProps {
-  data: ResumeItem;
+  data: NonNullable<ResumeQuery['resume']['resumeList'][number]>;
 }
 
 export default function ResumeCard({ data }: ResumeCardProps) {
@@ -22,8 +22,11 @@ export default function ResumeCard({ data }: ResumeCardProps) {
   const md = useMediaQuery(theme.breakpoints.down('md'));
   const sm = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const getTenure = useCallback((startDate: string, endDate?: string) => {
-    const months = dayjs(endDate).endOf('month').diff(startDate, 'month') + 1;
+  const getTenure = useCallback((startDate: string, endDate?: string | null) => {
+    const months =
+      dayjs(endDate ?? undefined)
+        .endOf('month')
+        .diff(startDate, 'month') + 1;
     return months >= 12 ? (months % 12 === 0 ? `${months / 12}년` : `${Math.floor(months / 12)}년 ${months % 12}개월`) : `${months}개월`;
   }, []);
 

@@ -1,5 +1,3 @@
-import { StaticImageData } from 'next/image';
-
 import { LogoBadge } from '@/components';
 
 export interface CarrierItem {

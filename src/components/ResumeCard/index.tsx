@@ -168,6 +168,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
 }
 
 const StyledCard = styled(Card)(({ theme }) => ({
+  width: '100%',
   maxWidth: 1000,
   borderColor: theme.palette.mode === 'dark' ? grey['700'] : grey['400'],
   borderRadius: 10,

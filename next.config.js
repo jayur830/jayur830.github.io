@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  assetPrefix: '.',
   pageExtensions: ['page.js', 'page.jsx', 'page.ts', 'page.tsx'],
   sassOptions: {
     includePaths: [path.join(__dirname, 'src', 'styles')],

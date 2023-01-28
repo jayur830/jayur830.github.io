@@ -3,8 +3,6 @@ import { useMemo } from 'react';
 import { StaticImageData } from 'next/image';
 
 // Import global modules
-import ENlightenLogo from '@/assets/images/enlighten-logo.png';
-import WizaiLogo from '@/assets/images/wizai-logo.png';
 import { LogoBadge } from '@/components';
 import { Logo } from '@/components/LogoBadge';
 import { createProvider } from '@/utils';
@@ -51,8 +49,9 @@ function useResume() {
         {
           name: '엔라이튼',
           logo: {
-            src: ENlightenLogo,
+            src: 'https://drive.google.com/uc?export=view&id=1TaPXXe9xAZPrnWSPVIYRYXsMpZnP__ai',
             alt: 'ENlighten',
+            width: 301,
           },
           startDate: '2022-03',
           website: 'https://enlighten.kr',
@@ -116,8 +115,9 @@ function useResume() {
         {
           name: '위즈아이, 구 환경과학기술',
           logo: {
-            src: WizaiLogo,
+            src: 'https://drive.google.com/uc?export=view&id=1Z458ShBcBqJmXB8XzCNQ_iehf2XGNtbP',
             alt: 'WIZAI',
+            width: 114,
           },
           startDate: '2020-07',
           endDate: '2022-03',

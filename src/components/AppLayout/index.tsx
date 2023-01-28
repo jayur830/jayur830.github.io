@@ -17,6 +17,9 @@ function AppLayout({ children }: PropsWithChildren) {
       palette: {
         mode: isDarkMode ? 'dark' : 'light',
       },
+      typography: {
+        fontFamily: "'Pretendard', sans-serif",
+      },
     });
   }, [isDarkMode]);
 

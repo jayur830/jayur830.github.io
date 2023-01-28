@@ -6,10 +6,9 @@
   "scripts": {
     "setup": "yarn dlx @yarnpkg/sdks vscode",
     "dev": "next dev",
-    "build": "rm -rf ./.next && rm -rf ./out && next build && next export -o docs",
-    "export": "next export",
+    "build": "rm -rf ./.next && rm -rf ./docs && next build && next export -o docs",
     "start": "next start",
-    "preview": "http-server ./out -p 8080",
+    "preview": "http-server ./docs -p 8080",
     "lint": "next lint --fix --config ./.eslintrc --ignore-path ./.eslintignore . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|md)\" --ignore-path ./.prettierignore"
   },
   "dependenciesMeta": {

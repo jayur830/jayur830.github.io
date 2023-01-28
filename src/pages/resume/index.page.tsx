@@ -64,7 +64,11 @@ function Resume() {
 export default nest(Provider, Resume);
 
 const GithubIcon = styled(GitHub)(({ theme }) => ({
-  width: theme.breakpoints.down('sm') ? 25 : 40,
-  height: theme.breakpoints.down('sm') ? 25 : 40,
+  width: 40,
+  height: 40,
   fill: theme.palette.mode === 'dark' ? 'white' : 'black',
+  [theme.breakpoints.down('sm')]: {
+    width: 25,
+    height: 25,
+  },
 }));

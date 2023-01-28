@@ -19,6 +19,7 @@ export interface ResumeCardProps {
 
 export default function ResumeCard({ data }: ResumeCardProps) {
   const theme = useTheme();
+  const md = useMediaQuery(theme.breakpoints.down('md'));
   const sm = useMediaQuery(theme.breakpoints.down('sm'));
 
   const getTenure = useCallback((startDate: string, endDate?: string) => {
@@ -35,8 +36,8 @@ export default function ResumeCard({ data }: ResumeCardProps) {
       >
         <Grid
           display="flex"
-          flexDirection={sm ? 'column' : 'row'}
-          alignItems={sm ? 'flex-start' : 'flex-end'}
+          flexDirection={md ? 'column' : 'row'}
+          alignItems={md ? 'flex-start' : 'flex-end'}
           gap={3}
         >
           {data.logo && (
@@ -170,8 +171,11 @@ const StyledCard = styled(Card)(({ theme }) => ({
   maxWidth: 1000,
   borderColor: theme.palette.mode === 'dark' ? grey['700'] : grey['400'],
   borderRadius: 10,
-  padding: theme.breakpoints.down('sm') ? 16 : 32,
+  padding: 32,
   transition: 'background-color 0.3s ease',
+  [theme.breakpoints.down('sm')]: {
+    padding: 16,
+  },
 }));
 
 const WebSiteIcon = styled(Language)(({ theme }) => ({
@@ -200,12 +204,16 @@ const LoadingTimelineDot = styled(StyledTimelineDot)({
 });
 
 const StyledTimelineOppositeContent = styled(TimelineOppositeContent)(({ theme }) => ({
-  fontSize: theme.breakpoints.down('sm') ? 12 : 14,
+  fontSize: 14,
   color: theme.palette.mode === 'dark' ? grey['300'] : grey['700'],
-  flex: theme.breakpoints.down('sm') ? 0.25 : 0.1,
+  flex: 0.1,
   minWidth: 75,
   paddingTop: 0,
   paddingLeft: 0,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 12,
+    flex: 0.25,
+  },
 }));
 
 const StyledTimelineContent = styled(TimelineContent)({

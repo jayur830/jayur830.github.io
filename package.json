@@ -57,8 +57,8 @@
   },
   "lint-staged": {
     "!(*test).{ts,tsx}": [
-      "next lint --fix --config ./.eslintrc --ignore-path ./.eslintignore",
-      "prettier --write --ignore-path ./.prettierignore"
+      "next lint --fix --config ./.eslintrc --ignore-path ./.eslintignore . --ext .tsx,.ts",
+      "prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|md)\" --ignore-path ./.prettierignore"
     ],
     "*.{json,md,html,scss}": [
       "prettier --write --ignore-path ./.prettierignore"

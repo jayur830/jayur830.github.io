@@ -16,7 +16,7 @@ export class ResumeResolver {
 
   @Query(() => String)
   world(): string {
-    return 'wtfu';
+    return 'wtf';
   }
 
   @Query(() => ResumeVO)

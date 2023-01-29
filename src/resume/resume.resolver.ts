@@ -9,16 +9,6 @@ import { ResumeVO } from '@/vo/resume.vo';
 
 @Resolver()
 export class ResumeResolver {
-  @Query(() => String)
-  hello(): string {
-    return 'hellooo';
-  }
-
-  @Query(() => String)
-  world(): string {
-    return 'wtf';
-  }
-
   @Query(() => ResumeVO)
   async Resume_get(): Promise<ResumeVO> {
     return {

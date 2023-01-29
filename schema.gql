@@ -107,7 +107,5 @@ type ResumeVO {
 }
 
 type Query {
-  hello: String!
-  world: String!
   Resume_get: ResumeVO!
 }

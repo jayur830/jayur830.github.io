@@ -14,6 +14,11 @@ export class ResumeResolver {
     return 'hello';
   }
 
+  @Query(() => String)
+  world(): string {
+    return 'wtf';
+  }
+
   @Query(() => ResumeVO)
   async Resume_get(): Promise<ResumeVO> {
     return {

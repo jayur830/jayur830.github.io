@@ -1,0 +1,69 @@
+{
+  "GraphQL Resolver": {
+    "scope": "javascript,typescript",
+    "prefix": "gr",
+    "body": [
+      "// import package modules",
+      "import { Resolver, Query, Mutation } from '@nestjs/graphql';",
+      "",
+      "// Import global modules",
+      "",
+      "// Import local modules",
+      "",
+      "@Resolver()",
+      "export class HelloReslover {",
+      "  @Query(() => String)",
+      "  async hello() {",
+      "    return 'hello';",
+      "  }",
+      "}",
+      ""
+    ]
+  },
+  "GraphQL Module": {
+    "scope": "javascript,typescript",
+    "prefix": "gm",
+    "body": [
+      "// import package modules",
+      "import { Module } from '@nestjs/common';",
+      "import { HelloReslover } from './hello.resolver';",
+      "",
+      "// Import global modules",
+      "",
+      "// Import local modules",
+      "",
+      "@Module({",
+      "  providers: [HelloReslover],",
+      "})",
+      "export class HelloModule {}",
+      ""
+    ]
+  },
+  "GraphQL TypeDef": {
+    "scope": "javascript,typescript",
+    "prefix": "gtd",
+    "body": [
+      "// import package modules",
+      "import { Field, Int, ObjectType } from '@nestjs/graphql';",
+      "",
+      "// Import global modules",
+      "",
+      "// Import local modules",
+      "",
+      "@ObjectType()",
+      "export class VO {",
+      "  @Field(() => String, {",
+      "    nullable: true,",
+      "    description: '',",
+      "  })",
+      "  a?: string;",
+      "",
+      "  @Field(() => Int, {",
+      "    description: '',",
+      "  })",
+      "  b: number;",
+      "}",
+      ""
+    ]
+  }
+}

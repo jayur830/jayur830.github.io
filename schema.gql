@@ -1,0 +1,111 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CarrierItemVO {
+  """프로젝트 이름"""
+  name: String!
+
+  """프로젝트 진행 중 여부"""
+  completed: Boolean!
+
+  """프로젝트 시작월"""
+  startDate: String!
+
+  """프로젝트 종료월"""
+  endDate: String!
+
+  """프로젝트에 쓰인 기술 태그 목록"""
+  techList: [Logo!]!
+
+  """프로젝트 설명 (성과/결과)"""
+  description: String!
+}
+
+"""프레임워크, 라이브러리 로고"""
+enum Logo {
+  React
+  ReactNative
+  Sass
+  Vue
+  Java
+  Python
+  Docker
+  MySQL
+  Spring
+  SpringBoot
+  NextJS
+  ApolloClient
+  PostgreSQL
+  Oracle
+  MongoDB
+  Yarn
+  Vite
+  AntDesign
+  Storybook
+  MUi
+  Redux
+  TypeScript
+  Nginx
+  ApacheTomcat
+}
+
+type CarrierVO {
+  """팀 또는 소속 서비스 이름 (없을 경우 null)"""
+  groupName: String
+
+  """수행한 프로젝트 경력"""
+  list: [CarrierItemVO!]!
+}
+
+type StaticImgDataVO {
+  """이미지 src (url)"""
+  src: String!
+
+  """이미지 alt"""
+  alt: String!
+
+  """이미지 width"""
+  width: Int!
+
+  """이미지 height"""
+  height: Int!
+}
+
+type ResumeItemVO {
+  """회사 이름"""
+  name: String!
+
+  """회사 로고"""
+  logo: StaticImgDataVO
+
+  """입사일"""
+  startDate: String!
+
+  """퇴사일"""
+  endDate: String
+
+  """회사 홈페이지 주소"""
+  website: String
+
+  """회사에 대한 간단한 설명"""
+  description: String
+
+  """회사 경력"""
+  carrierList: [CarrierVO!]!
+}
+
+type ResumeVO {
+  """이력서 제목"""
+  title: String!
+
+  """Github 주소"""
+  github: String
+
+  """총 경력 리스트"""
+  resumeList: [ResumeItemVO!]
+}
+
+type Query {
+  Resume_get: ResumeVO!
+}

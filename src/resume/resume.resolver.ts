@@ -11,7 +11,7 @@ import { ResumeVO } from '@/vo/resume.vo';
 export class ResumeResolver {
   @Query(() => String)
   hello(): string {
-    return 'hello';
+    return 'helloooo';
   }
 
   @Query(() => String)

@@ -1,0 +1,7 @@
+.vscode
+test/
+.eslintrc
+.gitignore
+.prettierignore
+.prettierrc
+README.md

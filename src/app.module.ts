@@ -12,7 +12,6 @@ import { ResumeModule } from './resume/resume.module';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       path: '/api/graphql',
-      typePaths: ['./**/*.gql'],
       autoSchemaFile: 'schema.gql',
       driver: ApolloDriver,
       debug: false,

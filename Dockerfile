@@ -10,5 +10,5 @@ FROM node:16-alpine
 WORKDIR /usr/app
 COPY --from=builder /usr/app/node_modules ./node_modules
 COPY --from=builder /usr/app/dist ./dist
-# EXPOSE 4000
+# EXPOSE 4000 # what
 ENTRYPOINT ["node", "dist/main"]

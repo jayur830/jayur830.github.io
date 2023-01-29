@@ -6,7 +6,7 @@ import { Model } from 'mongoose';
 // Import global modules
 import { Resume, ResumeDocument } from '@/models/resume.schema';
 
-// Import local modulessss
+// Import local modules
 
 @Injectable()
 export class ResumeService {

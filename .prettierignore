@@ -10,8 +10,6 @@ build
 public
 
 # configs
-config-overrides.js
-craco.config.js
 tsconfig*.json
 .eslintrc
 .vscode

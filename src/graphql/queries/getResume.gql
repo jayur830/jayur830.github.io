@@ -1,5 +1,5 @@
 query Resume {
-  resume: getResume {
+  resume: Resume_get {
     title
     github
     resumeList {

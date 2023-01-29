@@ -12,22 +12,31 @@ export type Scalars = {
   Float: number;
 };
 
-export type Carrier = {
-  __typename?: 'Carrier';
-  groupName?: Maybe<Scalars['String']>;
-  list: Array<CarrierItem>;
-};
-
-export type CarrierItem = {
-  __typename?: 'CarrierItem';
+export type CarrierItemVo = {
+  __typename?: 'CarrierItemVO';
+  /** 프로젝트 진행 중 여부 */
   completed: Scalars['Boolean'];
+  /** 프로젝트 설명 (성과/결과) */
   description: Scalars['String'];
+  /** 프로젝트 종료월 */
   endDate: Scalars['String'];
+  /** 프로젝트 이름 */
   name: Scalars['String'];
+  /** 프로젝트 시작월 */
   startDate: Scalars['String'];
+  /** 프로젝트에 쓰인 기술 태그 목록 */
   techList: Array<Logo>;
 };
 
+export type CarrierVo = {
+  __typename?: 'CarrierVO';
+  /** 팀 또는 소속 서비스 이름 (없을 경우 null) */
+  groupName?: Maybe<Scalars['String']>;
+  /** 수행한 프로젝트 경력 */
+  list: Array<CarrierItemVo>;
+};
+
+/** 프레임워크, 라이브러리 로고 */
 export enum Logo {
   AntDesign = 'AntDesign',
   ApacheTomcat = 'ApacheTomcat',
@@ -57,32 +66,46 @@ export enum Logo {
 
 export type Query = {
   __typename?: 'Query';
-  getResume: Resume;
+  Resume_get: ResumeVo;
 };
 
-export type Resume = {
-  __typename?: 'Resume';
-  github?: Maybe<Scalars['String']>;
-  resumeList: Array<ResumeItem>;
-  title: Scalars['String'];
-};
-
-export type ResumeItem = {
-  __typename?: 'ResumeItem';
-  carrierList: Array<Carrier>;
+export type ResumeItemVo = {
+  __typename?: 'ResumeItemVO';
+  /** 회사 경력 */
+  carrierList: Array<CarrierVo>;
+  /** 회사에 대한 간단한 설명 */
   description?: Maybe<Scalars['String']>;
+  /** 퇴사일 */
   endDate?: Maybe<Scalars['String']>;
-  logo?: Maybe<StaticImageData>;
+  /** 회사 로고 */
+  logo?: Maybe<StaticImgDataVo>;
+  /** 회사 이름 */
   name: Scalars['String'];
+  /** 입사일 */
   startDate: Scalars['String'];
+  /** 회사 홈페이지 주소 */
   website?: Maybe<Scalars['String']>;
 };
 
-export type StaticImageData = {
-  __typename?: 'StaticImageData';
+export type ResumeVo = {
+  __typename?: 'ResumeVO';
+  /** Github 주소 */
+  github?: Maybe<Scalars['String']>;
+  /** 총 경력 리스트 */
+  resumeList?: Maybe<Array<ResumeItemVo>>;
+  /** 이력서 제목 */
+  title: Scalars['String'];
+};
+
+export type StaticImgDataVo = {
+  __typename?: 'StaticImgDataVO';
+  /** 이미지 alt */
   alt: Scalars['String'];
+  /** 이미지 height */
   height: Scalars['Int'];
+  /** 이미지 src (url) */
   src: Scalars['String'];
+  /** 이미지 width */
   width: Scalars['Int'];
 };
 
@@ -91,22 +114,22 @@ export type ResumeQueryVariables = Exact<{ [key: string]: never }>;
 export type ResumeQuery = {
   __typename?: 'Query';
   resume: {
-    __typename?: 'Resume';
+    __typename?: 'ResumeVO';
     title: string;
     github?: string | null;
-    resumeList: Array<{
-      __typename?: 'ResumeItem';
+    resumeList?: Array<{
+      __typename?: 'ResumeItemVO';
       name: string;
       startDate: string;
       endDate?: string | null;
       website?: string | null;
       description?: string | null;
-      logo?: { __typename?: 'StaticImageData'; src: string; alt: string; width: number; height: number } | null;
+      logo?: { __typename?: 'StaticImgDataVO'; src: string; alt: string; width: number; height: number } | null;
       carrierList: Array<{
-        __typename?: 'Carrier';
+        __typename?: 'CarrierVO';
         groupName?: string | null;
-        list: Array<{ __typename?: 'CarrierItem'; name: string; completed: boolean; startDate: string; endDate: string; techList: Array<Logo>; description: string }>;
+        list: Array<{ __typename?: 'CarrierItemVO'; name: string; completed: boolean; startDate: string; endDate: string; techList: Array<Logo>; description: string }>;
       }>;
-    }>;
+    }> | null;
   };
 };

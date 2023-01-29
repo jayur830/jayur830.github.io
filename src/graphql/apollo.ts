@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloLink, createHttpLink, InMemoryCache } from '@apollo/client';
 
-const httpLink = createHttpLink({ uri: '/api/graphql' });
+const httpLink = createHttpLink({ uri: 'https://resume-server-nestjs-rcjf2qcbza-du.a.run.app/api/graphql' });
 
 const client = new ApolloClient({
   connectToDevTools: process.env.NODE_ENV !== 'production',

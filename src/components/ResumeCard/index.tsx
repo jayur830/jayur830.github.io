@@ -14,7 +14,7 @@ import { ResumeQuery } from '@/graphql/graphql';
 import LogoBadge from '../LogoBadge';
 
 export interface ResumeCardProps {
-  data: NonNullable<ResumeQuery['resume']['resumeList'][number]>;
+  data: NonNullable<ResumeQuery['resume']['resumeList']>[number];
 }
 
 export default function ResumeCard({ data }: ResumeCardProps) {

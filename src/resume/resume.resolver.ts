@@ -11,11 +11,6 @@ import { ResumeService } from './resume.service';
 export class ResumeResolver {
   constructor(private readonly resumeService: ResumeService) {}
 
-  @Query(() => String)
-  hello() {
-    return 'hello';
-  }
-
   @Query(() => Resume)
   async Resume_get() {
     return this.resumeService.findOne();

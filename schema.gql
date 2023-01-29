@@ -95,7 +95,7 @@ type ResumeItemVO {
   carrierList: [CarrierVO!]!
 }
 
-type ResumeVO {
+type Resume {
   """이력서 제목"""
   title: String!
 
@@ -107,5 +107,5 @@ type ResumeVO {
 }
 
 type Query {
-  Resume_get: ResumeVO!
+  Resume_get: Resume!
 }

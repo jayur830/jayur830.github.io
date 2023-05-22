@@ -2,13 +2,11 @@ const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // experimental: {
-  //   appDir: true,
-  // },
+  output: 'export',
+  distDir: 'docs',
   images: {
     unoptimized: true,
   },
-  pageExtensions: ['page.js', 'page.jsx', 'page.ts', 'page.tsx', 'api.js', 'api.jsx', 'api.ts', 'api.tsx'],
   sassOptions: {
     includePaths: [path.join(__dirname, 'src', 'styles')],
   },
@@ -27,15 +25,6 @@ const nextConfig = {
 
     return config;
   },
-  // redirects() {
-  //   return [
-  //     {
-  //       source: '/:path((?!resume$).*)',
-  //       destination: '/resume',
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
 };
 
 module.exports = nextConfig;

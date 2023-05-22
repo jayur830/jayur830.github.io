@@ -1,20 +1,17 @@
-// import package modules
+'use client';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { DensityMedium } from '@mui/icons-material';
 import { Box, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, styled, Switch } from '@mui/material';
 
 import { values } from '@/configs';
-import { useContext } from '@/contexts/Provider';
-
-// Import global modules
-
-// Import local modules
+import { useCommonState } from '@/store/common';
 
 export default function Header() {
   const [open, setOpen] = useState<boolean>(false);
 
-  const setDarkMode = useContext((value) => value.setDarkMode);
+  const setDarkMode = useCommonState((state) => state.setDarkMode);
 
   return (
     <>
@@ -33,7 +30,7 @@ export default function Header() {
         ) : (
           <Box height={48} />
         )}
-        <AntSwitch onChange={(_, checked) => setDarkMode(checked)} />
+        <AntSwitch onChange={() => setDarkMode()} />
       </Grid>
       <Drawer
         anchor="left"

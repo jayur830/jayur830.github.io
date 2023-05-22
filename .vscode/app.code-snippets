@@ -42,4 +42,28 @@
 			""
 		]
   },
+	"Zustand Store": {
+		"scope": "javascript,typescript",
+		"prefix": "zs",
+		"body": [
+			"import { createState } from '@/utils';",
+			"",
+			"interface InitialState {",
+			"  count: number;",
+			"  increase(): void;",
+			"  decrease(): void;",
+			"}",
+			"",
+			"export const use${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}}State = createState<InitialState>((set) => ({",
+			"  count: 0,",
+			"  increase() {",
+			"    set((state) => ({ count: state.count + 1 }));",
+			"  },",
+			"  decrease() {",
+			"    set((state) => ({ count: state.count - 1 }));",
+			"  },",
+			"}));",
+			""
+		]
+	}
 }

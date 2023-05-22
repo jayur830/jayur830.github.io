@@ -1,8 +1,6 @@
-// import package modules
 import { Chip, Link, styled } from '@mui/material';
 import { brown } from '@mui/material/colors';
 
-// Import global modules
 import AntDesignIcon from '@/assets/images/antd-icon.svg';
 import ApolloIcon from '@/assets/images/apollo-icon.svg';
 import DockerIcon from '@/assets/images/docker-icon.svg';
@@ -26,8 +24,6 @@ import TypeScriptIcon from '@/assets/images/typescript-icon.svg';
 import ViteIcon from '@/assets/images/vite-icon.svg';
 import VueIcon from '@/assets/images/vue-icon.svg';
 import YarnIcon from '@/assets/images/yarn-icon.svg';
-
-// Import local modules
 
 export default function LogoBadge() {
   return <></>;

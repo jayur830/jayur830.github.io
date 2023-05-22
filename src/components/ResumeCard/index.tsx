@@ -1,4 +1,3 @@
-// import package modules
 import { Fragment, useCallback } from 'react';
 import Image from 'next/image';
 import { Language, Schedule } from '@mui/icons-material';
@@ -9,8 +8,6 @@ import dayjs from 'dayjs';
 
 import { ResumeQuery } from '@/graphql/graphql';
 
-// Import local modules
-// Import global modules
 import LogoBadge from '../LogoBadge';
 
 export interface ResumeCardProps {

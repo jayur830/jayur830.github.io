@@ -4,12 +4,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { CompanyLogo } from './entities/company_logo/company_logo.entity';
-import { ResumeHistory } from './entities/resume_history/resume_history.entity';
-import { ResumeHistoryDetail } from './entities/resume_history_detail/resume_history_detail.entity';
-import { ResumeInfo } from './entities/resume_info/resume_info.entity';
-import { ResumeModule } from './resume/resume.module';
-import { ResumeResolver } from './resume/resume.resolver';
+import { CompanyLogo } from '../../entities/company_logo/company_logo.entity';
+import { ResumeHistory } from '../../entities/resume_history/resume_history.entity';
+import { ResumeHistoryDetail } from '../../entities/resume_history_detail/resume_history_detail.entity';
+import { ResumeInfo } from '../../entities/resume_info/resume_info.entity';
+import { ResumeModule } from '../resume/resume.module';
+import { ResumeResolver } from '../resume/resume.resolver';
 
 @Module({
   imports: [

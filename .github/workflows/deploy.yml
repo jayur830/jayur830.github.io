@@ -15,4 +15,4 @@ jobs:
 
       - name: fly deploy
         uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: fly deploy
+      - run: flyctl deploy

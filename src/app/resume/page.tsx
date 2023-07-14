@@ -17,7 +17,7 @@ export default function Resume() {
     <>
       <Grid
         display="flex"
-        alignItems="center"
+        alignItems="flex-start"
         paddingX={sm ? 2 : 6}
         paddingTop={2}
         paddingBottom={4}

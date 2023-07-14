@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 
 import { ResumeQuery } from '@/graphql/graphql';
 
-import LogoBadge from '../LogoBadge';
+import logoBadge from '../LogoBadge';
 
 export interface ResumeCardProps {
   data: NonNullable<ResumeQuery['resume']['history']>[number];
@@ -90,7 +90,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
           </Typography>
         </Grid>
       )}
-      {data.carriers.map((carrier, j) => (
+      {data.careers.map((carrier, j) => (
         <Fragment key={j}>
           <Typography
             fontWeight={700}
@@ -109,10 +109,12 @@ export default function ResumeCard({ data }: ResumeCardProps) {
           >
             {carrier.list.map((item, k) => (
               <TimelineItem key={k}>
-                <StyledTimelineOppositeContent whiteSpace="pre-line">{`${item.startDate}\n~ ${item.endDate}\n(${dayjs(item.endDate).diff(
-                  dayjs(item.startDate),
-                  'month'
-                )}개월)`}</StyledTimelineOppositeContent>
+                {!sm && (
+                  <StyledTimelineOppositeContent whiteSpace="pre-line">{`${item.startDate}\n~ ${item.endDate}\n(${dayjs(item.endDate).diff(
+                    dayjs(item.startDate),
+                    'month'
+                  )}개월)`}</StyledTimelineOppositeContent>
+                )}
                 <TimelineSeparator>
                   {item.completed ? (
                     <StyledTimelineDot
@@ -134,6 +136,9 @@ export default function ResumeCard({ data }: ResumeCardProps) {
                   >
                     {item.name}
                   </Typography>
+                  {sm && (
+                    <StyledTimelineOppositeContentMobile>{`${item.startDate} ~ ${item.endDate} (${dayjs(item.endDate).diff(dayjs(item.startDate), 'month')}개월)`}</StyledTimelineOppositeContentMobile>
+                  )}
                   {item.techList && item.techList.length > 0 && (
                     <Grid
                       display="flex"
@@ -143,7 +148,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
                       marginBottom={3}
                     >
                       {item.techList.map((tech, l) => {
-                        const Component = LogoBadge[tech];
+                        const Component = logoBadge[tech];
                         return <Component key={l} />;
                       })}
                     </Grid>
@@ -215,6 +220,12 @@ const StyledTimelineOppositeContent = styled(TimelineOppositeContent)(({ theme }
     fontSize: 12,
     flex: 0.25,
   },
+}));
+
+const StyledTimelineOppositeContentMobile = styled(Typography)(({ theme }) => ({
+  color: theme.palette.mode === 'dark' ? grey['300'] : grey['700'],
+  fontSize: 12,
+  margin: '2px 0 14px',
 }));
 
 const StyledTimelineContent = styled(TimelineContent)({

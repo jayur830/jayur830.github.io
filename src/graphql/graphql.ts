@@ -12,8 +12,8 @@ export type Scalars = {
   Float: number;
 };
 
-export type CarrierItemVo = {
-  __typename?: 'CarrierItemVO';
+export type CareerItemVo = {
+  __typename?: 'CareerItemVO';
   /** 프로젝트 진행 중 여부 */
   completed: Scalars['Boolean'];
   /** 프로젝트 설명 (성과/결과) */
@@ -28,12 +28,12 @@ export type CarrierItemVo = {
   techList: Array<Logo>;
 };
 
-export type CarrierVo = {
-  __typename?: 'CarrierVO';
+export type CareerVo = {
+  __typename?: 'CareerVO';
   /** 팀 또는 소속 서비스 이름 (없을 경우 null) */
   groupName?: Maybe<Scalars['String']>;
   /** 수행한 프로젝트 경력 */
-  list: Array<CarrierItemVo>;
+  list: Array<CareerItemVo>;
 };
 
 /** 프레임워크, 라이브러리 로고 */
@@ -43,7 +43,7 @@ export enum Logo {
   ApolloClient = 'ApolloClient',
   Docker = 'Docker',
   Java = 'Java',
-  MUi = 'MUi',
+  MaterialUi = 'MaterialUI',
   MongoDb = 'MongoDB',
   MySql = 'MySQL',
   NextJs = 'NextJS',
@@ -72,7 +72,7 @@ export type Query = {
 export type ResumeItemVo = {
   __typename?: 'ResumeItemVO';
   /** 회사 경력 */
-  carriers: Array<CarrierVo>;
+  careers: Array<CareerVo>;
   /** 회사 이름 */
   companyName: Scalars['String'];
   /** 회사에 대한 간단한 설명 */
@@ -125,10 +125,10 @@ export type ResumeQuery = {
       website?: string | null;
       description?: string | null;
       logo?: { __typename?: 'StaticImgDataVO'; src: string; alt: string; width: number; height: number } | null;
-      carriers: Array<{
-        __typename?: 'CarrierVO';
+      careers: Array<{
+        __typename?: 'CareerVO';
         groupName?: string | null;
-        list: Array<{ __typename?: 'CarrierItemVO'; name: string; completed: boolean; startDate: string; endDate?: string | null; techList: Array<Logo>; description: string }>;
+        list: Array<{ __typename?: 'CareerItemVO'; name: string; completed: boolean; startDate: string; endDate?: string | null; techList: Array<Logo>; description: string }>;
       }>;
     }> | null;
   };

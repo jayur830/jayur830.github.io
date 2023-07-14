@@ -14,7 +14,7 @@ query Resume {
       endDate
       website
       description
-      carriers {
+      careers {
         groupName
         list {
           name

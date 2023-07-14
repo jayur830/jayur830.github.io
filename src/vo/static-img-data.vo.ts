@@ -1,9 +1,4 @@
-// import package modules
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-
-// Import global modules
-
-// Import local modules
 
 @ObjectType()
 export class StaticImgDataVO {

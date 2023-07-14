@@ -1,8 +1,5 @@
-// import package modules
 import { Field, ObjectType } from '@nestjs/graphql';
 
-// Import global modules
-// Import local modules
 import { ResumeItemVO } from './resume-item.vo';
 
 @ObjectType()

@@ -1,9 +1,6 @@
-// import package modules
 import { Field, ObjectType } from '@nestjs/graphql';
 
-// Import global modules
-// Import local modules
-import { CarrierVO } from './carrier.vo';
+import { CareerVO } from './career.vo';
 import { StaticImgDataVO } from './static-img-data.vo';
 
 @ObjectType()
@@ -42,8 +39,8 @@ export class ResumeItemVO {
   })
   description?: string;
 
-  @Field(() => [CarrierVO], {
+  @Field(() => [CareerVO], {
     description: '회사 경력',
   })
-  carriers: CarrierVO[];
+  careers: CareerVO[];
 }

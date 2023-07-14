@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import dayjs from 'dayjs';
 import { Repository } from 'typeorm';
 
 import { ResumeInfo } from '@/entities/resume_info/resume_info.entity';
@@ -19,17 +18,17 @@ export class ResumeService {
         .sort((a, b) => (a.startDate > b.startDate ? -1 : 1))
         .map((item) => ({
           ...item,
-          carriers: item.carriers
+          careers: item.careers
             .sort((a, b) => (a.startDate > b.startDate ? -1 : 1))
-            .reduce((result, carrier) => {
-              const index = result.findIndex((d) => d.groupName === carrier.group);
-              const defaultCarrierObj = {
-                name: carrier.name,
-                completed: !!carrier.endDate,
-                startDate: carrier.startDate,
-                endDate: carrier.endDate,
-                techList: carrier.techList.split(','),
-                description: carrier.description,
+            .reduce((result, career) => {
+              const index = result.findIndex((d) => d.groupName === career.group);
+              const defaultCareerObj = {
+                name: career.name,
+                completed: !!career.endDate,
+                startDate: career.startDate,
+                endDate: career.endDate,
+                techList: career.techList.split(','),
+                description: career.description,
               };
 
               if (index !== -1) {
@@ -37,7 +36,7 @@ export class ResumeService {
                   if (index === i) {
                     return {
                       ...item,
-                      list: [...item.list, defaultCarrierObj],
+                      list: [...item.list, defaultCareerObj],
                     };
                   }
                   return item;
@@ -46,8 +45,8 @@ export class ResumeService {
               return [
                 ...result,
                 {
-                  groupName: carrier.group,
-                  list: [defaultCarrierObj],
+                  groupName: career.group,
+                  list: [defaultCareerObj],
                 },
               ];
             }, []),

@@ -1,10 +1,8 @@
-import { ObjectType } from '@nestjs/graphql';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { ResumeHistory } from '../resume_history/resume_history.entity';
 
 @Entity()
-@ObjectType()
 export class ResumeHistoryDetail {
   @PrimaryGeneratedColumn()
   id: string;
@@ -27,7 +25,7 @@ export class ResumeHistoryDetail {
   @Column({ default: '' })
   description: string;
 
-  @ManyToOne(() => ResumeHistory, (history) => history.carriers)
+  @ManyToOne(() => ResumeHistory, (history) => history.careers)
   @JoinColumn({ name: 'history_id' })
   history: ResumeHistory;
 }

@@ -2,7 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CarrierItemVO {
+type CareerItemVO {
   """프로젝트 이름"""
   name: String!
 
@@ -43,19 +43,19 @@ enum Logo {
   Vite
   AntDesign
   Storybook
-  MUi
+  MaterialUI
   Redux
   TypeScript
   Nginx
   ApacheTomcat
 }
 
-type CarrierVO {
+type CareerVO {
   """팀 또는 소속 서비스 이름 (없을 경우 null)"""
   groupName: String
 
   """수행한 프로젝트 경력"""
-  list: [CarrierItemVO!]!
+  list: [CareerItemVO!]!
 }
 
 type StaticImgDataVO {
@@ -92,7 +92,7 @@ type ResumeItemVO {
   description: String
 
   """회사 경력"""
-  carriers: [CarrierVO!]!
+  careers: [CareerVO!]!
 }
 
 type ResumeVO {

@@ -1,13 +1,9 @@
-// import package modules
 import { Field, ObjectType } from '@nestjs/graphql';
 
-// Import global modules
 import { Logo } from '@/enum/logo.enum';
 
-// Import local modules
-
 @ObjectType()
-export class CarrierItemVO {
+export class CareerItemVO {
   @Field(() => String, {
     description: '프로젝트 이름',
   })

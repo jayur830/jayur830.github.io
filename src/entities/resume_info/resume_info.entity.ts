@@ -1,10 +1,8 @@
-import { ObjectType } from '@nestjs/graphql';
-import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { ResumeHistory } from '../resume_history/resume_history.entity';
 
 @Entity()
-@ObjectType()
 export class ResumeInfo {
   @PrimaryGeneratedColumn()
   id: string;

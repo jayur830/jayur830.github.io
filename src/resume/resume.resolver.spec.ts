@@ -1,12 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
+import { ResumeModule } from './resume.module';
 import { ResumeResolver } from './resume.resolver';
+import { ResumeService } from './resume.service';
 
-describe('DrResourceResolver', () => {
+describe('ResumeResolver', () => {
   let resolver: ResumeResolver;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [ResumeModule],
       providers: [ResumeResolver],
     }).compile();
 

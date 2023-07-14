@@ -20,7 +20,7 @@ export enum Logo {
   Vite = 'Vite',
   AntDesign = 'AntDesign',
   Storybook = 'Storybook',
-  MUi = 'MUi',
+  MaterialUI = 'MaterialUI',
   Redux = 'Redux',
   TypeScript = 'TypeScript',
   Nginx = 'Nginx',

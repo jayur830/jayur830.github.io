@@ -12,8 +12,8 @@ type CarrierItemVO {
   """프로젝트 시작월"""
   startDate: String!
 
-  """프로젝트 종료월"""
-  endDate: String!
+  """프로젝트 종료월 (진행중일 경우 null)"""
+  endDate: String
 
   """프로젝트에 쓰인 기술 태그 목록"""
   techList: [Logo!]!
@@ -74,7 +74,7 @@ type StaticImgDataVO {
 
 type ResumeItemVO {
   """회사 이름"""
-  name: String!
+  companyName: String!
 
   """회사 로고"""
   logo: StaticImgDataVO
@@ -92,10 +92,10 @@ type ResumeItemVO {
   description: String
 
   """회사 경력"""
-  carrierList: [CarrierVO!]!
+  carriers: [CarrierVO!]!
 }
 
-type Resume {
+type ResumeVO {
   """이력서 제목"""
   title: String!
 
@@ -103,9 +103,9 @@ type Resume {
   github: String
 
   """총 경력 리스트"""
-  resumeList: [ResumeItemVO!]
+  history: [ResumeItemVO!]
 }
 
 type Query {
-  Resume_get: Resume!
+  Resume_get: ResumeVO!
 }

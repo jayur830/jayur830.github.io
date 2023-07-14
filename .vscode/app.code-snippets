@@ -65,5 +65,27 @@
       "}",
       ""
     ]
+  },
+  "TypeORM Entity": {
+    "scope": "javascript,typescript",
+    "prefix": "entity",
+    "body": [
+      "import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';",
+      "",
+      "@Entity()",
+      "export class User {",
+      "  @PrimaryGeneratedColumn()",
+      "  id: string;",
+      "  ",
+      "  @Column()",
+      "  name: string;",
+      "  ",
+      "  @Column({ default: 29 })",
+      "  age: number;",
+      "  ",
+      "  @Column({ default: false })",
+      "  isDead: boolean;",
+      "}"
+    ]
   }
 }

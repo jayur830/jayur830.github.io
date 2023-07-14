@@ -24,9 +24,10 @@ export class CarrierItemVO {
   startDate: string;
 
   @Field(() => String, {
-    description: '프로젝트 종료월',
+    nullable: true,
+    description: '프로젝트 종료월 (진행중일 경우 null)',
   })
-  endDate: string;
+  endDate: string | null;
 
   @Field(() => [Logo], {
     description: '프로젝트에 쓰인 기술 태그 목록',

@@ -1,19 +1,52 @@
-// import package modules
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
-// Import global modules
-import { Resume, ResumeDocument } from '@/models/resume.schema';
-
-// Import local modules
+import { ResumeInfo } from '@/entities/resume_info/resume_info.entity';
+import { ResumeVO } from '@/vo/resume.vo';
 
 @Injectable()
 export class ResumeService {
-  constructor(@InjectModel(Resume.name) private resumeModel: Model<ResumeDocument>) {}
+  constructor(@InjectRepository(ResumeInfo) private resumeInfoRepository: Repository<ResumeInfo>) {}
 
-  async findOne(): Promise<any> {
-    const result = await this.resumeModel.findOne().lean();
-    return result;
+  async findOne(): Promise<ResumeVO> {
+    const result = await this.resumeInfoRepository.find({});
+
+    return {
+      ...result[0],
+      history: result[0].history.map((item) => ({
+        ...item,
+        carriers: item.carriers.reduce((result, carrier) => {
+          const index = result.findIndex((d) => d.groupName === carrier.group);
+          const defaultCarrierObj = {
+            name: carrier.name,
+            completed: !!carrier.endDate,
+            startDate: carrier.startDate,
+            endDate: carrier.endDate,
+            techList: carrier.techList.split(','),
+            description: carrier.description,
+          };
+
+          if (index !== -1) {
+            return result.map((item, i) => {
+              if (index === i) {
+                return {
+                  ...item,
+                  list: [...item.list, defaultCarrierObj],
+                };
+              }
+              return item;
+            });
+          }
+          return [
+            ...result,
+            {
+              groupName: carrier.group,
+              list: [defaultCarrierObj],
+            },
+          ];
+        }, []),
+      })),
+    };
   }
 }

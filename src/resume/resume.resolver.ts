@@ -1,17 +1,14 @@
-// import package modules
 import { Query, Resolver } from '@nestjs/graphql';
 
-import { Resume } from '@/models/resume.schema';
+import { ResumeVO } from '@/vo/resume.vo';
 
-// Import global modules
-// Import local modules
 import { ResumeService } from './resume.service';
 
-@Resolver(() => Resume)
+@Resolver(() => ResumeVO)
 export class ResumeResolver {
   constructor(private readonly resumeService: ResumeService) {}
 
-  @Query(() => Resume)
+  @Query(() => ResumeVO)
   async Resume_get() {
     return this.resumeService.findOne();
   }

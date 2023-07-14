@@ -22,5 +22,5 @@ export class ResumeVO {
     nullable: true,
     description: '총 경력 리스트',
   })
-  resumeList: ResumeItemVO[];
+  history: ResumeItemVO[];
 }

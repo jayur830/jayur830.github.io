@@ -11,7 +11,7 @@ export class ResumeItemVO {
   @Field(() => String, {
     description: '회사 이름',
   })
-  name: string;
+  companyName: string;
 
   @Field(() => StaticImgDataVO, {
     nullable: true,
@@ -45,5 +45,5 @@ export class ResumeItemVO {
   @Field(() => [CarrierVO], {
     description: '회사 경력',
   })
-  carrierList: CarrierVO[];
+  carriers: CarrierVO[];
 }

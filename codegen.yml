@@ -1,5 +1,5 @@
 overwrite: true
-schema: https://resume-server-nestjs-rcjf2qcbza-du.a.run.app/api/graphql
+schema: https://jayur830-github-io-server-nestjs.fly.dev/api/graphql
 documents: ./src/**/*.gql
 generates:
   ./src/graphql/graphql.ts:

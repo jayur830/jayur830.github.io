@@ -11,7 +11,7 @@ import { ResumeQuery } from '@/graphql/graphql';
 import LogoBadge from '../LogoBadge';
 
 export interface ResumeCardProps {
-  data: NonNullable<ResumeQuery['resume']['resumeList']>[number];
+  data: NonNullable<ResumeQuery['resume']['history']>[number];
 }
 
 export default function ResumeCard({ data }: ResumeCardProps) {
@@ -58,7 +58,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
               fontSize={sm ? 18 : 24}
               letterSpacing={-1}
             >
-              {data.name}
+              {data.companyName}
             </Typography>
             <Typography
               fontWeight={700}
@@ -90,7 +90,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
           </Typography>
         </Grid>
       )}
-      {data.carrierList.map((carrier, j) => (
+      {data.carriers.map((carrier, j) => (
         <Fragment key={j}>
           <Typography
             fontWeight={700}

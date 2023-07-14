@@ -2,8 +2,8 @@ query Resume {
   resume: Resume_get {
     title
     github
-    resumeList {
-      name
+    history {
+      companyName
       logo {
         src
         alt
@@ -14,7 +14,7 @@ query Resume {
       endDate
       website
       description
-      carrierList {
+      carriers {
         groupName
         list {
           name

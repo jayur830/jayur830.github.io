@@ -47,10 +47,10 @@ export default function Resume() {
         paddingTop={2}
         paddingBottom={20}
       >
-        {(resumeData?.resumeList ?? []).map((resume, i) => (
+        {(resumeData?.history ?? []).map((item, i) => (
           <ResumeCard
             key={i}
-            data={resume}
+            data={item}
           />
         ))}
       </Grid>

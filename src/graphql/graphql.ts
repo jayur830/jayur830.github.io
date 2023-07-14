@@ -18,8 +18,8 @@ export type CarrierItemVo = {
   completed: Scalars['Boolean'];
   /** 프로젝트 설명 (성과/결과) */
   description: Scalars['String'];
-  /** 프로젝트 종료월 */
-  endDate: Scalars['String'];
+  /** 프로젝트 종료월 (진행중일 경우 null) */
+  endDate?: Maybe<Scalars['String']>;
   /** 프로젝트 이름 */
   name: Scalars['String'];
   /** 프로젝트 시작월 */
@@ -72,15 +72,15 @@ export type Query = {
 export type ResumeItemVo = {
   __typename?: 'ResumeItemVO';
   /** 회사 경력 */
-  carrierList: Array<CarrierVo>;
+  carriers: Array<CarrierVo>;
+  /** 회사 이름 */
+  companyName: Scalars['String'];
   /** 회사에 대한 간단한 설명 */
   description?: Maybe<Scalars['String']>;
   /** 퇴사일 */
   endDate?: Maybe<Scalars['String']>;
   /** 회사 로고 */
   logo?: Maybe<StaticImgDataVo>;
-  /** 회사 이름 */
-  name: Scalars['String'];
   /** 입사일 */
   startDate: Scalars['String'];
   /** 회사 홈페이지 주소 */
@@ -92,7 +92,7 @@ export type ResumeVo = {
   /** Github 주소 */
   github?: Maybe<Scalars['String']>;
   /** 총 경력 리스트 */
-  resumeList?: Maybe<Array<ResumeItemVo>>;
+  history?: Maybe<Array<ResumeItemVo>>;
   /** 이력서 제목 */
   title: Scalars['String'];
 };
@@ -117,18 +117,18 @@ export type ResumeQuery = {
     __typename?: 'ResumeVO';
     title: string;
     github?: string | null;
-    resumeList?: Array<{
+    history?: Array<{
       __typename?: 'ResumeItemVO';
-      name: string;
+      companyName: string;
       startDate: string;
       endDate?: string | null;
       website?: string | null;
       description?: string | null;
       logo?: { __typename?: 'StaticImgDataVO'; src: string; alt: string; width: number; height: number } | null;
-      carrierList: Array<{
+      carriers: Array<{
         __typename?: 'CarrierVO';
         groupName?: string | null;
-        list: Array<{ __typename?: 'CarrierItemVO'; name: string; completed: boolean; startDate: string; endDate: string; techList: Array<Logo>; description: string }>;
+        list: Array<{ __typename?: 'CarrierItemVO'; name: string; completed: boolean; startDate: string; endDate?: string | null; techList: Array<Logo>; description: string }>;
       }>;
     }> | null;
   };

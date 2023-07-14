@@ -1,1 +1,30 @@
-@import"https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css";body,html{height:100%;margin:0;transition:background-color .3s ease}*{font-family:Pretendard,sans-serif}a{text-decoration:none;color:unset}@font-face{font-family:__fonts_8d551f;src:url(/_next/static/media/9b6e25f1a98224e0-s.p.woff2) format("woff2");font-display:swap}@font-face{font-family:__fonts_Fallback_8d551f;src:local("Arial");ascent-override:93.76%;descent-override:23.75%;line-gap-override:0.00%;size-adjust:101.55%}.__className_8d551f{font-family:__fonts_8d551f,__fonts_Fallback_8d551f}
+@import 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css';
+body,
+html {
+  height: 100%;
+  margin: 0;
+  transition: background-color 0.3s ease;
+}
+* {
+  font-family: Pretendard, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: unset;
+}
+@font-face {
+  font-family: __fonts_8d551f;
+  src: url(/_next/static/media/9b6e25f1a98224e0-s.p.woff2) format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: __fonts_Fallback_8d551f;
+  src: local('Arial');
+  ascent-override: 93.76%;
+  descent-override: 23.75%;
+  line-gap-override: 0%;
+  size-adjust: 101.55%;
+}
+.__className_8d551f {
+  font-family: __fonts_8d551f, __fonts_Fallback_8d551f;
+}

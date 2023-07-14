@@ -29,6 +29,7 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^9.0.1",
     "apollo-server-express": "^3.11.1",
+    "dayjs": "^1.11.9",
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "mongoose": "^6.9.0",

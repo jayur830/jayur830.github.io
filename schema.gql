@@ -2,7 +2,35 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CareerItemVO {
+type UserPayload {
+  """이메일"""
+  email: String!
+
+  """로그인 상태 여부"""
+  isLogged: Boolean!
+}
+
+type ImageMetadata {
+  """로고 ID"""
+  logoId: String!
+
+  """이미지 src (url)"""
+  src: String!
+
+  """이미지 alt"""
+  alt: String!
+
+  """이미지 width"""
+  width: Int!
+
+  """이미지 height"""
+  height: Int!
+}
+
+type CareerItem {
+  """경력 ID"""
+  careerId: String!
+
   """프로젝트 이름"""
   name: String!
 
@@ -50,34 +78,23 @@ enum Logo {
   ApacheTomcat
 }
 
-type CareerVO {
+type Career {
   """팀 또는 소속 서비스 이름 (없을 경우 null)"""
   groupName: String
 
   """수행한 프로젝트 경력"""
-  list: [CareerItemVO!]!
+  list: [CareerItem!]!
 }
 
-type StaticImgDataVO {
-  """이미지 src (url)"""
-  src: String!
+type Company {
+  """회사 ID"""
+  companyId: String!
 
-  """이미지 alt"""
-  alt: String!
-
-  """이미지 width"""
-  width: Int!
-
-  """이미지 height"""
-  height: Int!
-}
-
-type ResumeItemVO {
   """회사 이름"""
   companyName: String!
 
   """회사 로고"""
-  logo: StaticImgDataVO
+  logo: ImageMetadata
 
   """입사일"""
   startDate: String!
@@ -92,10 +109,10 @@ type ResumeItemVO {
   description: String
 
   """회사 경력"""
-  careers: [CareerVO!]!
+  careers: [Career!]!
 }
 
-type ResumeVO {
+type Resume {
   """이력서 제목"""
   title: String!
 
@@ -103,9 +120,103 @@ type ResumeVO {
   github: String
 
   """총 경력 리스트"""
-  history: [ResumeItemVO!]
+  history: [Company!]!
+}
+
+type UpdateCompanyPayload {
+  """회사 ID"""
+  companyId: String!
+
+  """회사 이름"""
+  companyName: String!
+
+  """회사 로고"""
+  logo: ImageMetadata
+
+  """입사일"""
+  startDate: String!
+
+  """퇴사일"""
+  endDate: String
+
+  """퇴사일"""
+  website: String
+
+  """회사에 대한 간단한 설명"""
+  description: String
+}
+
+type UpdateInfoPayload {
+  """이력서 제목"""
+  title: String!
+
+  """Github 주소"""
+  github: String
 }
 
 type Query {
-  Resume_get: ResumeVO!
+  """이력서"""
+  Resume_get: Resume!
+}
+
+type Mutation {
+  """이력서 제목, Github 주소 수정"""
+  Resume_updateInfo(input: UpdateInfoInput!): UpdateInfoPayload!
+
+  """이력서 내 회사 정보 수정"""
+  Resume_updateCompanyInfo(input: UpdateCompanyInput!): UpdateCompanyPayload!
+
+  """이력서 내 회사 로고 메타데이터 수정"""
+  Resume_updateCompanyLogo(input: ImageMetadataInput!): ImageMetadata!
+
+  """로그인"""
+  signIn(email: String!): UserPayload!
+
+  """로그아웃"""
+  signOut(email: String!): UserPayload!
+}
+
+input UpdateInfoInput {
+  """이력서 제목"""
+  title: String
+
+  """Github 주소"""
+  github: String
+}
+
+input UpdateCompanyInput {
+  """회사 ID"""
+  companyId: String!
+
+  """회사 이름"""
+  companyName: String
+
+  """입사일"""
+  startDate: String
+
+  """퇴사일"""
+  endDate: String
+
+  """회사 홈페이지 주소"""
+  website: String
+
+  """회사에 대한 간단한 설명"""
+  description: String
+}
+
+input ImageMetadataInput {
+  """로고 ID"""
+  logoId: String!
+
+  """이미지 src (url)"""
+  src: String!
+
+  """이미지 alt"""
+  alt: String!
+
+  """이미지 width"""
+  width: Int!
+
+  """이미지 height"""
+  height: Int!
 }

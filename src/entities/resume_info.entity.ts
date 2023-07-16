@@ -1,11 +1,11 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import { ResumeHistory } from '../resume_history/resume_history.entity';
+import { ResumeHistory } from './resume_history.entity';
 
 @Entity()
 export class ResumeInfo {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column()
   title: string;

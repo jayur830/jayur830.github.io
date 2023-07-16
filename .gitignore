@@ -28,4 +28,7 @@ lerna-debug.log*
 *.sublime-workspace
 
 # Env
-.env
+.env*
+
+# Migrations
+**/migrations

@@ -4,12 +4,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { CompanyLogo } from '../../entities/company_logo/company_logo.entity';
-import { ResumeHistory } from '../../entities/resume_history/resume_history.entity';
-import { ResumeHistoryDetail } from '../../entities/resume_history_detail/resume_history_detail.entity';
-import { ResumeInfo } from '../../entities/resume_info/resume_info.entity';
-import { ResumeModule } from '../resume/resume.module';
-import { ResumeResolver } from '../resume/resume.resolver';
+import { CompanyLogo } from '@/entities/company_logo.entity';
+import { ResumeHistory } from '@/entities/resume_history.entity';
+import { ResumeHistoryDetail } from '@/entities/resume_history_detail.entity';
+import { ResumeInfo } from '@/entities/resume_info.entity';
+import { User } from '@/entities/user.entity';
+import { AuthModule } from '@/modules/auth/auth.module';
+import { ResumeModule } from '@/modules/resume/resume.module';
 
 @Module({
   imports: [
@@ -27,7 +28,7 @@ import { ResumeResolver } from '../resume/resume.resolver';
           username: configService.get<string>('MYSQL_USERNAME'),
           password: configService.get<string>('MYSQL_PASSWORD'),
           database: configService.get<string>('MYSQL_DATABASE'),
-          entities: [ResumeInfo, ResumeHistory, ResumeHistoryDetail, CompanyLogo],
+          entities: [ResumeInfo, ResumeHistory, ResumeHistoryDetail, CompanyLogo, User],
           synchronize: false,
           logging: true,
         };
@@ -41,7 +42,7 @@ import { ResumeResolver } from '../resume/resume.resolver';
       playground: true,
     }),
     ResumeModule,
+    AuthModule,
   ],
-  providers: [ResumeResolver],
 })
 export class AppModule {}

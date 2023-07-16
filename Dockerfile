@@ -8,4 +8,4 @@ FROM node:16-alpine
 WORKDIR /usr/app
 COPY --from=builder /usr/app/node_modules ./node_modules
 COPY --from=builder /usr/app/dist ./dist
-ENTRYPOINT ["node", "dist/main"]
+ENTRYPOINT ["node", "dist/src/main"]

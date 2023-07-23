@@ -1,0 +1,72 @@
+{
+  "name": "jayur830.github.io-webapp-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && touch ./dist/.nojekyll",
+    "start": "next start",
+    "preview": "http-server ./dist -p 8080",
+    "lint": "next lint --fix . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|scss|md)\"",
+    "codegen": "graphql-codegen && next lint --fix --quiet --file ./src/graphql/graphql.ts"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.17",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.1",
+    "@mui/lab": "5.0.0-alpha.137",
+    "@mui/material": "^5.14.1",
+    "dayjs": "^1.11.9",
+    "encoding": "^0.1.13",
+    "firebase": "^10.1.0",
+    "graphql": "^16.7.1",
+    "graphql-tag": "^2.12.6",
+    "immer": "^10.0.2",
+    "lodash": "^4.17.21",
+    "next": "13.4.12",
+    "react": "18.2.0",
+    "react-constate": "^1.1.1",
+    "react-dom": "18.2.0",
+    "react-markdown": "^8.0.7",
+    "supports-color": "^9.4.0",
+    "zustand": "^4.3.9"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^4.0.1",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@svgr/webpack": "^8.0.1",
+    "@types/lodash": "^4.14.195",
+    "@types/node": "20.4.4",
+    "@types/prettier": "^2.7.3",
+    "@types/react": "18.2.15",
+    "@types/react-dom": "18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "eslint": "8.45.0",
+    "eslint-config-next": "13.4.12",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "http-server": "^14.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0",
+    "sass": "^1.64.1",
+    "ts-node": "^10.9.1",
+    "typescript": "5.1.6"
+  },
+  "lint-staged": {
+    "!(*test).{ts,tsx}": [
+      "next lint --fix . --ext .tsx,.ts",
+      "prettier --write \"**/*.+(js|jsx|ts|tsx)\""
+    ],
+    "*.{json,md,html,scss}": [
+      "prettier --write \"**/*.+(json|yml|yaml|css|scss|md)\""
+    ]
+  }
+}

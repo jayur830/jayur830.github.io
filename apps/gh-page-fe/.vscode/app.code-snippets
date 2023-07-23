@@ -1,0 +1,60 @@
+{
+  "Functional Component": {
+    "scope": "javascriptreact,typescriptreact",
+		"prefix": "fc",
+		"body": [
+			"import { Grid, styled } from '@mui/material';",
+			"",
+			"export default function ${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}}() {",
+			"  return (",
+			"    <Grid>",
+			"      $1",
+			"    </Grid>",
+			"  );",
+			"}",
+			""
+		]
+  },
+  "Context Provider": {
+    "scope": "javascript,typescript",
+		"prefix": "cp",
+		"body": [
+			"import { useState } from 'react';",
+			"",
+			"import { createProvider } from '@/utils';",
+			"",
+			"function use${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}}() {",
+			"  const [count, setCount] = useState<number>(0);",
+			"  ",
+			"  return { count, setCount };",
+			"}",
+			"",
+			"export const { Provider, useContext } = createProvider(use$1);",
+			""
+		]
+  },
+	"Zustand Store": {
+		"scope": "javascript,typescript",
+		"prefix": "zs",
+		"body": [
+			"import { createState } from '@/utils';",
+			"",
+			"interface InitialState {",
+			"  count: number;",
+			"  increase(): void;",
+			"  decrease(): void;",
+			"}",
+			"",
+			"export const use${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}}State = createState<InitialState>((set) => ({",
+			"  count: 0,",
+			"  increase() {",
+			"    set((state) => ({ count: state.count + 1 }));",
+			"  },",
+			"  decrease() {",
+			"    set((state) => ({ count: state.count - 1 }));",
+			"  },",
+			"}));",
+			""
+		]
+	}
+}

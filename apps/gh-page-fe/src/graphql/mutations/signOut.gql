@@ -1,0 +1,6 @@
+mutation SignOut($email: String!) {
+  signOut(email: $email) {
+    email
+    isLogged
+  }
+}

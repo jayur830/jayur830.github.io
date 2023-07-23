@@ -1,0 +1,14 @@
+overwrite: true
+schema: https://jayur830-github-io-server-nestjs.fly.dev/api/graphql
+documents: ./src/**/*.gql
+generates:
+  ./src/graphql/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    configs:
+      - skipTypename: false
+      - withHooks: true
+      - withHOC: false
+      - withComponent: false

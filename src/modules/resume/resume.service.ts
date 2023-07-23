@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { omit } from 'lodash';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 
 import { CompanyLogo } from '@/entities/company_logo.entity';
 import { ResumeHistory } from '@/entities/resume_history.entity';
@@ -19,9 +19,10 @@ export class ResumeService {
   private readonly logger = new Logger(ResumeService.name);
 
   constructor(
-    @InjectRepository(ResumeInfo) private resumeInfoRepository: Repository<ResumeInfo>,
-    @InjectRepository(ResumeHistory) private resumeHistoryRepository: Repository<ResumeHistory>,
-    @InjectRepository(CompanyLogo) private companyLogoRepository: Repository<CompanyLogo>,
+    private readonly dataSource: DataSource,
+    @InjectRepository(ResumeInfo) private readonly resumeInfoRepository: Repository<ResumeInfo>,
+    @InjectRepository(ResumeHistory) private readonly resumeHistoryRepository: Repository<ResumeHistory>,
+    @InjectRepository(CompanyLogo) private readonly companyLogoRepository: Repository<CompanyLogo>,
   ) {}
 
   async findOne(): Promise<Resume> {
@@ -77,20 +78,68 @@ export class ResumeService {
   }
 
   async updateInfo(input: UpdateInfoInput): Promise<UpdateInfoPayload> {
-    const resume = await this.resumeInfoRepository.findOneBy({ id: 1 });
-    const result = await this.resumeInfoRepository.save({ ...resume, ...input } as ResumeInfo);
-    return omit(result, 'id', 'history');
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await this.resumeInfoRepository.createQueryBuilder().update().set(input).where('id = :id', { id: 1 }).execute();
+      const result = await this.resumeInfoRepository.findOne({ select: ['title', 'github'], where: { id: 1 } });
+      await queryRunner.commitTransaction();
+      return result;
+    } catch (error) {
+      this.logger.error(error);
+      await queryRunner.rollbackTransaction();
+    } finally {
+      await queryRunner.release();
+    }
   }
 
   async updateCompanyInfo(input: UpdateCompanyInput): Promise<UpdateCompanyPayload> {
-    const company = await this.resumeHistoryRepository.findOneBy({ id: +input.companyId });
-    const result = await this.resumeHistoryRepository.save({ ...company, ...omit(input, 'companyId') } as ResumeHistory);
-    return { ...omit(result, 'logo', 'careers'), companyId: result.id };
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      const queryBuilder = this.resumeHistoryRepository.createQueryBuilder('resumeHistory');
+      await queryBuilder.update().set(omit(input, 'companyId')).where('id = :id', { id: input.companyId }).execute();
+      const result = await queryBuilder
+        .select()
+        .innerJoinAndSelect('resumeHistory.logo', 'logo')
+        .where('resumeHistory.id = :id', { id: +(input.companyId || '0') })
+        .getOne();
+      await queryRunner.commitTransaction();
+      return {
+        ...result,
+        companyId: input.companyId,
+        logo: {
+          ...result.logo,
+          logoId: `${result.logo.id || 0}`,
+        },
+      };
+    } catch (error) {
+      this.logger.error(error);
+      await queryRunner.rollbackTransaction();
+    } finally {
+      await queryRunner.release();
+    }
   }
 
   async updateCompanyLogo(input: ImageMetadataInput): Promise<ImageMetadata> {
-    const logo = await this.companyLogoRepository.findOneBy({ id: +input.logoId });
-    const result = await this.companyLogoRepository.save({ ...logo, ...omit(input, 'logoId') } as CompanyLogo);
-    return { ...result, logoId: `${result.id}` };
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await this.companyLogoRepository.createQueryBuilder().update().set(omit(input, 'logoId')).where('id = :id', { id: input.logoId }).execute();
+      const result = await this.companyLogoRepository.findOneBy({ id: +(input.logoId || '0') });
+      await queryRunner.commitTransaction();
+      return { ...result, logoId: `${result.id}` };
+    } catch (error) {
+      this.logger.error(error);
+      await queryRunner.rollbackTransaction();
+    } finally {
+      await queryRunner.release();
+    }
   }
 }

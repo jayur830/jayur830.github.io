@@ -169,11 +169,23 @@ type Mutation {
   """이력서 내 회사 로고 메타데이터 수정"""
   Resume_updateCompanyLogo(input: ImageMetadataInput!): ImageMetadata!
 
+  """Set admin user (in local only)"""
+  Admin_update(
+    """Firebase user uid"""
+    uid: String!
+  ): Boolean!
+
   """로그인"""
-  signIn(email: String!): UserPayload!
+  signIn(
+    """이메일"""
+    email: String!
+  ): UserPayload!
 
   """로그아웃"""
-  signOut(email: String!): UserPayload!
+  signOut(
+    """이메일"""
+    email: String!
+  ): UserPayload!
 }
 
 input UpdateInfoInput {

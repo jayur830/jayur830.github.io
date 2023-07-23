@@ -1,9 +1,6 @@
 import { CanActivate, ExecutionContext, ForbiddenException, Injectable, Logger, UnauthorizedException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import firebase from 'firebase-admin';
-import { Repository } from 'typeorm';
 
-import { User } from '@/entities/user.entity';
 import { FirebaseService } from '@/modules/firebase/firebase.service';
 
 @Injectable()
@@ -11,19 +8,18 @@ export class AuthGuard implements CanActivate {
   private readonly logger = new Logger(AuthGuard.name);
   private readonly auth: firebase.auth.Auth;
 
-  constructor(private readonly firebaseService: FirebaseService, @InjectRepository(User) private userRepository: Repository<User>) {
+  constructor(private readonly firebaseService: FirebaseService) {
     this.auth = firebaseService.getAuth();
   }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     try {
-      const [, { email: email1 }, request] = context.getArgs();
+      const [, , request] = context.getArgs();
       if (!request.req.headers.authorization) {
         throw new Error('EMPTY_AUTHORIZATION');
       }
-      const { email: email2 } = await this.auth.verifyIdToken(request.req.headers.authorization.replace('Bearer ', ''));
-      const [user1, user2] = await Promise.all([await this.userRepository.findOneBy({ email: email1 }), await this.userRepository.findOneBy({ email: email2 })]);
-      if (!user1 || !user2) {
+      const claims = await this.auth.verifyIdToken(request.req.headers.authorization.replace('Bearer ', ''));
+      if (!claims.admin) {
         throw new Error('NOT_ADMIN');
       }
       return true;

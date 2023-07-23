@@ -30,6 +30,8 @@ jobs:
           node-version: 16.x
       - name: Install dependencies
         run: yarn
+      - name: Check .env file
+        run: cat .env
       - name: Build application
         run: yarn build
       - name: Deployment

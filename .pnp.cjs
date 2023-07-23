@@ -60,6 +60,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["graphql", "npm:16.6.0"],\
             ["graphql-tag", "virtual:77734f6a2346b869ae32835192dd0d228c767647ea3225b014cff64bbe2e2569c1eb8a51e7e399e27229214ec9b126b36a06d6ea20e3b577f0ee2e7b464e5e5d#npm:2.12.6"],\
             ["http-server", "npm:14.1.1"],\
+            ["husky", "npm:8.0.3"],\
             ["immer", "npm:10.0.2"],\
             ["lint-staged", "npm:13.2.2"],\
             ["lodash", "npm:4.17.21"],\
@@ -11026,6 +11027,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["husky", [\
+        ["npm:8.0.3", {\
+          "packageLocation": "./.yarn/cache/husky-npm-8.0.3-b0b59c5127-837bc7e441.zip/node_modules/husky/",\
+          "packageDependencies": [\
+            ["husky", "npm:8.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["iconv-lite", [\
         ["npm:0.4.24", {\
           "packageLocation": "./.yarn/cache/iconv-lite-npm-0.4.24-c5c4ac6695-bd9f120f5a.zip/node_modules/iconv-lite/",\
@@ -11729,6 +11739,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["graphql", "npm:16.6.0"],\
             ["graphql-tag", "virtual:77734f6a2346b869ae32835192dd0d228c767647ea3225b014cff64bbe2e2569c1eb8a51e7e399e27229214ec9b126b36a06d6ea20e3b577f0ee2e7b464e5e5d#npm:2.12.6"],\
             ["http-server", "npm:14.1.1"],\
+            ["husky", "npm:8.0.3"],\
             ["immer", "npm:10.0.2"],\
             ["lint-staged", "npm:13.2.2"],\
             ["lodash", "npm:4.17.21"],\

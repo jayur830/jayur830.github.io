@@ -1,8 +1,11 @@
-FROM node:16-alpine as builder
+FROM node:16-alpine as base
+RUN npm i -g pnpm
+
+FROM base as builder
 WORKDIR /usr/app
 COPY . .
-RUN yarn
-RUN yarn build
+RUN pnpm i
+RUN pnpm build
 
 FROM node:16-alpine
 WORKDIR /usr/app

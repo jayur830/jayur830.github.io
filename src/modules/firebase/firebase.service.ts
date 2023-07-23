@@ -13,7 +13,9 @@ export class FirebaseService {
         credential: firebase.credential.cert({
           clientEmail: configService.get('FIREBASE_CLIENT_EMAIL'),
           projectId: configService.get('FIREBASE_PROJECT_ID'),
-          privateKey: configService.get('FIREBASE_PRIVATE_KEY').replace(/\\n/g, '\n'),
+          privateKey: configService
+            .get('FIREBASE_PRIVATE_KEY')
+            .replace(/\\n/g, '\n'),
         }),
       });
     } else {

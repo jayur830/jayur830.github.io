@@ -1,6 +1,6 @@
 {
-  "name": "jayur830.github.io-webapp-nextjs",
-  "version": "0.1.0",
+  "name": "gh-page-fe",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -45,7 +45,6 @@
     "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
-    "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
@@ -53,9 +52,6 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "http-server": "^14.1.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "prettier": "^3.0.0",
     "sass": "^1.64.1",
     "ts-node": "^10.9.1",
     "typescript": "5.1.6"

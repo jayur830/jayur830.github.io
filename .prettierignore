@@ -3,7 +3,6 @@ coverage
 
 # production
 build
-docs
 
 # Ignore all HTML files:
 *.html

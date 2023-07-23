@@ -7,9 +7,9 @@
     "setup": "yarn dlx @yarnpkg/sdks vscode",
     "postinstall": "yarn setup",
     "dev": "next dev",
-    "build": "rm -rf ./.next && rm -rf ./docs && next build && touch ./docs/.nojekyll",
+    "build": "rm -rf ./.next && rm -rf ./dist && next build && touch ./dist/.nojekyll",
     "start": "next start",
-    "preview": "http-server ./docs -p 8080",
+    "preview": "http-server ./dist -p 8080",
     "lint": "next lint --fix . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|scss|md)\"",
     "codegen": "graphql-codegen && next lint --fix --quiet --file ./src/graphql/graphql.ts"
   },

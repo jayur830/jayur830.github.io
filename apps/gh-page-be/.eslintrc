@@ -1,0 +1,46 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "node": true,
+    "jest": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint/eslint-plugin", "prettier", "simple-import-sort"],
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "tsconfigRootDir": ".",
+    "sourceType": "module",
+    "ecmaVersion": 2022
+  },
+  "ignorePatterns": [".eslintrc"],
+  "rules": {
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          // Related packages come first.
+          ["^@nestjs", "^dayjs", "^lodash", "^@?\\w"],
+          // Internal packages.
+          ["^@/"],
+          // Side effect imports.
+          ["^\\u0000"],
+          // Other relative imports. Put same-folder imports and `.` last.
+          ["^\\../../../../../..", "^\\../../../../..", "^\\../../../..", "^\\../../..", "^\\../..", "^\\..", "^\\."]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "warn",
+    "unused-imports/no-unused-vars": "off"
+  }
+}

@@ -63,7 +63,7 @@ const logoBadges = Object.entries(logoValues).reduce(
     ...result,
     [logo]: () => <Badge {...props} />,
   }),
-  {} as { [K in Logo]: FC }
+  {} as { [K in Logo]: FC },
 );
 
 export default logoBadges;

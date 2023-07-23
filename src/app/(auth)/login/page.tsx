@@ -42,7 +42,7 @@ export default function Login() {
           break;
       }
     },
-    [signIn, authService]
+    [signIn, authService],
   );
 
   return (

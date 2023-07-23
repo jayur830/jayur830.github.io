@@ -113,7 +113,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
                 {!sm && (
                   <StyledTimelineOppositeContent whiteSpace="pre-line">{`${item.startDate}\n~ ${item.endDate}\n(${dayjs(item.endDate).diff(
                     dayjs(item.startDate),
-                    'month'
+                    'month',
                   )}개월)`}</StyledTimelineOppositeContent>
                 )}
                 <TimelineSeparator>

@@ -59,5 +59,14 @@
     "sass": "^1.64.1",
     "ts-node": "^10.9.1",
     "typescript": "5.1.6"
+  },
+  "lint-staged": {
+    "!(*test).{ts,tsx}": [
+      "next lint --fix . --ext .tsx,.ts",
+      "prettier --write \"**/*.+(js|jsx|ts|tsx)\""
+    ],
+    "*.{json,md,html,scss}": [
+      "prettier --write \"**/*.+(json|yml|yaml|css|scss|md)\""
+    ]
   }
 }

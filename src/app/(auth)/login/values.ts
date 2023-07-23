@@ -1,5 +1,5 @@
 import { GitHub as GitHubIcon, Google as GoogleIcon } from '@mui/icons-material';
-import { blue, grey } from '@mui/material/colors';
+import { blue, grey, red } from '@mui/material/colors';
 
 export const loginButtonValues = [
   {
@@ -16,7 +16,8 @@ export const loginButtonValues = [
     icon: GoogleIcon,
     label: 'Google 로그인',
     buttonProps: {
-      backgroundColor: blue['700'],
+      // backgroundColor: blue['700'],
+      backgroundColor: red['400'],
       textColor: 'white',
     },
   },

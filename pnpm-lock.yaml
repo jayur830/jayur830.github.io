@@ -50,6 +50,9 @@ dependencies:
   react:
     specifier: 18.2.0
     version: 18.2.0
+  react-constate:
+    specifier: ^1.1.1
+    version: 1.1.1
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
@@ -8955,6 +8958,12 @@ packages:
   /range-parser@1.2.1:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
+    dev: false
+
+  /react-constate@1.1.1:
+    resolution: {integrity: sha512-s8ZDwQ09bt3MgOtuAJkf+xD5PIf7+lHmfrzhCx5oVTzqzZAjGJdcNgsoI4utkOUSz0NDhgq8fuUrmwUExbSc/g==}
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-devtools-core@4.28.0:

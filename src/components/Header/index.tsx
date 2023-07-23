@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { DensityMedium } from '@mui/icons-material';
 import { Box, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, styled, Switch } from '@mui/material';
 
-import { values } from '@/configs';
+import { navigations } from '@/configs/navigation';
 import { useCommonState } from '@/store/common';
 
 export default function Header() {
@@ -38,7 +38,7 @@ export default function Header() {
         onClose={() => setOpen(false)}
       >
         <List style={{ width: 200 }}>
-          {values.navigations.map(({ label, path }, i) => (
+          {navigations.map(({ label, path }, i) => (
             <ListItem key={i}>
               <MenuLink href={path}>
                 <ListItemButton>

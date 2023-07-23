@@ -1,34 +1,3 @@
-// @font-face {
-//   font-family: 'Bold';
-//   src: url('../assets/fonts/SC-Font-Bold.otf');
-//   font-weight: 700;
-// }
-
-// @font-face {
-//   font-family: 'Medium';
-//   src: url('../assets/fonts/SC-Font-Medium.otf');
-//   font-weight: 600;
-// }
-
-// @font-face {
-//   font-family: 'Regular';
-//   src: url('../assets/fonts/SC-Font-Regular.otf');
-//   font-weight: 400;
-// }
-
-// @font-face {
-//   font-family: 'Light';
-//   src: url('../assets/fonts/SC-Font-Light.otf');
-//   font-weight: 200;
-// }
-
-// @font-face {
-//   font-family: 'Thin';
-//   src: url('../assets/fonts/SC-Font-Thin.otf');
-//   font-weight: 100;
-// }
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
 html,
 body {
   height: 100%;
@@ -36,11 +5,24 @@ body {
   transition: background-color 0.3s ease;
 }
 
-* {
-  font-family: 'Pretendard', sans-serif;
-}
-
 a {
   text-decoration: none;
   color: unset;
+}
+
+.markdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 30px;
+  }
 }

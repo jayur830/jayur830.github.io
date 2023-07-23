@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloLink, createHttpLink, InMemoryCache } from '@apollo/client';
 
-const httpLink = createHttpLink({ uri: 'https://jayur830-github-io-server-nestjs.fly.dev/api/graphql' });
+const httpLink = createHttpLink({ uri: process.env.NEXT_PUBLIC_API_URL });
 
 const client = new ApolloClient({
   connectToDevTools: process.env.NODE_ENV !== 'production',

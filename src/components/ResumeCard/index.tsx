@@ -1,4 +1,5 @@
 import { Fragment, useCallback } from 'react';
+import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { Language, Schedule } from '@mui/icons-material';
 import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, timelineItemClasses, TimelineOppositeContent, TimelineSeparator } from '@mui/lab';
@@ -153,7 +154,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
                       })}
                     </Grid>
                   )}
-                  {item.description && (
+                  {/* {item.description && (
                     <Typography
                       fontWeight={400}
                       fontSize={sm ? 13 : 18}
@@ -161,7 +162,8 @@ export default function ResumeCard({ data }: ResumeCardProps) {
                     >
                       {item.description}
                     </Typography>
-                  )}
+                  )} */}
+                  {item.description && <ReactMarkdown className="markdown">{item.description}</ReactMarkdown>}
                 </StyledTimelineContent>
               </TimelineItem>
             ))}

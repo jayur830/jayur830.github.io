@@ -11,7 +11,7 @@
     "start": "next start",
     "preview": "http-server ./docs -p 8080",
     "lint": "next lint --fix . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|scss|md)\"",
-    "codegen": "graphql-codegen"
+    "codegen": "graphql-codegen && next lint --fix --quiet --file ./src/graphql/graphql.ts"
   },
   "dependenciesMeta": {
     "next@13.3.0": {
@@ -26,6 +26,8 @@
     "@mui/lab": "^5.0.0-alpha.130",
     "@mui/material": "^5.13.1",
     "dayjs": "^1.11.7",
+    "encoding": "^0.1.13",
+    "firebase": "^10.0.0",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
     "immer": "^10.0.2",
@@ -33,13 +35,17 @@
     "next": "13.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-markdown": "^8.0.7",
+    "supports-color": "8.1.1",
     "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "3.3.1",
     "@graphql-codegen/typescript": "^3.0.4",
     "@graphql-codegen/typescript-operations": "^3.0.4",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@svgr/webpack": "^8.0.1",
+    "@types/firebase": "^3.2.1",
     "@types/lodash": "^4",
     "@types/node": "20.2.3",
     "@types/prettier": "^2",

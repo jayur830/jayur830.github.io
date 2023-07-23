@@ -6,3 +6,9 @@ generates:
     plugins:
       - typescript
       - typescript-operations
+      - typescript-react-apollo
+    configs:
+      - skipTypename: false
+      - withHooks: true
+      - withHOC: false
+      - withComponent: false

@@ -1,7 +1,7 @@
 import { FC, SVGProps } from 'react';
 import { Chip, Link, styled } from '@mui/material';
 
-import { logoValues } from '@/configs/values';
+import { logoValues } from '@/configs/logo';
 import { Logo } from '@/graphql/graphql';
 
 interface BadgeProps {

@@ -2,9 +2,8 @@ name: jayur830.github.io-server-nestjs
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    tags:
+      - release-be-*
 
 jobs:
   build:

@@ -2,9 +2,8 @@ name: Github Page
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    tags:
+      - release-fe-*
 
 jobs:
   deploy:

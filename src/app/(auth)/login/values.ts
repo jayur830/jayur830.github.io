@@ -17,7 +17,7 @@ export const loginButtonValues = [
     label: 'Google 로그인',
     buttonProps: {
       // backgroundColor: blue['700'],
-      backgroundColor: red['400'],
+      backgroundColor: red['200'],
       textColor: 'white',
     },
   },

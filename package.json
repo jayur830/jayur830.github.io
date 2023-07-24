@@ -2,11 +2,11 @@
   "private": true,
   "scripts": {
     "build": "pnpm turbo run build",
-    "build:gh-page-fe": "pnpm turbo run build --filter gh-page-fe",
-    "build:gh-page-be": "pnpm turbo run build --filter gh-page-be",
+    "build:fe": "pnpm turbo run build --filter fe",
+    "build:be": "pnpm turbo run build --filter be",
     "dev": "pnpm turbo run dev",
-    "dev:gh-page-fe": "pnpm turbo run dev --filter gh-page-fe",
-    "dev:gh-page-be": "pnpm turbo run dev --filter gh-page-be",
+    "dev:fe": "pnpm turbo run dev --filter fe",
+    "dev:be": "pnpm turbo run dev --filter be",
     "lint": "pnpm turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

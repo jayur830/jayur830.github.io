@@ -9,17 +9,33 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
     "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "prettier"
   ],
-  "plugins": ["@typescript-eslint/eslint-plugin", "prettier", "simple-import-sort"],
-  "parserOptions": {
-    "project": "tsconfig.json",
-    "tsconfigRootDir": ".",
-    "sourceType": "module",
-    "ecmaVersion": 2022
+  "plugins": ["@typescript-eslint", "prettier", "import", "unused-imports", "simple-import-sort"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
-  "ignorePatterns": [".eslintrc"],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module",
+    "project": "tsconfig.json"
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"]
+    },
+    "settings": {
+      "import/resolver": {
+        "typescript": {
+          "alwaysTryTypes": true
+        }
+      }
+    }
+  },
   "rules": {
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
@@ -41,6 +57,15 @@
       }
     ],
     "simple-import-sort/exports": "warn",
-    "unused-imports/no-unused-vars": "off"
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ]
   }
 }

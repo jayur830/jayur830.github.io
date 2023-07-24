@@ -1,13 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "build:gh-page-fe": "turbo run build --filter gh-page-fe",
-    "build:gh-page-be": "turbo run build --filter gh-page-be",
-    "dev": "turbo run dev",
-    "dev:gh-page-fe": "turbo run dev --filter gh-page-fe",
-    "dev:gh-page-be": "turbo run dev --filter gh-page-be",
-    "lint": "turbo run lint",
+    "build": "pnpm turbo run build",
+    "build:gh-page-fe": "pnpm turbo run build --filter gh-page-fe",
+    "build:gh-page-be": "pnpm turbo run build --filter gh-page-be",
+    "dev": "pnpm turbo run dev",
+    "dev:gh-page-fe": "pnpm turbo run dev --filter gh-page-fe",
+    "dev:gh-page-be": "pnpm turbo run dev --filter gh-page-be",
+    "lint": "pnpm turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {

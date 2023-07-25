@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: ls
+        run: ls -al
       - name: Update .gitignore
         run: echo "!dist/" >> .gitignore
       - name: Create .env.production file
@@ -43,8 +45,6 @@ jobs:
         run: pnpm i
       - name: Build application
         run: pnpm build:fe
-      - name: pwd
-        run: pwd
       - name: Deployment
         uses: peaceiris/actions-gh-pages@v3
         with:

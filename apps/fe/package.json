@@ -8,7 +8,8 @@
     "start": "next start",
     "preview": "http-server ./dist -p 8080",
     "lint": "next lint --fix . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|scss|md)\"",
-    "codegen": "graphql-codegen && next lint --fix --quiet --file ./src/graphql/graphql.ts"
+    "codegen": "graphql-codegen && next lint --fix --quiet --file ./src/graphql/graphql.ts",
+    "release": "release-it"
   },
   "dependencies": {
     "@apollo/client": "^3.7.17",

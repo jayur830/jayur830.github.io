@@ -10,11 +10,14 @@
     "dev:fe": "pnpm turbo run dev --filter fe",
     "dev:be": "pnpm turbo run dev --filter be",
     "lint": "pnpm turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "release:fe": "pnpm turbo run release --filter fe",
+    "release:be": "pnpm turbo run release --filter be"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
     "@commitlint/config-conventional": "^17.6.7",
+    "@release-it/bumper": "^5.0.0",
     "@turbo/gen": "^1.9.7",
     "commitizen": "^4.3.0",
     "cz-customizable": "^7.0.0",
@@ -23,11 +26,23 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
+    "release-it": "^16.1.3",
     "turbo": "latest"
   },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-customizable"
+    }
+  },
+  "release-it": {
+    "npm": {
+      "publish": false
+    },
+    "git": {
+      "requireCleanWorkingDir": false
+    },
+    "github": {
+      "release": true
     }
   }
 }

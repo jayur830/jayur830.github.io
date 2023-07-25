@@ -40,10 +40,9 @@ jobs:
       - name: Install dependencies
         run: pnpm i
       - name: Build application
-        run: pnpm build:fe
+        run: pnpm build --filter fe
       - name: Deployment
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_PAGE_TOKEN }}
-          publish_dir: dist
-          destination_dir: apps/fe
+          publish_dir: apps/fe/dist

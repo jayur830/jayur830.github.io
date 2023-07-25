@@ -43,8 +43,10 @@ jobs:
         run: pnpm i
       - name: Build application
         run: pnpm build:fe
+      - name: pwd
+        run: pwd
       - name: Deployment
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_PAGE_TOKEN }}
-          publish_dir: ../apps/fe/dist
+          publish_dir: apps/fe/dist

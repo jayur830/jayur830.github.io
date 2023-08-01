@@ -22,6 +22,7 @@ declare namespace NodeJS {
     NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: string;
     NEXT_PUBLIC_FIREBASE_APP_ID: string;
     NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: string;
+    NEXT_PUBLIC_GTM_ID: string;
 
     API_URL: string;
     GITHUB_OAUTH_CLIENT_ID: string;
@@ -33,5 +34,6 @@ declare namespace NodeJS {
     FIREBASE_MESSAGING_SENDER_ID: string;
     FIREBASE_APP_ID: string;
     FIREBASE_MEASUREMENT_ID: string;
+    GTM_ID: string;
   }
 }

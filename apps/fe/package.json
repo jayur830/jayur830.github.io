@@ -7,7 +7,7 @@
     "build": "next build && touch ./dist/.nojekyll",
     "start": "next start",
     "preview": "http-server ./dist -p 8080",
-    "lint": "next lint --fix . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx|json|yml|yaml|css|scss|md)\"",
+    "lint": "next lint --fix . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx)\"",
     "codegen": "graphql-codegen && next lint --fix --quiet --file ./src/graphql/graphql.ts",
     "release": "release-it"
   },
@@ -29,6 +29,7 @@
     "react": "18.2.0",
     "react-constate": "^1.1.1",
     "react-dom": "18.2.0",
+    "react-gtm-module": "^2.0.11",
     "react-markdown": "^8.0.7",
     "supports-color": "^9.4.0",
     "zustand": "^4.3.9"
@@ -44,6 +45,7 @@
     "@types/prettier": "^2.7.3",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
+    "@types/react-gtm-module": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
     "eslint-config-next": "13.4.12",
@@ -61,9 +63,6 @@
     "!(*test).{ts,tsx}": [
       "next lint --fix . --ext .tsx,.ts",
       "prettier --write \"**/*.+(js|jsx|ts|tsx)\""
-    ],
-    "*.{json,md,html,scss}": [
-      "prettier --write \"**/*.+(json|yml|yaml|css|scss|md)\""
     ]
   }
 }

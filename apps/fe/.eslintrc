@@ -13,7 +13,6 @@
     "plugin:import/typescript",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    // "plugin:@typescript-eslint",
     "prettier"
   ],
   "plugins": ["@typescript-eslint", "prettier", "import", "unused-imports", "simple-import-sort"],
@@ -27,7 +26,8 @@
     },
     "ecmaVersion": 2018,
     "sourceType": "module",
-    "project": "tsconfig.json"
+    "project": "tsconfig.json",
+    "tsconfigRootDir": "apps/fe"
   },
   "settings": {
     "react": {

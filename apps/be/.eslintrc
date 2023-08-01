@@ -23,7 +23,8 @@
   "parserOptions": {
     "ecmaVersion": 2022,
     "sourceType": "module",
-    "project": "tsconfig.json"
+    "project": "tsconfig.json",
+    "tsconfigRootDir": "apps/be"
   },
   "settings": {
     "import/parsers": {

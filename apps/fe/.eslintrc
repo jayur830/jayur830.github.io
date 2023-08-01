@@ -26,8 +26,7 @@
     },
     "ecmaVersion": 2018,
     "sourceType": "module",
-    "project": "tsconfig.json",
-    "tsconfigRootDir": "apps/fe"
+    "project": "tsconfig.json"
   },
   "settings": {
     "react": {

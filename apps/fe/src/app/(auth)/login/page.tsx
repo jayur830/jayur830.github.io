@@ -1,10 +1,12 @@
 'use client';
 
 import { useCallback } from 'react';
-import { ApolloError, useMutation } from '@apollo/client';
 import { Button, Grid, styled, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
+import { pick } from 'lodash';
+import { useMutation } from '@tanstack/react-query';
 import { GithubAuthProvider, signInWithPopup } from 'firebase/auth';
+import request from 'graphql-request';
 
 import { SignInMutation, SignInMutationVariables } from '@/graphql/graphql';
 import SIGN_IN_MUTATION from '@/graphql/mutations/signIn.gql';
@@ -15,22 +17,22 @@ import { loginButtonValues } from './values';
 export default function Login() {
   const { authService } = useFirebase();
 
-  const [signIn] = useMutation<SignInMutation, SignInMutationVariables>(SIGN_IN_MUTATION);
+  const { mutate: signIn } = useMutation<SignInMutation, Error, SignInMutationVariables & { authorization: string }>({
+    mutationKey: ['signIn'],
+    mutationFn(variables) {
+      return request(process.env.NEXT_PUBLIC_API_URL, SIGN_IN_MUTATION, pick(variables, 'email'), pick(variables, 'authorization'));
+    },
+  });
 
   const login = useCallback(
     async (key: string) => {
       switch (key) {
         case 'github':
           const { user } = await signInWithPopup(authService, new GithubAuthProvider());
-          console.log(await user.getIdToken(), user.email);
           try {
-            const { data } = await signIn({
-              variables: { email: user.email || '' },
-              context: {
-                headers: {
-                  authorization: `Bearer ${await user.getIdToken()}`,
-                },
-              },
+            await signIn({
+              email: user.email || '',
+              authorization: `Bearer ${await user.getIdToken()}`,
             });
           } catch (error) {
             console.log('error:', JSON.stringify(error, null, 2));
@@ -55,7 +57,7 @@ export default function Login() {
             text-color={buttonProps.textColor}
             onClick={() => login(key)}
           >
-            <Icon />
+            {/* <Icon /> */}
             <Typography
               fontWeight={700}
               fontSize={16}

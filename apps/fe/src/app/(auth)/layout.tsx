@@ -1,11 +1,10 @@
 'use client';
 
 import { PropsWithChildren } from 'react';
-import { ApolloProvider } from '@apollo/client';
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { createTheme } from '@mui/material';
 
 import { fonts } from '@/assets/fonts';
-import { client } from '@/graphql/apollo';
+import { MuiProvider } from '@/contexts';
 
 import '@/styles/globals.scss';
 
@@ -16,12 +15,5 @@ const theme = createTheme({
 });
 
 export default function RootLayout({ children }: PropsWithChildren) {
-  return (
-    <ApolloProvider client={client}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
-    </ApolloProvider>
-  );
+  return <MuiProvider theme={theme}>{children}</MuiProvider>;
 }

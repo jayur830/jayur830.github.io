@@ -17,6 +17,9 @@
     },
     "release": {
       "cache": false
+    },
+    "codegen": {
+      "cache": false
     }
   }
 }

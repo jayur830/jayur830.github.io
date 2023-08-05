@@ -1,17 +1,27 @@
 'use client';
 
+import { useMemo } from 'react';
+import { useQuery } from '@apollo/client';
 import { GitHub } from '@mui/icons-material';
 import { Grid, IconButton, styled, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 import { ResumeCard } from '@/components';
-
-import useResume from './useResume';
+import { ResumeQuery } from '@/graphql/graphql';
+import getResume from '@/graphql/queries/getResume.gql';
 
 export default function Resume() {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const { resumeData } = useResume();
+  const { data, loading } = useQuery<ResumeQuery>(getResume);
+
+  const resumeData = useMemo(() => {
+    if (!loading) {
+      return data?.resume;
+    }
+
+    return null;
+  }, [loading, data]);
 
   return (
     <>

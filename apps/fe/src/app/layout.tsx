@@ -1,9 +1,13 @@
 import { PropsWithChildren } from 'react';
 
+import { ReactQueryProvider } from '@/contexts';
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+      </body>
     </html>
   );
 }

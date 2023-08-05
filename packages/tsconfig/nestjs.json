@@ -1,6 +1,6 @@
 {
-  "display": "Default",
-  "extends": "./base.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Nest.js",
   "compilerOptions": {
     "module": "commonjs",
     "removeComments": true,
@@ -15,16 +15,7 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "exclude": ["node_modules"]
-}
-"./src/*"]
-    }
+    "noFallthroughCasesInSwitch": false
   },
   "exclude": ["node_modules"]
 }

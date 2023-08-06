@@ -28,13 +28,7 @@ import { ResumeModule } from '@/modules/resume/resume.module';
           username: configService.get<string>('MYSQL_USERNAME'),
           password: configService.get<string>('MYSQL_PASSWORD'),
           database: configService.get<string>('MYSQL_DATABASE'),
-          entities: [
-            ResumeInfo,
-            ResumeHistory,
-            ResumeHistoryDetail,
-            CompanyLogo,
-            User,
-          ],
+          entities: [ResumeInfo, ResumeHistory, ResumeHistoryDetail, CompanyLogo, User],
           synchronize: false,
           logging: true,
         };

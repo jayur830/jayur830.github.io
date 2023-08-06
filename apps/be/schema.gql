@@ -44,37 +44,84 @@ type CareerItem {
   endDate: String
 
   """프로젝트에 쓰인 기술 태그 목록"""
-  techList: [Logo!]!
+  techList: [TechLogo!]!
 
   """프로젝트 설명 (성과/결과)"""
   description: String!
 }
 
 """프레임워크, 라이브러리 로고"""
-enum Logo {
+enum TechLogo {
+  """React"""
   React
+
+  """React Native"""
   ReactNative
+
+  """Sass (SCSS)"""
   Sass
+
+  """Vue.js"""
   Vue
+
+  """Java"""
   Java
+
+  """Python"""
   Python
+
+  """Docker"""
   Docker
+
+  """MySQL Database"""
   MySQL
+
+  """Spring MVC"""
   Spring
+
+  """Spring Boot"""
   SpringBoot
+
+  """Next.js"""
   NextJS
+
+  """Apollo Client"""
   ApolloClient
+
+  """PostgreSQL Database"""
   PostgreSQL
+
+  """Oracle Database"""
   Oracle
+
+  """MongoDB"""
   MongoDB
+
+  """Yarn"""
   Yarn
+
+  """Vite"""
   Vite
+
+  """Ant Design"""
   AntDesign
+
+  """Storybook"""
   Storybook
+
+  """Material UI"""
   MaterialUI
+
+  """Redux"""
   Redux
+
+  """TypeScript"""
   TypeScript
+
+  """Nginx"""
   Nginx
+
+  """Apache Tomcat"""
   ApacheTomcat
 }
 

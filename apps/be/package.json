@@ -83,7 +83,7 @@
   },
   "lint-staged": {
     "!(*test).{ts,tsx}": [
-      "next lint --fix . --ext .tsx,.ts",
+      "eslint --fix . --ext .tsx,.ts",
       "prettier --write \"**/*.+(js|jsx|ts|tsx)\""
     ]
   }

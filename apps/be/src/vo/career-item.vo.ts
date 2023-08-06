@@ -1,6 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 
-import { Logo } from '@/enum/logo.enum';
+import { TechLogo } from '@/enum/logo.enum';
 
 @ObjectType()
 export class CareerItem {
@@ -19,8 +19,8 @@ export class CareerItem {
   @Field({ nullable: true, description: '프로젝트 종료월 (진행중일 경우 null)' })
   endDate: string | null;
 
-  @Field(() => [Logo], { description: '프로젝트에 쓰인 기술 태그 목록' })
-  techList: Logo[];
+  @Field(() => [TechLogo], { description: '프로젝트에 쓰인 기술 태그 목록' })
+  techList: TechLogo[];
 
   @Field({ description: '프로젝트 설명 (성과/결과)' })
   description: string;

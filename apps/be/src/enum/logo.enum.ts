@@ -1,6 +1,6 @@
 import { registerEnumType } from '@nestjs/graphql';
 
-export enum Logo {
+export enum TechLogo {
   React = 'React',
   ReactNative = 'ReactNative',
   Sass = 'Sass',
@@ -27,7 +27,33 @@ export enum Logo {
   ApacheTomcat = 'ApacheTomcat',
 }
 
-registerEnumType(Logo, {
-  name: 'Logo',
+registerEnumType(TechLogo, {
+  name: 'TechLogo',
   description: '프레임워크, 라이브러리 로고',
+  valuesMap: {
+    React: { description: 'React' },
+    ReactNative: { description: 'React Native' },
+    Sass: { description: 'Sass (SCSS)' },
+    Vue: { description: 'Vue.js' },
+    Java: { description: 'Java' },
+    Python: { description: 'Python' },
+    Docker: { description: 'Docker' },
+    MySQL: { description: 'MySQL Database' },
+    Spring: { description: 'Spring MVC' },
+    SpringBoot: { description: 'Spring Boot' },
+    NextJS: { description: 'Next.js' },
+    ApolloClient: { description: 'Apollo Client' },
+    PostgreSQL: { description: 'PostgreSQL Database' },
+    Oracle: { description: 'Oracle Database' },
+    MongoDB: { description: 'MongoDB' },
+    Yarn: { description: 'Yarn' },
+    Vite: { description: 'Vite' },
+    AntDesign: { description: 'Ant Design' },
+    Storybook: { description: 'Storybook' },
+    MaterialUI: { description: 'Material UI' },
+    Redux: { description: 'Redux' },
+    TypeScript: { description: 'TypeScript' },
+    Nginx: { description: 'Nginx' },
+    ApacheTomcat: { description: 'Apache Tomcat' },
+  },
 });

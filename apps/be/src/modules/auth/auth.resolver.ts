@@ -14,7 +14,10 @@ export class AuthResolver {
   private readonly logger = new Logger(AuthResolver.name);
   private readonly auth: firebase.auth.Auth;
 
-  constructor(private authService: AuthService, private readonly firebaseService: FirebaseService) {
+  constructor(
+    private authService: AuthService,
+    private readonly firebaseService: FirebaseService,
+  ) {
     this.auth = firebaseService.getAuth();
   }
 

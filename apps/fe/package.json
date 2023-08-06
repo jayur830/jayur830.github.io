@@ -27,7 +27,7 @@
     "lodash": "^4.17.21",
     "next": "13.4.12",
     "react": "18.2.0",
-    "react-constate": "^1.1.1",
+    "react-constate": "^1.1.2",
     "react-dom": "18.2.0",
     "react-gtm-module": "^2.0.11",
     "react-markdown": "^8.0.7",

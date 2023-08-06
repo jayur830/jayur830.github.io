@@ -4,13 +4,14 @@ import { PropsWithChildren, useMemo } from 'react';
 import { createTheme } from '@mui/material';
 
 import { fonts } from '@/assets/fonts';
-import { Header } from '@/components';
+import { DarkModeSwitch, Header } from '@/components';
+import { appNavigations } from '@/configs/navigation';
 import { MuiProvider } from '@/contexts';
 import { useCommonState } from '@/store/common';
 
 import '@/styles/globals.scss';
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function AppLayout({ children }: PropsWithChildren) {
   const isDarkMode = useCommonState((state) => state.isDarkMode);
 
   const theme = useMemo(() => {
@@ -26,7 +27,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
 
   return (
     <MuiProvider theme={theme}>
-      <Header />
+      <Header
+        navigations={appNavigations}
+        extra={<DarkModeSwitch />}
+      />
       {children}
     </MuiProvider>
   );

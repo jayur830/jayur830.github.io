@@ -1,17 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { DensityMedium } from '@mui/icons-material';
-import { Box, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, styled, Switch } from '@mui/material';
+import { Box, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, styled } from '@mui/material';
 
-import { navigations } from '@/configs/navigation';
-import { useCommonState } from '@/store/common';
+import { NavigationItem } from '@/types/navigation';
 
-export default function Header() {
+export interface HeaderProps {
+  navigations: NavigationItem[];
+  extra: ReactNode;
+}
+
+export default function Header({ navigations, extra }: HeaderProps) {
   const [open, setOpen] = useState<boolean>(false);
-
-  const setDarkMode = useCommonState((state) => state.setDarkMode);
 
   return (
     <>
@@ -30,7 +32,7 @@ export default function Header() {
         ) : (
           <Box height={48} />
         )}
-        <AntSwitch onChange={() => setDarkMode()} />
+        {extra}
       </Grid>
       <Drawer
         anchor="left"
@@ -58,31 +60,3 @@ const MenuLink = styled(Link)({
   width: '100%',
   color: 'unset',
 });
-
-const AntSwitch = styled(Switch)(({ theme }) => ({
-  width: 48,
-  height: 'fit-content',
-  border: `2px solid ${theme.palette.mode === 'dark' ? 'white' : 'black'}`,
-  borderRadius: 999,
-  marginRight: 10,
-  padding: 0,
-  transition: 'all 0.3s ease',
-  ['&&& .MuiSwitch-track']: {
-    backgroundColor: 'transparent',
-    height: 24,
-    borderRadius: 999,
-  },
-  ['.MuiSwitch-switchBase']: {
-    top: 2,
-    left: 2,
-    padding: 0,
-    ['.MuiSwitch-thumb']: {
-      backgroundColor: theme.palette.mode === 'dark' ? 'white' : 'black',
-      boxShadow: 'none',
-      transition: 'all 0.3s ease',
-    },
-    ['&.Mui-checked']: {
-      transform: 'translateX(20px)',
-    },
-  },
-}));

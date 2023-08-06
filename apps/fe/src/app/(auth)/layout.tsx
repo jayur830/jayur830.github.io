@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react';
 import { createTheme } from '@mui/material';
 
 import { fonts } from '@/assets/fonts';
-import { MuiProvider } from '@/contexts';
+import { AlertProvider, MuiProvider } from '@/contexts';
 
 import '@/styles/globals.scss';
 
@@ -14,6 +14,10 @@ const theme = createTheme({
   },
 });
 
-export default function RootLayout({ children }: PropsWithChildren) {
-  return <MuiProvider theme={theme}>{children}</MuiProvider>;
+export default function AuthLayout({ children }: PropsWithChildren) {
+  return (
+    <MuiProvider theme={theme}>
+      <AlertProvider>{children}</AlertProvider>
+    </MuiProvider>
+  );
 }

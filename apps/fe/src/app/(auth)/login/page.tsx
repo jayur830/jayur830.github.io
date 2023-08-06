@@ -1,13 +1,17 @@
 'use client';
 
-import { useCallback } from 'react';
-import { Button, Grid, styled, Typography } from '@mui/material';
+import { useCallback, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Button, Grid, Snackbar, SnackbarProps, styled, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { pick } from 'lodash';
 import { useMutation } from '@tanstack/react-query';
 import { GithubAuthProvider, signInWithPopup } from 'firebase/auth';
 import request from 'graphql-request';
 
+import { authExceptionValues } from '@/configs/auth';
+import { useAlert } from '@/contexts/AlertProvider';
+import { AuthGuardType } from '@/enums';
 import { SignInMutation, SignInMutationVariables } from '@/graphql/graphql';
 import SIGN_IN_MUTATION from '@/graphql/mutations/signIn.gql';
 import useFirebase from '@/hooks/firebase/useFirebase';
@@ -15,12 +19,55 @@ import useFirebase from '@/hooks/firebase/useFirebase';
 import { loginButtonValues } from './values';
 
 export default function Login() {
+  const router = useRouter();
   const { authService } = useFirebase();
+  const { openAlert } = useAlert();
 
   const { mutate: signIn } = useMutation<SignInMutation, Error, SignInMutationVariables & { authorization: string }>({
     mutationKey: ['signIn'],
     mutationFn(variables) {
       return request(process.env.NEXT_PUBLIC_API_URL, SIGN_IN_MUTATION, pick(variables, 'email'), pick(variables, 'authorization'));
+    },
+    onSuccess(data) {
+      const isLogged = data.signIn.isLogged;
+      if (isLogged) {
+        router.push('/admin');
+      }
+    },
+    onError(error) {
+      const defaultAlertProps: Omit<SnackbarProps, 'onClose'> = {
+        open: true,
+        autoHideDuration: 7000,
+      };
+
+      switch (true) {
+        case error.message.includes(AuthGuardType.Unauthorization):
+          openAlert({
+            ...defaultAlertProps,
+            message: authExceptionValues[AuthGuardType.Unauthorization],
+          });
+          break;
+        case error.message.includes(AuthGuardType.InvalidToken):
+          openAlert({
+            ...defaultAlertProps,
+            message: authExceptionValues[AuthGuardType.InvalidToken],
+          });
+          break;
+        case error.message.includes(AuthGuardType.NotAdministrator):
+          openAlert({
+            ...defaultAlertProps,
+            message: authExceptionValues[AuthGuardType.NotAdministrator],
+          });
+          break;
+        case error.message.includes(AuthGuardType.AuthorizationExpired):
+          openAlert({
+            ...defaultAlertProps,
+            message: authExceptionValues[AuthGuardType.AuthorizationExpired],
+          });
+          break;
+        default:
+          break;
+      }
     },
   });
 
@@ -57,7 +104,7 @@ export default function Login() {
             text-color={buttonProps.textColor}
             onClick={() => login(key)}
           >
-            {/* <Icon /> */}
+            <Icon />
             <Typography
               fontWeight={700}
               fontSize={16}

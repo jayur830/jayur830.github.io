@@ -37,7 +37,7 @@ export type CareerItem = {
   /** 프로젝트 시작월 */
   startDate: Scalars['String']['output'];
   /** 프로젝트에 쓰인 기술 태그 목록 */
-  techList: Array<Logo>;
+  techList: Array<TechLogo>;
 };
 
 export type Company = {
@@ -86,34 +86,6 @@ export type ImageMetadataInput = {
   /** 이미지 width */
   width: Scalars['Int']['input'];
 };
-
-/** 프레임워크, 라이브러리 로고 */
-export enum Logo {
-  AntDesign = 'AntDesign',
-  ApacheTomcat = 'ApacheTomcat',
-  ApolloClient = 'ApolloClient',
-  Docker = 'Docker',
-  Java = 'Java',
-  MaterialUi = 'MaterialUI',
-  MongoDb = 'MongoDB',
-  MySql = 'MySQL',
-  NextJs = 'NextJS',
-  Nginx = 'Nginx',
-  Oracle = 'Oracle',
-  PostgreSql = 'PostgreSQL',
-  Python = 'Python',
-  React = 'React',
-  ReactNative = 'ReactNative',
-  Redux = 'Redux',
-  Sass = 'Sass',
-  Spring = 'Spring',
-  SpringBoot = 'SpringBoot',
-  Storybook = 'Storybook',
-  TypeScript = 'TypeScript',
-  Vite = 'Vite',
-  Vue = 'Vue',
-  Yarn = 'Yarn',
-}
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -170,6 +142,58 @@ export type Resume = {
   /** 이력서 제목 */
   title: Scalars['String']['output'];
 };
+
+/** 프레임워크, 라이브러리 로고 */
+export enum TechLogo {
+  /** Ant Design */
+  AntDesign = 'AntDesign',
+  /** Apache Tomcat */
+  ApacheTomcat = 'ApacheTomcat',
+  /** Apollo Client */
+  ApolloClient = 'ApolloClient',
+  /** Docker */
+  Docker = 'Docker',
+  /** Java */
+  Java = 'Java',
+  /** Material UI */
+  MaterialUi = 'MaterialUI',
+  /** MongoDB */
+  MongoDb = 'MongoDB',
+  /** MySQL Database */
+  MySql = 'MySQL',
+  /** Next.js */
+  NextJs = 'NextJS',
+  /** Nginx */
+  Nginx = 'Nginx',
+  /** Oracle Database */
+  Oracle = 'Oracle',
+  /** PostgreSQL Database */
+  PostgreSql = 'PostgreSQL',
+  /** Python */
+  Python = 'Python',
+  /** React */
+  React = 'React',
+  /** React Native */
+  ReactNative = 'ReactNative',
+  /** Redux */
+  Redux = 'Redux',
+  /** Sass (SCSS) */
+  Sass = 'Sass',
+  /** Spring MVC */
+  Spring = 'Spring',
+  /** Spring Boot */
+  SpringBoot = 'SpringBoot',
+  /** Storybook */
+  Storybook = 'Storybook',
+  /** TypeScript */
+  TypeScript = 'TypeScript',
+  /** Vite */
+  Vite = 'Vite',
+  /** Vue.js */
+  Vue = 'Vue',
+  /** Yarn */
+  Yarn = 'Yarn',
+}
 
 export type UpdateCompanyInput = {
   /** 회사 ID */
@@ -258,7 +282,7 @@ export type ResumeQuery = {
       careers: Array<{
         __typename?: 'Career';
         groupName?: string | null;
-        list: Array<{ __typename?: 'CareerItem'; name: string; completed: boolean; startDate: string; endDate?: string | null; techList: Array<Logo>; description: string }>;
+        list: Array<{ __typename?: 'CareerItem'; name: string; completed: boolean; startDate: string; endDate?: string | null; techList: Array<TechLogo>; description: string }>;
       }>;
     }>;
   };

@@ -23,10 +23,10 @@ import TypeScriptIcon from '@/assets/images/typescript-icon.svg';
 import ViteIcon from '@/assets/images/vite-icon.svg';
 import VueIcon from '@/assets/images/vue-icon.svg';
 import YarnIcon from '@/assets/images/yarn-icon.svg';
-import { Logo } from '@/graphql/graphql';
+import { TechLogo } from '@/graphql/graphql';
 
 export const logoValues = {
-  [Logo.React]: {
+  [TechLogo.React]: {
     href: 'https://ko.reactjs.org/',
     label: 'React',
     icon: ReactIcon,
@@ -37,7 +37,7 @@ export const logoValues = {
     },
     backgroundColor: '#2EBBEF',
   },
-  [Logo.ReactNative]: {
+  [TechLogo.ReactNative]: {
     href: 'https://reactnative.dev/',
     label: 'React Native',
     icon: ReactIcon,
@@ -48,7 +48,7 @@ export const logoValues = {
     },
     backgroundColor: '#1694C2',
   },
-  [Logo.Sass]: {
+  [TechLogo.Sass]: {
     href: 'https://sass-lang.com/',
     label: 'Sass',
     icon: SassIcon,
@@ -59,7 +59,7 @@ export const logoValues = {
     },
     backgroundColor: '#BD347C',
   },
-  [Logo.Vue]: {
+  [TechLogo.Vue]: {
     href: 'https://vuejs.org/',
     label: 'Vue',
     icon: VueIcon,
@@ -70,7 +70,7 @@ export const logoValues = {
     },
     backgroundColor: '#4A9A6A',
   },
-  [Logo.Java]: {
+  [TechLogo.Java]: {
     href: 'https://www.java.com/ko/',
     label: 'Java',
     icon: JavaIcon,
@@ -81,7 +81,7 @@ export const logoValues = {
     },
     backgroundColor: '#E4320A',
   },
-  [Logo.Python]: {
+  [TechLogo.Python]: {
     href: 'https://www.python.org/',
     label: 'Python',
     icon: PythonIcon,
@@ -92,7 +92,7 @@ export const logoValues = {
     },
     backgroundColor: '#44709F',
   },
-  [Logo.Docker]: {
+  [TechLogo.Docker]: {
     href: 'https://www.docker.com/',
     label: 'Docker',
     icon: DockerIcon,
@@ -103,7 +103,7 @@ export const logoValues = {
     },
     backgroundColor: '#00A3FF',
   },
-  [Logo.MySql]: {
+  [TechLogo.MySql]: {
     href: 'https://www.mysql.com/',
     label: 'MySQL',
     icon: MySqlIcon,
@@ -114,7 +114,7 @@ export const logoValues = {
     },
     backgroundColor: '#007AA0',
   },
-  [Logo.Spring]: {
+  [TechLogo.Spring]: {
     href: 'https://spring.io/',
     label: 'Spring',
     icon: SpringIcon,
@@ -125,7 +125,7 @@ export const logoValues = {
     },
     backgroundColor: '#6DB33F',
   },
-  [Logo.SpringBoot]: {
+  [TechLogo.SpringBoot]: {
     href: 'https://spring.io/projects/spring-boot',
     label: 'Spring Boot',
     icon: SpringBootIcon,
@@ -136,7 +136,7 @@ export const logoValues = {
     },
     backgroundColor: '#4F9620',
   },
-  [Logo.NextJs]: {
+  [TechLogo.NextJs]: {
     href: 'https://nextjs.org/',
     label: 'Next.js',
     icon: NextJsIcon,
@@ -146,7 +146,7 @@ export const logoValues = {
     },
     backgroundColor: '#000000',
   },
-  [Logo.ApolloClient]: {
+  [TechLogo.ApolloClient]: {
     href: 'https://www.apollographql.com/docs/react/',
     label: 'Apollo Client',
     icon: ApolloIcon,
@@ -157,7 +157,7 @@ export const logoValues = {
     },
     backgroundColor: '#1C223E',
   },
-  [Logo.PostgreSql]: {
+  [TechLogo.PostgreSql]: {
     href: 'https://www.postgresql.org/',
     label: 'PostgreSQL',
     icon: PostgreSqlIcon,
@@ -168,7 +168,7 @@ export const logoValues = {
     },
     backgroundColor: '#336791',
   },
-  [Logo.Oracle]: {
+  [TechLogo.Oracle]: {
     href: 'https://www.oracle.com/kr/',
     label: 'Oracle',
     icon: OracleIcon,
@@ -179,7 +179,7 @@ export const logoValues = {
     },
     backgroundColor: '#C74634',
   },
-  [Logo.MongoDb]: {
+  [TechLogo.MongoDb]: {
     href: 'https://www.mongodb.com/',
     label: 'MongoDB',
     icon: MongoDbIcon,
@@ -190,7 +190,7 @@ export const logoValues = {
     },
     backgroundColor: '#4EA75C',
   },
-  [Logo.Yarn]: {
+  [TechLogo.Yarn]: {
     href: 'https://yarnpkg.com/',
     label: 'Yarn',
     icon: YarnIcon,
@@ -201,7 +201,7 @@ export const logoValues = {
     },
     backgroundColor: '#2C8EBB',
   },
-  [Logo.Vite]: {
+  [TechLogo.Vite]: {
     href: 'https://vitejs-kr.github.io/',
     label: 'Vite',
     icon: ViteIcon,
@@ -214,7 +214,7 @@ export const logoValues = {
     backgroundColor: '#F3BA48',
     textColor: brown['700'],
   },
-  [Logo.AntDesign]: {
+  [TechLogo.AntDesign]: {
     href: 'https://ant.design/',
     label: 'Ant Design',
     icon: AntDesignIcon,
@@ -225,7 +225,7 @@ export const logoValues = {
     },
     backgroundColor: '#1A71E2',
   },
-  [Logo.Storybook]: {
+  [TechLogo.Storybook]: {
     href: 'https://storybook.js.org/',
     label: 'Storybook',
     icon: StorybookIcon,
@@ -236,7 +236,7 @@ export const logoValues = {
     },
     backgroundColor: '#FF4785',
   },
-  [Logo.MaterialUi]: {
+  [TechLogo.MaterialUi]: {
     href: 'https://mui.com/',
     label: 'Material UI',
     icon: MaterialUiIcon,
@@ -247,7 +247,7 @@ export const logoValues = {
     },
     backgroundColor: '#007FFF',
   },
-  [Logo.Redux]: {
+  [TechLogo.Redux]: {
     href: 'https://ko.redux.js.org/introduction/getting-started/',
     label: 'Redux',
     icon: ReduxIcon,
@@ -258,7 +258,7 @@ export const logoValues = {
     },
     backgroundColor: '#764ABC',
   },
-  [Logo.TypeScript]: {
+  [TechLogo.TypeScript]: {
     href: 'https://www.typescriptlang.org/',
     label: 'TypeScript',
     icon: TypeScriptIcon,
@@ -269,7 +269,7 @@ export const logoValues = {
     },
     backgroundColor: '#3178C6',
   },
-  [Logo.Nginx]: {
+  [TechLogo.Nginx]: {
     href: 'https://www.nginx.com/',
     label: 'NGINX',
     icon: NginxIcon,
@@ -280,7 +280,7 @@ export const logoValues = {
     },
     backgroundColor: '#009639',
   },
-  [Logo.ApacheTomcat]: {
+  [TechLogo.ApacheTomcat]: {
     href: 'https://tomcat.apache.org/',
     label: 'Apache Tomcat',
     icon: ApacheTomcatIcon,

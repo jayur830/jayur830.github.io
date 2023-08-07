@@ -1,14 +1,15 @@
 FROM node:16-alpine as base
-RUN npm i -g pnpm
+RUN npm i -g pnpm turbo
 
-FROM base as builder
+FROM base
 WORKDIR /usr/app
-COPY . .
+COPY ./apps/be ./apps/be
+COPY ./packages ./packages
+COPY ./.npmrc ./.npmrc
+COPY ./package.json ./package.json
+COPY ./pnpm-lock.yaml ./pnpm-lock.yaml
+COPY ./pnpm-workspace.yaml ./pnpm-workspace.yaml
+COPY ./turbo.json ./turbo.json
 RUN pnpm i
-RUN pnpm build
-
-FROM node:16-alpine
-WORKDIR /usr/app
-COPY --from=builder /usr/app/node_modules ./node_modules
-COPY --from=builder /usr/app/dist ./dist
-ENTRYPOINT ["node", "dist/src/main"]
+RUN turbo run build --filter be
+ENTRYPOINT ["turbo", "run", "prod", "--filter", "be"]

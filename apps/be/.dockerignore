@@ -1,7 +1,12 @@
 .vscode
-test/
-.eslintrc
+.husky/
+**/test/
+**/.eslintrc
 .gitignore
-.prettierignore
-.prettierrc
-README.md
+**/.prettierignore
+**/.prettierrc
+**/README.md
+**/node_modules/
+**/dist/
+**/.turbo/
+**/.next/

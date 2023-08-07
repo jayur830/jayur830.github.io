@@ -3,15 +3,18 @@
   "private": true,
   "packageManager": "pnpm@7.15.0",
   "scripts": {
-    "build": "pnpm turbo run build",
-    "build:fe": "pnpm turbo run build --filter fe",
-    "build:be": "pnpm turbo run build --filter be",
-    "dev": "pnpm turbo run dev",
-    "dev:fe": "pnpm turbo run dev --filter fe",
-    "dev:be": "pnpm turbo run dev --filter be",
-    "lint": "pnpm turbo run lint",
+    "build": "turbo run build",
+    "build:fe": "turbo run build --filter fe",
+    "build:be": "turbo run build --filter be",
+    "dev": "turbo run dev",
+    "dev:fe": "turbo run dev --filter fe",
+    "dev:be": "turbo run dev --filter be",
+    "prod": "turbo run prod",
+    "prod:fe": "turbo run prod --filter fe",
+    "prod:be": "turbo run prod --filter be",
+    "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "codegen": "pnpm turbo run codegen --filter fe"
+    "codegen": "turbo run codegen --filter fe"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",

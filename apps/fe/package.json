@@ -30,6 +30,7 @@
     "react-constate": "^1.1.2",
     "react-dom": "18.2.0",
     "react-gtm-module": "^2.0.11",
+    "react-hook-form": "^7.45.4",
     "react-markdown": "^8.0.7",
     "supports-color": "^9.4.0",
     "zustand": "^4.4.0"

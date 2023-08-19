@@ -154,15 +154,6 @@ export default function ResumeCard({ data }: ResumeCardProps) {
                       })}
                     </Grid>
                   )}
-                  {/* {item.description && (
-                    <Typography
-                      fontWeight={400}
-                      fontSize={sm ? 13 : 18}
-                      letterSpacing={-0.5}
-                    >
-                      {item.description}
-                    </Typography>
-                  )} */}
                   {item.description && <ReactMarkdown className="markdown">{item.description}</ReactMarkdown>}
                 </StyledTimelineContent>
               </TimelineItem>

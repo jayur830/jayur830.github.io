@@ -2,7 +2,8 @@
 
 import { PropsWithChildren, useCallback, useLayoutEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button, createTheme, Grid, styled } from '@mui/material';
+import { Logout } from '@mui/icons-material';
+import { Button, createTheme, Grid, IconButton, styled } from '@mui/material';
 import { blue } from '@mui/material/colors';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
@@ -64,14 +65,18 @@ export default function AdminLayout({ children }: PropsWithChildren) {
             alignItems="center"
             gap={2}
           >
-            <SignOutButton onClick={onLogout}>로그아웃</SignOutButton>
+            <SignOutButton onClick={onLogout}>
+              <Logout />
+            </SignOutButton>
             <DarkModeSwitch />
           </Grid>
         }
       />
       <Grid
-        padding={3}
+        container
+        justifyContent="center"
         minHeight="calc(100% - 48px)"
+        padding={3}
       >
         {children}
       </Grid>
@@ -79,12 +84,7 @@ export default function AdminLayout({ children }: PropsWithChildren) {
   );
 }
 
-const SignOutButton = styled(Button)({
-  backgroundColor: blue['500'],
+const SignOutButton = styled(IconButton)({
   fontSize: 16,
-  padding: '5px 15px',
-  color: 'white',
-  ':hover': {
-    backgroundColor: blue['700'],
-  },
+  color: 'black',
 });

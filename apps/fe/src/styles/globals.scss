@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'D2Coding';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/D2CodingBold.woff') format('woff');
+}
+
 html,
 body {
   height: 100%;
@@ -23,6 +30,18 @@ a {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding-left: 30px;
+    padding-left: 20px;
+
+    li {
+      letter-spacing: -0.3px;
+    }
+  }
+
+  code {
+    font-family: D2Coding;
+    color: #EB5757;
+    background-color: #E0E0E0;
+    border-radius: 3px;
+    padding: 3px 5px;
   }
 }

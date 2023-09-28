@@ -2,7 +2,7 @@ import { FC, SVGProps } from 'react';
 import { Chip, Link, styled } from '@mui/material';
 
 import { logoValues } from '@/configs/logo';
-import { Logo } from '@/graphql/graphql';
+import { TechLogo } from '@/graphql/graphql';
 
 interface BadgeProps {
   href: string;
@@ -63,7 +63,7 @@ const logoBadges = Object.entries(logoValues).reduce(
     ...result,
     [logo]: () => <Badge {...props} />,
   }),
-  {} as { [K in Logo]: FC },
+  {} as { [K in TechLogo]: FC },
 );
 
 export default logoBadges;

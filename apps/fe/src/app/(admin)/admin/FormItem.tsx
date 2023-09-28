@@ -12,36 +12,37 @@ export interface FormItemProps {
 }
 
 export default function FormItem({ type = 'input', label, name, rules, children }: PropsWithChildren<FormItemProps>) {
-  const control = useFormContext((value) => value.control);
-  const register = useFormContext((value) => value.register);
-  const handleSubmit = useFormContext((value) => value.handleSubmit);
-  const onSubmit = useFormContext((value) => value.onSubmit);
-  const {
-    fieldState: { error },
-  } = useController<unknown>({ name, control });
+  // const control = useFormContext((value) => value.control);
+  // const register = useFormContext((value) => value.register);
+  // const handleSubmit = useFormContext((value) => value.handleSubmit);
+  // const onSubmit = useFormContext((value) => value.onSubmit);
+  // const {
+  //   fieldState: { error },
+  // } = useController<unknown>({ name, control });
 
-  return (
-    <Grid
-      container
-      alignItems="center"
-      columnGap={2}
-      marginBottom={2}
-    >
-      <Typography
-        fontWeight={700}
-        fontSize={16}
-      >
-        {label}
-      </Typography>
-      {type === 'submit'
-        ? cloneElement(children as JSX.Element, {
-            ...register(name, rules),
-            onClick: handleSubmit(onSubmit),
-          })
-        : cloneElement(children as JSX.Element, {
-            ...register(name, rules),
-            helperText: error?.message,
-          })}
-    </Grid>
-  );
+  // return (
+  //   <Grid
+  //     container
+  //     alignItems="center"
+  //     columnGap={2}
+  //     marginBottom={2}
+  //   >
+  //     <Typography
+  //       fontWeight={700}
+  //       fontSize={16}
+  //     >
+  //       {label}
+  //     </Typography>
+  //     {type === 'submit'
+  //       ? cloneElement(children as JSX.Element, {
+  //           ...register(name, rules),
+  //           onClick: handleSubmit(onSubmit),
+  //         })
+  //       : cloneElement(children as JSX.Element, {
+  //           ...register(name, rules),
+  //           helperText: error?.message,
+  //         })}
+  //   </Grid>
+  // );
+  return <></>;
 }

@@ -1,6 +1,7 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -9,6 +10,7 @@ import { ResumeHistory } from '@/entities/resume_history.entity';
 import { ResumeHistoryDetail } from '@/entities/resume_history_detail.entity';
 import { ResumeInfo } from '@/entities/resume_info.entity';
 import { User } from '@/entities/user.entity';
+import { TransactionalInterceptor } from '@/interceptors/transactional/transactional.interceptor';
 import { AuthModule } from '@/modules/auth/auth.module';
 import { ResumeModule } from '@/modules/resume/resume.module';
 
@@ -42,6 +44,12 @@ import { ResumeModule } from '@/modules/resume/resume.module';
     }),
     ResumeModule,
     AuthModule,
+  ],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TransactionalInterceptor,
+    },
   ],
 })
 export class AppModule {}

@@ -193,6 +193,29 @@ type UpdateCompanyPayload {
   description: String
 }
 
+type UpdateHistoryDetailPayload {
+  """경력 ID"""
+  historyDetailId: String!
+
+  """팀 또는 소속 서비스 이름 (없을 경우 null)"""
+  group: String
+
+  """프로젝트 이름"""
+  name: String!
+
+  """프로젝트 시작월"""
+  startDate: String!
+
+  """프로젝트 종료월 (진행중일 경우 null)"""
+  endDate: String
+
+  """프로젝트에 쓰인 기술 태그 목록"""
+  techList: [TechLogo!]!
+
+  """프로젝트 설명 (성과/결과)"""
+  description: String!
+}
+
 type UpdateInfoPayload {
   """이력서 제목"""
   title: String!
@@ -215,6 +238,9 @@ type Mutation {
 
   """이력서 내 회사 로고 메타데이터 수정"""
   Resume_updateCompanyLogo(input: ImageMetadataInput!): ImageMetadata!
+
+  """이력 서 내 경력 상세 정보 수정"""
+  Resume_updateHistoryDetail(input: UpdateHistoryDetailInput!): UpdateHistoryDetailPayload!
 
   """Set admin user (in local only)"""
   Admin_update(
@@ -248,7 +274,7 @@ input UpdateCompanyInput {
   companyId: String!
 
   """회사 이름"""
-  companyName: String
+  companyName: String!
 
   """입사일"""
   startDate: String
@@ -268,14 +294,37 @@ input ImageMetadataInput {
   logoId: String!
 
   """이미지 src (url)"""
-  src: String!
+  src: String
 
   """이미지 alt"""
-  alt: String!
+  alt: String
 
   """이미지 width"""
-  width: Int!
+  width: Int
 
   """이미지 height"""
-  height: Int!
+  height: Int
+}
+
+input UpdateHistoryDetailInput {
+  """경력 ID"""
+  historyDetailId: String!
+
+  """팀 또는 소속 서비스 이름 (없을 경우 null)"""
+  group: String
+
+  """프로젝트 이름"""
+  name: String
+
+  """프로젝트 시작월"""
+  startDate: String
+
+  """프로젝트 종료월 (진행중일 경우 null)"""
+  endDate: String
+
+  """프로젝트에 쓰인 기술 태그 목록"""
+  techList: [TechLogo!]
+
+  """프로젝트 설명 (성과/결과)"""
+  description: String
 }

@@ -5,8 +5,8 @@ export class UpdateCompanyInput {
   @Field({ description: '회사 ID' })
   companyId: string;
 
-  @Field({ nullable: true, description: '회사 이름' })
-  companyName?: string | null;
+  @Field({ description: '회사 이름' })
+  companyName: string;
 
   @Field({ nullable: true, description: '입사일' })
   startDate?: string | null;

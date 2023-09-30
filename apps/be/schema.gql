@@ -52,11 +52,32 @@ type CareerItem {
 
 """프레임워크, 라이브러리 로고"""
 enum TechLogo {
+  """C Language"""
+  C
+
+  """C++ Language"""
+  Cpp
+
+  """HTML5"""
+  HTML5
+
+  """CSS3"""
+  CSS3
+
+  """JavaScript"""
+  JavaScript
+
+  """Angular"""
+  Angular
+
   """React"""
   React
 
   """React Native"""
   ReactNative
+
+  """Expo"""
+  Expo
 
   """Sass (SCSS)"""
   Sass
@@ -73,8 +94,14 @@ enum TechLogo {
   """Docker"""
   Docker
 
+  """Kubernetes"""
+  Kubernetes
+
   """MySQL Database"""
   MySQL
+
+  """MariaDB Database"""
+  MariaDB
 
   """Spring MVC"""
   Spring
@@ -88,11 +115,35 @@ enum TechLogo {
   """Hibernate"""
   Hibernate
 
+  """Nest.js"""
+  NestJS
+
+  """TypeORM"""
+  TypeORM
+
+  """Flask"""
+  Flask
+
+  """Django"""
+  Django
+
   """Next.js"""
   NextJS
 
   """Apollo Client"""
   ApolloClient
+
+  """React Relay"""
+  Relay
+
+  """React Query"""
+  ReactQuery
+
+  """SWR"""
+  SWR
+
+  """RTK Query"""
+  RtkQuery
 
   """PostgreSQL Database"""
   PostgreSQL
@@ -100,11 +151,20 @@ enum TechLogo {
   """Oracle Database"""
   Oracle
 
+  """MS-SQL Database"""
+  Mssql
+
   """MongoDB"""
   MongoDB
 
+  """NPM"""
+  Npm
+
   """Yarn"""
   Yarn
+
+  """PNPM"""
+  Pnpm
 
   """Vite"""
   Vite
@@ -138,6 +198,15 @@ enum TechLogo {
 
   """Github Actions"""
   GithubActions
+
+  """Firebase SDK"""
+  Firebase
+
+  """Jira"""
+  Jira
+
+  """Figma"""
+  Figma
 }
 
 type Career {

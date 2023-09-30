@@ -82,6 +82,12 @@ enum TechLogo {
   """Spring Boot"""
   SpringBoot
 
+  """Grails"""
+  Grails
+
+  """Hibernate"""
+  Hibernate
+
   """Next.js"""
   NextJS
 
@@ -109,11 +115,17 @@ enum TechLogo {
   """Storybook"""
   Storybook
 
+  """ECharts.js"""
+  ECharts
+
   """Material UI"""
   MaterialUI
 
   """Redux"""
   Redux
+
+  """Recoil"""
+  Recoil
 
   """TypeScript"""
   TypeScript
@@ -123,6 +135,9 @@ enum TechLogo {
 
   """Apache Tomcat"""
   ApacheTomcat
+
+  """Github Actions"""
+  GithubActions
 }
 
 type Career {

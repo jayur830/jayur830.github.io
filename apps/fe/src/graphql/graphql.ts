@@ -76,15 +76,15 @@ export type ImageMetadata = {
 
 export type ImageMetadataInput = {
   /** 이미지 alt */
-  alt: Scalars['String']['input'];
+  alt?: InputMaybe<Scalars['String']['input']>;
   /** 이미지 height */
-  height: Scalars['Int']['input'];
+  height?: InputMaybe<Scalars['Int']['input']>;
   /** 로고 ID */
   logoId: Scalars['String']['input'];
   /** 이미지 src (url) */
-  src: Scalars['String']['input'];
+  src?: InputMaybe<Scalars['String']['input']>;
   /** 이미지 width */
-  width: Scalars['Int']['input'];
+  width?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type Mutation = {
@@ -95,6 +95,8 @@ export type Mutation = {
   Resume_updateCompanyInfo: UpdateCompanyPayload;
   /** 이력서 내 회사 로고 메타데이터 수정 */
   Resume_updateCompanyLogo: ImageMetadata;
+  /** 이력 서 내 경력 상세 정보 수정 */
+  Resume_updateHistoryDetail: UpdateHistoryDetailPayload;
   /** 이력서 제목, Github 주소 수정 */
   Resume_updateInfo: UpdateInfoPayload;
   /** 로그인 */
@@ -113,6 +115,10 @@ export type MutationResume_UpdateCompanyInfoArgs = {
 
 export type MutationResume_UpdateCompanyLogoArgs = {
   input: ImageMetadataInput;
+};
+
+export type MutationResume_UpdateHistoryDetailArgs = {
+  input: UpdateHistoryDetailInput;
 };
 
 export type MutationResume_UpdateInfoArgs = {
@@ -145,28 +151,72 @@ export type Resume = {
 
 /** 프레임워크, 라이브러리 로고 */
 export enum TechLogo {
+  /** Angular */
+  Angular = 'Angular',
   /** Ant Design */
   AntDesign = 'AntDesign',
   /** Apache Tomcat */
   ApacheTomcat = 'ApacheTomcat',
   /** Apollo Client */
   ApolloClient = 'ApolloClient',
+  /** C Language */
+  C = 'C',
+  /** CSS3 */
+  Css3 = 'CSS3',
+  /** C++ Language */
+  Cpp = 'Cpp',
+  /** Django */
+  Django = 'Django',
   /** Docker */
   Docker = 'Docker',
+  /** ECharts.js */
+  ECharts = 'ECharts',
+  /** Expo */
+  Expo = 'Expo',
+  /** Figma */
+  Figma = 'Figma',
+  /** Firebase SDK */
+  Firebase = 'Firebase',
+  /** Flask */
+  Flask = 'Flask',
+  /** Github Actions */
+  GithubActions = 'GithubActions',
+  /** Grails */
+  Grails = 'Grails',
+  /** HTML5 */
+  Html5 = 'HTML5',
+  /** Hibernate */
+  Hibernate = 'Hibernate',
   /** Java */
   Java = 'Java',
+  /** JavaScript */
+  JavaScript = 'JavaScript',
+  /** Jira */
+  Jira = 'Jira',
+  /** Kubernetes */
+  Kubernetes = 'Kubernetes',
+  /** MariaDB Database */
+  MariaDb = 'MariaDB',
   /** Material UI */
   MaterialUi = 'MaterialUI',
   /** MongoDB */
   MongoDb = 'MongoDB',
+  /** MS-SQL Database */
+  Mssql = 'Mssql',
   /** MySQL Database */
   MySql = 'MySQL',
+  /** Nest.js */
+  NestJs = 'NestJS',
   /** Next.js */
   NextJs = 'NextJS',
   /** Nginx */
   Nginx = 'Nginx',
+  /** NPM */
+  Npm = 'Npm',
   /** Oracle Database */
   Oracle = 'Oracle',
+  /** PNPM */
+  Pnpm = 'Pnpm',
   /** PostgreSQL Database */
   PostgreSql = 'PostgreSQL',
   /** Python */
@@ -175,8 +225,18 @@ export enum TechLogo {
   React = 'React',
   /** React Native */
   ReactNative = 'ReactNative',
+  /** React Query */
+  ReactQuery = 'ReactQuery',
+  /** Recoil */
+  Recoil = 'Recoil',
   /** Redux */
   Redux = 'Redux',
+  /** React Relay */
+  Relay = 'Relay',
+  /** RTK Query */
+  RtkQuery = 'RtkQuery',
+  /** SWR */
+  Swr = 'SWR',
   /** Sass (SCSS) */
   Sass = 'Sass',
   /** Spring MVC */
@@ -185,6 +245,8 @@ export enum TechLogo {
   SpringBoot = 'SpringBoot',
   /** Storybook */
   Storybook = 'Storybook',
+  /** TypeORM */
+  TypeOrm = 'TypeORM',
   /** TypeScript */
   TypeScript = 'TypeScript',
   /** Vite */
@@ -199,7 +261,7 @@ export type UpdateCompanyInput = {
   /** 회사 ID */
   companyId: Scalars['String']['input'];
   /** 회사 이름 */
-  companyName?: InputMaybe<Scalars['String']['input']>;
+  companyName: Scalars['String']['input'];
   /** 회사에 대한 간단한 설명 */
   description?: InputMaybe<Scalars['String']['input']>;
   /** 퇴사일 */
@@ -226,6 +288,41 @@ export type UpdateCompanyPayload = {
   startDate: Scalars['String']['output'];
   /** 퇴사일 */
   website?: Maybe<Scalars['String']['output']>;
+};
+
+export type UpdateHistoryDetailInput = {
+  /** 프로젝트 설명 (성과/결과) */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** 프로젝트 종료월 (진행중일 경우 null) */
+  endDate?: InputMaybe<Scalars['String']['input']>;
+  /** 팀 또는 소속 서비스 이름 (없을 경우 null) */
+  group?: InputMaybe<Scalars['String']['input']>;
+  /** 경력 ID */
+  historyDetailId: Scalars['String']['input'];
+  /** 프로젝트 이름 */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** 프로젝트 시작월 */
+  startDate?: InputMaybe<Scalars['String']['input']>;
+  /** 프로젝트에 쓰인 기술 태그 목록 */
+  techList?: InputMaybe<Array<TechLogo>>;
+};
+
+export type UpdateHistoryDetailPayload = {
+  __typename?: 'UpdateHistoryDetailPayload';
+  /** 프로젝트 설명 (성과/결과) */
+  description: Scalars['String']['output'];
+  /** 프로젝트 종료월 (진행중일 경우 null) */
+  endDate?: Maybe<Scalars['String']['output']>;
+  /** 팀 또는 소속 서비스 이름 (없을 경우 null) */
+  group?: Maybe<Scalars['String']['output']>;
+  /** 경력 ID */
+  historyDetailId: Scalars['String']['output'];
+  /** 프로젝트 이름 */
+  name: Scalars['String']['output'];
+  /** 프로젝트 시작월 */
+  startDate: Scalars['String']['output'];
+  /** 프로젝트에 쓰인 기술 태그 목록 */
+  techList: Array<TechLogo>;
 };
 
 export type UpdateInfoInput = {
@@ -263,6 +360,12 @@ export type SignOutMutationVariables = Exact<{
 
 export type SignOutMutation = { __typename?: 'Mutation'; signOut: { __typename?: 'UserPayload'; email: string; isLogged: boolean } };
 
+export type UpdateInfoMutationVariables = Exact<{
+  input: UpdateInfoInput;
+}>;
+
+export type UpdateInfoMutation = { __typename?: 'Mutation'; updated: { __typename?: 'UpdateInfoPayload'; title: string; github?: string | null } };
+
 export type ResumeQueryVariables = Exact<{ [key: string]: never }>;
 
 export type ResumeQuery = {
@@ -273,6 +376,7 @@ export type ResumeQuery = {
     github?: string | null;
     history: Array<{
       __typename?: 'Company';
+      companyId: string;
       companyName: string;
       startDate: string;
       endDate?: string | null;

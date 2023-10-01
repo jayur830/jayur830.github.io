@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { GitHub } from '@mui/icons-material';
 import { Grid, IconButton, styled, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
@@ -9,12 +9,15 @@ import request from 'graphql-request';
 import { ResumeCard } from '@/components';
 import { ResumeQuery } from '@/graphql/graphql';
 import GET_RESUME_QUERY from '@/graphql/queries/getResume.gql';
+import { useCommonState } from '@/store/common';
 
 export default function Resume() {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const { data } = useQuery<ResumeQuery>({
+  const setLoading = useCommonState((state) => state.setLoading);
+
+  const { data, isLoading } = useQuery<ResumeQuery>({
     queryKey: ['resume'],
     queryFn() {
       return request(process.env.NEXT_PUBLIC_API_URL, GET_RESUME_QUERY);
@@ -28,6 +31,10 @@ export default function Resume() {
 
     return data.resume;
   }, [data]);
+
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [setLoading, isLoading]);
 
   return (
     <>

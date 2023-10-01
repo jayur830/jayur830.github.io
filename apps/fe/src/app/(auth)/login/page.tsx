@@ -1,12 +1,12 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button, Grid, Snackbar, SnackbarProps, styled, Typography } from '@mui/material';
+import { Button, Grid, styled, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { pick } from 'lodash';
 import { useMutation } from '@tanstack/react-query';
-import { GithubAuthProvider, signInWithPopup } from 'firebase/auth';
+import { deleteUser, GithubAuthProvider, GoogleAuthProvider, linkWithPopup, signInWithPopup } from 'firebase/auth';
 import request from 'graphql-request';
 
 import { authExceptionValues } from '@/configs/auth';
@@ -15,6 +15,7 @@ import { AuthGuardType } from '@/enums';
 import { SignInMutation, SignInMutationVariables } from '@/graphql/graphql';
 import SIGN_IN_MUTATION from '@/graphql/mutations/signIn.gql';
 import useFirebase from '@/hooks/firebase/useFirebase';
+import { useCommonState } from '@/store/common';
 
 import { loginButtonValues } from './values';
 
@@ -22,8 +23,9 @@ export default function Login() {
   const router = useRouter();
   const { authService } = useFirebase();
   const { openAlert } = useAlert();
+  const setLoading = useCommonState((state) => state.setLoading);
 
-  const { mutate: signIn } = useMutation<SignInMutation, Error, SignInMutationVariables & { authorization: string }>({
+  const { mutate: signIn, isPending } = useMutation<SignInMutation, Error, SignInMutationVariables & { authorization: string }>({
     mutationKey: ['signIn'],
     mutationFn(variables) {
       return request(process.env.NEXT_PUBLIC_API_URL, SIGN_IN_MUTATION, pick(variables, 'email'), pick(variables, 'authorization'));
@@ -35,38 +37,20 @@ export default function Login() {
       }
     },
     onError(error) {
-      const defaultAlertProps: Omit<SnackbarProps, 'onClose'> = {
-        open: true,
-        autoHideDuration: 7000,
-      };
+      const errorCode = Object.keys(authExceptionValues).find((errorCode) => error.message.includes(errorCode)) as keyof typeof authExceptionValues;
+      if (errorCode) {
+        openAlert({
+          open: true,
+          autoHideDuration: 7000,
+          message: authExceptionValues[errorCode],
+        });
 
-      switch (true) {
-        case error.message.includes(AuthGuardType.Unauthorization):
-          openAlert({
-            ...defaultAlertProps,
-            message: authExceptionValues[AuthGuardType.Unauthorization],
-          });
-          break;
-        case error.message.includes(AuthGuardType.InvalidToken):
-          openAlert({
-            ...defaultAlertProps,
-            message: authExceptionValues[AuthGuardType.InvalidToken],
-          });
-          break;
-        case error.message.includes(AuthGuardType.NotAdministrator):
-          openAlert({
-            ...defaultAlertProps,
-            message: authExceptionValues[AuthGuardType.NotAdministrator],
-          });
-          break;
-        case error.message.includes(AuthGuardType.AuthorizationExpired):
-          openAlert({
-            ...defaultAlertProps,
-            message: authExceptionValues[AuthGuardType.AuthorizationExpired],
-          });
-          break;
-        default:
-          break;
+        /**
+         * @description 관리자가 아닌 계정으로 Firebase OAuth 로그인 한 경우 해당 OAuth 계정 삭제
+         */
+        if (errorCode === AuthGuardType.NotAdministrator) {
+          deleteUser(authService.currentUser);
+        }
       }
     },
   });
@@ -74,25 +58,68 @@ export default function Login() {
   const login = useCallback(
     async (key: string) => {
       switch (key) {
-        case 'github':
-          const { user } = await signInWithPopup(authService, new GithubAuthProvider());
+        case 'github': {
+          const provider = new GithubAuthProvider();
           try {
+            const { user } = await signInWithPopup(authService, provider);
             await signIn({
               email: user.email || '',
               authorization: `Bearer ${await user.getIdToken()}`,
             });
           } catch (error) {
-            console.log('error:', JSON.stringify(error, null, 2));
+            /**
+             * @description 하나의 계정에 다른 인증 제공업체 연결
+             */
+            if (error.code === 'auth/account-exists-with-different-credential') {
+              try {
+                const { user } = await linkWithPopup(authService.currentUser, provider);
+                await signIn({
+                  email: user.email || '',
+                  authorization: `Bearer ${await user.getIdToken()}`,
+                });
+              } catch (error) {
+                console.log(error);
+              }
+            }
           }
           break;
-        case 'google':
+        }
+        case 'google': {
+          const provider = new GoogleAuthProvider();
+          try {
+            const { user } = await signInWithPopup(authService, provider);
+            await signIn({
+              email: user.email || '',
+              authorization: `Bearer ${await user.getIdToken()}`,
+            });
+          } catch (error) {
+            /**
+             * @description 하나의 계정에 다른 인증 제공업체 연결
+             */
+            if (error.code === 'auth/account-exists-with-different-credential') {
+              try {
+                const { user } = await linkWithPopup(authService.currentUser, provider);
+                await signIn({
+                  email: user.email || '',
+                  authorization: `Bearer ${await user.getIdToken()}`,
+                });
+              } catch (error) {
+                console.log(error);
+              }
+            }
+          }
           break;
+        }
         default:
           break;
       }
     },
     [signIn, authService],
   );
+
+  useEffect(() => {
+    setLoading(isPending);
+  }, [setLoading, isPending]);
 
   return (
     <Container>

@@ -42,9 +42,8 @@ export default function ResumeCard({ data }: ResumeCardProps) {
           gap={3}
         >
           {data.logo && (
-            <Image
+            <CompanyLogoImage
               {...data.logo}
-              width={(data.logo.width * (sm ? 30 : 50)) / data.logo.height}
               height={sm ? 30 : 50}
             />
           )}
@@ -176,6 +175,10 @@ const StyledCard = styled(Card)(({ theme }) => ({
     padding: 16,
   },
 }));
+
+const CompanyLogoImage = styled(Image)({
+  width: 'auto',
+});
 
 const WebSiteIcon = styled(Language)(({ theme }) => ({
   fill: theme.palette.mode === 'dark' ? grey['400'] : grey['900'],

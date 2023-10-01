@@ -1,6 +1,6 @@
 {
   "name": "fe",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,11 +11,13 @@
     "codegen": "graphql-codegen && next lint --fix --quiet --file ./src/graphql/graphql.ts"
   },
   "dependencies": {
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.3",
     "@mui/lab": "5.0.0-alpha.138",
     "@mui/material": "^5.14.3",
+    "@mui/x-date-pickers": "^6.16.0",
     "@tanstack/react-query": "5.0.0-beta.14",
     "dayjs": "^1.11.9",
     "encoding": "^0.1.13",
@@ -25,11 +27,11 @@
     "graphql-tag": "^2.12.6",
     "immer": "^10.0.2",
     "lodash": "^4.17.21",
-    "next": "13.4.12",
+    "next": "^13.5.3",
     "react": "18.2.0",
     "react-constate": "^1.1.2",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.45.4",
+    "react-hook-form": "^7.46.2",
     "react-markdown": "^8.0.7",
     "supports-color": "^9.4.0",
     "zustand": "^4.4.0"

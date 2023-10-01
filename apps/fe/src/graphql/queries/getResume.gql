@@ -3,6 +3,7 @@ query Resume {
     title
     github
     history {
+      companyId
       companyName
       logo {
         src

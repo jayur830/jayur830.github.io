@@ -7,6 +7,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  compiler: {
+    styledComponents: true,
+  },
   sassOptions: {
     includePaths: [path.join(__dirname, 'src', 'styles')],
   },

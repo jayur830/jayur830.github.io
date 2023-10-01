@@ -3,15 +3,17 @@
 import { PropsWithChildren, useCallback, useLayoutEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { Logout } from '@mui/icons-material';
-import { Button, createTheme, Grid, IconButton, styled } from '@mui/material';
-import { blue } from '@mui/material/colors';
+import { createTheme, Grid, IconButton, styled } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
 import { fonts } from '@/assets/fonts';
 import { DarkModeSwitch, Header } from '@/components';
 import { adminNavigations } from '@/configs/navigation';
-import { MuiProvider } from '@/contexts';
+import { AlertProvider, MuiProvider } from '@/contexts';
 import useFirebase from '@/hooks/firebase/useFirebase';
+import { useAuthState } from '@/store/auth';
 import { useCommonState } from '@/store/common';
 
 import '@/styles/globals.scss';
@@ -20,6 +22,7 @@ export default function AdminLayout({ children }: PropsWithChildren) {
   const { authService } = useFirebase();
   const router = useRouter();
   const isDarkMode = useCommonState((state) => state.isDarkMode);
+  const setAuthorization = useAuthState((state) => state.setAuthorization);
 
   /**
    * @description 로그인 상태 체크
@@ -32,11 +35,12 @@ export default function AdminLayout({ children }: PropsWithChildren) {
         router.replace('/login');
       } else {
         // 로그인 상태
-        /** @todo implement */
-        console.log(await user.getIdToken());
+        const token = await user.getIdToken(true);
+        console.log(token);
+        setAuthorization(token);
       }
     });
-  }, [router]);
+  }, [setAuthorization, router]);
 
   const theme = useMemo(() => {
     return createTheme({
@@ -56,30 +60,34 @@ export default function AdminLayout({ children }: PropsWithChildren) {
 
   return (
     <MuiProvider theme={theme}>
-      <Header
-        navigations={adminNavigations}
-        extra={
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <AlertProvider>
+          <Header
+            navigations={adminNavigations}
+            extra={
+              <Grid
+                container
+                justifyContent="flex-end"
+                alignItems="center"
+                gap={2}
+              >
+                <SignOutButton onClick={onLogout}>
+                  <Logout />
+                </SignOutButton>
+                <DarkModeSwitch />
+              </Grid>
+            }
+          />
           <Grid
             container
-            justifyContent="flex-end"
-            alignItems="center"
-            gap={2}
+            justifyContent="center"
+            minHeight="calc(100% - 48px)"
+            padding={3}
           >
-            <SignOutButton onClick={onLogout}>
-              <Logout />
-            </SignOutButton>
-            <DarkModeSwitch />
+            {children}
           </Grid>
-        }
-      />
-      <Grid
-        container
-        justifyContent="center"
-        minHeight="calc(100% - 48px)"
-        padding={3}
-      >
-        {children}
-      </Grid>
+        </AlertProvider>
+      </LocalizationProvider>
     </MuiProvider>
   );
 }

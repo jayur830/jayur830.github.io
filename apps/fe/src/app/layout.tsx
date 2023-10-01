@@ -1,12 +1,14 @@
 import { PropsWithChildren } from 'react';
 
-import { ReactQueryProvider } from '@/contexts';
+import { ReactQueryProvider, ThemeRegistry } from '@/contexts';
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html>
       <body>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <ThemeRegistry options={{ key: 'mui' }}>{children}</ThemeRegistry>
+        </ReactQueryProvider>
       </body>
     </html>
   );

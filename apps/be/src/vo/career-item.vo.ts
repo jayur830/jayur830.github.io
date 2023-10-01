@@ -12,9 +12,6 @@ export class CareerItem {
   @Field({ description: '프로젝트 이름' })
   name: string;
 
-  @Field({ description: '프로젝트 진행 중 여부' })
-  completed: boolean;
-
   @Field(() => MonthScalar, { description: '프로젝트 시작월' })
   startDate: Dayjs;
 

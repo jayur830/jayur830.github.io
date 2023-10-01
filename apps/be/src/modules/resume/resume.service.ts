@@ -54,9 +54,8 @@ export class ResumeService {
               const defaultCareerObj = {
                 careerId: career.id,
                 name: career.name,
-                completed: !!career.endDate,
                 startDate: dayjs(career.startDate),
-                endDate: dayjs(career.endDate),
+                endDate: career.endDate ? dayjs(career.endDate) : null,
                 techList: career.techList.split(','),
                 description: career.description,
               };

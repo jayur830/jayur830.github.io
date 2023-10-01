@@ -36,14 +36,14 @@ export class ResumeResolver {
   }
 
   @UseGuards(AuthGuard)
-  @Mutation(() => ImageMetadata, { description: '이력서 내 회사 로고 메타데이터 수정' })
-  async Resume_updateCompanyLogo(@Args({ name: 'input', type: () => ImageMetadataInput }) input: ImageMetadataInput) {
-    return this.resumeService.updateCompanyLogo(input);
-  }
-
-  @UseGuards(AuthGuard)
   @Mutation(() => UpdateHistoryDetailPayload, { description: '이력 서 내 경력 상세 정보 수정' })
   async Resume_updateHistoryDetail(@Args({ name: 'input', type: () => UpdateHistoryDetailInput }) input: UpdateHistoryDetailInput) {
     return this.resumeService.updateHistoryDetail(input);
+  }
+
+  @UseGuards(AuthGuard)
+  @Mutation(() => ImageMetadata, { description: '이력서 내 회사 로고 메타데이터 수정' })
+  async Resume_updateCompanyLogo(@Args({ name: 'input', type: () => ImageMetadataInput }) input: ImageMetadataInput) {
+    return this.resumeService.updateCompanyLogo(input);
   }
 }

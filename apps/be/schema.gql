@@ -38,10 +38,10 @@ type CareerItem {
   completed: Boolean!
 
   """프로젝트 시작월"""
-  startDate: String!
+  startDate: Month!
 
   """프로젝트 종료월 (진행중일 경우 null)"""
-  endDate: String
+  endDate: Month
 
   """프로젝트에 쓰인 기술 태그 목록"""
   techList: [TechLogo!]!
@@ -228,10 +228,10 @@ type Company {
   logo: ImageMetadata
 
   """입사일"""
-  startDate: String!
+  startDate: Month!
 
   """퇴사일"""
-  endDate: String
+  endDate: Month
 
   """회사 홈페이지 주소"""
   website: String
@@ -265,10 +265,10 @@ type UpdateCompanyPayload {
   logo: ImageMetadata
 
   """입사일"""
-  startDate: String!
+  startDate: Month!
 
   """퇴사일"""
-  endDate: String
+  endDate: Month
 
   """퇴사일"""
   website: String
@@ -288,10 +288,10 @@ type UpdateHistoryDetailPayload {
   name: String!
 
   """프로젝트 시작월"""
-  startDate: String!
+  startDate: Month!
 
   """프로젝트 종료월 (진행중일 경우 null)"""
-  endDate: String
+  endDate: Month
 
   """프로젝트에 쓰인 기술 태그 목록"""
   techList: [TechLogo!]!
@@ -308,6 +308,15 @@ type UpdateInfoPayload {
   github: String
 }
 
+"""YYYY 형식의 문자열"""
+scalar Year
+
+"""YYYY-MM 형식의 문자열"""
+scalar Month
+
+"""YYYY-MM-DD 형식의 문자열"""
+scalar Date
+
 type Query {
   """이력서"""
   Resume_get: Resume!
@@ -320,11 +329,11 @@ type Mutation {
   """이력서 내 회사 정보 수정"""
   Resume_updateCompanyInfo(input: UpdateCompanyInput!): UpdateCompanyPayload!
 
-  """이력서 내 회사 로고 메타데이터 수정"""
-  Resume_updateCompanyLogo(input: ImageMetadataInput!): ImageMetadata!
-
   """이력 서 내 경력 상세 정보 수정"""
   Resume_updateHistoryDetail(input: UpdateHistoryDetailInput!): UpdateHistoryDetailPayload!
+
+  """이력서 내 회사 로고 메타데이터 수정"""
+  Resume_updateCompanyLogo(input: ImageMetadataInput!): ImageMetadata!
 
   """Set admin user (in local only)"""
   Admin_update(
@@ -361,15 +370,38 @@ input UpdateCompanyInput {
   companyName: String!
 
   """입사일"""
-  startDate: String
+  startDate: Month
 
   """퇴사일"""
-  endDate: String
+  endDate: Month
 
   """회사 홈페이지 주소"""
   website: String
 
   """회사에 대한 간단한 설명"""
+  description: String
+}
+
+input UpdateHistoryDetailInput {
+  """경력 ID"""
+  historyDetailId: String!
+
+  """팀 또는 소속 서비스 이름 (없을 경우 null)"""
+  group: String
+
+  """프로젝트 이름"""
+  name: String
+
+  """프로젝트 시작월"""
+  startDate: Month
+
+  """프로젝트 종료월 (진행중일 경우 null)"""
+  endDate: Month
+
+  """프로젝트에 쓰인 기술 태그 목록"""
+  techList: [TechLogo!]
+
+  """프로젝트 설명 (성과/결과)"""
   description: String
 }
 
@@ -388,27 +420,4 @@ input ImageMetadataInput {
 
   """이미지 height"""
   height: Int
-}
-
-input UpdateHistoryDetailInput {
-  """경력 ID"""
-  historyDetailId: String!
-
-  """팀 또는 소속 서비스 이름 (없을 경우 null)"""
-  group: String
-
-  """프로젝트 이름"""
-  name: String
-
-  """프로젝트 시작월"""
-  startDate: String
-
-  """프로젝트 종료월 (진행중일 경우 null)"""
-  endDate: String
-
-  """프로젝트에 쓰인 기술 태그 목록"""
-  techList: [TechLogo!]
-
-  """프로젝트 설명 (성과/결과)"""
-  description: String
 }

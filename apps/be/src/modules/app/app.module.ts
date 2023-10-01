@@ -13,6 +13,9 @@ import { User } from '@/entities/user.entity';
 import { TransactionalInterceptor } from '@/interceptors/transactional/transactional.interceptor';
 import { AuthModule } from '@/modules/auth/auth.module';
 import { ResumeModule } from '@/modules/resume/resume.module';
+import { DateScalar } from '@/scalars/date/date.scalar';
+import { MonthScalar } from '@/scalars/date/month.scalar';
+import { YearScalar } from '@/scalars/date/year.scalar';
 
 @Module({
   imports: [
@@ -50,6 +53,9 @@ import { ResumeModule } from '@/modules/resume/resume.module';
       provide: APP_INTERCEPTOR,
       useClass: TransactionalInterceptor,
     },
+    YearScalar,
+    MonthScalar,
+    DateScalar,
   ],
 })
 export class AppModule {}

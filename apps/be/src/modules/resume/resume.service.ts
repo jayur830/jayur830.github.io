@@ -1,5 +1,6 @@
 import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as dayjs from 'dayjs';
 import { omit, pick } from 'lodash';
 import { DataSource, Repository } from 'typeorm';
 
@@ -39,7 +40,8 @@ export class ResumeService {
         .sort((a, b) => (a.startDate > b.startDate ? -1 : 1))
         .map((item) => ({
           ...item,
-          endDate: item.endDate || null,
+          startDate: item.startDate ? dayjs(item.startDate) : null,
+          endDate: item.endDate ? dayjs(item.endDate) : null,
           logo: {
             ...item.logo,
             logoId: `${item.logo.id}`,
@@ -53,8 +55,8 @@ export class ResumeService {
                 careerId: career.id,
                 name: career.name,
                 completed: !!career.endDate,
-                startDate: career.startDate,
-                endDate: career.endDate,
+                startDate: dayjs(career.startDate),
+                endDate: dayjs(career.endDate),
                 techList: career.techList.split(','),
                 description: career.description,
               };
@@ -103,29 +105,6 @@ export class ResumeService {
     }
   }
 
-  async updateHistoryDetail(input: UpdateHistoryDetailInput): Promise<UpdateHistoryDetailPayload> {
-    const queryRunner = this.dataSource.createQueryRunner();
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-
-    try {
-      const repository = queryRunner.manager.withRepository(this.resumeHistoryDetailRepository);
-      const queryBuilder = repository.createQueryBuilder();
-      await queryBuilder.update().set(omit(input, 'historyDetailId')).where('id = :id', { id: input.historyDetailId }).execute();
-      const result = await queryBuilder.where('id = :id', { id: input.historyDetailId }).getOne();
-      await queryRunner.commitTransaction();
-      return {
-        ...omit(result, 'id'),
-        historyDetailId: result.id,
-      };
-    } catch (error) {
-      this.logger.error(error);
-      await queryRunner.rollbackTransaction();
-    } finally {
-      await queryRunner.release();
-    }
-  }
-
   async updateCompanyInfo(input: UpdateCompanyInput): Promise<UpdateCompanyPayload> {
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
@@ -142,6 +121,8 @@ export class ResumeService {
       await queryRunner.commitTransaction();
       return {
         ...result,
+        startDate: dayjs(result.startDate),
+        endDate: result.endDate ? dayjs(result.endDate) : null,
         companyId: input.companyId,
         logo: {
           ...result.logo,
@@ -153,6 +134,50 @@ export class ResumeService {
       await queryRunner.rollbackTransaction();
     } finally {
       await queryRunner.release();
+    }
+  }
+
+  async updateHistoryDetail(input: UpdateHistoryDetailInput): Promise<UpdateHistoryDetailPayload> {
+    if (Object.keys(input).length === 1) {
+      const result = await this.resumeHistoryDetailRepository.createQueryBuilder().where('id = :id', { id: input.historyDetailId }).getOne();
+      return {
+        ...omit(result, 'id'),
+        techList: result.techList.split(','),
+        startDate: dayjs(result.startDate),
+        endDate: result.endDate ? dayjs(result.endDate) : null,
+        historyDetailId: result.id,
+      };
+    } else {
+      const queryRunner = this.dataSource.createQueryRunner();
+      await queryRunner.connect();
+      await queryRunner.startTransaction();
+
+      try {
+        const repository = queryRunner.manager.withRepository(this.resumeHistoryDetailRepository);
+        const queryBuilder = repository.createQueryBuilder();
+        await queryBuilder
+          .update()
+          .set({
+            ...omit(input, 'historyDetailId'),
+            techList: input.techList ? input.techList.join(',') : undefined,
+          })
+          .where('id = :id', { id: input.historyDetailId })
+          .execute();
+        const result = await queryBuilder.where('id = :id', { id: input.historyDetailId }).getOne();
+        await queryRunner.commitTransaction();
+        return {
+          ...omit(result, 'id'),
+          techList: result.techList.split(','),
+          startDate: dayjs(result.startDate),
+          endDate: result.endDate ? dayjs(result.endDate) : null,
+          historyDetailId: result.id,
+        };
+      } catch (error) {
+        this.logger.error(error);
+        await queryRunner.rollbackTransaction();
+      } finally {
+        await queryRunner.release();
+      }
     }
   }
 

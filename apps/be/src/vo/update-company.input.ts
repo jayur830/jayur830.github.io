@@ -1,5 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 
+import { MonthScalar } from '@/scalars/date/month.scalar';
+
 @InputType()
 export class UpdateCompanyInput {
   @Field({ description: '회사 ID' })
@@ -8,10 +10,10 @@ export class UpdateCompanyInput {
   @Field({ description: '회사 이름' })
   companyName: string;
 
-  @Field({ nullable: true, description: '입사일' })
+  @Field(() => MonthScalar, { nullable: true, description: '입사일' })
   startDate?: string | null;
 
-  @Field({ nullable: true, description: '퇴사일' })
+  @Field(() => MonthScalar, { nullable: true, description: '퇴사일' })
   endDate?: string | null;
 
   @Field({ nullable: true, description: '회사 홈페이지 주소' })

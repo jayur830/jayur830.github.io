@@ -1,4 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { Dayjs } from 'dayjs';
+
+import { MonthScalar } from '@/scalars/date/month.scalar';
 
 import { ImageMetadata } from './image-metadata.vo';
 
@@ -13,11 +16,11 @@ export class UpdateCompanyPayload {
   @Field({ nullable: true, description: '회사 로고' })
   logo: ImageMetadata | null;
 
-  @Field({ description: '입사일' })
-  startDate: string;
+  @Field(() => MonthScalar, { description: '입사일' })
+  startDate: Dayjs;
 
-  @Field({ nullable: true, description: '퇴사일' })
-  endDate: string | null;
+  @Field(() => MonthScalar, { nullable: true, description: '퇴사일' })
+  endDate: Dayjs | null;
 
   @Field({ nullable: true, description: '퇴사일' })
   website: string | null;

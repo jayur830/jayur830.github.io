@@ -1,6 +1,55 @@
 import { create, StateCreator } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
-export function createState<T>(initialStateFn: StateCreator<T, [['zustand/immer', never]]>) {
-  return create<T, [['zustand/immer', never]]>(immer(initialStateFn));
+type PersistOptions<T> =
+  | {
+      name?: string;
+      whitelist?: (keyof T)[];
+    }
+  | {
+      name?: string;
+      blacklist?: (keyof T)[];
+    };
+
+export function createState<T>(initialStateFn: StateCreator<T, [['zustand/devtools', never], ['zustand/persist', never], ['zustand/immer', never]]>, persistOptions?: PersistOptions<T>) {
+  return create<T, [['zustand/devtools', never], ['zustand/persist', never], ['zustand/immer', never]]>(
+    devtools(
+      persist(immer(initialStateFn), {
+        name: persistOptions?.name || initialStateFn.name,
+        partialize(state) {
+          const whitePersistOptions = persistOptions as Extract<typeof persistOptions, { whitelist?: (keyof T)[] }>;
+          const blackPersistOptions = persistOptions as Extract<typeof persistOptions, { blacklist?: (keyof T)[] }>;
+
+          if (whitePersistOptions?.whitelist) {
+            return Object.entries(state).reduce((result, [key, value]) => {
+              if ((whitePersistOptions?.whitelist || []).includes(key as keyof T) || typeof value === 'function') {
+                return {
+                  ...result,
+                  [key]: value,
+                };
+              }
+
+              return result;
+            }, {}) as never;
+          }
+
+          if (blackPersistOptions?.blacklist) {
+            return Object.entries(state).reduce((result, [key, value]) => {
+              if (!(blackPersistOptions?.blacklist || []).includes(key as keyof T) || typeof value === 'function') {
+                return {
+                  ...result,
+                  [key]: value,
+                };
+              }
+
+              return result;
+            }, {}) as never;
+          }
+
+          return state as never;
+        },
+      }),
+    ),
+  );
 }

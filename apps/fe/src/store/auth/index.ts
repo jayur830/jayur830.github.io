@@ -5,9 +5,15 @@ interface InitialState {
   setAuthorization(authToken: string): void;
 }
 
-export const useAuthState = createState<InitialState>((set) => ({
-  authorization: null,
-  setAuthorization(authToken) {
-    set(() => ({ authorization: `Bearer ${authToken}` }));
+export const useAuthState = createState<InitialState>(
+  (set) => ({
+    authorization: null,
+    setAuthorization(authToken) {
+      set(() => ({ authorization: `Bearer ${authToken}` }));
+    },
+  }),
+  {
+    name: 'auth',
+    whitelist: ['authorization'],
   },
-}));
+);

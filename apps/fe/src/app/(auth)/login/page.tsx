@@ -33,7 +33,7 @@ export default function Login() {
     onSuccess(data) {
       const isLogged = data.signIn.isLogged;
       if (isLogged) {
-        router.push('/admin');
+        router.push('/admin/resume');
       }
     },
     onError(error) {

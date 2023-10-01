@@ -11,8 +11,9 @@ import { FormItem } from '@/components';
 
 import { ResumeCompanyInfoFormData } from '../types';
 
-export interface HistoryFormProps extends Omit<ResumeCompanyInfoFormData, 'isWorking'> {
+export interface HistoryFormProps extends Omit<ResumeCompanyInfoFormData, 'isWorking' | 'endDate'> {
   companyId: string;
+  endDate?: Dayjs;
 }
 
 export default function HistoryForm({ companyId, companyName, startDate, endDate, website, description, children }: PropsWithChildren<HistoryFormProps>) {
@@ -20,14 +21,17 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
   const sm = useMediaQuery(theme.breakpoints.down('sm'));
 
   const { control, watch, setValue, handleSubmit } = useForm<ResumeCompanyInfoFormData>({
-    mode: 'onChange',
+    mode: 'all',
     defaultValues: {
-      companyName: '',
-      isWorking: false,
-      startDate: dayjs(),
-      endDate: dayjs(),
-      website: '',
-      description: '',
+      companyName,
+      isWorking: !endDate,
+      startDate,
+      endDate: {
+        value: endDate,
+        minDate: startDate,
+      },
+      website: website || '',
+      description: description || '',
     },
   });
 
@@ -40,28 +44,35 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
       console.log({
         ...omit(data, 'isWorking'),
         companyId,
-        startDate: data.startDate.format('YYYY-MM-DD'),
-        endDate: data.endDate ? data.endDate.format('YYYY-MM-DD') : null,
+        startDate: data.startDate.format('YYYY-MM'),
+        endDate: data.endDate ? data.endDate.value.format('YYYY-MM') : null,
       });
     },
     [companyId],
   );
 
   useEffect(() => {
-    setValue('companyName', companyName);
-    setValue('isWorking', !endDate);
-    setValue('startDate', startDate);
-    setValue('endDate', endDate);
-    setValue('website', website || '');
-    setValue('description', description || '');
-  }, [setValue, watch, companyName, startDate, endDate, website, description]);
-
-  useEffect(() => {
-    watch('isWorking');
+    watch(['isWorking', 'startDate']);
     const subscriptions = watch((value, { name }) => {
       switch (name) {
         case 'isWorking':
-          setValue('endDate', value[name] ? undefined : (value.endDate as Dayjs));
+          setValue(
+            'endDate',
+            value[name]
+              ? undefined
+              : {
+                  value: dayjs(),
+                  minDate: value.startDate as Dayjs,
+                },
+          );
+          break;
+        case 'startDate':
+          if (value.endDate) {
+            setValue('endDate', {
+              value: value.endDate.value as Dayjs,
+              minDate: value[name] as Dayjs,
+            });
+          }
           break;
         default:
           break;
@@ -89,10 +100,12 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
                 message: '회사명은 필수입니다.',
               },
             }}
-            render={({ field }) => (
+            render={({ field, fieldState: { error } }) => (
               <CompanyNameInput
                 variant="standard"
                 placeholder="회사명을 입력해주세요."
+                error={!!error}
+                helperText={error?.message}
                 {...field}
               />
             )}
@@ -129,14 +142,22 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
             rules={{
               required: {
                 value: true,
-                message: '입사일을 입력해주세요.',
+                message: '입사월을 입력해주세요.',
               },
             }}
-            render={({ field: { value, onChange } }) => (
+            render={({ field: { value, onChange }, fieldState: { error } }) => (
               <DatePicker
-                format="YYYY.MM.DD"
+                format="YYYY.MM"
+                openTo="month"
+                views={['year', 'month']}
                 value={value}
                 onChange={onChange}
+                slotProps={{
+                  textField: {
+                    error: !!error,
+                    helperText: error?.message,
+                  },
+                }}
               />
             )}
           />
@@ -149,16 +170,20 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
                 rules={{
                   required: {
                     value: true,
-                    message: '퇴사일을 입력해주세요.',
+                    message: '퇴사월을 입력해주세요.',
                   },
                 }}
                 render={({ field: { value, onChange }, fieldState: { error } }) => (
                   <DatePicker
-                    format="YYYY.MM.DD"
-                    value={value}
-                    onChange={onChange}
+                    format="YYYY.MM"
+                    openTo="month"
+                    views={['year', 'month']}
+                    minDate={value?.minDate}
+                    value={value?.value}
+                    onChange={(date) => onChange({ ...value, value: date })}
                     slotProps={{
                       textField: {
+                        error: !!error,
                         helperText: error?.message,
                       },
                     }}

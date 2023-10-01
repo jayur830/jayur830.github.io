@@ -19,7 +19,6 @@ query Resume {
         groupName
         list {
           name
-          completed
           startDate
           endDate
           techList

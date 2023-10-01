@@ -9,7 +9,10 @@ export type ResumeCompanyInfoFormData = {
   companyName: string;
   isWorking: boolean;
   startDate?: Dayjs;
-  endDate?: Dayjs;
+  endDate?: {
+    value: Dayjs;
+    minDate: Dayjs;
+  };
   website?: string;
   description?: string;
 };

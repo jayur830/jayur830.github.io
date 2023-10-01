@@ -110,13 +110,14 @@ export default function ResumeCard({ data }: ResumeCardProps) {
             {carrier.list.map((item, k) => (
               <TimelineItem key={k}>
                 {!sm && (
-                  <StyledTimelineOppositeContent whiteSpace="pre-line">{`${item.startDate}\n~ ${item.endDate}\n(${dayjs(item.endDate).diff(
-                    dayjs(item.startDate),
-                    'month',
-                  )}개월)`}</StyledTimelineOppositeContent>
+                  <StyledTimelineOppositeContent whiteSpace="pre-line">
+                    {item.endDate
+                      ? `${item.startDate}\n~ ${item.endDate}\n(${dayjs(item.endDate).diff(dayjs(item.startDate), 'month')}개월)`
+                      : `${item.startDate} ~\n(${dayjs().diff(dayjs(item.startDate), 'month')}개월)`}
+                  </StyledTimelineOppositeContent>
                 )}
                 <TimelineSeparator>
-                  {item.completed ? (
+                  {item.endDate ? (
                     <StyledTimelineDot
                       variant="outlined"
                       color="primary"

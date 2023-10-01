@@ -12,6 +12,9 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
+  Date: { input: any; output: any };
+  Month: { input: any; output: any };
+  Year: { input: any; output: any };
 };
 
 export type Career = {
@@ -31,11 +34,11 @@ export type CareerItem = {
   /** 프로젝트 설명 (성과/결과) */
   description: Scalars['String']['output'];
   /** 프로젝트 종료월 (진행중일 경우 null) */
-  endDate?: Maybe<Scalars['String']['output']>;
+  endDate?: Maybe<Scalars['Month']['output']>;
   /** 프로젝트 이름 */
   name: Scalars['String']['output'];
   /** 프로젝트 시작월 */
-  startDate: Scalars['String']['output'];
+  startDate: Scalars['Month']['output'];
   /** 프로젝트에 쓰인 기술 태그 목록 */
   techList: Array<TechLogo>;
 };
@@ -51,11 +54,11 @@ export type Company = {
   /** 회사에 대한 간단한 설명 */
   description?: Maybe<Scalars['String']['output']>;
   /** 퇴사일 */
-  endDate?: Maybe<Scalars['String']['output']>;
+  endDate?: Maybe<Scalars['Month']['output']>;
   /** 회사 로고 */
   logo?: Maybe<ImageMetadata>;
   /** 입사일 */
-  startDate: Scalars['String']['output'];
+  startDate: Scalars['Month']['output'];
   /** 회사 홈페이지 주소 */
   website?: Maybe<Scalars['String']['output']>;
 };
@@ -265,9 +268,9 @@ export type UpdateCompanyInput = {
   /** 회사에 대한 간단한 설명 */
   description?: InputMaybe<Scalars['String']['input']>;
   /** 퇴사일 */
-  endDate?: InputMaybe<Scalars['String']['input']>;
+  endDate?: InputMaybe<Scalars['Month']['input']>;
   /** 입사일 */
-  startDate?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['Month']['input']>;
   /** 회사 홈페이지 주소 */
   website?: InputMaybe<Scalars['String']['input']>;
 };
@@ -281,11 +284,11 @@ export type UpdateCompanyPayload = {
   /** 회사에 대한 간단한 설명 */
   description?: Maybe<Scalars['String']['output']>;
   /** 퇴사일 */
-  endDate?: Maybe<Scalars['String']['output']>;
+  endDate?: Maybe<Scalars['Month']['output']>;
   /** 회사 로고 */
   logo?: Maybe<ImageMetadata>;
   /** 입사일 */
-  startDate: Scalars['String']['output'];
+  startDate: Scalars['Month']['output'];
   /** 퇴사일 */
   website?: Maybe<Scalars['String']['output']>;
 };
@@ -294,7 +297,7 @@ export type UpdateHistoryDetailInput = {
   /** 프로젝트 설명 (성과/결과) */
   description?: InputMaybe<Scalars['String']['input']>;
   /** 프로젝트 종료월 (진행중일 경우 null) */
-  endDate?: InputMaybe<Scalars['String']['input']>;
+  endDate?: InputMaybe<Scalars['Month']['input']>;
   /** 팀 또는 소속 서비스 이름 (없을 경우 null) */
   group?: InputMaybe<Scalars['String']['input']>;
   /** 경력 ID */
@@ -302,7 +305,7 @@ export type UpdateHistoryDetailInput = {
   /** 프로젝트 이름 */
   name?: InputMaybe<Scalars['String']['input']>;
   /** 프로젝트 시작월 */
-  startDate?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['Month']['input']>;
   /** 프로젝트에 쓰인 기술 태그 목록 */
   techList?: InputMaybe<Array<TechLogo>>;
 };
@@ -312,7 +315,7 @@ export type UpdateHistoryDetailPayload = {
   /** 프로젝트 설명 (성과/결과) */
   description: Scalars['String']['output'];
   /** 프로젝트 종료월 (진행중일 경우 null) */
-  endDate?: Maybe<Scalars['String']['output']>;
+  endDate?: Maybe<Scalars['Month']['output']>;
   /** 팀 또는 소속 서비스 이름 (없을 경우 null) */
   group?: Maybe<Scalars['String']['output']>;
   /** 경력 ID */
@@ -320,7 +323,7 @@ export type UpdateHistoryDetailPayload = {
   /** 프로젝트 이름 */
   name: Scalars['String']['output'];
   /** 프로젝트 시작월 */
-  startDate: Scalars['String']['output'];
+  startDate: Scalars['Month']['output'];
   /** 프로젝트에 쓰인 기술 태그 목록 */
   techList: Array<TechLogo>;
 };
@@ -378,15 +381,15 @@ export type ResumeQuery = {
       __typename?: 'Company';
       companyId: string;
       companyName: string;
-      startDate: string;
-      endDate?: string | null;
+      startDate: any;
+      endDate?: any | null;
       website?: string | null;
       description?: string | null;
       logo?: { __typename?: 'ImageMetadata'; src: string; alt: string; width: number; height: number } | null;
       careers: Array<{
         __typename?: 'Career';
         groupName?: string | null;
-        list: Array<{ __typename?: 'CareerItem'; name: string; completed: boolean; startDate: string; endDate?: string | null; techList: Array<TechLogo>; description: string }>;
+        list: Array<{ __typename?: 'CareerItem'; name: string; startDate: any; endDate?: any | null; techList: Array<TechLogo>; description: string }>;
       }>;
     }>;
   };

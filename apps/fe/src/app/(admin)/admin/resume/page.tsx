@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useMemo } from 'react';
-import { Card, Divider, Grid, styled } from '@mui/material';
+import { Expand, ExpandMore } from '@mui/icons-material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Card, Divider, Grid, styled, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import dayjs from 'dayjs';
 import { useQuery } from '@tanstack/react-query';
@@ -60,7 +61,42 @@ export default function Admin() {
             website={item.website}
             description={item.description}
           >
-            <SectionCard>abc</SectionCard>
+            <Divider />
+            <Grid
+              container
+              flexDirection="column"
+              gap={4}
+              marginTop={3}
+            >
+              {item.careers.map((career, j) => (
+                <Grid
+                  key={j}
+                  container
+                  flexDirection="column"
+                  gap={4}
+                >
+                  <Typography
+                    fontWeight={700}
+                    fontSize={18}
+                  >
+                    {career.groupName}
+                  </Typography>
+                  <Grid>
+                    {career.list.map((subItem, k) => (
+                      <StyledAccordion
+                        key={k}
+                        defaultExpanded
+                      >
+                        <AccordionSummary expandIcon={<ExpandMore />}>{subItem.name}</AccordionSummary>
+                        <AccordionDetails>
+                          <code style={{ whiteSpace: 'pre-line' }}>{JSON.stringify(subItem, null, 2)}</code>
+                        </AccordionDetails>
+                      </StyledAccordion>
+                    ))}
+                  </Grid>
+                </Grid>
+              ))}
+            </Grid>
           </HistoryForm>
         </SectionCard>
       ))}
@@ -72,4 +108,8 @@ const SectionCard = styled(Card)({
   boxShadow: `0 0 10px 3px ${grey['300']}`,
   padding: 20,
   transition: 'background-color 0.3s ease',
+});
+
+const StyledAccordion = styled(Accordion)({
+  boxShadow: `0 0 10px 3px ${grey['300']}`,
 });

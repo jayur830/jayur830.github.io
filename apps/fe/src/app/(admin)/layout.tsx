@@ -8,13 +8,13 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
-import { fonts } from '@/assets/fonts';
 import { DarkModeSwitch, Header } from '@/components';
 import { adminNavigations } from '@/configs/navigation';
 import { AlertProvider, MuiProvider } from '@/contexts';
 import useFirebase from '@/hooks/firebase/useFirebase';
 import { useAuthState } from '@/store/auth';
 import { useCommonState } from '@/store/common';
+import defaultTheme from '@/styles/theme';
 
 import '@/styles/globals.scss';
 
@@ -44,11 +44,9 @@ export default function AdminLayout({ children }: PropsWithChildren) {
 
   const theme = useMemo(() => {
     return createTheme({
+      ...defaultTheme,
       palette: {
         mode: isDarkMode ? 'dark' : 'light',
-      },
-      typography: {
-        fontFamily: fonts.style.fontFamily,
       },
     });
   }, [isDarkMode]);

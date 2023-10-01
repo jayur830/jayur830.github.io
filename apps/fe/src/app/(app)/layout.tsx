@@ -3,11 +3,11 @@
 import { PropsWithChildren, useMemo } from 'react';
 import { createTheme } from '@mui/material';
 
-import { fonts } from '@/assets/fonts';
 import { DarkModeSwitch, Header } from '@/components';
 import { appNavigations } from '@/configs/navigation';
 import { MuiProvider } from '@/contexts';
 import { useCommonState } from '@/store/common';
+import defaultTheme from '@/styles/theme';
 
 import '@/styles/globals.scss';
 
@@ -16,11 +16,9 @@ export default function AppLayout({ children }: PropsWithChildren) {
 
   const theme = useMemo(() => {
     return createTheme({
+      ...defaultTheme,
       palette: {
         mode: isDarkMode ? 'dark' : 'light',
-      },
-      typography: {
-        fontFamily: fonts.style.fontFamily,
       },
     });
   }, [isDarkMode]);

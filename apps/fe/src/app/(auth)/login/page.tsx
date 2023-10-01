@@ -21,7 +21,7 @@ import { loginButtonValues } from './values';
 
 export default function Login() {
   const router = useRouter();
-  const { authService } = useFirebase();
+  const { auth } = useFirebase();
   const { openAlert } = useAlert();
   const setLoading = useCommonState((state) => state.setLoading);
 
@@ -49,7 +49,7 @@ export default function Login() {
          * @description 관리자가 아닌 계정으로 Firebase OAuth 로그인 한 경우 해당 OAuth 계정 삭제
          */
         if (errorCode === AuthGuardType.NotAdministrator) {
-          deleteUser(authService.currentUser);
+          deleteUser(auth.currentUser);
         }
       }
     },
@@ -61,7 +61,7 @@ export default function Login() {
         case 'github': {
           const provider = new GithubAuthProvider();
           try {
-            const { user } = await signInWithPopup(authService, provider);
+            const { user } = await signInWithPopup(auth, provider);
             await signIn({
               email: user.email || '',
               authorization: `Bearer ${await user.getIdToken()}`,
@@ -72,7 +72,7 @@ export default function Login() {
              */
             if (error.code === 'auth/account-exists-with-different-credential') {
               try {
-                const { user } = await linkWithPopup(authService.currentUser, provider);
+                const { user } = await linkWithPopup(auth.currentUser, provider);
                 await signIn({
                   email: user.email || '',
                   authorization: `Bearer ${await user.getIdToken()}`,
@@ -87,7 +87,7 @@ export default function Login() {
         case 'google': {
           const provider = new GoogleAuthProvider();
           try {
-            const { user } = await signInWithPopup(authService, provider);
+            const { user } = await signInWithPopup(auth, provider);
             await signIn({
               email: user.email || '',
               authorization: `Bearer ${await user.getIdToken()}`,
@@ -98,7 +98,7 @@ export default function Login() {
              */
             if (error.code === 'auth/account-exists-with-different-credential') {
               try {
-                const { user } = await linkWithPopup(authService.currentUser, provider);
+                const { user } = await linkWithPopup(auth.currentUser, provider);
                 await signIn({
                   email: user.email || '',
                   authorization: `Bearer ${await user.getIdToken()}`,
@@ -114,7 +114,7 @@ export default function Login() {
           break;
       }
     },
-    [signIn, authService],
+    [signIn, auth],
   );
 
   useEffect(() => {

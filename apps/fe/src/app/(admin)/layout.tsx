@@ -19,7 +19,7 @@ import { useCommonState } from '@/store/common';
 import '@/styles/globals.scss';
 
 export default function AdminLayout({ children }: PropsWithChildren) {
-  const { authService } = useFirebase();
+  const { auth } = useFirebase();
   const router = useRouter();
   const isDarkMode = useCommonState((state) => state.isDarkMode);
   const setAuthorization = useAuthState((state) => state.setAuthorization);
@@ -54,9 +54,9 @@ export default function AdminLayout({ children }: PropsWithChildren) {
   }, [isDarkMode]);
 
   const onLogout = useCallback(async () => {
-    await signOut(authService);
+    await signOut(auth);
     router.push('/login');
-  }, [router, authService]);
+  }, [router, auth]);
 
   return (
     <MuiProvider theme={theme}>

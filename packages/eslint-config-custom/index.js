@@ -69,6 +69,7 @@ module.exports = {
     "@typescript-eslint/unbound-method": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "simple-import-sort/exports": "warn",
+    "no-unsafe-optional-chaining": "off",
     "unused-imports/no-unused-vars": [
       "warn",
       {

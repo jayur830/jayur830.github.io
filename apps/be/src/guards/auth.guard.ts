@@ -1,5 +1,6 @@
-import { CanActivate, ExecutionContext, ForbiddenException, Injectable, Logger, UnauthorizedException } from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable, Logger } from '@nestjs/common';
 import firebase from 'firebase-admin';
+import { GraphQLError } from 'graphql';
 
 import { AuthGuardType } from '@/enum/auth.enum';
 import { FirebaseService } from '@/modules/firebase/firebase.service';
@@ -27,13 +28,21 @@ export class AuthGuard implements CanActivate {
     } catch (error) {
       this.logger.error(error);
       if (error.message === AuthGuardType.Unauthorization) {
-        throw new UnauthorizedException(AuthGuardType.Unauthorization, '토큰이 필요합니다.');
+        throw new GraphQLError('토큰이 필요합니다.', {
+          extensions: { code: AuthGuardType.Unauthorization },
+        });
       } else if (error.message.startsWith('Decoding Firebase ID token failed.')) {
-        throw new ForbiddenException(AuthGuardType.InvalidToken, '토큰이 올바른 형식이 아닙니다.');
+        throw new GraphQLError('토큰이 올바른 형식이 아닙니다.', {
+          extensions: { code: AuthGuardType.InvalidToken },
+        });
       } else if (error.message === AuthGuardType.NotAdministrator) {
-        throw new UnauthorizedException(AuthGuardType.NotAdministrator, '관리자가 아닙니다.');
+        throw new GraphQLError('관리자가 아닙니다.', {
+          extensions: { code: AuthGuardType.NotAdministrator },
+        });
       } else {
-        throw new ForbiddenException(AuthGuardType.AuthorizationExpired, '토큰이 만료되었습니다.');
+        throw new GraphQLError('토큰이 만료되었습니다.', {
+          extensions: { code: AuthGuardType.AuthorizationExpired },
+        });
       }
     }
   }

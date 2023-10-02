@@ -2,12 +2,10 @@
 
 import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useMutation } from '@apollo/client';
 import { Button, Grid, styled, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { pick } from 'lodash';
-import { useMutation } from '@tanstack/react-query';
 import { deleteUser, GithubAuthProvider, GoogleAuthProvider, linkWithPopup, signInWithPopup } from 'firebase/auth';
-import request from 'graphql-request';
 
 import { authExceptionValues } from '@/configs/auth';
 import { useAlert } from '@/contexts/AlertProvider';
@@ -25,26 +23,20 @@ export default function Login() {
   const { openAlert } = useAlert();
   const setLoading = useCommonState((state) => state.setLoading);
 
-  const { mutate: signIn, isPending } = useMutation<SignInMutation, Error, SignInMutationVariables & { authorization: string }>({
-    mutationKey: ['signIn'],
-    mutationFn(variables) {
-      return request(process.env.NEXT_PUBLIC_API_URL, SIGN_IN_MUTATION, pick(variables, 'email'), pick(variables, 'authorization'));
-    },
-    onSuccess(data) {
-      const isLogged = data.signIn.isLogged;
-      if (isLogged) {
+  const [signIn, { loading }] = useMutation<SignInMutation, SignInMutationVariables>(SIGN_IN_MUTATION, {
+    onCompleted(data) {
+      if (data.signIn.isLogged) {
         router.push('/admin/resume');
       }
     },
-    onError(error) {
-      const errorCode = Object.keys(authExceptionValues).find((errorCode) => error.message.includes(errorCode)) as keyof typeof authExceptionValues;
+    onError({ graphQLErrors: [graphQLError] }) {
+      const errorCode = graphQLError.extensions.code as AuthGuardType;
       if (errorCode) {
         openAlert({
           open: true,
           autoHideDuration: 7000,
           message: authExceptionValues[errorCode],
         });
-
         /**
          * @description 관리자가 아닌 계정으로 Firebase OAuth 로그인 한 경우 해당 OAuth 계정 삭제
          */
@@ -63,8 +55,7 @@ export default function Login() {
           try {
             const { user } = await signInWithPopup(auth, provider);
             await signIn({
-              email: user.email || '',
-              authorization: `Bearer ${await user.getIdToken()}`,
+              variables: { email: user.email || '' },
             });
           } catch (error) {
             /**
@@ -74,8 +65,7 @@ export default function Login() {
               try {
                 const { user } = await linkWithPopup(auth.currentUser, provider);
                 await signIn({
-                  email: user.email || '',
-                  authorization: `Bearer ${await user.getIdToken()}`,
+                  variables: { email: user.email || '' },
                 });
               } catch (error) {
                 console.log(error);
@@ -89,8 +79,7 @@ export default function Login() {
           try {
             const { user } = await signInWithPopup(auth, provider);
             await signIn({
-              email: user.email || '',
-              authorization: `Bearer ${await user.getIdToken()}`,
+              variables: { email: user.email || '' },
             });
           } catch (error) {
             /**
@@ -100,8 +89,7 @@ export default function Login() {
               try {
                 const { user } = await linkWithPopup(auth.currentUser, provider);
                 await signIn({
-                  email: user.email || '',
-                  authorization: `Bearer ${await user.getIdToken()}`,
+                  variables: { email: user.email || '' },
                 });
               } catch (error) {
                 console.log(error);
@@ -118,8 +106,8 @@ export default function Login() {
   );
 
   useEffect(() => {
-    setLoading(isPending);
-  }, [setLoading, isPending]);
+    setLoading(loading);
+  }, [setLoading, loading]);
 
   return (
     <Container>

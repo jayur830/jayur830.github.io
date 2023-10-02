@@ -2,15 +2,13 @@
 
 import { useCallback, useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { useMutation } from '@apollo/client';
 import { Button, Grid, styled, TextField } from '@mui/material';
-import { useMutation } from '@tanstack/react-query';
-import request from 'graphql-request';
 
 import { FormItem } from '@/components';
 import { useAlert } from '@/contexts/AlertProvider';
 import { UpdateInfoMutation, UpdateInfoMutationVariables } from '@/graphql/graphql';
 import UPDATE_INFO_MUTATION from '@/graphql/mutations/updateInfo.gql';
-import { useAuthState } from '@/store/auth';
 import { useCommonState } from '@/store/common';
 
 import { ResumeInfoFormData } from '../types';
@@ -18,16 +16,11 @@ import { ResumeInfoFormData } from '../types';
 export type ResumeInfoFormProps = ResumeInfoFormData;
 
 export default function ResumeInfoForm({ title, github }: ResumeInfoFormProps) {
-  const authorization = useAuthState((state) => state.authorization);
   const setLoading = useCommonState((state) => state.setLoading);
   const { openAlert } = useAlert();
 
-  const { mutate, isPending } = useMutation<UpdateInfoMutation, Error, UpdateInfoMutationVariables>({
-    mutationKey: ['updateInfo'],
-    mutationFn(variables) {
-      return request(process.env.NEXT_PUBLIC_API_URL, UPDATE_INFO_MUTATION, variables, { authorization });
-    },
-    onSuccess() {
+  const [updateInfo, { loading }] = useMutation<UpdateInfoMutation, UpdateInfoMutationVariables>(UPDATE_INFO_MUTATION, {
+    onCompleted() {
       openAlert({
         open: true,
         autoHideDuration: 7000,
@@ -45,17 +38,14 @@ export default function ResumeInfoForm({ title, github }: ResumeInfoFormProps) {
 
   const { control, setValue, handleSubmit } = useForm<ResumeInfoFormData>({
     mode: 'onChange',
-    defaultValues: {
-      title: '',
-      github: '',
-    },
+    defaultValues: { title, github },
   });
 
   const onSubmit = useCallback(
     (input: ResumeInfoFormData) => {
-      mutate({ input });
+      updateInfo({ variables: { input } });
     },
-    [mutate],
+    [updateInfo],
   );
 
   useEffect(() => {
@@ -64,8 +54,8 @@ export default function ResumeInfoForm({ title, github }: ResumeInfoFormProps) {
   }, [setValue, title, github]);
 
   useEffect(() => {
-    setLoading(isPending);
-  }, [setLoading, isPending]);
+    setLoading(loading);
+  }, [setLoading, loading]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

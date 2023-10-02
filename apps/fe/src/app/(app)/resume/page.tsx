@@ -1,10 +1,9 @@
 'use client';
 
 import { useEffect, useMemo } from 'react';
+import { useQuery } from '@apollo/client';
 import { GitHub } from '@mui/icons-material';
 import { Grid, IconButton, styled, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
-import request from 'graphql-request';
 
 import { ResumeCard } from '@/components';
 import { ResumeQuery } from '@/graphql/graphql';
@@ -17,12 +16,7 @@ export default function Resume() {
 
   const setLoading = useCommonState((state) => state.setLoading);
 
-  const { data, isLoading } = useQuery<ResumeQuery>({
-    queryKey: ['resume'],
-    queryFn() {
-      return request(process.env.NEXT_PUBLIC_API_URL, GET_RESUME_QUERY);
-    },
-  });
+  const { data, loading } = useQuery<ResumeQuery>(GET_RESUME_QUERY);
 
   const resumeData = useMemo(() => {
     if (!data) {
@@ -33,8 +27,8 @@ export default function Resume() {
   }, [data]);
 
   useEffect(() => {
-    setLoading(isLoading);
-  }, [setLoading, isLoading]);
+    setLoading(loading);
+  }, [setLoading, loading]);
 
   return (
     <>

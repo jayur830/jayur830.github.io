@@ -1,15 +1,12 @@
 'use client';
 
 import { useEffect, useMemo } from 'react';
-import { Expand, ExpandMore } from '@mui/icons-material';
-import { Accordion, AccordionDetails, AccordionSummary, Box, Card, Divider, Grid, styled, Typography } from '@mui/material';
+import { useQuery } from '@apollo/client';
+import { Card, Divider, Grid, styled } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import dayjs from 'dayjs';
 import { omit } from 'lodash';
-import { useQuery } from '@tanstack/react-query';
-import request from 'graphql-request';
 
-import { FormItem } from '@/components';
 import { ResumeQuery } from '@/graphql/graphql';
 import GET_RESUME_QUERY from '@/graphql/queries/getResume.gql';
 import { useCommonState } from '@/store/common';
@@ -21,12 +18,7 @@ import ResumeInfoForm from './ResumeInfoForm';
 export default function Admin() {
   const setLoading = useCommonState((state) => state.setLoading);
 
-  const { data, isLoading } = useQuery<ResumeQuery>({
-    queryKey: ['resume'],
-    queryFn() {
-      return request(process.env.NEXT_PUBLIC_API_URL, GET_RESUME_QUERY);
-    },
-  });
+  const { data, loading } = useQuery<ResumeQuery>(GET_RESUME_QUERY);
 
   const resumeData = useMemo(() => {
     if (!data) {
@@ -37,8 +29,8 @@ export default function Admin() {
   }, [data]);
 
   useEffect(() => {
-    setLoading(isLoading);
-  }, [setLoading, isLoading]);
+    setLoading(loading);
+  }, [setLoading, loading]);
 
   return (
     <Grid
@@ -49,8 +41,8 @@ export default function Admin() {
     >
       <SectionCard>
         <ResumeInfoForm
-          title={resumeData.title}
-          github={resumeData.github || ''}
+          title={resumeData?.title}
+          github={resumeData?.github || ''}
         />
       </SectionCard>
       <Divider />
@@ -101,8 +93,4 @@ const SectionCard = styled(Card)({
   boxShadow: `0 0 10px 3px ${grey['300']}`,
   padding: 20,
   transition: 'background-color 0.3s ease',
-});
-
-const StyledAccordion = styled(Accordion)({
-  boxShadow: `0 0 10px 3px ${grey['300']}`,
 });

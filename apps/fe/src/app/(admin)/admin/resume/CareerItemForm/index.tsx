@@ -1,18 +1,16 @@
 import { useCallback, useMemo } from 'react';
-import { Controller, Form, useController, useForm } from 'react-hook-form';
-import dynamic from 'next/dynamic';
+import { Controller, useController, useForm } from 'react-hook-form';
+import { useQuery } from '@apollo/client';
 import { ExpandMore } from '@mui/icons-material';
 import { Accordion, AccordionDetails, AccordionSummary, Autocomplete, Button, Checkbox, Chip, Grid, ListItem, styled, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from 'dayjs';
-import { useQuery } from '@tanstack/react-query';
 import MDEditor from '@uiw/react-md-editor';
-import request from 'graphql-request';
 
 import { FormItem } from '@/components';
 import { logoValues } from '@/configs/logo';
-import { GetTechListQuery, GetTechListQueryVariables, TechLogo } from '@/graphql/graphql';
+import { GetTechListQuery, TechLogo } from '@/graphql/graphql';
 import GET_TECH_LIST_QUERY from '@/graphql/queries/getTechList.gql';
 import { useCommonState } from '@/store/common';
 
@@ -65,10 +63,9 @@ export default function CareerItemForm({ groupName, name, startDate, endDate, te
     field: { value: techListValue, onChange: onChangeTechList },
   } = useController({ control, name: 'techList' });
 
-  const { data: techListData } = useQuery<GetTechListQuery>({
-    queryKey: ['techList'],
-    queryFn() {
-      return request<GetTechListQuery, GetTechListQueryVariables>(process.env.NEXT_PUBLIC_API_URL, GET_TECH_LIST_QUERY, { keyword: keywordValue });
+  const { data: techListData } = useQuery<GetTechListQuery>(GET_TECH_LIST_QUERY, {
+    variables: {
+      keyword: keywordValue,
     },
   });
 

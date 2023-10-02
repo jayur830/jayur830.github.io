@@ -12,7 +12,6 @@ import { DarkModeSwitch, Header } from '@/components';
 import { adminNavigations } from '@/configs/navigation';
 import { AlertProvider, MuiProvider } from '@/contexts';
 import useFirebase from '@/hooks/firebase/useFirebase';
-import { useAuthState } from '@/store/auth';
 import { useCommonState } from '@/store/common';
 import defaultTheme from '@/styles/theme';
 
@@ -22,7 +21,6 @@ export default function AdminLayout({ children }: PropsWithChildren) {
   const { auth } = useFirebase();
   const router = useRouter();
   const isDarkMode = useCommonState((state) => state.isDarkMode);
-  const setAuthorization = useAuthState((state) => state.setAuthorization);
 
   /**
    * @description 로그인 상태 체크
@@ -37,10 +35,9 @@ export default function AdminLayout({ children }: PropsWithChildren) {
         // 로그인 상태
         const token = await user.getIdToken(true);
         console.log(token);
-        setAuthorization(token);
       }
     });
-  }, [setAuthorization, router]);
+  }, [router]);
 
   const theme = useMemo(() => {
     return createTheme({

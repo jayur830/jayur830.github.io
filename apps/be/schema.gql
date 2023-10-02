@@ -320,21 +320,12 @@ scalar Date
 type Query {
   """이력서"""
   Resume_get: Resume!
+
+  """기술 로고 리스트"""
+  TechList_get(keyword: String): [TechLogo!]!
 }
 
 type Mutation {
-  """이력서 제목, Github 주소 수정"""
-  Resume_updateInfo(input: UpdateInfoInput!): UpdateInfoPayload!
-
-  """이력서 내 회사 정보 수정"""
-  Resume_updateCompanyInfo(input: UpdateCompanyInput!): UpdateCompanyPayload!
-
-  """이력 서 내 경력 상세 정보 수정"""
-  Resume_updateHistoryDetail(input: UpdateHistoryDetailInput!): UpdateHistoryDetailPayload!
-
-  """이력서 내 회사 로고 메타데이터 수정"""
-  Resume_updateCompanyLogo(input: ImageMetadataInput!): ImageMetadata!
-
   """Set admin user (in local only)"""
   Admin_update(
     """Firebase user uid"""
@@ -352,6 +343,18 @@ type Mutation {
     """이메일"""
     email: String!
   ): UserPayload!
+
+  """이력서 제목, Github 주소 수정"""
+  Resume_updateInfo(input: UpdateInfoInput!): UpdateInfoPayload!
+
+  """이력서 내 회사 정보 수정"""
+  Resume_updateCompanyInfo(input: UpdateCompanyInput!): UpdateCompanyPayload!
+
+  """이력 서 내 경력 상세 정보 수정"""
+  Resume_updateHistoryDetail(input: UpdateHistoryDetailInput!): UpdateHistoryDetailPayload!
+
+  """이력서 내 회사 로고 메타데이터 수정"""
+  Resume_updateCompanyLogo(input: ImageMetadataInput!): ImageMetadata!
 }
 
 input UpdateInfoInput {

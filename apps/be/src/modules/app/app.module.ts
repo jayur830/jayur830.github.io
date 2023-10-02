@@ -17,6 +17,8 @@ import { DateScalar } from '@/scalars/date/date.scalar';
 import { MonthScalar } from '@/scalars/date/month.scalar';
 import { YearScalar } from '@/scalars/date/year.scalar';
 
+import { TechModule } from '../tech/tech.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -45,8 +47,9 @@ import { YearScalar } from '@/scalars/date/year.scalar';
       driver: ApolloDriver,
       playground: true,
     }),
-    ResumeModule,
     AuthModule,
+    ResumeModule,
+    TechModule,
   ],
   providers: [
     {

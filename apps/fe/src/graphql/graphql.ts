@@ -140,6 +140,12 @@ export type Query = {
   __typename?: 'Query';
   /** 이력서 */
   Resume_get: Resume;
+  /** 기술 로고 리스트 */
+  TechList_get: Array<TechLogo>;
+};
+
+export type QueryTechList_GetArgs = {
+  keyword?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Resume = {
@@ -394,3 +400,9 @@ export type ResumeQuery = {
     }>;
   };
 };
+
+export type GetTechListQueryVariables = Exact<{
+  keyword?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+export type GetTechListQuery = { __typename?: 'Query'; techList: Array<TechLogo> };

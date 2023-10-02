@@ -5,13 +5,16 @@ import { Expand, ExpandMore } from '@mui/icons-material';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Card, Divider, Grid, styled, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import dayjs from 'dayjs';
+import { omit } from 'lodash';
 import { useQuery } from '@tanstack/react-query';
 import request from 'graphql-request';
 
+import { FormItem } from '@/components';
 import { ResumeQuery } from '@/graphql/graphql';
 import GET_RESUME_QUERY from '@/graphql/queries/getResume.gql';
 import { useCommonState } from '@/store/common';
 
+import CareerItemForm from './CareerItemForm';
 import HistoryForm from './HistoryForm';
 import ResumeInfoForm from './ResumeInfoForm';
 
@@ -75,25 +78,15 @@ export default function Admin() {
                   flexDirection="column"
                   gap={4}
                 >
-                  <Typography
-                    fontWeight={700}
-                    fontSize={18}
-                  >
-                    {career.groupName}
-                  </Typography>
-                  <Grid>
-                    {career.list.map((subItem, k) => (
-                      <StyledAccordion
-                        key={k}
-                        defaultExpanded
-                      >
-                        <AccordionSummary expandIcon={<ExpandMore />}>{subItem.name}</AccordionSummary>
-                        <AccordionDetails>
-                          <code style={{ whiteSpace: 'pre-line' }}>{JSON.stringify(subItem, null, 2)}</code>
-                        </AccordionDetails>
-                      </StyledAccordion>
-                    ))}
-                  </Grid>
+                  {career.list.map((subItem, k) => (
+                    <CareerItemForm
+                      key={k}
+                      groupName={career.groupName}
+                      startDate={dayjs(subItem.startDate)}
+                      endDate={subItem.endDate ? dayjs(subItem.endDate) : null}
+                      {...omit(subItem, '__typename', 'startDate', 'endDate')}
+                    />
+                  ))}
                 </Grid>
               ))}
             </Grid>

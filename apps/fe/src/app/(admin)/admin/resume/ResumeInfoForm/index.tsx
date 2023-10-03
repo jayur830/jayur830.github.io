@@ -38,7 +38,10 @@ export default function ResumeInfoForm({ title, github }: ResumeInfoFormProps) {
 
   const { control, setValue, handleSubmit } = useForm<ResumeInfoFormData>({
     mode: 'onChange',
-    defaultValues: { title, github },
+    defaultValues: {
+      title: '',
+      github: '',
+    },
   });
 
   const onSubmit = useCallback(

@@ -18,6 +18,7 @@ query Resume {
       careers {
         groupName
         list {
+          careerId
           name
           startDate
           endDate

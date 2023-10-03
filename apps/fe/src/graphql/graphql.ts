@@ -369,6 +369,42 @@ export type SignOutMutationVariables = Exact<{
 
 export type SignOutMutation = { __typename?: 'Mutation'; signOut: { __typename?: 'UserPayload'; email: string; isLogged: boolean } };
 
+export type UpdateCompanyMutationVariables = Exact<{
+  input: UpdateCompanyInput;
+}>;
+
+export type UpdateCompanyMutation = {
+  __typename?: 'Mutation';
+  updated: {
+    __typename?: 'UpdateCompanyPayload';
+    companyId: string;
+    companyName: string;
+    startDate: any;
+    endDate?: any | null;
+    website?: string | null;
+    description?: string | null;
+    logo?: { __typename?: 'ImageMetadata'; logoId: string; src: string; alt: string; width: number; height: number } | null;
+  };
+};
+
+export type UpdateHistoryDetailMutationVariables = Exact<{
+  input: UpdateHistoryDetailInput;
+}>;
+
+export type UpdateHistoryDetailMutation = {
+  __typename?: 'Mutation';
+  updated: {
+    __typename?: 'UpdateHistoryDetailPayload';
+    historyDetailId: string;
+    group?: string | null;
+    name: string;
+    startDate: any;
+    endDate?: any | null;
+    techList: Array<TechLogo>;
+    description: string;
+  };
+};
+
 export type UpdateInfoMutationVariables = Exact<{
   input: UpdateInfoInput;
 }>;
@@ -395,7 +431,7 @@ export type ResumeQuery = {
       careers: Array<{
         __typename?: 'Career';
         groupName?: string | null;
-        list: Array<{ __typename?: 'CareerItem'; name: string; startDate: any; endDate?: any | null; techList: Array<TechLogo>; description: string }>;
+        list: Array<{ __typename?: 'CareerItem'; careerId: string; name: string; startDate: any; endDate?: any | null; techList: Array<TechLogo>; description: string }>;
       }>;
     }>;
   };

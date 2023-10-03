@@ -73,6 +73,7 @@ export default function Admin() {
                   {career.list.map((subItem, k) => (
                     <CareerItemForm
                       key={k}
+                      historyDetailId={subItem.careerId}
                       groupName={career.groupName}
                       startDate={dayjs(subItem.startDate)}
                       endDate={subItem.endDate ? dayjs(subItem.endDate) : null}
@@ -89,8 +90,8 @@ export default function Admin() {
   );
 }
 
-const SectionCard = styled(Card)({
-  boxShadow: `0 0 10px 3px ${grey['300']}`,
+const SectionCard = styled(Card)(({ theme }) => ({
+  boxShadow: `0 0 10px 3px ${theme.palette.mode === 'light' ? grey['300'] : grey['A700']}`,
   padding: 20,
   transition: 'background-color 0.3s ease',
-});
+}));

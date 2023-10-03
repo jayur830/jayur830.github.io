@@ -1,0 +1,11 @@
+mutation UpdateHistoryDetail($input: UpdateHistoryDetailInput!) {
+  updated: Resume_updateHistoryDetail(input: $input) {
+    historyDetailId
+    group
+    name
+    startDate
+    endDate
+    techList
+    description
+  }
+}

@@ -2,12 +2,17 @@
 
 import { PropsWithChildren, useCallback, useEffect } from 'react';
 import { Controller, useController, useForm } from 'react-hook-form';
+import { useMutation } from '@apollo/client';
 import { Button, Checkbox, Grid, styled, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from 'dayjs';
 import { omit } from 'lodash';
 
 import { FormItem } from '@/components';
+import { useAlert } from '@/contexts/AlertProvider';
+import { UpdateCompanyMutation, UpdateCompanyMutationVariables } from '@/graphql/graphql';
+import UPDATE_COMPANY_MUTATION from '@/graphql/mutations/updateCompany.gql';
+import { useCommonState } from '@/store/common';
 
 import { ResumeCompanyInfoFormData } from '../types';
 
@@ -19,6 +24,25 @@ export interface HistoryFormProps extends Omit<ResumeCompanyInfoFormData, 'isWor
 export default function HistoryForm({ companyId, companyName, startDate, endDate, website, description, children }: PropsWithChildren<HistoryFormProps>) {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down('sm'));
+  const setLoading = useCommonState((state) => state.setLoading);
+  const { openAlert } = useAlert();
+
+  const [updateCompany, { loading }] = useMutation<UpdateCompanyMutation, UpdateCompanyMutationVariables>(UPDATE_COMPANY_MUTATION, {
+    onCompleted() {
+      openAlert({
+        open: true,
+        autoHideDuration: 7000,
+        message: '이력서 회사 정보가 수정되었습니다.',
+      });
+    },
+    onError(error) {
+      openAlert({
+        open: true,
+        autoHideDuration: 7000,
+        message: error.message,
+      });
+    },
+  });
 
   const { control, watch, setValue, handleSubmit } = useForm<ResumeCompanyInfoFormData>({
     mode: 'all',
@@ -41,25 +65,32 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
 
   const onSubmit = useCallback(
     (data: ResumeCompanyInfoFormData) => {
-      console.log({
-        ...omit(data, 'isWorking'),
-        companyId,
-        startDate: data.startDate.format('YYYY-MM'),
-        endDate: data.endDate ? data.endDate.value.format('YYYY-MM') : null,
+      updateCompany({
+        variables: {
+          input: {
+            ...omit(data, 'isWorking'),
+            companyId,
+            startDate: data.startDate.format('YYYY-MM'),
+            endDate: data.endDate.value ? data.endDate.value.format('YYYY-MM') : null,
+          },
+        },
       });
     },
-    [companyId],
+    [updateCompany, companyId],
   );
 
   useEffect(() => {
     watch(['isWorking', 'startDate']);
-    const subscriptions = watch((value, { name }) => {
+    return watch((value, { name }) => {
       switch (name) {
         case 'isWorking':
           setValue(
             'endDate',
             value[name]
-              ? undefined
+              ? {
+                  value: undefined,
+                  minDate: value.startDate as Dayjs,
+                }
               : {
                   value: dayjs(),
                   minDate: value.startDate as Dayjs,
@@ -77,11 +108,12 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
         default:
           break;
       }
-    });
-    return () => {
-      subscriptions.unsubscribe();
-    };
+    }).unsubscribe;
   }, [setValue, watch]);
+
+  useEffect(() => {
+    setLoading(loading);
+  }, [setLoading, loading]);
 
   return (
     <Grid
@@ -163,7 +195,7 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
           />
           {!isWorking && (
             <>
-              <Typography>~</Typography>
+              ~
               <Controller
                 control={control}
                 name="endDate"

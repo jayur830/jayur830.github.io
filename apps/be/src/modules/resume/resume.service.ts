@@ -85,22 +85,27 @@ export class ResumeService {
 
   // @Transactional()
   async updateInfo(input: UpdateInfoInput): Promise<UpdateInfoPayload> {
-    const queryRunner = this.dataSource.createQueryRunner();
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-
-    try {
-      const repository = queryRunner.manager.withRepository(this.resumeInfoRepository);
-      const queryBuilder = repository.createQueryBuilder();
-      await queryBuilder.update().set(input).where('id = :id', { id: 1 }).execute();
-      const result = await queryBuilder.where('id = :id', { id: 1 }).getOne();
-      await queryRunner.commitTransaction();
+    if (Object.keys(input).length === 0) {
+      const result = await this.resumeInfoRepository.createQueryBuilder().where('id = :id', { id: 1 }).getOne();
       return pick(result, 'title', 'github');
-    } catch (error) {
-      this.logger.error(error);
-      await queryRunner.rollbackTransaction();
-    } finally {
-      await queryRunner.release();
+    } else {
+      const queryRunner = this.dataSource.createQueryRunner();
+      await queryRunner.connect();
+      await queryRunner.startTransaction();
+
+      try {
+        const repository = queryRunner.manager.withRepository(this.resumeInfoRepository);
+        const queryBuilder = repository.createQueryBuilder();
+        await queryBuilder.update().set(input).where('id = :id', { id: 1 }).execute();
+        const result = await queryBuilder.where('id = :id', { id: 1 }).getOne();
+        await queryRunner.commitTransaction();
+        return pick(result, 'title', 'github');
+      } catch (error) {
+        this.logger.error(error);
+        await queryRunner.rollbackTransaction();
+      } finally {
+        await queryRunner.release();
+      }
     }
   }
 
@@ -112,7 +117,15 @@ export class ResumeService {
     try {
       const repository = queryRunner.manager.withRepository(this.resumeHistoryRepository);
       const queryBuilder = repository.createQueryBuilder('r');
-      await queryBuilder.update().set(omit(input, 'companyId')).where('id = :id', { id: input.companyId }).execute();
+      await queryBuilder
+        .update()
+        .set({
+          ...omit(input, 'companyId', 'startDate'),
+          startDate: input.startDate ? input.startDate.format('YYYY-MM') : null,
+          endDate: input.endDate ? input.endDate.format('YYYY-MM') : null,
+        })
+        .where('id = :id', { id: +input.companyId })
+        .execute();
       const result = await queryBuilder
         .innerJoinAndSelect('r.logo', 'l')
         .where('r.id = :id', { id: +(input.companyId || '0') })
@@ -158,6 +171,8 @@ export class ResumeService {
           .update()
           .set({
             ...omit(input, 'historyDetailId'),
+            startDate: input.startDate ? input.startDate.format('YYYY-MM') : null,
+            endDate: input.endDate ? input.endDate.format('YYYY-MM') : null,
             techList: input.techList ? input.techList.join(',') : undefined,
           })
           .where('id = :id', { id: input.historyDetailId })
@@ -181,22 +196,26 @@ export class ResumeService {
   }
 
   async updateCompanyLogo(input: ImageMetadataInput): Promise<ImageMetadata> {
-    const queryRunner = this.dataSource.createQueryRunner();
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
+    if (Object.keys(input).length === 1) {
+      const result = await this.companyLogoRepository.findOneBy({ id: +(input.logoId || '0') });
+      return { ...omit(result, 'id'), logoId: `${result.id}` };
+    } else {
+      const queryRunner = this.dataSource.createQueryRunner();
+      await queryRunner.connect();
+      await queryRunner.startTransaction();
 
-    try {
-      const repository = queryRunner.manager.withRepository(this.companyLogoRepository);
-      await repository.createQueryBuilder().update().set(omit(input, 'logoId')).where('id = :id', { id: input.logoId }).execute();
-      const result = await repository.findOneBy({ id: +(input.logoId || '0') });
-      const returnValue = { ...omit(result, 'id'), logoId: `${result.id}` };
-      await queryRunner.commitTransaction();
-      return returnValue;
-    } catch (error) {
-      this.logger.error(error);
-      await queryRunner.rollbackTransaction();
-    } finally {
-      await queryRunner.release();
+      try {
+        const repository = queryRunner.manager.withRepository(this.companyLogoRepository);
+        await repository.createQueryBuilder().update().set(omit(input, 'logoId')).where('id = :id', { id: input.logoId }).execute();
+        const result = await repository.findOneBy({ id: +(input.logoId || '0') });
+        await queryRunner.commitTransaction();
+        return { ...omit(result, 'id'), logoId: `${result.id}` };
+      } catch (error) {
+        this.logger.error(error);
+        await queryRunner.rollbackTransaction();
+      } finally {
+        await queryRunner.release();
+      }
     }
   }
 }

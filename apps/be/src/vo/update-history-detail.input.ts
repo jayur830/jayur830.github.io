@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Dayjs } from 'dayjs';
 
 import { TechLogo } from '@/enum/logo.enum';
 import { MonthScalar } from '@/scalars/date/month.scalar';
@@ -15,10 +16,10 @@ export class UpdateHistoryDetailInput {
   name?: string | null;
 
   @Field(() => MonthScalar, { nullable: true, description: '프로젝트 시작월' })
-  startDate?: string | null;
+  startDate?: Dayjs | null;
 
   @Field(() => MonthScalar, { nullable: true, description: '프로젝트 종료월 (진행중일 경우 null)' })
-  endDate?: string | null;
+  endDate?: Dayjs | null;
 
   @Field(() => [TechLogo], { nullable: true, description: '프로젝트에 쓰인 기술 태그 목록' })
   techList: TechLogo[];

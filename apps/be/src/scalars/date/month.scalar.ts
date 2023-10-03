@@ -1,9 +1,9 @@
 import { CustomScalar, Scalar } from '@nestjs/graphql';
-import dayjs, { Dayjs } from 'dayjs';
+import * as dayjs from 'dayjs';
 import { Kind, ValueNode } from 'graphql';
 
 @Scalar('Month')
-export class MonthScalar implements CustomScalar<string, Dayjs> {
+export class MonthScalar implements CustomScalar<string, dayjs.Dayjs> {
   format = 'YYYY-MM';
   description = `${this.format} 형식의 문자열`;
 
@@ -11,7 +11,7 @@ export class MonthScalar implements CustomScalar<string, Dayjs> {
     return dayjs(value);
   }
 
-  serialize(value: Dayjs) {
+  serialize(value: dayjs.Dayjs) {
     return value.format(this.format);
   }
 

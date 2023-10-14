@@ -3,21 +3,18 @@ import { Dayjs } from 'dayjs';
 
 import { MonthScalar } from '@/scalars/date/month.scalar';
 
-import { UpdateImageMetadataInput } from './update-image-metadata.input';
+import { CreateImageMetadataInput } from './create-image-metadata.input';
 
 @InputType()
-export class UpdateCompanyInput {
-  @Field({ description: '회사 ID' })
-  companyId: string;
-
+export class CreateCompanyInput {
   @Field({ description: '회사 이름' })
   companyName: string;
 
   @Field({ nullable: true, description: '회사 로고' })
-  logo?: UpdateImageMetadataInput | null;
+  logo?: CreateImageMetadataInput | null;
 
-  @Field(() => MonthScalar, { nullable: true, description: '입사일' })
-  startDate?: Dayjs | null;
+  @Field(() => MonthScalar, { description: '입사일' })
+  startDate: Dayjs;
 
   @Field(() => MonthScalar, { nullable: true, description: '퇴사일' })
   endDate?: Dayjs | null;

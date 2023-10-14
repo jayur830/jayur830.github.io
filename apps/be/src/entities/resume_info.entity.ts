@@ -13,6 +13,6 @@ export class ResumeInfo {
   @Column({ nullable: true })
   github: string | null;
 
-  @OneToMany(() => ResumeHistory, (history) => history.resumeInfo, { eager: true })
+  @OneToMany(() => ResumeHistory, (history) => history.resumeInfo, { lazy: true })
   history: ResumeHistory[];
 }

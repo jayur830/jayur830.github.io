@@ -11,9 +11,6 @@ type UserPayload {
 }
 
 type ImageMetadata {
-  """로고 ID"""
-  logoId: String!
-
   """이미지 src (url)"""
   src: String!
 
@@ -27,15 +24,35 @@ type ImageMetadata {
   height: Int!
 }
 
+type CreateCompanyPayload {
+  """회사 ID"""
+  companyId: String!
+
+  """회사 이름"""
+  companyName: String!
+
+  """회사 로고"""
+  logo: ImageMetadata
+
+  """입사일"""
+  startDate: Month!
+
+  """퇴사일"""
+  endDate: Month
+
+  """퇴사일"""
+  website: String
+
+  """회사에 대한 간단한 설명"""
+  description: String
+}
+
 type CareerItem {
   """경력 ID"""
   careerId: String!
 
   """프로젝트 이름"""
   name: String!
-
-  """프로젝트 진행 중 여부"""
-  completed: Boolean!
 
   """프로젝트 시작월"""
   startDate: Month!
@@ -347,14 +364,23 @@ type Mutation {
   """이력서 제목, Github 주소 수정"""
   Resume_updateInfo(input: UpdateInfoInput!): UpdateInfoPayload!
 
+  """이력서 내 회사 정보 추가"""
+  Resume_createCompanyInfo(input: CreateCompanyInput!): CreateCompanyPayload!
+
   """이력서 내 회사 정보 수정"""
   Resume_updateCompanyInfo(input: UpdateCompanyInput!): UpdateCompanyPayload!
 
-  """이력 서 내 경력 상세 정보 수정"""
+  """이력서 내 회사 정보 삭제"""
+  Resume_deleteCompanyInfo(companyId: String!): String!
+
+  """이력서 내 경력 상세 정보 추가"""
+  Resume_createHistoryDetail(input: CreateHistoryDetailInput!): UpdateHistoryDetailPayload!
+
+  """이력서 내 경력 상세 정보 수정"""
   Resume_updateHistoryDetail(input: UpdateHistoryDetailInput!): UpdateHistoryDetailPayload!
 
-  """이력서 내 회사 로고 메타데이터 수정"""
-  Resume_updateCompanyLogo(input: ImageMetadataInput!): ImageMetadata!
+  """이력서 내 경력 상세 정보 삭제"""
+  Resume_deleteHistoryDetail(historyDetailId: String!): String!
 }
 
 input UpdateInfoInput {
@@ -365,12 +391,49 @@ input UpdateInfoInput {
   github: String
 }
 
+input CreateCompanyInput {
+  """회사 이름"""
+  companyName: String!
+
+  """회사 로고"""
+  logo: CreateImageMetadataInput
+
+  """입사일"""
+  startDate: Month!
+
+  """퇴사일"""
+  endDate: Month
+
+  """회사 홈페이지 주소"""
+  website: String
+
+  """회사에 대한 간단한 설명"""
+  description: String
+}
+
+input CreateImageMetadataInput {
+  """이미지 src (url)"""
+  src: String!
+
+  """이미지 alt"""
+  alt: String!
+
+  """이미지 width"""
+  width: Int!
+
+  """이미지 height"""
+  height: Int!
+}
+
 input UpdateCompanyInput {
   """회사 ID"""
   companyId: String!
 
   """회사 이름"""
   companyName: String!
+
+  """회사 로고"""
+  logo: UpdateImageMetadataInput
 
   """입사일"""
   startDate: Month
@@ -382,6 +445,43 @@ input UpdateCompanyInput {
   website: String
 
   """회사에 대한 간단한 설명"""
+  description: String
+}
+
+input UpdateImageMetadataInput {
+  """이미지 src (url)"""
+  src: String
+
+  """이미지 alt"""
+  alt: String
+
+  """이미지 width"""
+  width: Int
+
+  """이미지 height"""
+  height: Int
+}
+
+input CreateHistoryDetailInput {
+  """회사 ID"""
+  companyId: String!
+
+  """팀 또는 소속 서비스 이름 (없을 경우 null)"""
+  group: String
+
+  """프로젝트 이름"""
+  name: String!
+
+  """프로젝트 시작월"""
+  startDate: Month!
+
+  """프로젝트 종료월 (진행중일 경우 null)"""
+  endDate: Month
+
+  """프로젝트에 쓰인 기술 태그 목록"""
+  techList: [TechLogo!]!
+
+  """프로젝트 설명 (성과/결과)"""
   description: String
 }
 
@@ -406,21 +506,4 @@ input UpdateHistoryDetailInput {
 
   """프로젝트 설명 (성과/결과)"""
   description: String
-}
-
-input ImageMetadataInput {
-  """로고 ID"""
-  logoId: String!
-
-  """이미지 src (url)"""
-  src: String
-
-  """이미지 alt"""
-  alt: String
-
-  """이미지 width"""
-  width: Int
-
-  """이미지 height"""
-  height: Int
 }

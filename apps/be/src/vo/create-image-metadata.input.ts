@@ -1,7 +1,7 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, Int } from '@nestjs/graphql';
 
-@ObjectType()
-export class ImageMetadata {
+@InputType()
+export class CreateImageMetadataInput {
   @Field({ description: '이미지 src (url)' })
   src: string;
 

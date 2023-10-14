@@ -24,14 +24,18 @@ export class ResumeHistory {
   @Column({ default: '', length: 2 ** 12 - 1 })
   description: string;
 
-  @ManyToOne(() => ResumeInfo, (info) => info.history)
+  @ManyToOne(() => ResumeInfo, (info) => info.history, { cascade: true })
   @JoinColumn({ name: 'resume_info_id' })
   resumeInfo: ResumeInfo;
 
-  @OneToMany(() => ResumeHistoryDetail, (careers) => careers.history, { eager: true })
+  @OneToMany(() => ResumeHistoryDetail, (careers) => careers.history)
   careers: ResumeHistoryDetail[];
 
-  @OneToOne(() => CompanyLogo, (logo) => logo.id, { eager: true })
+  @OneToOne(() => CompanyLogo, (logo) => logo.id, {
+    cascade: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   @JoinColumn({ name: 'logo_id' })
   logo: CompanyLogo;
 }

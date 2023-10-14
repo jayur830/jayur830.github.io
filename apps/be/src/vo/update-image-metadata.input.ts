@@ -1,10 +1,7 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
 
 @InputType()
-export class ImageMetadataInput {
-  @Field({ description: '로고 ID' })
-  logoId: string;
-
+export class UpdateImageMetadataInput {
   @Field({ description: '이미지 src (url)', nullable: true })
   src?: string | null;
 

@@ -5,6 +5,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { AboutMe } from '@/entities/about_me.entity';
 import { CompanyLogo } from '@/entities/company_logo.entity';
 import { ResumeHistory } from '@/entities/resume_history.entity';
 import { ResumeHistoryDetail } from '@/entities/resume_history_detail.entity';
@@ -17,6 +18,7 @@ import { DateScalar } from '@/scalars/date/date.scalar';
 import { MonthScalar } from '@/scalars/date/month.scalar';
 import { YearScalar } from '@/scalars/date/year.scalar';
 
+import { InfoModule } from '../info/info.module';
 import { TechModule } from '../tech/tech.module';
 
 @Module({
@@ -35,7 +37,7 @@ import { TechModule } from '../tech/tech.module';
           username: configService.get<string>('MYSQL_USERNAME'),
           password: configService.get<string>('MYSQL_PASSWORD'),
           database: configService.get<string>('MYSQL_DATABASE'),
-          entities: [ResumeInfo, ResumeHistory, ResumeHistoryDetail, CompanyLogo, User],
+          entities: [ResumeInfo, ResumeHistory, ResumeHistoryDetail, CompanyLogo, User, AboutMe],
           synchronize: false,
           logging: true,
         };
@@ -50,6 +52,7 @@ import { TechModule } from '../tech/tech.module';
     AuthModule,
     ResumeModule,
     TechModule,
+    InfoModule,
   ],
   providers: [
     {

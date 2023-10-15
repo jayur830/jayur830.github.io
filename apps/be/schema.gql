@@ -325,6 +325,23 @@ type UpdateInfoPayload {
   github: String
 }
 
+type AboutMe {
+  """이름"""
+  name: String!
+
+  """생년월일"""
+  birth: Date!
+
+  """이메일"""
+  email: String!
+
+  """Github URL"""
+  github: String
+
+  """블로그 URL"""
+  blog: String
+}
+
 """YYYY 형식의 문자열"""
 scalar Year
 
@@ -340,6 +357,12 @@ type Query {
 
   """기술 로고 리스트"""
   TechList_get(keyword: String): [TechLogo!]!
+
+  """내 정보"""
+  AboutMe_get: AboutMe!
+
+  """기술 스택 목록"""
+  Skills_get: [TechLogo!]!
 }
 
 type Mutation {

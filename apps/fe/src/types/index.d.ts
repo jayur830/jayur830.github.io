@@ -10,6 +10,12 @@ declare module '*.gql' {
   export default value;
 }
 
+declare module '*.png' {
+  import { StaticImageData } from 'next/image';
+  const value: StaticImageData;
+  export default value;
+}
+
 declare namespace NodeJS {
   interface ProcessEnv {
     NEXT_PUBLIC_API_URL: string;

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Button, Grid, styled, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
-import Jayur830Img from '@/assets/images/jayur830.png';
+import Jayur830Img from '@/assets/images/icons/jayur830.png';
 
 export default function NotFound() {
   const router = useRouter();

@@ -1,0 +1,16 @@
+mutation UpdateCompany($input: UpdateCompanyInput!) {
+  updated: Resume_updateCompanyInfo(input: $input) {
+    companyId
+    companyName
+    logo {
+      src
+      alt
+      width
+      height
+    }
+    startDate
+    endDate
+    website
+    description
+  }
+}

@@ -1,0 +1,31 @@
+query Resume {
+  resume: Resume_get {
+    title
+    github
+    history {
+      companyId
+      companyName
+      logo {
+        src
+        alt
+        width
+        height
+      }
+      startDate
+      endDate
+      website
+      description
+      careers {
+        groupName
+        list {
+          careerId
+          name
+          startDate
+          endDate
+          techList
+          description
+        }
+      }
+    }
+  }
+}

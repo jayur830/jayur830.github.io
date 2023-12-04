@@ -1,0 +1,75 @@
+{
+  "name": "jayur830.github.io",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --fix . --ext .tsx,.ts && prettier --write \"**/*.+(js|jsx|ts|tsx)\"",
+    "codegen": "graphql-codegen && next lint --fix --quiet --file ./src/graphql/graphql.ts"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.8.8",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/lab": "^5.0.0-alpha.154",
+    "@mui/material": "^5.14.19",
+    "@mui/x-date-pickers": "^6.18.3",
+    "@uiw/react-md-editor": "^4.0.1",
+    "dayjs": "^1.11.10",
+    "firebase": "^10.7.0",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
+    "immer": "^10.0.3",
+    "lodash": "^4.17.21",
+    "next": "14.0.3",
+    "react": "^18",
+    "react-constate": "^1.1.2",
+    "react-dom": "^18",
+    "react-hook-form": "^7.48.2",
+    "react-markdown": "^9.0.1",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@svgr/webpack": "^8.1.0",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "commitizen": "^4.3.0",
+    "cz-customizable": "^7.0.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.0",
+    "sass": "^1.69.5",
+    "typescript": "^5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "lint-staged": {
+    "!(*test).{ts,tsx}": [
+      "next lint --fix . --ext .tsx,.ts",
+      "prettier --write \"**/*.+(js|jsx|ts|tsx)\""
+    ]
+  }
+}

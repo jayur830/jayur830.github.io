@@ -1,0 +1,28 @@
+name: deploy
+
+on:
+  push:
+    tags:
+      - release-*
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Remove .husky
+        run: rm -rf .husky
+      - name: Create .env.production file
+        run: echo ${{ vars.ENV_FE_PROD }} | base64 -d > .env.production
+      - name: Install dependencies
+        run: npm i
+      - name: Install Next.js
+        run: npm i -g next
+      - name: Build application
+        run: npm run build
+      - name: Deployment
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_PAGE_TOKEN }}
+          publish_dir: dist

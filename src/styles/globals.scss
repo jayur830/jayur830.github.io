@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'D2Coding';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/D2CodingBold.woff') format('woff');
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  transition: background-color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+.markdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 20px;
+
+    li {
+      letter-spacing: -0.3px;
+    }
+  }
+
+  code {
+    font-family: D2Coding;
+    color: #EB5757;
+    background-color: #E0E0E0;
+    border-radius: 3px;
+    padding: 3px 5px;
+  }
+}

@@ -1,13 +1,12 @@
 'use client';
 
-import { useEffect, useMemo } from 'react';
+import { PropsWithChildren, useEffect, useMemo } from 'react';
 import { useQuery } from '@apollo/client';
-import { Card, Divider, Grid, styled } from '@mui/material';
+import { Card, Divider, Grid, styled, useTheme } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import dayjs from 'dayjs';
-import { omit } from 'lodash';
 
-import { ResumeQuery } from '@/graphql/graphql';
+import { ResumeQuery, ResumeQueryVariables } from '@/graphql/graphql';
 import GET_RESUME_QUERY from '@/graphql/queries/getResume.gql';
 import { useCommonState } from '@/store/common';
 
@@ -16,9 +15,15 @@ import HistoryForm from './HistoryForm';
 import ResumeInfoForm from './ResumeInfoForm';
 
 export default function Admin() {
+  const theme = useTheme();
+
   const setLoading = useCommonState((state) => state.setLoading);
 
-  const { data, loading } = useQuery<ResumeQuery>(GET_RESUME_QUERY);
+  const { data, loading } = useQuery<ResumeQuery, ResumeQueryVariables>(GET_RESUME_QUERY, {
+    variables: {
+      userId: process.env.NEXT_PUBLIC_UID,
+    },
+  });
 
   const resumeData = useMemo(() => {
     if (!data) {
@@ -39,15 +44,18 @@ export default function Admin() {
       gap={4}
       maxWidth={1000}
     >
-      <SectionCard>
+      <SectionCard mode={theme.palette.mode}>
         <ResumeInfoForm
           title={resumeData?.title || ''}
           github={resumeData?.github || ''}
         />
       </SectionCard>
       <Divider />
-      {(resumeData?.history || []).map((item, i) => (
-        <SectionCard key={i}>
+      {(resumeData?.companyList || []).map((item, i) => (
+        <SectionCard
+          key={i}
+          mode={theme.palette.mode}
+        >
           <HistoryForm
             companyId={item.companyId}
             companyName={item.companyName}
@@ -63,21 +71,24 @@ export default function Admin() {
               gap={4}
               marginTop={3}
             >
-              {item.careers.map((career, j) => (
+              {item.projectList.map((project, j) => (
                 <Grid
                   key={j}
                   container
                   flexDirection="column"
                   gap={4}
                 >
-                  {career.list.map((subItem, k) => (
+                  {project.list.map((subItem, k) => (
                     <CareerItemForm
                       key={k}
-                      historyDetailId={subItem.careerId}
-                      groupName={career.groupName}
+                      companyId={item.companyId}
+                      projectId={subItem.projectId}
+                      groupName={project.groupName}
+                      name={subItem.title}
                       startDate={dayjs(subItem.startDate)}
                       endDate={subItem.endDate ? dayjs(subItem.endDate) : null}
-                      {...omit(subItem, '__typename', 'startDate', 'endDate')}
+                      techList={subItem.techList}
+                      description={subItem.description}
                     />
                   ))}
                 </Grid>
@@ -90,8 +101,14 @@ export default function Admin() {
   );
 }
 
-const SectionCard = styled(Card)(({ theme }) => ({
-  boxShadow: `0 0 10px 3px ${theme.palette.mode === 'light' ? grey['300'] : grey['A700']}`,
-  padding: 20,
-  transition: 'background-color 0.3s ease',
-}));
+const SectionCard = ({ children, mode }: PropsWithChildren<{ mode: 'light' | 'dark' }>) => (
+  <Card
+    sx={{
+      boxShadow: `0 0 10px 3px ${mode === 'light' ? grey['300'] : grey['A700']}`,
+      padding: '20px',
+      transition: 'background-color 0.3s ease',
+    }}
+  >
+    {children}
+  </Card>
+);

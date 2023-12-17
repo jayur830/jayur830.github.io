@@ -4,9 +4,10 @@ import { useEffect, useMemo } from 'react';
 import { useQuery } from '@apollo/client';
 import { GitHub } from '@mui/icons-material';
 import { Grid, IconButton, styled, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { getAuth } from 'firebase/auth';
 
 import { ResumeCard } from '@/components';
-import { ResumeQuery } from '@/graphql/graphql';
+import { ResumeQuery, ResumeQueryVariables } from '@/graphql/graphql';
 import GET_RESUME_QUERY from '@/graphql/queries/getResume.gql';
 import { useCommonState } from '@/store/common';
 
@@ -16,7 +17,11 @@ export default function Resume() {
 
   const setLoading = useCommonState((state) => state.setLoading);
 
-  const { data, loading } = useQuery<ResumeQuery>(GET_RESUME_QUERY);
+  const { data, loading } = useQuery<ResumeQuery, ResumeQueryVariables>(GET_RESUME_QUERY, {
+    variables: {
+      userId: process.env.NEXT_PUBLIC_UID,
+    },
+  });
 
   const resumeData = useMemo(() => {
     if (!data) {
@@ -64,7 +69,7 @@ export default function Resume() {
         paddingTop={2}
         paddingBottom={20}
       >
-        {(resumeData?.history ?? []).map((item, i) => (
+        {(resumeData?.companyList ?? []).map((item, i) => (
           <ResumeCard
             key={i}
             data={item}

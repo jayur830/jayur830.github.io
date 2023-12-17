@@ -12,8 +12,8 @@ import MDEditor from '@uiw/react-md-editor';
 import { FormItem } from '@/components';
 import { logoValues } from '@/configs/logo';
 import { useAlert } from '@/contexts/AlertProvider';
-import { GetTechListQuery, TechLogo, UpdateHistoryDetailMutation, UpdateHistoryDetailMutationVariables } from '@/graphql/graphql';
-import UPDATE_HISTORY_DETAIL_MUTATION from '@/graphql/mutations/updateHistoryDetail.gql';
+import { GetTechListQuery, TechLogo, UpdateProjectMutation, UpdateProjectMutationVariables } from '@/graphql/graphql';
+import UPDATE_PROJECT_MUTATION from '@/graphql/mutations/updateProject.gql';
 import GET_TECH_LIST_QUERY from '@/graphql/queries/getTechList.gql';
 import { useCommonState } from '@/store/common';
 
@@ -23,7 +23,8 @@ import '@uiw/react-markdown-preview/markdown.css';
 import { ResumeHistoryDetailFormData } from '../types';
 
 export interface CareerItemFormProps {
-  historyDetailId: string;
+  companyId: number;
+  projectId: number;
   groupName?: string | null;
   name: string;
   startDate: Dayjs;
@@ -32,7 +33,7 @@ export interface CareerItemFormProps {
   description: string;
 }
 
-export default function CareerItemForm({ historyDetailId, groupName, name, startDate, endDate, techList, description }: CareerItemFormProps) {
+export default function CareerItemForm({ companyId, projectId, groupName, name, startDate, endDate, techList, description }: CareerItemFormProps) {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -75,7 +76,7 @@ export default function CareerItemForm({ historyDetailId, groupName, name, start
     },
   });
 
-  const [updateHistoryDetail, { loading }] = useMutation<UpdateHistoryDetailMutation, UpdateHistoryDetailMutationVariables>(UPDATE_HISTORY_DETAIL_MUTATION, {
+  const [updateProject, { loading }] = useMutation<UpdateProjectMutation, UpdateProjectMutationVariables>(UPDATE_PROJECT_MUTATION, {
     onCompleted() {
       openAlert({
         open: true,
@@ -108,19 +109,19 @@ export default function CareerItemForm({ historyDetailId, groupName, name, start
 
   const onSubmit = useCallback(
     (data: ResumeHistoryDetailFormData) => {
-      updateHistoryDetail({
+      updateProject({
         variables: {
           input: {
-            ...omit(data, 'groupName', 'isWorking', 'keyword', 'startDate', 'endDate'),
-            historyDetailId,
-            group: data.groupName,
+            ...omit(data, 'isWorking', 'keyword', 'startDate', 'endDate'),
+            projectId,
+            companyId,
             startDate: data.startDate.format('YYYY-MM'),
             endDate: data.endDate && data.endDate.value ? data.endDate.value.format('YYYY-MM') : null,
           },
         },
       });
     },
-    [updateHistoryDetail, historyDetailId],
+    [updateProject, projectId, companyId],
   );
 
   useEffect(() => {

@@ -7,8 +7,8 @@ import { Button, Grid, styled, TextField } from '@mui/material';
 
 import { FormItem } from '@/components';
 import { useAlert } from '@/contexts/AlertProvider';
-import { UpdateInfoMutation, UpdateInfoMutationVariables } from '@/graphql/graphql';
-import UPDATE_INFO_MUTATION from '@/graphql/mutations/updateInfo.gql';
+import { UpdateResumeMutation, UpdateResumeMutationVariables } from '@/graphql/graphql';
+import UPDATE_RESUME_MUTATION from '@/graphql/mutations/updateResume.gql';
 import { useCommonState } from '@/store/common';
 
 import { ResumeInfoFormData } from '../types';
@@ -19,7 +19,7 @@ export default function ResumeInfoForm({ title, github }: ResumeInfoFormProps) {
   const setLoading = useCommonState((state) => state.setLoading);
   const { openAlert } = useAlert();
 
-  const [updateInfo, { loading }] = useMutation<UpdateInfoMutation, UpdateInfoMutationVariables>(UPDATE_INFO_MUTATION, {
+  const [updateResume, { loading }] = useMutation<UpdateResumeMutation, UpdateResumeMutationVariables>(UPDATE_RESUME_MUTATION, {
     onCompleted() {
       openAlert({
         open: true,
@@ -46,9 +46,9 @@ export default function ResumeInfoForm({ title, github }: ResumeInfoFormProps) {
 
   const onSubmit = useCallback(
     (input: ResumeInfoFormData) => {
-      updateInfo({ variables: { input } });
+      updateResume({ variables: { input } });
     },
-    [updateInfo],
+    [updateResume],
   );
 
   useEffect(() => {

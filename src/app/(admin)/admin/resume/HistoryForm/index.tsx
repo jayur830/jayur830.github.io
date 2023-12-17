@@ -17,7 +17,7 @@ import { useCommonState } from '@/store/common';
 import { ResumeCompanyInfoFormData } from '../types';
 
 export interface HistoryFormProps extends Omit<ResumeCompanyInfoFormData, 'isWorking' | 'endDate'> {
-  companyId: string;
+  companyId: number;
   endDate?: Dayjs;
 }
 

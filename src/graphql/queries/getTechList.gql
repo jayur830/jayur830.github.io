@@ -1,3 +1,3 @@
 query GetTechList($keyword: String) {
-  techList: TechList_get(keyword: $keyword)
+  techList(keyword: $keyword)
 }

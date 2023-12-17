@@ -1,0 +1,6 @@
+mutation UpdateResume($input: UpdateResumeInput!) {
+  updated: Resume_update(input: $input) {
+    title
+    github
+  }
+}

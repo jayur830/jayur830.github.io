@@ -1,5 +1,5 @@
 mutation UpdateCompany($input: UpdateCompanyInput!) {
-  updated: Resume_updateCompanyInfo(input: $input) {
+  updated: Company_update(input: $input) {
     companyId
     companyName
     logo {

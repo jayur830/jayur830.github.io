@@ -12,7 +12,7 @@ import { ResumeQuery } from '@/graphql/graphql';
 import logoBadge from '../LogoBadge';
 
 export interface ResumeCardProps {
-  data: NonNullable<ResumeQuery['resume']['history']>[number];
+  data: NonNullable<ResumeQuery['resume']['companyList']>[number];
 }
 
 export default function ResumeCard({ data }: ResumeCardProps) {
@@ -90,14 +90,14 @@ export default function ResumeCard({ data }: ResumeCardProps) {
           </Typography>
         </Grid>
       )}
-      {data.careers.map((carrier, j) => (
+      {data.projectList.map((project, j) => (
         <Fragment key={j}>
           <Typography
             fontWeight={700}
             fontSize={sm ? 18 : 22}
             letterSpacing={-1}
           >
-            {carrier.groupName}
+            {project.groupName}
           </Typography>
           <StyledTimeline
             sx={{
@@ -107,7 +107,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
               },
             }}
           >
-            {carrier.list.map((item, k) => (
+            {project.list.map((item, k) => (
               <TimelineItem key={k}>
                 {!sm && (
                   <StyledTimelineOppositeContent whiteSpace="pre-line">
@@ -127,7 +127,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
                       <Schedule />
                     </LoadingTimelineDot>
                   )}
-                  {k < carrier.list.length - 1 && <TimelineConnector />}
+                  {k < project.list.length - 1 && <TimelineConnector />}
                 </TimelineSeparator>
                 <StyledTimelineContent whiteSpace="pre-line">
                   <Typography
@@ -135,7 +135,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
                     fontSize={sm ? 16 : 20}
                     letterSpacing={-1}
                   >
-                    {item.name}
+                    {item.title}
                   </Typography>
                   {sm && (
                     <StyledTimelineOppositeContentMobile>{`${item.startDate} ~ ${item.endDate} (${dayjs(item.endDate).diff(dayjs(item.startDate), 'month')}개월)`}</StyledTimelineOppositeContentMobile>

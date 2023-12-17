@@ -19,6 +19,8 @@ declare module '*.png' {
 declare namespace NodeJS {
   interface ProcessEnv {
     NEXT_PUBLIC_API_URL: string;
+    NEXT_PUBLIC_AUTH_URL: string;
+    NEXT_PUBLIC_UID: string;
     NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID: string;
     NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_SECRET: string;
     NEXT_PUBLIC_FIREBASE_API_KEY: string;
@@ -30,6 +32,8 @@ declare namespace NodeJS {
     NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: string;
 
     API_URL: string;
+    AUTH_URL: string;
+    UID: string;
     GITHUB_OAUTH_CLIENT_ID: string;
     GITHUB_OAUTH_CLIENT_SECRET: string;
     FIREBASE_API_KEY: string;

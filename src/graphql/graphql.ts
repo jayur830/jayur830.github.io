@@ -20,7 +20,7 @@ export type Scalars = {
 export type Company = {
   __typename?: 'Company';
   /** 회사 ID */
-  companyId: Scalars['Float']['output'];
+  companyId: Scalars['ID']['output'];
   /** 회사 이름 */
   companyName: Scalars['String']['output'];
   /** 회사에 대한 간단한 설명 */
@@ -55,7 +55,7 @@ export type CreateCompanyInput = {
 export type CreateCompanyPayload = {
   __typename?: 'CreateCompanyPayload';
   /** 회사 ID */
-  companyId: Scalars['Float']['output'];
+  companyId: Scalars['ID']['output'];
   /** 회사 이름 */
   companyName: Scalars['String']['output'];
   /** 회사에 대한 간단한 설명 */
@@ -83,7 +83,7 @@ export type CreateImageInput = {
 
 export type CreateProjectInput = {
   /** 회사 ID */
-  companyId: Scalars['Float']['input'];
+  companyId: Scalars['ID']['input'];
   /** 프로젝트 설명 MARKDOWN (성과/결과) */
   description: Scalars['String']['input'];
   /** 프로젝트 종료월 (진행중일 경우 null) */
@@ -101,7 +101,7 @@ export type CreateProjectInput = {
 export type CreateProjectPayload = {
   __typename?: 'CreateProjectPayload';
   /** 회사 ID */
-  companyId: Scalars['Float']['output'];
+  companyId: Scalars['ID']['output'];
   /** 프로젝트 설명 MARKDOWN (성과/결과) */
   description: Scalars['String']['output'];
   /** 프로젝트 종료월 (진행중일 경우 null) */
@@ -109,7 +109,7 @@ export type CreateProjectPayload = {
   /** 팀 또는 소속 서비스 이름 (없을 경우 null) */
   groupName?: Maybe<Scalars['String']['output']>;
   /** 프로젝트 ID */
-  projectId: Scalars['Float']['output'];
+  projectId: Scalars['ID']['output'];
   /** 프로젝트 시작월 */
   startDate: Scalars['Month']['output'];
   /** 프로젝트에 쓰인 기술 태그 목록 */
@@ -144,7 +144,7 @@ export type CreateResumePayload = {
 export type DeleteCompanyPayload = {
   __typename?: 'DeleteCompanyPayload';
   /** 회사 ID */
-  companyId: Scalars['Float']['output'];
+  companyId: Scalars['ID']['output'];
   /** 회사 이름 */
   companyName: Scalars['String']['output'];
   /** 회사에 대한 간단한 설명 */
@@ -162,7 +162,7 @@ export type DeleteCompanyPayload = {
 export type DeleteProjectPayload = {
   __typename?: 'DeleteProjectPayload';
   /** 회사 ID */
-  companyId: Scalars['Float']['output'];
+  companyId: Scalars['ID']['output'];
   /** 프로젝트 설명 MARKDOWN (성과/결과) */
   description: Scalars['String']['output'];
   /** 프로젝트 종료월 (진행중일 경우 null) */
@@ -170,7 +170,7 @@ export type DeleteProjectPayload = {
   /** 팀 또는 소속 서비스 이름 (없을 경우 null) */
   groupName?: Maybe<Scalars['String']['output']>;
   /** 프로젝트 ID */
-  projectId: Scalars['Float']['output'];
+  projectId: Scalars['ID']['output'];
   /** 프로젝트 시작월 */
   startDate: Scalars['Month']['output'];
   /** 프로젝트에 쓰인 기술 태그 목록 */
@@ -250,7 +250,7 @@ export type Project = {
   /** 프로젝트 종료월 (진행중일 경우 null) */
   endDate?: Maybe<Scalars['Month']['output']>;
   /** 프로젝트 ID */
-  projectId: Scalars['Float']['output'];
+  projectId: Scalars['ID']['output'];
   /** 프로젝트 시작월 */
   startDate: Scalars['Month']['output'];
   /** 프로젝트에 쓰인 기술 태그 목록 */
@@ -282,7 +282,7 @@ export type QueryResumeArgs = {
 };
 
 export type QuerySkillListArgs = {
-  userId: Scalars['String']['input'];
+  userId: Scalars['ID']['input'];
 };
 
 export type QueryTechListArgs = {
@@ -421,7 +421,7 @@ export enum TechLogo {
 
 export type UpdateCompanyInput = {
   /** 회사 ID */
-  companyId: Scalars['Float']['input'];
+  companyId: Scalars['ID']['input'];
   /** 회사 이름 */
   companyName?: InputMaybe<Scalars['String']['input']>;
   /** 회사에 대한 간단한 설명 */
@@ -439,7 +439,7 @@ export type UpdateCompanyInput = {
 export type UpdateCompanyPayload = {
   __typename?: 'UpdateCompanyPayload';
   /** 회사 ID */
-  companyId: Scalars['Float']['output'];
+  companyId: Scalars['ID']['output'];
   /** 회사 이름 */
   companyName: Scalars['String']['output'];
   /** 회사에 대한 간단한 설명 */
@@ -467,7 +467,7 @@ export type UpdateImageInput = {
 
 export type UpdateProjectInput = {
   /** 회사 ID */
-  companyId: Scalars['Float']['input'];
+  companyId: Scalars['ID']['input'];
   /** 프로젝트 설명 MARKDOWN (성과/결과) */
   description?: InputMaybe<Scalars['String']['input']>;
   /** 프로젝트 종료월 (진행중일 경우 null) */
@@ -487,7 +487,7 @@ export type UpdateProjectInput = {
 export type UpdateProjectPayload = {
   __typename?: 'UpdateProjectPayload';
   /** 회사 ID */
-  companyId: Scalars['Float']['output'];
+  companyId: Scalars['ID']['output'];
   /** 프로젝트 설명 MARKDOWN (성과/결과) */
   description: Scalars['String']['output'];
   /** 프로젝트 종료월 (진행중일 경우 null) */
@@ -495,7 +495,7 @@ export type UpdateProjectPayload = {
   /** 팀 또는 소속 서비스 이름 (없을 경우 null) */
   groupName?: Maybe<Scalars['String']['output']>;
   /** 프로젝트 ID */
-  projectId: Scalars['Float']['output'];
+  projectId: Scalars['ID']['output'];
   /** 프로젝트 시작월 */
   startDate: Scalars['Month']['output'];
   /** 프로젝트에 쓰인 기술 태그 목록 */
@@ -535,7 +535,7 @@ export type UpdateCompanyMutation = {
   __typename?: 'Mutation';
   updated: {
     __typename?: 'UpdateCompanyPayload';
-    companyId: number;
+    companyId: string;
     companyName: string;
     startDate: any;
     endDate?: any | null;
@@ -545,12 +545,6 @@ export type UpdateCompanyMutation = {
   };
 };
 
-export type UpdateResumeMutationVariables = Exact<{
-  input: UpdateResumeInput;
-}>;
-
-export type UpdateResumeMutation = { __typename?: 'Mutation'; updated: { __typename?: 'UpdateResumePayload'; title: string; github?: string | null } };
-
 export type UpdateProjectMutationVariables = Exact<{
   input: UpdateProjectInput;
 }>;
@@ -559,8 +553,8 @@ export type UpdateProjectMutation = {
   __typename?: 'Mutation';
   updated: {
     __typename?: 'UpdateProjectPayload';
-    projectId: number;
-    companyId: number;
+    projectId: string;
+    companyId: string;
     groupName?: string | null;
     title: string;
     startDate: any;
@@ -569,6 +563,12 @@ export type UpdateProjectMutation = {
     description: string;
   };
 };
+
+export type UpdateResumeMutationVariables = Exact<{
+  input: UpdateResumeInput;
+}>;
+
+export type UpdateResumeMutation = { __typename?: 'Mutation'; updated: { __typename?: 'UpdateResumePayload'; title: string; github?: string | null } };
 
 export type ResumeQueryVariables = Exact<{
   userId: Scalars['String']['input'];
@@ -582,7 +582,7 @@ export type ResumeQuery = {
     github?: string | null;
     companyList: Array<{
       __typename?: 'Company';
-      companyId: number;
+      companyId: string;
       companyName: string;
       startDate: any;
       endDate?: any | null;
@@ -592,7 +592,7 @@ export type ResumeQuery = {
       projectList: Array<{
         __typename?: 'ProjectGroup';
         groupName?: string | null;
-        list: Array<{ __typename?: 'Project'; projectId: number; title: string; startDate: any; endDate?: any | null; techList: Array<TechLogo>; description: string }>;
+        list: Array<{ __typename?: 'Project'; projectId: string; title: string; startDate: any; endDate?: any | null; techList: Array<TechLogo>; description: string }>;
       }>;
     }>;
   };

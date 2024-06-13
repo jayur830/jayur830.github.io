@@ -2,8 +2,8 @@ import { ApolloClient, ApolloLink, DefaultContext, from, fromPromise, HttpLink, 
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
 import { onError } from '@apollo/client/link/error';
 
-import { authService } from '@/configs/firebase';
-import { AuthGuardType } from '@/enums';
+import { authService } from '@/constants/firebase';
+import { AuthGuardType } from '@/enums/auth';
 
 if (process.env.NODE_ENV === 'development') {
   // Adds messages only in a dev environment

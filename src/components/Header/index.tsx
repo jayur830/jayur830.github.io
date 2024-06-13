@@ -1,9 +1,9 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
-import Link from 'next/link';
 import { DensityMedium } from '@mui/icons-material';
-import { Box, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, styled } from '@mui/material';
+import { Box, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import Link from 'next/link';
+import { ReactNode, useState } from 'react';
 
 import { NavigationItem } from '@/types/navigation';
 
@@ -17,16 +17,9 @@ export default function Header({ navigations, extra }: HeaderProps) {
 
   return (
     <>
-      <Grid
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-      >
+      <Grid display="flex" justifyContent="space-between" alignItems="center">
         {process.env.NODE_ENV === 'development' ? (
-          <IconButton
-            size="large"
-            onClick={() => setOpen(true)}
-          >
+          <IconButton size="large" onClick={() => setOpen(true)}>
             <DensityMedium />
           </IconButton>
         ) : (
@@ -34,19 +27,24 @@ export default function Header({ navigations, extra }: HeaderProps) {
         )}
         {extra}
       </Grid>
-      <Drawer
-        anchor="left"
-        open={open}
-        onClose={() => setOpen(false)}
-      >
+      <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
         <List style={{ width: 200 }}>
           {navigations.map(({ label, path }, i) => (
-            <ListItem key={i}>
-              <MenuLink href={path}>
+            <ListItem
+              key={i}
+              sx={{
+                'a.menu': {
+                  textDecoration: 'none',
+                  width: '100%',
+                  color: 'unset',
+                },
+              }}
+            >
+              <Link className="menu" href={path}>
                 <ListItemButton>
                   <ListItemText>{label}</ListItemText>
                 </ListItemButton>
-              </MenuLink>
+              </Link>
             </ListItem>
           ))}
         </List>
@@ -54,9 +52,3 @@ export default function Header({ navigations, extra }: HeaderProps) {
     </>
   );
 }
-
-const MenuLink = styled(Link)({
-  textDecoration: 'none',
-  width: '100%',
-  color: 'unset',
-});

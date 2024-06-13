@@ -1,22 +1,20 @@
 'use client';
 
-import { useCallback } from 'react';
-import { useRouter } from 'next/navigation';
-import { Button, Grid, Typography, useTheme } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import { Button, Grid, Typography } from '@mui/material';
 import { FirebaseError } from 'firebase/app';
 import { GithubAuthProvider, GoogleAuthProvider, linkWithPopup, signInWithPopup, User } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
+import { useCallback } from 'react';
 
-import { authExceptionValues } from '@/configs/auth';
+import { authExceptionValues } from '@/constants/auth';
 import { useAlert } from '@/contexts/AlertProvider';
-import { AuthGuardType } from '@/enums';
+import { AuthGuardType } from '@/enums/auth';
 import useFirebase from '@/hooks/firebase/useFirebase';
 
 import { loginButtonValues } from './values';
 
-export default function Client() {
+export default function Page() {
   const router = useRouter();
-  const theme = useTheme();
 
   const { auth } = useFirebase();
   const { openAlert } = useAlert();
@@ -101,29 +99,16 @@ export default function Client() {
   );
 
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      height="100%"
-      padding="20px"
-    >
+    <Grid container justifyContent="center" alignItems="center" height="100%" padding="20px">
       <Grid
         container
         direction="column"
-        gap={4}
+        gap={{ xs: 4, md: '14px' }}
         maxWidth={400}
         width="100%"
-        border={`1.5px solid ${grey['400']}`}
-        borderRadius="20px"
-        padding="36px"
-        sx={{
-          [theme.breakpoints.down('sm')]: {
-            gap: '14px',
-            borderRadius: '10px',
-            padding: '20px',
-          },
-        }}
+        border={(theme) => `1.5px solid ${theme.palette.grey['400']}`}
+        borderRadius={{ xs: '10px', md: '20px' }}
+        padding={{ xs: '20px', md: '36px' }}
       >
         {loginButtonValues.map(({ key, icon: Icon, buttonProps, label }) => (
           <Button
@@ -137,27 +122,17 @@ export default function Client() {
               backgroundColor: buttonProps.backgroundColor,
               color: buttonProps.textColor,
               width: '100%',
-              padding: '16px 24px',
+              padding: { xs: '10px 14px', md: '16px 24px' },
               transition: 'opacity 0.2s',
               ':hover': {
                 backgroundColor: buttonProps.backgroundColor,
-                opacity: 0.5,
-              },
-              [theme.breakpoints.down('sm')]: {
-                padding: '10px 14px',
-                ':hover': {
-                  opacity: 1,
-                },
+                opacity: { xs: 1, md: 0.5 },
               },
             }}
             onClick={() => login(key)}
           >
             <Icon />
-            <Typography
-              fontWeight={700}
-              fontSize={16}
-              width="100%"
-            >
+            <Typography variant="subtitle1" fontWeight="Bold" width="100%">
               {label}
             </Typography>
           </Button>

@@ -1,23 +1,6 @@
-declare module '*.svg' {
-  import { FC, SVGProps } from 'react';
-  const svg: FC<SVGProps<SVGSVGElement>>;
-  export default svg;
-}
-
-declare module '*.gql' {
-  import { DocumentNode } from 'graphql';
-  const value: DocumentNode;
-  export default value;
-}
-
-declare module '*.png' {
-  import { StaticImageData } from 'next/image';
-  const value: StaticImageData;
-  export default value;
-}
-
 declare namespace NodeJS {
   interface ProcessEnv {
+    /** Client */
     NEXT_PUBLIC_API_URL: string;
     NEXT_PUBLIC_AUTH_URL: string;
     NEXT_PUBLIC_UID: string;
@@ -31,6 +14,7 @@ declare namespace NodeJS {
     NEXT_PUBLIC_FIREBASE_APP_ID: string;
     NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: string;
 
+    /** Server */
     API_URL: string;
     AUTH_URL: string;
     UID: string;

@@ -1,12 +1,12 @@
 'use client';
 
-import { PropsWithChildren, SyntheticEvent, useCallback, useState } from 'react';
-import { createProvider } from 'react-constate';
 import { Close } from '@mui/icons-material';
 import { IconButton, Snackbar, SnackbarProps } from '@mui/material';
 import { pick } from 'lodash';
+import { PropsWithChildren, SyntheticEvent, useCallback, useState } from 'react';
+import { createProvider } from 'react-constate';
 
-import { nest } from '@/utils';
+import nest from '@/utils/nest';
 
 function useAlertContext() {
   const [snackbarProps, setSnackbarProps] = useState<Omit<SnackbarProps, 'onClose'> | null>(null);
@@ -31,10 +31,7 @@ function useAlertContext() {
       action: (
         <>
           {snackbarProps?.action}
-          <IconButton
-            color="inherit"
-            onClick={onClose}
-          >
+          <IconButton color="inherit" onClick={onClose}>
             <Close />
           </IconButton>
         </>

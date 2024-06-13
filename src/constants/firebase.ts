@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
-import { isServer } from '../common';
+import { isServer } from './common';
 
 export const firebaseConfig = isServer
   ? {

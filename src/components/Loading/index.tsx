@@ -1,22 +1,28 @@
 'use client';
 
-import { CircularProgress, Grid, styled } from '@mui/material';
+import { CircularProgress, Grid } from '@mui/material';
+
+import { useLoading } from '@/contexts/LoadingProvider';
 
 export default function Loading() {
-  return (
-    <LoadingContainer>
+  const loading = useLoading();
+
+  return loading ? (
+    <Grid
+      sx={{
+        position: 'fixed',
+        top: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF77',
+        width: '100%',
+        height: '100%',
+      }}
+    >
       <CircularProgress color="inherit" />
-    </LoadingContainer>
+    </Grid>
+  ) : (
+    <></>
   );
 }
-
-const LoadingContainer = styled(Grid)({
-  position: 'fixed',
-  top: 0,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#ffffff77',
-  width: '100%',
-  height: '100%',
-});

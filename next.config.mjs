@@ -1,4 +1,4 @@
-const path = require('path');
+import path from 'path';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,11 +7,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  compiler: {
-    styledComponents: true,
-  },
   sassOptions: {
-    includePaths: [path.join(__dirname, 'src', 'styles')],
+    includePaths: ['./src/styles'],
   },
   webpack(config) {
     config.module.rules.push({
@@ -30,4 +27,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

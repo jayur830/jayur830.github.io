@@ -1,4 +1,4 @@
-import { AuthGuardType } from '@/enums';
+import { AuthGuardType } from '@/enums/auth';
 
 export const authExceptionValues = {
   [AuthGuardType.Unauthorization]: '토큰이 필요합니다.',

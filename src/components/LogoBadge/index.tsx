@@ -1,7 +1,8 @@
+import { Chip } from '@mui/material';
+import Link from 'next/link';
 import { FC, SVGProps } from 'react';
-import { Chip, Link, styled } from '@mui/material';
 
-import { logoValues } from '@/configs/logo';
+import { logoValues } from '@/constants/logo';
 import { TechLogo } from '@/graphql/graphql';
 
 interface BadgeProps {
@@ -17,44 +18,31 @@ interface BadgeProps {
   textColor?: string;
 }
 
-const LinkButton = styled(Link)({
-  display: 'flex',
-  textDecoration: 'none',
-});
-
-const StyledChip = styled(Chip)<{ 'background-color': string; 'text-color'?: string }>(({ theme, ...props }) => ({
-  backgroundColor: props['background-color'],
-  borderRadius: 3,
-  color: props['text-color'] ?? theme.palette.common.white,
-  fontSize: 12,
-  fontWeight: 400,
-  height: 22,
-  cursor: 'pointer',
-  ['.MuiChip-icon']: {
-    paddingLeft: 3,
-  },
-  ['.MuiChip-label']: {
-    paddingLeft: 12,
-  },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: 10,
-    height: 18,
-  },
-}));
-
 function Badge({ href, label, icon: Icon, svgProps, backgroundColor, textColor }: BadgeProps) {
   return (
-    <LinkButton
-      href={href}
-      target="_blank"
-    >
-      <StyledChip
+    <Link href={href} target="_blank">
+      <Chip
         icon={<Icon {...svgProps} />}
         label={label}
         background-color={backgroundColor}
         text-color={textColor}
+        sx={{
+          backgroundColor,
+          borderRadius: '3px',
+          color: textColor ?? 'common.white',
+          fontSize: { xs: 10, md: 12 },
+          fontWeight: 400,
+          height: { xs: 18, md: 22 },
+          cursor: 'pointer',
+          ['.MuiChip-icon']: {
+            paddingLeft: '3px',
+          },
+          ['.MuiChip-label']: {
+            paddingLeft: '12px',
+          },
+        }}
       />
-    </LinkButton>
+    </Link>
   );
 }
 

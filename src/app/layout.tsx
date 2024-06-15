@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: '4년차 개발자 이재열입니다.',
   description: '이재열의 포트폴리오입니다.',
   keywords: [
-    '3년차',
+    '4년차',
     '이재열',
     '포트폴리오',
     '개발자',

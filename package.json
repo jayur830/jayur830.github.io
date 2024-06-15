@@ -1,6 +1,6 @@
 {
   "name": "jayur830.github.io",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "private": true,
   "scripts": {
     "prepare": "husky",
@@ -18,6 +18,7 @@
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^5.15.20",
     "@mui/x-date-pickers": "^7.6.2",
+    "@uiw/react-md-editor": "^4.0.4",
     "dayjs": "^1.11.11",
     "firebase": "^10.12.2",
     "lodash": "^4.17.21",
@@ -25,6 +26,7 @@
     "react": "^18",
     "react-constate": "^1.1.2",
     "react-dom": "^18",
+    "react-hook-form": "^7.51.5",
     "react-markdown": "^9.0.1"
   },
   "devDependencies": {

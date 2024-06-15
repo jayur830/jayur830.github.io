@@ -598,8 +598,8 @@ export type ResumeQuery = {
   };
 };
 
-export type GetTechListQueryVariables = Exact<{
+export type TechListQueryVariables = Exact<{
   keyword?: InputMaybe<Scalars['String']['input']>;
 }>;
 
-export type GetTechListQuery = { __typename?: 'Query'; techList: Array<TechLogo> };
+export type TechListQuery = { __typename?: 'Query'; techList: Array<TechLogo> };

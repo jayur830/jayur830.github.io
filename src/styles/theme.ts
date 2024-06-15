@@ -12,6 +12,21 @@ export const palette = createPalette({
 
 export const theme = createTheme({
   palette,
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        sizeSmall: {
+          fontSize: 10,
+        },
+        sizeMedium: {
+          fontSize: 14,
+        },
+        sizeLarge: {
+          fontSize: 18,
+        },
+      },
+    },
+  },
   typography: {
     h1: { ...fonts.style, fontSize: 32 },
     h2: { ...fonts.style, fontSize: 30 },

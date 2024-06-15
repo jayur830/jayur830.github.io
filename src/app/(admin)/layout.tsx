@@ -36,7 +36,7 @@ export default function Layout({ children }: PropsWithChildren) {
           </Grid>
         }
       />
-      <Grid container justifyContent="center" minHeight="calc(100% - 48px)" padding={3}>
+      <Grid container justifyContent="center" minHeight="calc(100% - 48px)" padding="60px 24px 24px 100px">
         {children}
       </Grid>
     </>

@@ -17,7 +17,7 @@ export default function Header({ navigations, extra }: HeaderProps) {
 
   return (
     <>
-      <Grid display="flex" justifyContent="space-between" alignItems="center">
+      <Grid position="fixed" display="flex" justifyContent="space-between" alignItems="center" width="100%" height={60} zIndex={99} sx={{ backgroundColor: 'common.white' }}>
         {process.env.NODE_ENV === 'development' ? (
           <IconButton size="large" onClick={() => setOpen(true)}>
             <DensityMedium />

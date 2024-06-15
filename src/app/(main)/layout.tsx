@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material';
 import { PropsWithChildren } from 'react';
 
 import DarkModeSwitch from '@/components/DarkModeSwitch';
@@ -8,7 +9,9 @@ export default function Layout({ children }: PropsWithChildren) {
   return (
     <>
       <Header navigations={appNavigations} extra={<DarkModeSwitch />} />
-      {children}
+      <Grid paddingTop="60px" paddingBottom="100px">
+        {children}
+      </Grid>
     </>
   );
 }

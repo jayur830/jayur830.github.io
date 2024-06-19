@@ -1,38 +1,41 @@
-'use client';
-
-import { useQuery } from '@apollo/client';
 import { GitHub } from '@mui/icons-material';
 import { Grid, IconButton, Typography } from '@mui/material';
-import { useEffect, useMemo } from 'react';
 
 import ResumeCard from '@/components/ResumeCard';
-import { useOnChangeLoading } from '@/contexts/LoadingProvider';
+import client from '@/graphql/apollo';
 import { ResumeQuery, ResumeQueryVariables } from '@/graphql/graphql';
-import GET_RESUME_QUERY from '@/graphql/queries/getResume.gql';
+import RESUME_QUERY from '@/graphql/queries/getResume.gql';
 
-export default function Page() {
-  const onChangeLoading = useOnChangeLoading();
+export default async function Page() {
+  // const onChangeLoading = useOnChangeLoading();
 
-  const { data, loading } = useQuery<ResumeQuery, ResumeQueryVariables>(GET_RESUME_QUERY, {
+  // const { data, loading } = useQuery<ResumeQuery, ResumeQueryVariables>(GET_RESUME_QUERY, {
+  //   variables: {
+  //     userId: process.env.NEXT_PUBLIC_UID,
+  //   },
+  // });
+
+  // const resumeData = useMemo(() => {
+  //   if (!data) {
+  //     return null;
+  //   }
+
+  //   return data.resume;
+  // }, [data]);
+
+  // useEffect(() => {
+  //   onChangeLoading(loading);
+  //   return () => {
+  //     onChangeLoading(false);
+  //   };
+  // }, [onChangeLoading, loading]);
+  const { data } = await client.query<ResumeQuery, ResumeQueryVariables>({
+    query: RESUME_QUERY,
     variables: {
       userId: process.env.NEXT_PUBLIC_UID,
     },
   });
-
-  const resumeData = useMemo(() => {
-    if (!data) {
-      return null;
-    }
-
-    return data.resume;
-  }, [data]);
-
-  useEffect(() => {
-    onChangeLoading(loading);
-    return () => {
-      onChangeLoading(false);
-    };
-  }, [onChangeLoading, loading]);
+  const resumeData = data.resume;
 
   return (
     <>
@@ -44,11 +47,16 @@ export default function Page() {
           <IconButton href={resumeData?.github} target="_blank">
             <GitHub
               color="action"
-              sx={(theme) => ({
+              // sx={(theme) => ({
+              //   width: { xs: 25, md: 40 },
+              //   height: { xs: 25, md: 40 },
+              //   fill: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.black,
+              // })}
+              sx={{
                 width: { xs: 25, md: 40 },
                 height: { xs: 25, md: 40 },
-                fill: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.black,
-              })}
+                // fill: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.black,
+              }}
             />
           </IconButton>
         )}

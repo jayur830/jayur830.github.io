@@ -92,7 +92,9 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
   });
 
   const techListOptions = useMemo(() => {
+    console.log('keywordValue:', keywordValue, techListData);
     if (keywordValue.length > 0 && techListData) {
+      console.log('techListData:', techListData.techList);
       return techListData.techList
         .filter((tech) => !techListValue.includes(tech))
         .map((tech, i) => ({
@@ -306,9 +308,8 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') {
                         e.preventDefault();
-                        const tech = techListOptions.find(({ label }) => label === keywordValue)?.value;
+                        const tech = techListOptions.find(({ value }) => value.toLocaleLowerCase() === keywordValue.replace(/[ \-.]/g, '').toLocaleLowerCase())?.value;
                         if (tech) {
-                          console.log('techListOptions:', techListOptions);
                           onChangeTechList([...techListValue, tech]);
                           resetField('keyword');
                         }

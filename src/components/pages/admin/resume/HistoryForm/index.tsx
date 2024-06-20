@@ -1,20 +1,19 @@
 'use client';
 
 import { useMutation } from '@apollo/client';
-import { Button, Checkbox, Grid, styled, TextField, Theme, Typography, useMediaQuery } from '@mui/material';
+import { Button, Checkbox, Grid, TextField, Theme, Typography, useMediaQuery } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from 'dayjs';
 import { omit } from 'lodash';
 import { PropsWithChildren, useCallback, useEffect } from 'react';
 import { Controller, useController, useForm } from 'react-hook-form';
 
-import FormItem from '@/components/FormItem';
+import FormItem from '@/components/pages/admin/resume/FormItem';
 import { useAlert } from '@/contexts/AlertProvider';
 import { useOnChangeLoading } from '@/contexts/LoadingProvider';
 import { UpdateCompanyMutation, UpdateCompanyMutationVariables } from '@/graphql/graphql';
 import UPDATE_COMPANY_MUTATION from '@/graphql/mutations/updateCompany.gql';
-
-import { ResumeCompanyInfoFormData } from '../types';
+import { ResumeCompanyInfoFormData } from '@/types/resume';
 
 export interface HistoryFormProps extends Omit<ResumeCompanyInfoFormData, 'isWorking' | 'endDate'> {
   companyId: string;
@@ -22,7 +21,7 @@ export interface HistoryFormProps extends Omit<ResumeCompanyInfoFormData, 'isWor
 }
 
 export default function HistoryForm({ companyId, companyName, startDate, endDate, website, description, children }: PropsWithChildren<HistoryFormProps>) {
-  const sm = useMediaQuery<Theme>((theme) => theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery<Theme>((theme) => theme.breakpoints.down('md'));
 
   const { openAlert } = useAlert();
   const onChangeLoading = useOnChangeLoading();
@@ -128,7 +127,19 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
                 message: '회사명은 필수입니다.',
               },
             }}
-            render={({ field, fieldState: { error } }) => <CompanyNameInput variant="standard" placeholder="회사명을 입력해주세요." error={!!error} helperText={error?.message} {...field} />}
+            render={({ field, fieldState: { error } }) => (
+              <TextField
+                variant="standard"
+                placeholder="회사명을 입력해주세요."
+                error={!!error}
+                helperText={error?.message}
+                sx={{
+                  maxWidth: 400,
+                  width: '100%',
+                }}
+                {...field}
+              />
+            )}
           />
         </FormItem>
         <FormItem label="재직기간">
@@ -199,7 +210,7 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
           <Controller
             control={control}
             name="website"
-            render={({ field }) => <WebsiteInput variant="standard" placeholder="회사 홈페이지 URL을 입력해주세요. (선택사항)" fullWidth={sm} {...field} />}
+            render={({ field }) => <TextField variant="standard" placeholder="회사 홈페이지 URL을 입력해주세요. (선택사항)" fullWidth={isMobile} sx={{ flex: { md: 1 } }} {...field} />}
           />
         </FormItem>
         <FormItem label="설명">
@@ -215,12 +226,3 @@ export default function HistoryForm({ companyId, companyName, startDate, endDate
     </Grid>
   );
 }
-
-const CompanyNameInput = styled(TextField)({
-  maxWidth: 400,
-  width: '100%',
-});
-
-const WebsiteInput = styled(TextField)(({ fullWidth }) => ({
-  flex: fullWidth ? undefined : 1,
-}));

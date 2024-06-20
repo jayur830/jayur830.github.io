@@ -1,17 +1,16 @@
 'use client';
 
 import { useMutation } from '@apollo/client';
-import { Button, Grid, styled, TextField, Typography } from '@mui/material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
 import { useCallback, useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-import FormItem from '@/components/FormItem';
+import FormItem from '@/components/pages/admin/resume/FormItem';
 import { useAlert } from '@/contexts/AlertProvider';
 import { useOnChangeLoading } from '@/contexts/LoadingProvider';
 import { UpdateResumeMutation, UpdateResumeMutationVariables } from '@/graphql/graphql';
 import UPDATE_RESUME_MUTATION from '@/graphql/mutations/updateResume.gql';
-
-import { ResumeInfoFormData } from '../types';
+import { ResumeInfoFormData } from '@/types/resume';
 
 export type ResumeInfoFormProps = ResumeInfoFormData;
 
@@ -88,7 +87,17 @@ export default function ResumeInfoForm({ title, github }: ResumeInfoFormProps) {
               message: 'Github 주소는 필수입니다.',
             },
           }}
-          render={({ field }) => <GithubInput variant="standard" placeholder="본인의 Github 주소를 입력하세요." {...field} />}
+          render={({ field }) => (
+            <TextField
+              variant="standard"
+              placeholder="본인의 Github 주소를 입력하세요."
+              sx={{
+                maxWidth: 600,
+                width: '100%',
+              }}
+              {...field}
+            />
+          )}
         />
       </FormItem>
       <Grid container justifyContent="flex-end" paddingTop={2}>
@@ -99,8 +108,3 @@ export default function ResumeInfoForm({ title, github }: ResumeInfoFormProps) {
     </form>
   );
 }
-
-const GithubInput = styled(TextField)({
-  maxWidth: 600,
-  width: '100%',
-});

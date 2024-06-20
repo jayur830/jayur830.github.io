@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material';
 import { PropsWithChildren } from 'react';
 
-import DarkModeSwitch from '@/components/DarkModeSwitch';
-import Header from '@/components/Header';
+import DarkModeSwitch from '@/components/layouts/DarkModeSwitch';
+import Header from '@/components/layouts/Header';
 import { appNavigations } from '@/constants/navigation';
 
 export default function Layout({ children }: PropsWithChildren) {

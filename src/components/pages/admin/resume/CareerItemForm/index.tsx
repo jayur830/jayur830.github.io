@@ -3,8 +3,7 @@ import '@uiw/react-markdown-preview/markdown.css';
 
 import { useMutation, useQuery } from '@apollo/client';
 import { ExpandMore } from '@mui/icons-material';
-import { Accordion, AccordionDetails, AccordionSummary, Autocomplete, Button, Checkbox, Chip, Grid, ListItem, styled, TextField, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import { Accordion, AccordionDetails, AccordionSummary, Autocomplete, Button, Checkbox, Chip, Grid, ListItem, styled, TextField, Theme, Typography, useMediaQuery } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import MDEditor from '@uiw/react-md-editor';
 import dayjs, { Dayjs } from 'dayjs';
@@ -12,16 +11,15 @@ import { omit } from 'lodash';
 import { useCallback, useEffect, useMemo } from 'react';
 import { Controller, useController, useForm } from 'react-hook-form';
 
-import FormItem from '@/components/FormItem';
+import FormItem from '@/components/pages/admin/resume/FormItem';
 import { logoValues } from '@/constants/logo';
 import { useAlert } from '@/contexts/AlertProvider';
 import { useOnChangeLoading } from '@/contexts/LoadingProvider';
 import { useDarkMode } from '@/contexts/MuiProvider';
 import { TechListQuery, TechLogo, UpdateProjectMutation, UpdateProjectMutationVariables } from '@/graphql/graphql';
 import UPDATE_PROJECT_MUTATION from '@/graphql/mutations/updateProject.gql';
-import GET_TECH_LIST_QUERY from '@/graphql/queries/getTechList.gql';
-
-import { ResumeHistoryDetailFormData } from '../types';
+import TECH_LIST_QUERY from '@/graphql/queries/getTechList.gql';
+import { ResumeHistoryDetailFormData } from '@/types/resume';
 
 export interface CareerItemFormProps {
   companyId: string;
@@ -35,7 +33,7 @@ export interface CareerItemFormProps {
 }
 
 export default function CareerItemForm({ companyId, projectId, groupName, name, startDate, endDate, techList, description }: CareerItemFormProps) {
-  const sm = useMediaQuery<Theme>((theme) => theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery<Theme>((theme) => theme.breakpoints.down('md'));
 
   const isDarkMode = useDarkMode();
   const onChangeLoading = useOnChangeLoading();
@@ -70,7 +68,7 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
     field: { value: techListValue, onChange: onChangeTechList },
   } = useController({ control, name: 'techList' });
 
-  const { data: techListData } = useQuery<TechListQuery>(GET_TECH_LIST_QUERY, {
+  const { data: techListData } = useQuery<TechListQuery>(TECH_LIST_QUERY, {
     variables: {
       keyword: keywordValue,
     },
@@ -155,7 +153,16 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <StyledAccordion defaultExpanded>
+      <Accordion
+        defaultExpanded
+        sx={(theme) => ({
+          boxShadow: `0 0 10px 3px ${theme.palette.mode === 'light' ? theme.palette.grey['300'] : theme.palette.grey['A700']}`,
+          transition: 'background-color 0.3s ease',
+          '.Mui-focusVisible': {
+            backgroundColor: 'transparent',
+          },
+        })}
+      >
         <AccordionSummary expandIcon={<ExpandMore />}>
           <Grid width="100%">
             <FormItem label="GROUP">
@@ -271,7 +278,10 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
             <>
               <Autocomplete
                 freeSolo
-                sx={sm ? { width: '100%' } : { flex: 1 }}
+                sx={{
+                  width: { xs: '100%', md: 'auto' },
+                  flex: { md: 1 },
+                }}
                 options={techListOptions}
                 key="autoComplete"
                 onChange={(_, v) => {
@@ -286,10 +296,10 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
                   </ListItem>
                 )}
                 renderInput={(props) => (
-                  <TechListSearchField
+                  <TextField
                     {...props}
                     variant="standard"
-                    fullWidth={sm}
+                    fullWidth={isMobile}
                     placeholder="React"
                     value={keywordValue || ''}
                     onChange={onChangeKeyword}
@@ -303,6 +313,10 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
                           resetField('keyword');
                         }
                       }
+                    }}
+                    sx={{
+                      display: 'flex',
+                      flex: { md: 1 },
                     }}
                   />
                 )}
@@ -340,23 +354,10 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
             </Button>
           </Grid>
         </AccordionDetails>
-      </StyledAccordion>
+      </Accordion>
     </form>
   );
 }
-
-const StyledAccordion = styled(Accordion)(({ theme }) => ({
-  boxShadow: `0 0 10px 3px ${theme.palette.mode === 'light' ? grey['300'] : grey['A700']}`,
-  transition: 'background-color 0.3s ease',
-  '.Mui-focusVisible': {
-    backgroundColor: 'transparent',
-  },
-}));
-
-const TechListSearchField = styled(TextField)(({ fullWidth }) => ({
-  display: 'flex',
-  flex: fullWidth ? undefined : 1,
-}));
 
 const DescriptionEditor = styled(MDEditor)((props) => ({
   backgroundColor: props['data-color-mode'] === 'dark' ? '#131313' : '#FFFFFF',

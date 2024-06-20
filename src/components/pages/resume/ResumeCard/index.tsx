@@ -2,15 +2,64 @@
 
 import { Language, Schedule } from '@mui/icons-material';
 import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, timelineItemClasses, TimelineOppositeContent, TimelineSeparator } from '@mui/lab';
-import { Card, Grid, IconButton, Theme, Typography, useMediaQuery } from '@mui/material';
+import { Card, Chip, chipClasses, Grid, IconButton, Theme, Typography, useMediaQuery } from '@mui/material';
 import dayjs from 'dayjs';
 import Image from 'next/image';
-import { Fragment } from 'react';
+import Link from 'next/link';
+import { FC, Fragment, SVGProps } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import { ResumeQuery } from '@/graphql/graphql';
+import { logoValues } from '@/constants/logo';
+import { ResumeQuery, TechLogo } from '@/graphql/graphql';
 
-import logoBadge from '../LogoBadge';
+interface BadgeProps {
+  href: string;
+  label: string;
+  icon: FC<SVGProps<SVGSVGElement>>;
+  svgProps: {
+    width: number;
+    height: number;
+    viewBox?: string;
+  };
+  backgroundColor: string;
+  textColor?: string;
+}
+
+function Badge({ href, label, icon: Icon, svgProps, backgroundColor, textColor }: BadgeProps) {
+  return (
+    <Link href={href} target="_blank">
+      <Chip
+        icon={<Icon {...svgProps} />}
+        label={label}
+        background-color={backgroundColor}
+        text-color={textColor}
+        sx={{
+          backgroundColor,
+          borderRadius: '3px',
+          color: textColor ?? 'common.white',
+          fontSize: { xs: 10, md: 12 },
+          fontWeight: 400,
+          height: { xs: 18, md: 22 },
+          cursor: 'pointer',
+          [`.${chipClasses.icon}`]: {
+            paddingLeft: '3px',
+          },
+          [`.${chipClasses.label}`]: {
+            paddingLeft: '12px',
+          },
+        }}
+      />
+    </Link>
+  );
+}
+
+const logoBadges = Object.entries(logoValues).reduce(
+  (result, [logo, props]) => ({
+    ...result,
+    [logo]: () => <Badge {...props} />,
+  }),
+  {} as { [K in TechLogo]: FC },
+);
 
 function getTenure(startDate: string, endDate?: string | null) {
   const months =
@@ -153,7 +202,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
                   {item.techList && item.techList.length > 0 && (
                     <Grid display="flex" gap={1} flexWrap="wrap" marginTop={1} marginBottom={3}>
                       {item.techList.map((tech, l) => {
-                        const Component = logoBadge[tech];
+                        const Component = logoBadges[tech];
                         return <Component key={l} />;
                       })}
                     </Grid>

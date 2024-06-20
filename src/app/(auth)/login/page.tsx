@@ -7,11 +7,10 @@ import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 
 import { authExceptionValues } from '@/constants/auth';
+import { loginButtonValues } from '@/constants/auth';
 import { useAlert } from '@/contexts/AlertProvider';
 import { AuthGuardType } from '@/enums/auth';
 import useFirebase from '@/hooks/firebase/useFirebase';
-
-import { loginButtonValues } from './values';
 
 export default function Page() {
   const router = useRouter();

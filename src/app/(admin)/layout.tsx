@@ -6,8 +6,8 @@ import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { PropsWithChildren } from 'react';
 
-import DarkModeSwitch from '@/components/DarkModeSwitch';
-import Header from '@/components/Header';
+import DarkModeSwitch from '@/components/layouts/DarkModeSwitch';
+import Header from '@/components/layouts/Header';
 import { adminNavigations } from '@/constants/navigation';
 import useFirebase from '@/hooks/firebase/useFirebase';
 

@@ -5,7 +5,7 @@ import { GitHub } from '@mui/icons-material';
 import { Grid, IconButton, Typography } from '@mui/material';
 import { useEffect, useMemo } from 'react';
 
-import ResumeCard from '@/components/ResumeCard';
+import ResumeCard from '@/components/pages/resume/ResumeCard';
 import { useOnChangeLoading } from '@/contexts/LoadingProvider';
 import { ResumeQuery, ResumeQueryVariables } from '@/graphql/graphql';
 import RESUME_QUERY from '@/graphql/queries/getResume.gql';

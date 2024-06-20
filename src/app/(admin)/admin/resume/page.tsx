@@ -6,20 +6,19 @@ import { grey } from '@mui/material/colors';
 import dayjs from 'dayjs';
 import { PropsWithChildren, useEffect, useMemo } from 'react';
 
+import CareerItemForm from '@/components/pages/admin/resume/CareerItemForm';
+import HistoryForm from '@/components/pages/admin/resume/HistoryForm';
+import ResumeInfoForm from '@/components/pages/admin/resume/ResumeInfoForm';
 import { useOnChangeLoading } from '@/contexts/LoadingProvider';
 import { ResumeQuery, ResumeQueryVariables } from '@/graphql/graphql';
-import GET_RESUME_QUERY from '@/graphql/queries/getResume.gql';
-
-import CareerItemForm from './CareerItemForm';
-import HistoryForm from './HistoryForm';
-import ResumeInfoForm from './ResumeInfoForm';
+import RESUME_QUERY from '@/graphql/queries/getResume.gql';
 
 export default function Admin() {
   const theme = useTheme();
 
   const onChangeLoading = useOnChangeLoading();
 
-  const { data, loading } = useQuery<ResumeQuery, ResumeQueryVariables>(GET_RESUME_QUERY, {
+  const { data, loading } = useQuery<ResumeQuery, ResumeQueryVariables>(RESUME_QUERY, {
     variables: {
       userId: process.env.NEXT_PUBLIC_UID,
     },

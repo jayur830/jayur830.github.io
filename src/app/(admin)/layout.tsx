@@ -30,13 +30,13 @@ export default function Layout({ children }: PropsWithChildren) {
               }}
               sx={{ color: 'common.black' }}
             >
-              <Logout />
+              <Logout sx={(theme) => ({ color: theme.palette.mode === 'dark' ? 'common.white' : 'common.black' })} />
             </IconButton>
             <DarkModeSwitch />
           </Grid>
         }
       />
-      <Grid container justifyContent="center" minHeight="calc(100% - 48px)" padding="60px 24px 24px 100px">
+      <Grid container justifyContent="center" minHeight="calc(100% - 48px)" padding="60px 24px 100px">
         {children}
       </Grid>
     </>

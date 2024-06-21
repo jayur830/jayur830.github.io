@@ -57,10 +57,6 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
   });
 
   const {
-    field: { value: isWorking },
-  } = useController({ control, name: 'isWorking' });
-
-  const {
     field: { value: keywordValue, onChange: onChangeKeyword },
   } = useController({ control, name: 'keyword' });
 
@@ -92,9 +88,7 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
   });
 
   const techListOptions = useMemo(() => {
-    console.log('keywordValue:', keywordValue, techListData);
     if (keywordValue.length > 0 && techListData) {
-      console.log('techListData:', techListData.techList);
       return techListData.techList
         .filter((tech) => !techListValue.includes(tech))
         .map((tech, i) => ({
@@ -126,7 +120,7 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
   );
 
   useEffect(() => {
-    watch(['isWorking']);
+    watch(['isWorking', 'techList']);
     return watch((value, { name }) => {
       switch (name) {
         case 'isWorking':
@@ -144,7 +138,7 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
           break;
       }
     }).unsubscribe;
-  }, [setValue, watch]);
+  }, [setValue, resetField, watch]);
 
   useEffect(() => {
     onChangeLoading(loading);
@@ -244,37 +238,45 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
                 />
               )}
             />
-            {!isWorking && (
-              <>
-                ~
-                <Controller
-                  control={control}
-                  name="endDate"
-                  rules={{
-                    required: {
-                      value: true,
-                      message: '종료 날짜는 필수입니다.',
-                    },
-                  }}
-                  render={({ field: { value, onChange }, fieldState: { error } }) => (
-                    <DatePicker
-                      format="YYYY-MM"
-                      openTo="month"
-                      views={['year', 'month']}
-                      minDate={value?.minDate}
-                      value={dayjs(value?.value)}
-                      onChange={(date) => onChange({ ...value, value: date })}
-                      slotProps={{
-                        textField: {
-                          error: !!error,
-                          helperText: error?.message,
-                        },
-                      }}
-                    />
+            <Controller
+              control={control}
+              name="isWorking"
+              render={({ field: { value: isWorking } }) => (
+                <>
+                  {!isWorking && (
+                    <>
+                      ~
+                      <Controller
+                        control={control}
+                        name="endDate"
+                        rules={{
+                          required: {
+                            value: true,
+                            message: '종료 날짜는 필수입니다.',
+                          },
+                        }}
+                        render={({ field: { value, onChange }, fieldState: { error } }) => (
+                          <DatePicker
+                            format="YYYY-MM"
+                            openTo="month"
+                            views={['year', 'month']}
+                            minDate={value?.minDate}
+                            value={dayjs(value?.value)}
+                            onChange={(date) => onChange({ ...value, value: date })}
+                            slotProps={{
+                              textField: {
+                                error: !!error,
+                                helperText: error?.message,
+                              },
+                            }}
+                          />
+                        )}
+                      />
+                    </>
                   )}
-                />
-              </>
-            )}
+                </>
+              )}
+            />
           </FormItem>
           <FormItem label="사용 기술 (라이브러리, 프레임워크 등)">
             <>
@@ -298,43 +300,57 @@ export default function CareerItemForm({ companyId, projectId, groupName, name, 
                   </ListItem>
                 )}
                 renderInput={(props) => (
-                  <TextField
-                    {...props}
-                    variant="standard"
-                    fullWidth={isMobile}
-                    placeholder="React"
-                    value={keywordValue || ''}
-                    onChange={onChangeKeyword}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        e.preventDefault();
-                        const tech = techListOptions.find(({ value }) => value.toLocaleLowerCase() === keywordValue.replace(/[ \-.]/g, '').toLocaleLowerCase())?.value;
-                        if (tech) {
-                          onChangeTechList([...techListValue, tech]);
-                          resetField('keyword');
-                        }
-                      }
-                    }}
-                    sx={{
-                      display: 'flex',
-                      flex: { md: 1 },
-                    }}
+                  <Controller
+                    control={control}
+                    name="keyword"
+                    render={({ field: { value, onChange } }) => (
+                      <TextField
+                        {...props}
+                        variant="standard"
+                        fullWidth={isMobile}
+                        placeholder="React"
+                        value={value || ''}
+                        onChange={onChange}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault();
+                            const tech = techListOptions.find(({ value }) => value.toLocaleLowerCase() === keywordValue.replace(/[ \-.]/g, '').toLocaleLowerCase())?.value;
+                            if (tech) {
+                              onChangeTechList([...techListValue, tech]);
+                              resetField('keyword');
+                            }
+                          }
+                        }}
+                        sx={{
+                          display: 'flex',
+                          flex: { md: 1 },
+                        }}
+                      />
+                    )}
                   />
                 )}
               />
               <Grid container gap={1} flexWrap="wrap">
-                {techListValue.map((techName, i) => (
-                  <Chip
-                    key={i}
-                    label={logoValues[techName].label}
-                    onDelete={() => {
-                      onChangeTechList(techListValue.filter((v) => v !== techName));
-                    }}
-                    onClick={() => {
-                      onChangeTechList(techListValue.filter((v) => v !== techName));
-                    }}
-                  />
-                ))}
+                <Controller
+                  control={control}
+                  name="techList"
+                  render={({ field: { value, onChange } }) => (
+                    <>
+                      {value.map((techName, i) => (
+                        <Chip
+                          key={i}
+                          label={logoValues[techName].label}
+                          onDelete={() => {
+                            onChange(value.filter((v) => v !== techName));
+                          }}
+                          onClick={() => {
+                            onChange(value.filter((v) => v !== techName));
+                          }}
+                        />
+                      ))}
+                    </>
+                  )}
+                />
               </Grid>
             </>
           </FormItem>

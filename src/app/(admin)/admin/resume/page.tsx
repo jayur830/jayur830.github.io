@@ -40,7 +40,7 @@ export default function Admin() {
   }, [onChangeLoading, loading]);
 
   return (
-    <Grid container flexDirection="column" gap={4} maxWidth={1000}>
+    <Grid container flexDirection="column" gap={4} maxWidth={1000} paddingTop={4}>
       <SectionCard mode={theme.palette.mode}>
         <ResumeInfoForm title={resumeData?.title || ''} github={resumeData?.github || ''} />
       </SectionCard>

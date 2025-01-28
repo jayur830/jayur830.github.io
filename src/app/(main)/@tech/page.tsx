@@ -1,14 +1,15 @@
+'use client';
+
+import { useQuery } from '@apollo/client';
 import { Box, Grid, Typography } from '@mui/material';
 
-import client from '@/graphql/apollo';
 import type { SkillListQuery, SkillListQueryVariables } from '@/graphql/graphql';
 import SKILL_LIST_QUERY from '@/graphql/queries/SKILL_LIST.gql';
 
 import SkillCanvas from './SkillCanvas';
 
-export default async function Tech() {
-  const { data: skillListData } = await client.query<SkillListQuery, SkillListQueryVariables>({
-    query: SKILL_LIST_QUERY,
+export default function Tech() {
+  const { data: skillListData } = useQuery<SkillListQuery, SkillListQueryVariables>(SKILL_LIST_QUERY, {
     variables: { uid: process.env.NEXT_PUBLIC_UID },
   });
 

@@ -8,7 +8,7 @@ import { useEffect, useMemo } from 'react';
 import ResumeCard from '@/components/pages/resume/ResumeCard';
 import { useOnChangeLoading } from '@/contexts/LoadingProvider';
 import { ResumeQuery, ResumeQueryVariables } from '@/graphql/graphql';
-import RESUME_QUERY from '@/graphql/queries/getResume.gql';
+import RESUME_QUERY from '@/graphql/queries/RESUME.gql';
 
 export default function Page() {
   const onChangeLoading = useOnChangeLoading();

@@ -9,7 +9,7 @@ import { NavigationItem } from '@/types/navigation';
 
 export interface HeaderProps {
   navigations: NavigationItem[];
-  extra: ReactNode;
+  extra?: ReactNode;
 }
 
 export default function Header({ navigations, extra }: HeaderProps) {

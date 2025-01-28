@@ -63,6 +63,7 @@ export const logoValues = {
       viewBox: '0 0 10 10',
     },
     backgroundColor: '#004482',
+    imgSrc: '',
   },
   [TechLogo.Cpp]: {
     href: 'https://learn.microsoft.com/ko-kr/cpp/cpp/?view=msvc-170',
@@ -74,6 +75,7 @@ export const logoValues = {
       viewBox: '0 0 10 10',
     },
     backgroundColor: '#004482',
+    imgSrc: '',
   },
   [TechLogo.Html5]: {
     href: 'https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML',
@@ -85,6 +87,7 @@ export const logoValues = {
       viewBox: '0 0 10 10',
     },
     backgroundColor: '#E34F26',
+    imgSrc: '',
   },
   [TechLogo.Css3]: {
     href: 'https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/CSS_basics',
@@ -96,6 +99,7 @@ export const logoValues = {
       viewBox: '0 0 10 10',
     },
     backgroundColor: '#264DE4',
+    imgSrc: '',
   },
   [TechLogo.JavaScript]: {
     href: 'https://developer.mozilla.org/ko/docs/Web/JavaScript',
@@ -108,6 +112,7 @@ export const logoValues = {
     },
     backgroundColor: '#F7DF1E',
     textColor: '#463E00',
+    imgSrc: '',
   },
   [TechLogo.Angular]: {
     href: 'https://angular.kr/guide/setup-local',

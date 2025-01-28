@@ -306,9 +306,19 @@ export type Resume = {
 export type Skill = {
   __typename?: 'Skill';
   /** 기술 스택 목록 */
-  list: Array<TechLogo>;
+  list: Array<Tech>;
   /** 카테고리 (lang: 프로그래밍 언어, fe: 프론트엔드, be: 백엔드, tool: 툴, db: 데이터베이스, infra: 인프라, cloud: 클라우드 서비스, cowork: 협업 툴) */
   type: Scalars['String']['output'];
+};
+
+export type Tech = {
+  __typename?: 'Tech';
+  /** 로고 이미지 URL */
+  logoUrl: Scalars['String']['output'];
+  /** 기술 숙련도 */
+  score: Scalars['Int']['output'];
+  /** 기술 스택 이름 */
+  value: TechLogo;
 };
 
 /** 프레임워크, 라이브러리 로고 */
@@ -597,6 +607,12 @@ export type ResumeQuery = {
     }>;
   };
 };
+
+export type SkillListQueryVariables = Exact<{
+  uid: Scalars['ID']['input'];
+}>;
+
+export type SkillListQuery = { __typename?: 'Query'; skillList: Array<{ __typename?: 'Skill'; type: string; list: Array<{ __typename?: 'Tech'; value: TechLogo; score: number; logoUrl: string }> }> };
 
 export type TechListQueryVariables = Exact<{
   keyword?: InputMaybe<Scalars['String']['input']>;

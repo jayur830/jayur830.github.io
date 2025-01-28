@@ -1,0 +1,10 @@
+query SkillList($uid: ID!) {
+  skillList(userId: $uid) {
+    type
+    list {
+      value
+      score
+      logoUrl
+    }
+  }
+}

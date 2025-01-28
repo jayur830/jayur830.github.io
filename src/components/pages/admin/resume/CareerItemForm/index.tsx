@@ -18,7 +18,7 @@ import { useOnChangeLoading } from '@/contexts/LoadingProvider';
 import { useDarkMode } from '@/contexts/MuiProvider';
 import { TechListQuery, TechLogo, UpdateProjectMutation, UpdateProjectMutationVariables } from '@/graphql/graphql';
 import UPDATE_PROJECT_MUTATION from '@/graphql/mutations/updateProject.gql';
-import TECH_LIST_QUERY from '@/graphql/queries/getTechList.gql';
+import TECH_LIST_QUERY from '@/graphql/queries/TECH_LIST.gql';
 import { ResumeHistoryDetailFormData } from '@/types/resume';
 
 export interface CareerItemFormProps {

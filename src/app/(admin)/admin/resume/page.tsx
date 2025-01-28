@@ -11,7 +11,7 @@ import HistoryForm from '@/components/pages/admin/resume/HistoryForm';
 import ResumeInfoForm from '@/components/pages/admin/resume/ResumeInfoForm';
 import { useOnChangeLoading } from '@/contexts/LoadingProvider';
 import { ResumeQuery, ResumeQueryVariables } from '@/graphql/graphql';
-import RESUME_QUERY from '@/graphql/queries/getResume.gql';
+import RESUME_QUERY from '@/graphql/queries/RESUME.gql';
 
 export default function Admin() {
   const theme = useTheme();

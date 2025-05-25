@@ -24,7 +24,6 @@
     "lodash": "^4.17.21",
     "next": "14.2.4",
     "react": "^18",
-    "react-constate": "^1.1.2",
     "react-dom": "^18",
     "react-hook-form": "^7.51.5",
     "react-markdown": "^9.0.1"
@@ -36,6 +35,7 @@
     "@graphql-codegen/typescript": "^4.0.7",
     "@graphql-codegen/typescript-operations": "^4.2.1",
     "@svgr/webpack": "^8.1.0",
+    "@types/lodash": "^4.17.17",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

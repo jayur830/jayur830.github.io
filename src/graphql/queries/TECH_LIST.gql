@@ -1,3 +1,0 @@
-query TechList($keyword: String) {
-  techList(keyword: $keyword)
-}

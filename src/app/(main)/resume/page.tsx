@@ -1,48 +1,23 @@
 'use client';
 
-import { useQuery } from '@apollo/client';
-import { GitHub } from '@mui/icons-material';
-import { Grid, IconButton, Typography } from '@mui/material';
-import { useEffect, useMemo } from 'react';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 
 import ResumeCard from '@/components/pages/resume/ResumeCard';
-import { useOnChangeLoading } from '@/contexts/LoadingProvider';
-import { ResumeQuery, ResumeQueryVariables } from '@/graphql/graphql';
-import RESUME_QUERY from '@/graphql/queries/RESUME.gql';
+import { resume } from '@/constants/domain';
 
 export default function Page() {
-  const onChangeLoading = useOnChangeLoading();
-
-  const { data, loading } = useQuery<ResumeQuery, ResumeQueryVariables>(RESUME_QUERY, {
-    variables: {
-      userId: process.env.NEXT_PUBLIC_UID,
-    },
-  });
-
-  const resumeData = useMemo(() => {
-    if (!data) {
-      return null;
-    }
-
-    return data.resume;
-  }, [data]);
-
-  useEffect(() => {
-    onChangeLoading(loading);
-    return () => {
-      onChangeLoading(false);
-    };
-  }, [onChangeLoading, loading]);
-
   return (
     <>
       <Grid display="flex" alignItems="flex-start" paddingX={{ xs: 2, md: 6 }} paddingTop={2} paddingBottom={4} gap={2}>
         <Typography fontSize={{ xs: 26, md: 36 }} fontWeight={700}>
-          {resumeData?.title}
+          {resume.title}
         </Typography>
-        {resumeData?.github && (
-          <IconButton href={resumeData?.github} target="_blank">
-            <GitHub
+        {resume.github && (
+          <IconButton href={resume.github} target="_blank">
+            <GitHubIcon
               color="action"
               sx={(theme) => ({
                 width: { xs: 25, md: 40 },
@@ -54,7 +29,7 @@ export default function Page() {
         )}
       </Grid>
       <Grid display="flex" flexDirection="column" alignItems="center" gap={6} paddingX={{ xs: 2, md: 6 }} paddingTop={2} paddingBottom={20}>
-        {(resumeData?.companyList ?? []).map((item, i) => (
+        {(resume.companyList ?? []).map((item, i) => (
           <ResumeCard key={i} data={item} />
         ))}
       </Grid>

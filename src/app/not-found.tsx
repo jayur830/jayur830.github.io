@@ -1,4 +1,6 @@
-import { Button, Grid, Typography } from '@mui/material';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import Link from 'next/link';
 

@@ -1,19 +1,13 @@
 'use client';
 
-import { useQuery } from '@apollo/client';
 import { Box, Grid, Typography } from '@mui/material';
 
-import type { SkillListQuery, SkillListQueryVariables } from '@/graphql/graphql';
-import SKILL_LIST_QUERY from '@/graphql/queries/SKILL_LIST.gql';
+import { skillList } from '@/constants/domain';
 
 import SkillCanvas from './SkillCanvas';
 
 export default function Tech() {
-  const { data: skillListData } = useQuery<SkillListQuery, SkillListQueryVariables>(SKILL_LIST_QUERY, {
-    variables: { uid: process.env.NEXT_PUBLIC_UID },
-  });
-
-  const skills = skillListData ? [...new Set(skillListData.skillList.map(({ list }) => list.filter(({ score }) => score > 0)).flat())] : [];
+  const skills = [...new Set(skillList.map(({ list }) => list.filter(({ score }) => score > 0)).flat())];
   const pcLogos = skills.map((logo) => {
     return {
       src: logo.logoUrl,

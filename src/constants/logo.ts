@@ -1,4 +1,4 @@
-import { brown } from '@mui/material/colors';
+import brown from '@mui/material/colors/brown';
 
 import AngularIcon from '@/assets/images/badges/angular-icon.svg';
 import AntDesignIcon from '@/assets/images/badges/antd-icon.svg';
@@ -50,7 +50,7 @@ import TypeScriptIcon from '@/assets/images/badges/typescript-icon.svg';
 import ViteIcon from '@/assets/images/badges/vite-icon.svg';
 import VueIcon from '@/assets/images/badges/vue-icon.svg';
 import YarnIcon from '@/assets/images/badges/yarn-icon.svg';
-import { TechLogo } from '@/graphql/graphql';
+import { TechLogo } from '@/enums/domain';
 
 export const logoValues = {
   [TechLogo.C]: {

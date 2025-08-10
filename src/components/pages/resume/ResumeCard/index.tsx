@@ -1,16 +1,33 @@
 'use client';
 
-import { Language, Schedule } from '@mui/icons-material';
-import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, timelineItemClasses, TimelineOppositeContent, TimelineSeparator } from '@mui/lab';
-import { Card, Chip, chipClasses, Grid, IconButton, Theme, Typography, useMediaQuery } from '@mui/material';
+import LanguageIcon from '@mui/icons-material/Language';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+import Timeline from '@mui/lab/Timeline';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineItem from '@mui/lab/TimelineItem';
+import timelineItemClasses from '@mui/lab/TimelineItem/timelineItemClasses';
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import type { Theme } from '@mui/material';
+import Card from '@mui/material/Card';
+import Chip from '@mui/material/Chip';
+import chipClasses from '@mui/material/Chip/chipClasses';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, Fragment, SVGProps } from 'react';
+import type { FC, SVGProps } from 'react';
+import { Fragment } from 'react';
 import ReactMarkdown from 'react-markdown';
 
+import { resume } from '@/constants/domain';
 import { logoValues } from '@/constants/logo';
-import { ResumeQuery, TechLogo } from '@/graphql/graphql';
+import { TechLogo } from '@/enums/domain';
 
 interface BadgeProps {
   href: string;
@@ -70,7 +87,7 @@ function getTenure(startDate: string, endDate?: string | null) {
 }
 
 export interface ResumeCardProps {
-  data: NonNullable<ResumeQuery['resume']['companyList']>[number];
+  data: (typeof resume)['companyList'][number];
 }
 
 export default function ResumeCard({ data }: ResumeCardProps) {
@@ -102,7 +119,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
         </Grid>
         {data.website && (
           <IconButton href={data.website} target="_blank">
-            <Language
+            <LanguageIcon
               sx={(theme) => ({
                 fill: theme.palette.mode === 'dark' ? theme.palette.grey['400'] : theme.palette.grey['900'],
               })}
@@ -174,7 +191,7 @@ export default function ResumeCard({ data }: ResumeCardProps) {
                         padding: 0,
                       }}
                     >
-                      <Schedule />
+                      <ScheduleIcon />
                     </TimelineDot>
                   )}
                   {k < project.list.length - 1 && <TimelineConnector />}

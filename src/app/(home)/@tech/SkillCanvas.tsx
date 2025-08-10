@@ -1,6 +1,7 @@
 'use client';
 
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import type { CSSProperties } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface LogoProps {
   src: string; // 이미지 경로

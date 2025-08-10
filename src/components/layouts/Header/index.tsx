@@ -1,11 +1,19 @@
 'use client';
 
-import { DensityMedium } from '@mui/icons-material';
-import { Box, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import DensityMediumIcon from '@mui/icons-material/DensityMedium';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 import Link from 'next/link';
-import { ReactNode, useState } from 'react';
+import type { ReactNode } from 'react';
+import { useState } from 'react';
 
-import { NavigationItem } from '@/types/navigation';
+import type { NavigationItem } from '@/types/navigation';
 
 export interface HeaderProps {
   navigations: NavigationItem[];
@@ -29,7 +37,7 @@ export default function Header({ navigations, extra }: HeaderProps) {
       >
         {process.env.NODE_ENV === 'development' ? (
           <IconButton size="large" onClick={() => setOpen(true)}>
-            <DensityMedium />
+            <DensityMediumIcon />
           </IconButton>
         ) : (
           <Box height={48} />

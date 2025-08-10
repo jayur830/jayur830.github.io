@@ -1,6 +1,6 @@
 import { Dayjs } from 'dayjs';
 
-import { TechLogo } from '@/graphql/graphql';
+import { TechLogo } from '@/enums/domain';
 
 export type ResumeInfoFormData = {
   title: string;

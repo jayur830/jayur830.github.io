@@ -1,9 +1,12 @@
 'use client';
 
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import { LocalizationProvider } from '@mui/x-date-pickers';
+import CssBaseline from '@mui/material/CssBaseline';
+import createTheme from '@mui/material/styles/createTheme';
+import ThemeProvider from '@mui/material/styles/ThemeProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import type { PropsWithChildren } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 import { theme } from '@/styles/theme';
 

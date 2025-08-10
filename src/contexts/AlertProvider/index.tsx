@@ -1,8 +1,12 @@
 'use client';
 
-import { Close } from '@mui/icons-material';
-import { IconButton, Snackbar, SnackbarProps } from '@mui/material';
-import { createContext, PropsWithChildren, SyntheticEvent, useCallback, useContext, useState } from 'react';
+import Close from '@mui/icons-material/Close';
+import IconButton from '@mui/material/IconButton';
+import type { SnackbarProps } from '@mui/material/Snackbar';
+import Snackbar from '@mui/material/Snackbar';
+import type { PropsWithChildren } from 'react';
+import type { SyntheticEvent } from 'react';
+import { createContext, useCallback, useContext, useState } from 'react';
 
 import nest from '@/utils/nest';
 

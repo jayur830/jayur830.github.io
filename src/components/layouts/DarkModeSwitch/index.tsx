@@ -1,6 +1,6 @@
 'use client';
 
-import { Switch } from '@mui/material';
+import Switch from '@mui/material/Switch';
 
 import { useDarkModeContext } from '@/contexts/MuiProvider';
 

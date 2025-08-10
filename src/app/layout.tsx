@@ -1,11 +1,10 @@
 import '@/styles/globals.scss';
 
 import type { Metadata, Viewport } from 'next';
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import { fonts } from '@/assets/fonts';
 import AlertProvider from '@/contexts/AlertProvider';
-import ApolloProvider from '@/contexts/ApolloProvider';
 import LoadingProvider from '@/contexts/LoadingProvider';
 import MuiProvider from '@/contexts/MuiProvider';
 
@@ -49,13 +48,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ko">
       <body className={fonts.className}>
-        <ApolloProvider>
-          <MuiProvider>
-            <LoadingProvider>
-              <AlertProvider>{children}</AlertProvider>
-            </LoadingProvider>
-          </MuiProvider>
-        </ApolloProvider>
+        <MuiProvider>
+          <LoadingProvider>
+            <AlertProvider>{children}</AlertProvider>
+          </LoadingProvider>
+        </MuiProvider>
       </body>
     </html>
   );

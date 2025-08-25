@@ -6,8 +6,11 @@ import type {
 import {
   Geist, Geist_Mono,
 } from 'next/font/google';
+import type { PropsWithChildren } from 'react';
 
+import Footer from '@/components/service/Footer';
 import Header from '@/components/service/Header';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,11 +29,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<PropsWithChildren>) {
   return (
-    <html lang="en">
+    <html lang="ko" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{
@@ -40,8 +41,27 @@ export default function RootLayout({
           justifyContent: 'center',
         }}
       >
-        <Header title="" />
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange enableSystem>
+          <Header
+            menuItems={[
+              {
+                label: 'About',
+                href: '#about',
+              },
+              {
+                label: 'Skills',
+                href: '#skills',
+              },
+              {
+                label: 'Projects',
+                href: '#projects',
+              },
+            ]}
+            title=""
+          />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -7,6 +7,8 @@ import {
   Geist, Geist_Mono,
 } from 'next/font/google';
 
+import Header from '@/components/service/Header';
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -36,9 +38,9 @@ export default function RootLayout({
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          height: '100vh',
         }}
       >
+        <Header title="" />
         {children}
       </body>
     </html>

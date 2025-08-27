@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { Switch } from '@/components/ui/switch';
 
 export default function DarkModeSwitch() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function DarkModeSwitch() {
   }, []);
 
   const handleDarkMode = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
   if (!mounted) {

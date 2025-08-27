@@ -6,21 +6,23 @@ import { useTheme } from 'next-themes';
 import { Switch } from '@/components/ui/switch';
 
 export default function DarkModeSwitch() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   const handleDarkMode = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
+  const isDarkMode = resolvedTheme === 'dark';
+
   return (
     <Switch
-      checked={theme === 'dark'}
+      checked={isDarkMode}
       className="w-11 h-6"
       onCheckedChange={handleDarkMode}
       thumbProps={{ asChild: true }}
     >
       <div className="flex justify-center items-center size-[22px] bg-white rounded-full">
-        {theme === 'dark' ? <MoonIcon className="size-3" /> : <SunIcon className="size-3" />}
+        {isDarkMode ? <MoonIcon className="size-3" /> : <SunIcon className="size-3" />}
       </div>
     </Switch>
   );

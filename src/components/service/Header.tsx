@@ -13,7 +13,7 @@ export interface HeaderProps {
 
 export default function Header({ title, menuItems }: HeaderProps) {
   return (
-    <div className="flex justify-between items-center w-full border-1 p-4">
+    <div className="fixed top-0 flex justify-between items-center w-full border-1 p-4 backdrop-blur-lg z-[99]">
       <div className="flex items-center gap-4">
         <SideMenu />
         <h2 className="text-2xl font-bold">{title}</h2>

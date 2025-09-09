@@ -1,3 +1,5 @@
 export default function Skills() {
-  return <div id="skills">skills</div>;
+  return (
+    <div className="flex flex-col gap-4 w-full h-screen" id="skills" />
+  );
 }

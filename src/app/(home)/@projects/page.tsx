@@ -1,3 +1,5 @@
 export default function Projects() {
-  return <div id="projects">projects</div>;
+  return (
+    <div className="flex flex-col gap-4 w-full h-screen" id="projects" />
+  );
 }

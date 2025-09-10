@@ -8,8 +8,7 @@ export interface SubTitleProps {
 }
 
 export default function SubTitle({ className, text }: SubTitleProps) {
-  const [displayedText, setDisplayedText] = useState('');
-  const [showCursor, setShowCursor] = useState(true);
+  const [displayedText, setDisplayedText] = useState<string>('');
 
   useEffect(() => {
     let currentIndex = 0;
@@ -20,26 +19,23 @@ export default function SubTitle({ className, text }: SubTitleProps) {
         currentIndex++;
       } else {
         clearInterval(typingTimer);
-        // 타이핑 완료 후 커서 깜빡임 중단
-        setTimeout(() => setShowCursor(false), 1000);
       }
     }, 80);
 
-    // 커서 깜빡임 효과
-    const cursorTimer = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, 500);
-
     return () => {
       clearInterval(typingTimer);
-      clearInterval(cursorTimer);
     };
   }, [text]);
 
   return (
     <h2 className={className}>
       {displayedText}
-      <span className={`inline-block transition-opacity duration-200 ${showCursor ? 'opacity-100' : 'opacity-0'}`}>
+      <span
+        className="inline-block"
+        style={{
+          animation: 'blink 1s infinite',
+        }}
+      >
         |
       </span>
     </h2>

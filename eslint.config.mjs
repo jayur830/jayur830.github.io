@@ -1,6 +1,7 @@
 import { FlatCompat } from '@eslint/eslintrc';
 import stylistic from '@stylistic/eslint-plugin';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import unusedImports from 'eslint-plugin-unused-imports';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -14,7 +15,29 @@ const eslintConfig = [
     ignores: [
       'node_modules/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts',
     ],
-  }, { rules: { 'no-var': 'off' } },
+  },
+  {
+    rules: { 'no-var': 'off' },
+  },
+  // eslint-plugin-unused-imports
+  {
+    plugins: {
+      'unused-imports': unusedImports,
+    },
+    rules: {
+      'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
   // simple-import-sort
   {
     plugins: { 'simple-import-sort': simpleImportSort },

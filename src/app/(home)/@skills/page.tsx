@@ -3,7 +3,7 @@
 import type { LucideProps } from 'lucide-react';
 import { BarChart3, Code, Database, GitBranch, Globe, Server, TestTube, Users } from 'lucide-react';
 import type { ComponentType } from 'react';
-import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface Skill {
   name: string;
@@ -119,23 +119,21 @@ const skillCategories: SkillCategory[] = [
 ];
 
 export default function Skills() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 300);
-    return () => clearTimeout(timer);
-  }, []);
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
 
   return (
-    <div className="flex flex-col items-center justify-center w-full min-h-screen px-8 py-16" id="skills">
-      <div className={`w-full max-w-[1440px] transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+    <div className="flex flex-col items-center justify-center w-full min-h-screen px-8 py-16" id="skills" ref={ref}>
+      <div className={`w-full max-w-[1440px] transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <h1 className="text-4xl font-bold text-center mb-16 text-black dark:text-white">Skills & Technologies</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {skillCategories.map(({ title, icon: Icon, skills }, i) => (
             <div
               className={`bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-lg p-8 transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               key={title}
               style={{ transitionDelay: `${i * 200}ms` }}
@@ -149,7 +147,7 @@ export default function Skills() {
                 {skills.map((skill, skillIndex) => (
                   <span
                     className={`px-4 py-2 bg-gray-100 dark:bg-gray-900 text-black dark:text-white text-sm font-medium rounded-full border border-gray-200 dark:border-gray-800 transition-all duration-500 ${
-                      isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                      inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                     }`}
                     key={skill.name}
                     style={{

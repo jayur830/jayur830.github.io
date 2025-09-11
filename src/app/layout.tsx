@@ -8,6 +8,7 @@ import {
 } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
 
+import { goormSansFont } from '@/assets/fonts';
 import Footer from '@/components/service/Footer';
 import Header from '@/components/service/Header';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -33,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={goormSansFont.className}
         style={{
           display: 'flex',
           flexDirection: 'column',

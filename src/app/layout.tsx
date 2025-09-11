@@ -7,7 +7,6 @@ import type { PropsWithChildren } from 'react';
 
 import { goormSansFont } from '@/assets/fonts';
 import Footer from '@/components/service/Footer';
-import Header from '@/components/service/Header';
 import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
@@ -30,23 +29,6 @@ export default function RootLayout({
         }}
       >
         <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange enableSystem>
-          <Header
-            menuItems={[
-              {
-                label: 'About',
-                href: '#about',
-              },
-              {
-                label: 'Skills',
-                href: '#skills',
-              },
-              {
-                label: 'Careers',
-                href: '#careers',
-              },
-            ]}
-            title="</>"
-          />
           {children}
           <Footer />
         </ThemeProvider>

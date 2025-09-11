@@ -16,7 +16,9 @@ export default function Header({ title, menuItems }: HeaderProps) {
     <div className="fixed top-0 flex justify-between items-center w-full p-4 backdrop-blur-lg z-[99]">
       <div className="flex items-center gap-4">
         <SideMenu />
-        <h2 className="text-2xl font-bold">{title}</h2>
+        <Link href="/">
+          <h2 className="text-2xl font-bold">{title}</h2>
+        </Link>
       </div>
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-4">

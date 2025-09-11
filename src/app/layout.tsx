@@ -45,7 +45,7 @@ export default function RootLayout({
                 href: '#careers',
               },
             ]}
-            title=""
+            title="</>"
           />
           {children}
           <Footer />

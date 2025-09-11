@@ -1,13 +1,25 @@
+'use client';
+
 import { MenuIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
 
 import { Button } from '../ui/button';
 
-export default function SideMenu() {
+export interface SideMenuProps {
+  menuItems: {
+    label: string;
+    href: string;
+  }[];
+}
+
+export default function SideMenu({ menuItems }: SideMenuProps) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Drawer direction="left">
+    <Drawer direction="left" onOpenChange={setOpen} open={open}>
       <DrawerTrigger asChild>
         <Button size="icon" variant="ghost">
           <MenuIcon />
@@ -25,12 +37,19 @@ export default function SideMenu() {
           </DrawerClose>
         </DrawerHeader>
         <DrawerDescription className="flex flex-col gap-2 p-4">
-          <Link href="/resume" passHref>
-            <Button className="w-full" variant="ghost">이력서</Button>
-          </Link>
-          <Link href="/blog" passHref>
-            <Button className="w-full" variant="ghost">블로그</Button>
-          </Link>
+          {menuItems.map(({ label, href }) => (
+            <Link href={href} key={href} passHref>
+              <Button
+                className="w-full"
+                onClick={() => {
+                  setOpen(false);
+                }}
+                variant="ghost"
+              >
+                {label}
+              </Button>
+            </Link>
+          ))}
         </DrawerDescription>
       </DrawerContent>
     </Drawer>

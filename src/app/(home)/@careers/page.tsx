@@ -1,7 +1,7 @@
 'use client';
 
 import dayjs from 'dayjs';
-import { Briefcase, Calendar, MapPin, Trophy } from 'lucide-react';
+import { Briefcase, Calendar, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -106,16 +106,16 @@ export default function Careers() {
                 }}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-2 lg:left-6 w-4 h-4 bg-blue-500 rounded-full border-4 border-white dark:border-gray-900 shadow-lg" />
+                <div className="absolute left-[11px] lg:left-[27px] w-3 h-3 bg-white dark:bg-gray-900 rounded-full border-3 border-black dark:border-white" />
 
                 {/* Content Card */}
-                <div className="ml-12 lg:ml-20">
+                <div className="ml-10 lg:ml-20">
                   <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 lg:p-8">
                     {/* Company Header */}
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
                       <div className="flex items-center gap-3 mb-3 lg:mb-0">
-                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                          <Briefcase className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                        <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+                          <Briefcase className="w-5 h-5 text-black dark:text-white" />
                         </div>
                         <div>
                           <h3 className="text-lg lg:text-xl font-bold text-black dark:text-white">
@@ -139,22 +139,14 @@ export default function Careers() {
 
                     {/* Achievements */}
                     <div>
-                      <div className="flex items-center gap-2 mb-4">
-                        <Trophy className="w-5 h-5 text-yellow-500" />
-                        <h4 className="font-semibold text-black dark:text-white">주요 성과</h4>
-                      </div>
-
                       <div className="space-y-3">
                         {career.achievements.map((achievement, j) => (
-                          <div
-                            className="flex items-start gap-3"
+                          <p
+                            className="text-sm lg:text-base text-gray-700 dark:text-gray-300 leading-relaxed"
                             key={j}
                           >
-                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
-                            <p className="text-sm lg:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                              {achievement}
-                            </p>
-                          </div>
+                            {achievement}
+                          </p>
                         ))}
                       </div>
                     </div>

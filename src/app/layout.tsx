@@ -41,8 +41,8 @@ export default function RootLayout({
                 href: '#skills',
               },
               {
-                label: 'Projects',
-                href: '#projects',
+                label: 'Careers',
+                href: '#careers',
               },
             ]}
             title=""

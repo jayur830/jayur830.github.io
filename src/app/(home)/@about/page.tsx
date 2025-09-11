@@ -53,14 +53,14 @@ export default function About() {
   }, [inView]);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full min-h-screen px-8 py-16" id="about" ref={ref}>
+    <div className="flex flex-col justify-center items-center w-full min-h-screen px-4 py-8 lg:px-8 lg:py-16" id="about" ref={ref}>
       <div className={`w-full max-w-5xl text-center space-y-16 transition-all duration-1000 ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       >
         {/* 메인 메시지 */}
         <div className="space-y-6 max-w-3xl mx-auto">
-          <div className="text-3xl/13 font-medium text-black dark:text-white">
+          <div className="text-2xl/8 lg:text-3xl/13 font-medium text-black dark:text-white">
             {mainMessage.map((line, i) => (
               <div
                 className={`transition-all duration-700 ease-out ${

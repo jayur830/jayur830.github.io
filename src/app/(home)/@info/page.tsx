@@ -5,10 +5,10 @@ import Title from './_components/Title';
 export default function Info() {
   return (
     <>
-      <div className="flex flex-col justify-center items-center gap-8 h-screen" id="info">
+      <div className="flex flex-col justify-center items-center gap-8 h-screen px-4 py-8 lg:px-8 lg:py-16" id="info">
         <div className="flex flex-col items-center gap-2">
-          <Title className="text-5xl font-bold" text="안녕하세요!" />
-          <SubTitle className="text-2xl font-thin" text="꿈과 희망이 가득한 개발자 이재열입니다." />
+          <Title className="text-5xl font-bold text-center" text="안녕하세요!" />
+          <SubTitle className="text-2xl font-thin text-center" text="꿈과 희망이 가득한 개발자 이재열입니다." />
         </div>
         <SocialLinks
           items={[

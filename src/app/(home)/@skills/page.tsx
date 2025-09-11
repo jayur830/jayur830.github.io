@@ -125,14 +125,14 @@ export default function Skills() {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center w-full min-h-screen px-8 py-16" id="skills" ref={ref}>
+    <div className="flex flex-col items-center justify-center w-full min-h-screen px-4 py-8 lg:px-8 lg:py-16" id="skills" ref={ref}>
       <div className={`w-full max-w-[1440px] transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h1 className="text-4xl font-bold text-center mb-16 text-black dark:text-white">Skills & Technologies</h1>
+        <h1 className="text-4xl font-bold text-center mb-16 text-black dark:text-white">Skills</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 lg:gap-8">
           {skillCategories.map(({ title, icon: Icon, skills }, i) => (
             <div
-              className={`bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-lg p-8 transition-all duration-700 ${
+              className={`bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-lg p-5 lg:p-8 transition-all duration-700 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               key={title}

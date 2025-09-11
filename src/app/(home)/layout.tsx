@@ -1,12 +1,12 @@
 import type { PropsWithChildren, ReactNode } from 'react';
 
-export default function Layout({ children, info, about, skills, projects }: PropsWithChildren<Record<'info' | 'about' | 'skills' | 'projects', ReactNode>>) {
+export default function Layout({ children, info, about, skills, careers }: PropsWithChildren<Record<'info' | 'about' | 'skills' | 'careers', ReactNode>>) {
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
       {info}
       {about}
       {skills}
-      {projects}
+      {careers}
       {children}
     </div>
   );

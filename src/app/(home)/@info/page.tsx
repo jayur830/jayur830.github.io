@@ -13,7 +13,7 @@ export default function Info() {
   });
 
   return (
-    <div className="flex flex-col justify-center items-center gap-8 h-screen px-4 py-8 lg:px-8 lg:py-16" id="info" ref={ref}>
+    <div className="flex flex-col justify-center items-center gap-8 h-screen px-4 pb-8 pt-25 lg:px-8 lg:pt-[132px] lg:pb-16" id="info" ref={ref}>
       {inView && (
         <>
           <div className="flex flex-col items-center gap-2">

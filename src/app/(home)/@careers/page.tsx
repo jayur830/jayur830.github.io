@@ -83,7 +83,7 @@ export default function Careers() {
   }, [inView]);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full min-h-screen px-4 py-8 lg:px-8 lg:py-16" id="careers" ref={ref}>
+    <div className="flex flex-col justify-center items-center w-full min-h-screen px-4 pb-8 pt-25 lg:px-8 lg:pt-[132px] lg:pb-16" id="careers" ref={ref}>
       <div className={`w-full max-w-4xl transition-all duration-1000 ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}

@@ -18,7 +18,7 @@ export default function MainHeader({
   return (
     <div className="fixed top-0 flex justify-between items-center w-full p-4 backdrop-blur-lg z-[99]">
       <div className="flex items-center gap-4">
-        <SideMenu menuItems={sideMenuItems} />
+        <SideMenu menuItems={sideMenuItems} title="</>" />
         <Link href="/">
           <h2 className="text-2xl font-bold">{title}</h2>
         </Link>

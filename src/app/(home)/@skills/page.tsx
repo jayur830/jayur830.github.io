@@ -125,7 +125,7 @@ export default function Skills() {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center w-full min-h-screen px-4 py-8 lg:px-8 lg:py-16" id="skills" ref={ref}>
+    <div className="flex flex-col items-center justify-center w-full min-h-screen px-4 pb-8 pt-25 lg:px-8 lg:pt-[132px] lg:pb-16" id="skills" ref={ref}>
       <div className={`w-full max-w-[1440px] transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <h1 className="text-4xl font-bold text-center mb-16 text-black dark:text-white">Skills</h1>
 

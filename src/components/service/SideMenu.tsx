@@ -9,13 +9,14 @@ import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerHeader, Dr
 import { Button } from '../ui/button';
 
 export interface SideMenuProps {
+  title: string;
   menuItems: {
     label: string;
     href: string;
   }[];
 }
 
-export default function SideMenu({ menuItems }: SideMenuProps) {
+export default function SideMenu({ title, menuItems }: SideMenuProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -27,9 +28,16 @@ export default function SideMenu({ menuItems }: SideMenuProps) {
       </DrawerTrigger>
       <DrawerContent className="z-[99]">
         <DrawerHeader className="flex-row justify-between items-center">
-          <DrawerTitle>
-            Menu
-          </DrawerTitle>
+          <Link
+            href="/"
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            <DrawerTitle>
+              {title}
+            </DrawerTitle>
+          </Link>
           <DrawerClose asChild>
             <Button size="icon" variant="ghost">
               <XIcon />

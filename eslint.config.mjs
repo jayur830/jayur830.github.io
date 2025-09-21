@@ -97,16 +97,6 @@ const eslintConfig = [
       '@stylistic/jsx-wrap-multilines': 'error',
       '@stylistic/key-spacing': 'error',
       '@stylistic/keyword-spacing': 'error',
-      '@stylistic/max-len': [
-        'error',
-        {
-          tabWidth: 4,
-          code: 80,
-          ignoreComments: true,
-          ignoreStrings: true,
-          ignoreTemplateLiterals: true,
-        },
-      ],
       '@stylistic/new-parens': 'error',
       '@stylistic/no-confusing-arrow': 'error',
       '@stylistic/no-extra-semi': 'error',

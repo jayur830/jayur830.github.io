@@ -5,30 +5,7 @@ import { Briefcase, Calendar, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-const careers = [
-  {
-    id: 1,
-    company: '엔라이튼',
-    from: '2022-03-14',
-    to: '2025-08-29',
-    position: '프론트엔드 개발자',
-    achievements: [
-      '레거시 프론트엔드 시스템을 최신 기술로 전환, 서비스 성능 및 안정성 개선',
-      '애자일 환경에서 신규 기능 개발 및 사용자 경험 최적화 업무 수행',
-    ],
-  },
-  {
-    id: 2,
-    company: '위즈아이 (구 환경과학기술)',
-    from: '2020-07-13',
-    to: '2022-03-04',
-    position: '풀스택 개발자',
-    achievements: [
-      '프론트엔드부터 백엔드, 서버 배포, DB 관리까지 웹 개발 전반 담당',
-      '외부 접근이 제한된 공공기관 폐쇄망에서 직접 시스템에 접근해 개발 및 운영하는 프로젝트 다수 수행',
-    ],
-  },
-];
+import data from '@/assets/data/ko.json';
 
 function calculateDuration(from: string, to: string) {
   const start = dayjs(from);
@@ -57,7 +34,7 @@ export default function Careers() {
       const timer = setInterval(() => {
         count++;
         setVisibleItems(count);
-        if (count >= careers.length) {
+        if (count >= data.careers.length) {
           clearInterval(timer);
         }
       }, 300);
@@ -79,8 +56,7 @@ export default function Careers() {
           <div className="absolute left-4 lg:left-8 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700" />
 
           <div className="space-y-12">
-            {careers.map(({
-              id,
+            {data.careers.map(({
               company,
               from,
               to,
@@ -91,7 +67,7 @@ export default function Careers() {
                 className={`relative transition-all duration-700 ease-out ${
                   i < visibleItems ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
                 }`}
-                key={id}
+                key={company}
                 style={{
                   transitionDelay: `${i * 200}ms`,
                 }}

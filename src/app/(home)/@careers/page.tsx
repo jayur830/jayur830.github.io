@@ -13,18 +13,8 @@ const careers = [
     to: '2025-08-29',
     position: '프론트엔드 개발자',
     achievements: [
-      '성능 최적화: 데이터 가공 로직을 Map 기반으로 개선해 처리 성능 70% 향상 (O(n²) → O(n))',
-      '번들 최적화: 번들 크기 30% 감소, 페이지 로드 시간 평균 2초 단축',
-      '모니터링 시스템: Datadog RUM 도입으로 에러율 60% 감소, 사용자 오류 문의 월평균 7% 감소',
-      '상태 관리 개선: Apollo Client로 Redux를 대체해 개발 속도 35% 향상',
-      '개발 환경 구축: MSW로 API 모킹해 백엔드 서버 없이도 프론트엔드 개발할 수 있는 환경 구성',
-      '하이브리드 앱 전환: React Native CLI 앱을 Expo + 하이브리드 웹앱으로 전환',
-      '아키텍처 설계: 싱글톤/옵저버 패턴으로 공통 컴포넌트 전역 제어 시스템 구축',
-      '배포 프로세스 단순화: CodePush와 앱스토어 두 곳 배포를 웹 배포 하나로 단순화',
-      '디자인 시스템: 디자이너와 협업해 디자인 토큰 체계 정립, 여러 서비스에서 재사용 가능한 컴포넌트 패키지 개발',
-      '보안 강화: 사용자 권한 기반 메타데이터 처리 및 Route Guard로 무단 접근 차단',
-      '운영 비용 절감: Next.js Route Handler로 레거시 서버 API를 대체해 백엔드 서버 운영 비용 절감',
-      '사용자 경험: ErrorBoundary와 Fallback UI로 앱 크래시 방지, URL 쿼리스트링으로 검색 결과 공유 기능 개발',
+      '레거시 프론트엔드 시스템을 최신 기술로 전환, 서비스 성능 및 안정성 개선',
+      '애자일 환경에서 신규 기능 개발 및 사용자 경험 최적화 업무 수행',
     ],
   },
   {
@@ -34,14 +24,8 @@ const careers = [
     to: '2022-03-04',
     position: '풀스택 개발자',
     achievements: [
-      'API 최적화: GraphQL API로 필요한 데이터만 선택적으로 요청해 API 응답 시간 40% 단축',
-      '데이터 이관 자동화: Python 기반 ETL 파이프라인과 Cron 스케줄링으로 폐쇄망 환경 데이터 이관 자동화',
-      '배포 자동화: Github Actions로 CI/CD 워크플로우 구축해 배포 자동화',
-      '폐쇄망 솔루션: 폐쇄망 환경에서 인터넷 연결 없이 동작하는 커스텀 지도 발행 시스템 구축',
-      'DB 성능 튜닝: 데이터베이스 인덱싱, 쿼리 튜닝, 페이지네이션으로 데이터 처리 성능 최적화',
-      '풀스택 개발: 프론트엔드부터 백엔드, 서버 배포, DB 관리까지 웹 개발 전반 담당',
-      '공공기관 프로젝트: 미세먼지 모니터링, 날씨 데이터 시각화 등 공공기관 프로젝트 다수 수행',
-      '제한 환경 개발: 외부 접근이 제한된 폐쇄망에서 직접 시스템에 접근해 개발 및 운영',
+      '프론트엔드부터 백엔드, 서버 배포, DB 관리까지 웹 개발 전반 담당',
+      '외부 접근이 제한된 공공기관 폐쇄망에서 직접 시스템에 접근해 개발 및 운영하는 프로젝트 다수 수행',
     ],
   },
 ];
@@ -95,12 +79,19 @@ export default function Careers() {
           <div className="absolute left-4 lg:left-8 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700" />
 
           <div className="space-y-12">
-            {careers.map((career, i) => (
+            {careers.map(({
+              id,
+              company,
+              from,
+              to,
+              position,
+              achievements,
+            }, i) => (
               <div
                 className={`relative transition-all duration-700 ease-out ${
                   i < visibleItems ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
                 }`}
-                key={career.id}
+                key={id}
                 style={{
                   transitionDelay: `${i * 200}ms`,
                 }}
@@ -119,20 +110,20 @@ export default function Careers() {
                         </div>
                         <div>
                           <h3 className="text-lg lg:text-xl font-bold text-black dark:text-white">
-                            {career.company}
+                            {company}
                           </h3>
                           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                             <MapPin className="w-4 h-4" />
-                            <span>{career.position}</span>
+                            <span>{position}</span>
                           </div>
                         </div>
                       </div>
 
                       <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                         <Calendar className="w-4 h-4" />
-                        <span>{formatPeriod(career.from, career.to)}</span>
+                        <span>{formatPeriod(from, to)}</span>
                         <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs">
-                          {calculateDuration(career.from, career.to)}
+                          {calculateDuration(from, to)}
                         </span>
                       </div>
                     </div>
@@ -140,7 +131,7 @@ export default function Careers() {
                     {/* Achievements */}
                     <div>
                       <div className="space-y-3">
-                        {career.achievements.map((achievement, j) => (
+                        {achievements.map((achievement, j) => (
                           <p
                             className="text-sm lg:text-base text-gray-700 dark:text-gray-300 leading-relaxed"
                             key={j}

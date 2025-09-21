@@ -2,7 +2,9 @@
 
 import { useInView } from 'react-intersection-observer';
 
-import SocialLinks from './_components/SocialLinks';
+import data from '@/assets/data/ko.json';
+
+import SocialLinks, { SocialLinkType } from './_components/SocialLinks';
 import SubTitle from './_components/SubTitle';
 import Title from './_components/Title';
 
@@ -17,24 +19,14 @@ export default function Info() {
       {inView && (
         <>
           <div className="flex flex-col items-center gap-2">
-            <Title className="text-5xl font-bold text-center" text="안녕하세요!" />
-            <SubTitle className="text-2xl font-thin text-center" text="꿈과 희망이 가득한 개발자 이재열입니다." />
+            <Title className="text-5xl font-bold text-center" text={data.title} />
+            <SubTitle className="text-2xl font-thin text-center" text={data.subTitle} />
           </div>
           <SocialLinks
-            items={[
-              {
-                type: 'github',
-                href: 'https://github.com/jayur830',
-              },
-              {
-                type: 'linkedin',
-                href: 'https://www.linkedin.com/in/%EC%9E%AC%EC%97%B4-%EC%9D%B4-2a1295223/',
-              },
-              {
-                type: 'email',
-                href: 'mailto:jayur830@naver.com',
-              },
-            ]}
+            items={data.socialLinks as {
+              type: SocialLinkType;
+              href: string;
+            }[]}
           />
         </>
       )}

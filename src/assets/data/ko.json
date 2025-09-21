@@ -36,6 +36,7 @@
   ],
   "skills": [
     {
+      "key": "frontend",
       "title": "Frontend",
       "skills": [
         { "name": "React" },
@@ -56,6 +57,7 @@
       ]
     },
     {
+      "key": "backend",
       "title": "Backend",
       "skills": [
         { "name": "Node.js" },
@@ -72,6 +74,7 @@
       ]
     },
     {
+      "key": "database",
       "title": "Database",
       "skills": [
         { "name": "MySQL" },
@@ -83,6 +86,7 @@
       ]
     },
     {
+      "key": "devops",
       "title": "DevOps & Cloud",
       "skills": [
         { "name": "GitHub Actions" },
@@ -95,6 +99,7 @@
       ]
     },
     {
+      "key": "testing",
       "title": "Testing",
       "skills": [
         { "name": "Jest" },
@@ -104,6 +109,7 @@
       ]
     },
     {
+      "key": "monitoring",
       "title": "Monitoring",
       "skills": [
         { "name": "Datadog RUM" },
@@ -111,6 +117,7 @@
       ]
     },
     {
+      "key": "vcs",
       "title": "VCS",
       "skills": [
         { "name": "Git" },
@@ -118,6 +125,7 @@
       ]
     },
     {
+      "key": "cowork",
       "title": "Co-work",
       "skills": [
         { "name": "Figma" },

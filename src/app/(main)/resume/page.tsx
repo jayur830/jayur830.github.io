@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import careerRawData from './_assets/data.json';
+import data from '@/assets/data/ko.json';
 
 const formatDate = (dateStr: string) => {
   const date = new Date(dateStr);
@@ -18,7 +18,7 @@ const calculateDuration = (from: string, to: string) => {
   return `${months}개월`;
 };
 
-const careerData = careerRawData.map((company) => ({
+const careerData = data.resume.map((company) => ({
   company: company.title,
   url: company.url,
   position: company.position,

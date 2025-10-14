@@ -4,6 +4,8 @@ import type {
 
 const nextConfig: NextConfig = {
   /* config options here */
+  output: 'export',
+  distDir: 'dist',
 };
 
 export default nextConfig;

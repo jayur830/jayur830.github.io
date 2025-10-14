@@ -9,7 +9,7 @@ export interface HeaderProps {
     label: string;
     href: string;
   }[];
-  menuItems: {
+  menuItems?: {
     label: string;
     href: string;
   }[];
@@ -30,7 +30,7 @@ export default function Header({
       </div>
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-4">
-          {menuItems.map(({ label, href }) => (
+          {menuItems && menuItems.map(({ label, href }) => (
             <Link href={href} key={href}>
               <h2 className="text-sm text-zinc-600 font-bold text-">{label}</h2>
             </Link>

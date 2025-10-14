@@ -1,11 +1,11 @@
 import type { PropsWithChildren } from 'react';
 
-import MainHeader from '@/components/service/MainHeader';
+import Header from '@/components/service/Header';
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
     <>
-      <MainHeader
+      <Header
         sideMenuItems={[
           {
             label: '이력서',

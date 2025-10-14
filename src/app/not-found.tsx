@@ -9,7 +9,6 @@ export default function NotFound() {
   return (
     <>
       <Header
-        menuItems={[]}
         sideMenuItems={[
           {
             label: '이력서',

@@ -238,9 +238,9 @@
           "skills": ["TypeScript", "React Native", "Apollo Client", "Sentry"],
           "summary": "React Native 기반 B2C 태양광 발전소 모니터링 앱의 UX 개선, 기능 확장 및 아키텍처 리팩토링",
           "achievements": [
-            "Apollo Client 도입으로 Redux를 대체하여 서버 상태 관리 간소화, 상태 관심사 분리를 통해 코드 복잡도 감소 및 개발 속도 35% 향상",
-            "Sentry 기반 실시간 에러 모니터링 시스템 구축 및 Source Map 연동으로 운영 안정성 향상",
+            "Apollo Client 도입으로 Redux를 대체하여 서버 상태 관리 간소화, 상태 관심사 분리를 통해 코드 복잡도 감소",
             "복잡한 조건부 질문 폼을 JSON 설정 기반 구조로 리팩토링하여 분기 로직 단순화",
+            "Sentry 기반 실시간 에러 모니터링 시스템 구축 및 Source Map 연동으로 운영 안정성 향상",
             "점진적 패치를 통한 사용자 오류 문의 월평균 약 7% 감소"
           ]
         }

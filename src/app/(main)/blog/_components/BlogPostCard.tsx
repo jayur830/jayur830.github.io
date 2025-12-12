@@ -15,9 +15,7 @@ const BlogPostCard = ({ post }: BlogPostCardProps) => {
   return (
     <Link
       className="group flex gap-4 p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
-      href={post.url}
-      rel="noopener noreferrer"
-      target="_blank"
+      href={`/blog/${post.id}`}
     >
       {/* 썸네일 이미지 */}
       <div className="flex-shrink-0 w-32 h-32 bg-zinc-100 dark:bg-zinc-800 rounded-md overflow-hidden relative">

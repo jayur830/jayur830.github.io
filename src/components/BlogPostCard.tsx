@@ -3,6 +3,7 @@
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import Link from 'next/link';
+import { memo } from 'react';
 
 import type { NotionPage } from '@/lib/notion';
 
@@ -10,7 +11,7 @@ interface BlogPostCardProps {
   post: NotionPage;
 }
 
-export default function BlogPostCard({ post }: BlogPostCardProps) {
+const BlogPostCard = ({ post }: BlogPostCardProps) => {
   return (
     <Link
       className="group flex gap-4 p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
@@ -63,4 +64,6 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
       </div>
     </Link>
   );
-}
+};
+
+export default memo(BlogPostCard, (prev, next) => prev.post.id === next.post.id);

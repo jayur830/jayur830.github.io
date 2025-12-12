@@ -1,30 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import type { NotionPage } from '@/lib/notion';
 
 import BlogPostCard from './BlogPostCard';
 
-interface CategoryWithPosts {
-  category: NotionPage;
-  posts: NotionPage[];
-}
-
-interface BlogContentProps {
-  categoriesWithPosts: CategoryWithPosts[];
+export interface BlogContentProps {
+  categoriesWithPosts: {
+    category: NotionPage;
+    posts: NotionPage[];
+  }[];
 }
 
 export default function BlogContent({ categoriesWithPosts }: BlogContentProps) {
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string>(
-    categoriesWithPosts[0]?.category.id || '',
-  );
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string>(categoriesWithPosts[0]?.category.id || '');
 
   // 선택된 카테고리의 게시물 찾기
-  const selectedCategoryData = categoriesWithPosts.find(
-    (item) => item.category.id === selectedCategoryId,
-  );
-  const posts = selectedCategoryData?.posts || [];
+  const posts = useMemo(() => {
+    const selectedCategoryData = categoriesWithPosts.find(({ category }) => category.id === selectedCategoryId);
+    return selectedCategoryData?.posts || [];
+  }, [categoriesWithPosts, selectedCategoryId]);
 
   return (
     <>
@@ -33,7 +29,9 @@ export default function BlogContent({ categoriesWithPosts }: BlogContentProps) {
         <select
           className="px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
           id="category"
-          onChange={(e) => setSelectedCategoryId(e.target.value)}
+          onChange={(e) => {
+            setSelectedCategoryId(e.target.value);
+          }}
           value={selectedCategoryId}
         >
           {categoriesWithPosts.map(({ category }) => (

@@ -2,6 +2,14 @@
 
 import { useMemo, useState } from 'react';
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import type { NotionPage } from '@/lib/notion';
 
 import BlogPostCard from './BlogPostCard';
@@ -26,20 +34,18 @@ export default function BlogContent({ categoriesWithPosts }: BlogContentProps) {
     <>
       {/* 카테고리 선택 */}
       <div className="mb-8">
-        <select
-          className="px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          id="category"
-          onChange={(e) => {
-            setSelectedCategoryId(e.target.value);
-          }}
-          value={selectedCategoryId}
-        >
-          {categoriesWithPosts.map(({ category }) => (
-            <option key={category.id} value={category.id}>
-              {category.title}
-            </option>
-          ))}
-        </select>
+        <Select onValueChange={setSelectedCategoryId} value={selectedCategoryId}>
+          <SelectTrigger className="cursor-pointer px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <SelectValue placeholder="Select a category" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {categoriesWithPosts.map(({ category }) => (
+                <SelectItem key={category.id} value={category.id}>{category.title}</SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
 
       {/* 게시물 목록 */}

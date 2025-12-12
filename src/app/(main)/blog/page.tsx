@@ -1,6 +1,24 @@
+import BlogContent from '@/components/BlogContent';
+import { getChildPages } from '@/lib/notion';
 
 export default async function Page() {
-  // const childPages = await getChildPages('2aaa7273cb3b4df88017cd5ebbde1115');
+  // 빌드 타임에 카테고리 목록 조회
+  const categories = await getChildPages('2aaa7273cb3b4df88017cd5ebbde1115');
 
-  return <div className="text-center py-10 text-zinc-500">블로그 페이지 준비 중입니다. 곧 오픈할 예정입니다.</div>;
+  // 빌드 타임에 모든 카테고리의 게시물 조회
+  const categoriesWithPosts = await Promise.all(
+    categories.map(async (category) => {
+      const posts = await getChildPages(category.id);
+      return {
+        category,
+        posts,
+      };
+    }),
+  );
+
+  return (
+    <div className="max-w-[1440px] w-full mx-auto px-6 py-12">
+      <BlogContent categoriesWithPosts={categoriesWithPosts} />
+    </div>
+  );
 }

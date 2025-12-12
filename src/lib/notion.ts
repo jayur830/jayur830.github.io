@@ -1,10 +1,14 @@
 import type { BlockObjectResponse, PageObjectResponse } from '@notionhq/client';
 import { Client } from '@notionhq/client';
+import { NotionToMarkdown } from 'notion-to-md';
 
 // Notion 클라이언트 초기화
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 });
+
+// notion-to-md 클라이언트
+const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export interface NotionPage {
   id: string;
@@ -193,6 +197,22 @@ export async function getPage(pageId: string): Promise<NotionPage> {
     };
   } catch (error) {
     console.error('Error fetching page:', error);
+    throw error;
+  }
+}
+
+/**
+ * Notion 페이지를 마크다운으로 변환
+ * @param pageId 페이지 ID
+ * @returns 마크다운 문자열
+ */
+export async function getNotionPageAsMarkdown(pageId: string) {
+  try {
+    const mdblocks = await n2m.pageToMarkdown(pageId);
+    const mdString = n2m.toMarkdownString(mdblocks);
+    return mdString.parent;
+  } catch (error) {
+    console.error('Error converting page to markdown:', error);
     throw error;
   }
 }

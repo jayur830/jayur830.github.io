@@ -1,4 +1,4 @@
-import BlogContent from '@/components/BlogContent';
+import BlogContent from '@/app/(main)/blog/_components/BlogContent';
 import { getChildPages } from '@/lib/notion';
 
 export default async function Page() {

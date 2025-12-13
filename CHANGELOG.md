@@ -1,3 +1,24 @@
+# [2.2.0](https://github.com/jayur830/jayur830.github.io/compare/release-2.1.0...release-2.2.0) (2025-12-13)
+
+
+### Bug Fixes
+
+* next 16 업그레이드 ([63d6689](https://github.com/jayur830/jayur830.github.io/commit/63d6689d036300f314e997cbaa46faddba73c033))
+
+
+### Features
+
+* notion api 세팅 ([2c9341c](https://github.com/jayur830/jayur830.github.io/commit/2c9341c670efba30bcd837128dbfea10fa805e27))
+* select shadcn 컴포넌트 적용 ([617a203](https://github.com/jayur830/jayur830.github.io/commit/617a203ffe870fe37646284422d8975de2a70d8c))
+* 블로그 내용 마크다운 렌더링 ([1926b8a](https://github.com/jayur830/jayur830.github.io/commit/1926b8a5ce615d445753a9116b60f218e09cd9dd))
+* 블로그 상세 페이지 세팅 ([a4b7460](https://github.com/jayur830/jayur830.github.io/commit/a4b746052359aa8b9154df8758906545ce29de16))
+* 블로그 페이지 구현 - Notion API ([5cfee8f](https://github.com/jayur830/jayur830.github.io/commit/5cfee8fed1a51f6cf161e47cca26e060ec902894))
+
+
+### Performance Improvements
+
+* 컴포넌트 최적화 ([dc06a4b](https://github.com/jayur830/jayur830.github.io/commit/dc06a4b35539549204a550cc7668c73365593e33))
+
 # [2.1.0](https://github.com/jayur830/jayur830.github.io/compare/release-2.0.4...release-2.1.0) (2025-12-09)
 
 

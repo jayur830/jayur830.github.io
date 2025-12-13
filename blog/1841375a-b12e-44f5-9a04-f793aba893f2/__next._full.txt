@@ -1,0 +1,179 @@
+1:"$Sreact.fragment"
+2:I[427423,["/_next/static/chunks/3d76a82bde708289.js"],"ThemeProvider"]
+3:I[339756,["/_next/static/chunks/d96012bcfc98706a.js","/_next/static/chunks/d80b3790a119a285.js"],"default"]
+4:I[837457,["/_next/static/chunks/d96012bcfc98706a.js","/_next/static/chunks/d80b3790a119a285.js"],"default"]
+5:I[148417,["/_next/static/chunks/3d76a82bde708289.js","/_next/static/chunks/be1347d8d83e7948.js","/_next/static/chunks/ff6006c19773e495.js","/_next/static/chunks/9aa1579ad581dd22.js"],"default"]
+6:I[522016,["/_next/static/chunks/3d76a82bde708289.js","/_next/static/chunks/be1347d8d83e7948.js","/_next/static/chunks/ff6006c19773e495.js","/_next/static/chunks/9aa1579ad581dd22.js"],""]
+7:I[892987,["/_next/static/chunks/3d76a82bde708289.js","/_next/static/chunks/be1347d8d83e7948.js","/_next/static/chunks/ff6006c19773e495.js","/_next/static/chunks/9aa1579ad581dd22.js"],"default"]
+8:I[605500,["/_next/static/chunks/3d76a82bde708289.js","/_next/static/chunks/53f5585519bbfb31.js","/_next/static/chunks/ff6006c19773e495.js","/_next/static/chunks/9aa1579ad581dd22.js"],"Image"]
+10:I[168027,["/_next/static/chunks/d96012bcfc98706a.js","/_next/static/chunks/d80b3790a119a285.js"],"default"]
+:HL["/_next/static/chunks/e9cb9497023c535b.css","style"]
+:HL["/_next/static/media/goorm_sans_bold-s.p.54ab7957.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/goorm_sans_medium-s.p.68f047a1.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/goorm_sans_regular-s.p.e4870cfe.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/b9ef641e76e3a351.css","style"]
+0:{"P":null,"b":"WIyHQZYl97jZnaEVwjsEh","c":["","blog","1841375a-b12e-44f5-9a04-f793aba893f2"],"q":"","i":false,"f":[[["",{"children":["(main)",{"children":["blog",{"children":[["id","1841375a-b12e-44f5-9a04-f793aba893f2","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e9cb9497023c535b.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3d76a82bde708289.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":["$","body",null,{"className":"goormsansfont_8a908a13-module__tf5X2W__className","style":{"display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","disableTransitionOnChange":true,"enableSystem":true,"children":[["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","div",null,{"className":"fixed top-0 flex justify-between items-center w-full p-4 backdrop-blur-lg z-[99]","children":[["$","div",null,{"className":"flex items-center gap-4","children":[["$","$L5",null,{"menuItems":[{"label":"이력서","href":"/resume"},{"label":"블로그","href":"/blog"}],"title":"</>"}],["$","$L6",null,{"href":"/","children":["$","h2",null,{"className":"text-2xl font-bold","children":"</>"}]}]]}],["$","div",null,{"className":"flex items-center gap-6","children":[["$","div",null,{"className":"flex items-center gap-4","children":"$undefined"}],["$","$L7",null,{}]]}]]}],["$","div",null,{"className":"flex flex-col justify-center items-center gap-2 w-full h-[calc(100vh-58px)]","children":[["$","div",null,{"className":"flex items-center gap-1","children":[["$","h1",null,{"className":"text-[108px] font-extrabold","children":"4"}],["$","$L8",null,{"alt":"404","className":"relative top-[-10px]","height":108,"src":{"src":"/_next/static/media/jayur830.1f36c8b2.png","width":800,"height":800,"blurWidth":8,"blurHeight":8,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAA40lEQVR42h2PoQ5FYACF/6vddvOtd2NDYLOJ2CSCapqnMLIJsg1Rsmlmov0PYOial/iLcC7SCefsnPOR1+vFqapqVVVFm6Zhl7IkSaiiKNbtEU3TrHEc9ziO4TgOBEGA67pI03QXRdEiXdfRvu9xBzzPw+fzwff7he/7CIKAkmVZmG3b4DgO7/cbhmEgyzIMw4AwDBnZto3JsgxCCK5NRFGE8zzBGMPVzp6JPM/x+/2g6zqmacK6riiKAtdp+py8PuxXEHVdP9W3mqa5S5JkkRvlRirLks7zzI7jYG3bUp7nH8w/BxiDwh0Ky70AAAAASUVORK5CYII="},"width":108}],["$","h1",null,{"className":"text-[108px] font-extrabold","children":"4"}]]}],["$","$L6",null,{"href":"/","passHref":true,"children":["$","button",null,{"className":"cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3","data-slot":"button","children":"돌아가기"}]}]]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","div",null,{"className":"flex justify-center items-center w-full border-1 p-4","children":"Copyright 2025. opentoyapp. All rights reserved."}]]}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/be1347d8d83e7948.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/ff6006c19773e495.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/_next/static/chunks/9aa1579ad581dd22.js","async":true,"nonce":"$undefined"}]],[["$","div",null,{"className":"fixed top-0 flex justify-between items-center w-full p-4 backdrop-blur-lg z-[99]","children":[["$","div",null,{"className":"flex items-center gap-4","children":[["$","$L5",null,{"menuItems":[{"label":"이력서","href":"/resume"},{"label":"블로그","href":"/blog"}],"title":"</>"}],["$","$L6",null,{"href":"/","children":["$","h2",null,{"className":"text-2xl font-bold","children":"</>"}]}]]}],"$L9"]}],"$La"]]}],{"children":["$Lb",{"children":["$Lc",{"children":["$Ld",{},null,false,false]},null,false,false]},["$Le",[],[]],false,false]},null,false,false]},null,false,false],"$Lf",false]],"m":"$undefined","G":["$10",[]],"S":true}
+12:I[897367,["/_next/static/chunks/d96012bcfc98706a.js","/_next/static/chunks/d80b3790a119a285.js"],"OutletBoundary"]
+13:"$Sreact.suspense"
+15:I[897367,["/_next/static/chunks/d96012bcfc98706a.js","/_next/static/chunks/d80b3790a119a285.js"],"ViewportBoundary"]
+17:I[897367,["/_next/static/chunks/d96012bcfc98706a.js","/_next/static/chunks/d80b3790a119a285.js"],"MetadataBoundary"]
+9:["$","div",null,{"className":"flex items-center gap-6","children":[["$","div",null,{"className":"flex items-center gap-4","children":"$undefined"}],["$","$L7",null,{}]]}]
+a:["$","div",null,{"className":"pt-[68px]","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","div",null,{"className":"fixed top-0 flex justify-between items-center w-full p-4 backdrop-blur-lg z-[99]","children":[["$","div",null,{"className":"flex items-center gap-4","children":[["$","$L5",null,{"menuItems":[{"label":"이력서","href":"/resume"},{"label":"블로그","href":"/blog"}],"title":"</>"}],["$","$L6",null,{"href":"/","children":["$","h2",null,{"className":"text-2xl font-bold","children":"</>"}]}]]}],["$","div",null,{"className":"flex items-center gap-6","children":[["$","div",null,{"className":"flex items-center gap-4","children":"$undefined"}],["$","$L7",null,{}]]}]]}],["$","div",null,{"className":"flex flex-col justify-center items-center gap-2 w-full h-[calc(100vh-58px)]","children":[["$","div",null,{"className":"flex items-center gap-1","children":[["$","h1",null,{"className":"text-[108px] font-extrabold","children":"4"}],["$","$L8",null,{"alt":"404","className":"relative top-[-10px]","height":108,"src":"$0:f:0:1:0:props:children:1:props:children:props:children:props:children:0:props:notFound:0:1:props:children:0:props:children:1:props:src","width":108}],["$","h1",null,{"className":"text-[108px] font-extrabold","children":"4"}]]}],["$","$L6",null,{"href":"/","passHref":true,"children":["$","button",null,{"className":"cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3","data-slot":"button","children":"돌아가기"}]}]]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]
+b:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+c:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+d:["$","$1","c",{"children":["$L11",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/b9ef641e76e3a351.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L12",null,{"children":["$","$13",null,{"name":"Next.MetadataOutlet","children":"$@14"}]}]]}]
+e:["$","div","l",{"className":"text-center py-10 text-zinc-500","children":"블로그 페이지 로딩 중..."}]
+f:["$","$1","h",{"children":[null,["$","$L15",null,{"children":"$@16"}],["$","div",null,{"hidden":true,"children":["$","$L17",null,{"children":["$","$13",null,{"name":"Next.Metadata","children":"$@18"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+16:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+18:[["$","title","0",{"children":"안녕하세요. 5년차 개발자 이재열입니다."}],["$","meta","1",{"name":"description","content":"복잡한 구조를 단순하게 만들고, 반복되는 작업은 자동화하며, 유지보수 가능한 시스템을 만드는 데 집중합니다"}],["$","meta","2",{"name":"application-name","content":"jayur830.github.io"}],["$","meta","3",{"name":"keywords","content":"프론트엔드,개발자,이재열,5년차,개발,유지보수,리팩토링,시스템,자동화"}]]
+14:null
+19:T5da,user  nginx;
+worker_processes  3;
+
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    upstream loadbalancer {
+        # least_conn, ip_hash
+        least_conn;
+        server [애플리케이션 IP 1]:[포트1] weight=10 max_fails=3 fail_timeout=30s;
+        server [애플리케이션 IP 2]:[포트2] weight=10 max_fails=3 fail_timeout=30s;
+        server [애플리케이션 IP 3]:[포트3] weight=10 max_fails=3 fail_timeout=30s;
+    }
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            proxy_http_version 1.1;
+            proxy_pass         http://loadbalancer;
+            proxy_redirect     off;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    }
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    keepalive_timeout  65;
+    include /etc/nginx/conf.d/*.conf;
+}
+11:["$","div",null,{"className":"max-w-[1440px] w-full mx-auto px-6 py-12","children":["$","article",null,{"className":"prose","children":[["$","p","p-0",{"children":"요즘 CI/CD에 빠져서 (도커라든지) 이것저것 찾아보다가"}],"\n",["$","p","p-1",{"children":"'무중단 배포'라는 것을 알게 되었다."}],"\n",["$","p","p-2",{"children":"Load balancing 이라는 네트워크 트래픽 분산 처리 기술로 하게 되는데,"}],"\n",["$","p","p-3",{"children":"주로 웹 서버 하나를 앞에 두고 WAS나 Node.js 애플리케이션 서버 등을 뒤에 N개를 두어"}],"\n",["$","p","p-4",{"children":"웹 서버에 요청이 들어오면 웹 서버 뒷편에 연결된"}],"\n",["$","p","p-5",{"children":"여러 대의 웹 애플리케이션 서버 중 하나로 요청을 흘려보내 처리하게 만든다."}],"\n",["$","p","p-6",{"children":"오늘은 그 방법에 대해 적어보려 한다."}],"\n",["$","p","p-7",{"children":["나는 ",["$","strong","strong-0",{"children":"도커충"}],"이라 무조건 도커 컨테이너에 기반하여 적용했고,"]}],"\n",["$","p","p-8",{"children":"Spring Boot로 개발한 애플리케이션을 똑같은 컨테이너로 3개 띄우고 Nginx 컨테이너를 띄워"}],"\n",["$","p","p-9",{"children":"Nginx에서 Spring Boot 애플리케이션으로 요청을 흘려보내도록 만들었다."}],"\n",["$","p","p-10",{"children":["일단, 다음을 작성한다. ",["$","code","code-0",{"children":"nginx.conf"}],"라는 파일명으로 저장한다."]}],"\n",["$","pre","pre-0",{"children":["$","code","code-0",{"className":"hljs language-shell","children":"$19"}]}],"\n",["$","pre","pre-1",{"children":["$","code","code-0",{"className":"hljs language-shell","children":"location <endpoint> {\n    proxy_pass     http://<upstream>;\n"}]}],"\n",["$","p","p-11",{"children":[["$","code","code-0",{"children":"upstream"}],"의 의미는 '흘려보내다'라는 의미로,"]}],"\n",["$","p","p-12",{"children":"말 그대로 클라이언트로부터 온 요청을 곧바로 응답하지 않고"}],"\n",["$","p","p-13",{"children":"뒷단에 연결된 애플리케이션 서버로 전달하여 대신 요청을 처리하게 한다."}],"\n",["$","p","p-14",{"children":"주요 키워드들에 대해 정리해본다."}],"\n",["$","ul","ul-0",{"children":["\n",["$","li","li-0",{"children":["\n",["$","p","p-0",{"children":[["$","code","code-0",{"children":"least_conn"}],": 접속 수가 가장 적은 서버로 요청을 전달한다."]}],"\n"]}],"\n",["$","li","li-1",{"children":["\n",["$","p","p-0",{"children":[["$","code","code-0",{"children":"ip_hash"}],": 클라이언트의 IP를 서버의 특정 IP로 매핑하여 요청을 전달한다."]}],"\n"]}],"\n",["$","li","li-2",{"children":["\n",["$","p","p-0",{"children":[["$","code","code-0",{"children":"server"}],": 요청을 흘려보낼 서버 지정을 위한 키워드이다."]}],"\n"]}],"\n",["$","li","li-3",{"children":["\n",["$","p","p-0",{"children":[["$","code","code-0",{"children":"weight"}],": 서버 지정에 대한 가중치이다. 가중치가 높은 서버가 더 많이 지정되어 사용된다."]}],"\n"]}],"\n",["$","li","li-4",{"children":["\n",["$","p","p-0",{"children":[["$","code","code-0",{"children":"max_fails"}],": 최대 실패 한계이다. 예외 상황 또는 에러가 발생한 횟수가 ","$L1a","가 되면 서버가 죽은 것으로 간주한다."]}],"\n"]}],"\n","$L1b","\n","$L1c","\n"]}],"\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40","\n","$L41","\n","$L42","\n","$L43","\n","$L44","\n","$L45","\n","$L46","\n","$L47","\n","$L48","\n","$L49","\n","$L4a","\n","$L4b"]}]}]
+:HL["https://prod-files-secure.s3.us-west-2.amazonaws.com/2f32c080-ccc2-40d4-b68c-37f4b33939d9/0c0a2e3b-c3cc-45c8-a835-a8479330c89c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466WQNZAU6V%2F20251213%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251213T160327Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFYaCXVzLXdlc3QtMiJIMEYCIQDUP5KKBLsohFLsYOLEJNspa03Wv9LbrjwsWEJ9J9HrMgIhAKghITeZnJj2pGNASSo1cXX%2BUDQ8h27lfAdFRHGrPPyZKv8DCB8QABoMNjM3NDIzMTgzODA1IgyYsE2zubcUzPs4XBkq3ANaM8PZK9yPTvPoG4xt7Y9HvjUGeI96sct7o%2FwOZqTe80N3EtWTx%2BWmRhurSECmr%2FVBpAdafpckpfMR5um2UrBdramzudKqir8NZKrdd1T%2F2QhnYPWA9pSXzRxCKJzT7IuPyUCzJWwJPZtyANngScOHEQk5ANNDV23TeMGEGYMRsKeWnm%2Fe%2Bq7XkC%2FADIr5qTyCa1qQMMpUUuFDcav2Si9v8NEqMdaikkhdnyOM%2Bo0cS7rq1rrAIDVS2AenjQgawmH%2B5Zeu9xYkHAnMoiDCk7nnkYDBwFBPsn%2BeexMv239qVYpoa5QbgntvKv9U0o6QLtUxXQNYwIpOwcT%2FnSR9%2BRz6LWiNht8N0oVyoPoWx4c%2BK%2FEsPYIaMagtW3dA0bx1FdZPGbLBjhBn4MEMNhI3YwoYmua0fEFHwCPaKovGoBw14WJv29IeR2YytTcZfDMBKhz2%2FqJ1DF5w3gakIv%2BZB1zOa%2BH5qYdaZ%2BTmecylNab9Sl9twzRe166LlLn223vlchU6Ul%2B14Uh%2Bx1EGbAm7CrlhKGl2SzVgmFFWnBJFBH5O4m9T4LwIjlkUFjIE937azFESH9nKXsSZv0RoPt%2FR4j5mZDl0R6HOM71WZDOxDr0VHtjyhUQil%2BJpZyvrOzDq3vXJBjqkAb9q1KBN5OdZJ9L17A9639ywu3JE4N%2Bhufd7IdMpZpiIxxA3WtXh9bZsPog1TiRZNlENxHwWW54pfOQk8qPx%2BnS7Z4VWpnSbxD1nd9CFgzjEo28zuW2ZVvEJwLmPf5OREsrK9u1DOU87xJcdX%2FdxCN9dHWjwkXrLSBlRmRpjsUUxJeFKTu2pRunKpvnOinpa5wAeBEUUnzi%2F9vWuYT58UI8XORPe&X-Amz-Signature=cbb0bb54594fed836fcf534e3992b2410da6df5a2fbf0d50fee631e37ad2ed5c&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject","image"]
+1a:["$","code","code-1",{"children":"max_fails"}]
+1b:["$","li","li-5",{"children":["\n",["$","p","p-0",{"children":[["$","code","code-0",{"children":"fail_timeout"}],": 실패에 대한 타임아웃이다. 이 시간을 넘어서까지 실패하면 ㄹㅇ로 죽은 것으로 간주한다."]}],"\n"]}]
+1c:["$","li","li-6",{"children":["\n",["$","p","p-0",{"children":[["$","code","code-0",{"children":"proxy_pass"}],": ",["$","code","code-1",{"children":"<endpoint>"}],"로 접근하면 ",["$","code","code-2",{"children":"<upstream>"}],"으로 요청을 흘려보낸다."]}],"\n",["$","p","p-1",{"children":["만약 ",["$","code","code-0",{"children":"/"}]," 로 접근했다면 위에서 정의한 ",["$","code","code-1",{"children":"upstream"}],"인 ",["$","code","code-2",{"children":"loadbalancer"}],"로 요청을 전달하고"]}],"\n",["$","p","p-2",{"children":["그 이후부터는 ",["$","code","code-0",{"children":"upstream"}],"에 작성된 규칙에 따라 로드밸런싱을 수행한다."]}],"\n"]}]
+1d:["$","p","p-15",{"children":[["$","code","code-0",{"children":"least_conn"}],"이나 ",["$","code","code-1",{"children":"ip_hash"}],"를 아무것도 적지 않으면 Round Robin 방식의 로드밸런싱이 된다."]}]
+1e:["$","p","p-16",{"children":"라운드 로빈 방식은 모든 서버를 차례대로 선택하여 요청을 처리하게 하는 가장 단순한 방식이다."}]
+1f:["$","p","p-17",{"children":"지금까지는 Nginx를 이용한 로드밸런싱 설정 방법을 설명했다."}]
+20:["$","p","p-18",{"children":"지금부터는 로드밸런싱을 적용하고 도커를 통해 무중단 배포하는 법을 설명한다."}]
+21:["$","p","p-19",{"children":[["$","code","code-0",{"children":"nginx.conf"}],"를 작성했다면 이제 ",["$","code","code-1",{"children":"Dockerfile"}],"을 만들고 빌드해서 띄워보자."]}]
+22:["$","pre","pre-2",{"children":["$","code","code-0",{"className":"hljs language-docker","children":"FROM nginx\nCOPY nginx.conf /etc/nginx\nENTRYPOINT [\"nginx\"]\n"}]}]
+23:["$","pre","pre-3",{"children":["$","code","code-0",{"className":"hljs language-bash","children":"docker build -t nginx/loadbalancer .\n"}]}]
+24:["$","pre","pre-4",{"children":["$","code","code-0",{"className":"hljs language-bash","children":"docker run -d --name loadbalancer -p [외부 포트]:[nginx.conf에 정의된 포트] nginx/loadbalancer\n"}]}]
+25:["$","p","p-20",{"children":"이제 Nginx 컨테이너가 띄워진 서버로 접속해보자."}]
+26:["$","p","p-21",{"children":"원하는 페이지가 제대로 뜬다면 성공."}]
+4c:T64b,https://prod-files-secure.s3.us-west-2.amazonaws.com/2f32c080-ccc2-40d4-b68c-37f4b33939d9/0c0a2e3b-c3cc-45c8-a835-a8479330c89c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466WQNZAU6V%2F20251213%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251213T160327Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFYaCXVzLXdlc3QtMiJIMEYCIQDUP5KKBLsohFLsYOLEJNspa03Wv9LbrjwsWEJ9J9HrMgIhAKghITeZnJj2pGNASSo1cXX%2BUDQ8h27lfAdFRHGrPPyZKv8DCB8QABoMNjM3NDIzMTgzODA1IgyYsE2zubcUzPs4XBkq3ANaM8PZK9yPTvPoG4xt7Y9HvjUGeI96sct7o%2FwOZqTe80N3EtWTx%2BWmRhurSECmr%2FVBpAdafpckpfMR5um2UrBdramzudKqir8NZKrdd1T%2F2QhnYPWA9pSXzRxCKJzT7IuPyUCzJWwJPZtyANngScOHEQk5ANNDV23TeMGEGYMRsKeWnm%2Fe%2Bq7XkC%2FADIr5qTyCa1qQMMpUUuFDcav2Si9v8NEqMdaikkhdnyOM%2Bo0cS7rq1rrAIDVS2AenjQgawmH%2B5Zeu9xYkHAnMoiDCk7nnkYDBwFBPsn%2BeexMv239qVYpoa5QbgntvKv9U0o6QLtUxXQNYwIpOwcT%2FnSR9%2BRz6LWiNht8N0oVyoPoWx4c%2BK%2FEsPYIaMagtW3dA0bx1FdZPGbLBjhBn4MEMNhI3YwoYmua0fEFHwCPaKovGoBw14WJv29IeR2YytTcZfDMBKhz2%2FqJ1DF5w3gakIv%2BZB1zOa%2BH5qYdaZ%2BTmecylNab9Sl9twzRe166LlLn223vlchU6Ul%2B14Uh%2Bx1EGbAm7CrlhKGl2SzVgmFFWnBJFBH5O4m9T4LwIjlkUFjIE937azFESH9nKXsSZv0RoPt%2FR4j5mZDl0R6HOM71WZDOxDr0VHtjyhUQil%2BJpZyvrOzDq3vXJBjqkAb9q1KBN5OdZJ9L17A9639ywu3JE4N%2Bhufd7IdMpZpiIxxA3WtXh9bZsPog1TiRZNlENxHwWW54pfOQk8qPx%2BnS7Z4VWpnSbxD1nd9CFgzjEo28zuW2ZVvEJwLmPf5OREsrK9u1DOU87xJcdX%2FdxCN9dHWjwkXrLSBlRmRpjsUUxJeFKTu2pRunKpvnOinpa5wAeBEUUnzi%2F9vWuYT58UI8XORPe&X-Amz-Signature=cbb0bb54594fed836fcf534e3992b2410da6df5a2fbf0d50fee631e37ad2ed5c&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject27:["$","p","p-22",{"children":["$","img","img-0",{"src":"$4c","alt":"Untitled.png"}]}]
+28:["$","p","p-23",{"children":"난 이런식으로 연결했다."}]
+29:["$","p","p-24",{"children":["80번 Nginx에서 ",["$","code","code-0",{"children":"upstream"}],"을 통해 9201, 9202, 9203으로 연결된 상태이다."]}]
+2a:["$","p","p-25",{"children":"그럼 무중단 배포에 대해서 이야기를 좀 해볼까 한다."}]
+2b:["$","p","p-26",{"children":"무중단 배포 원리를 설명하자면 간단하다."}]
+2c:["$","p","p-27",{"children":"3개를 띄웠다면 1개씩 새 버전으로 컨테이너를 업데이트하거나,"}]
+2d:["$","p","p-28",{"children":"새 컨테이너 3개를 띄운 직후 기존 컨테이너 3개를 죽이는 등의 방법으로 하면 된다."}]
+2e:["$","p","p-29",{"children":"무중단 배포는 롤링 배포, 블루-그린 배포, 카나리 배포라는 3가지 방법이 있는데"}]
+2f:["$","p","p-30",{"children":"나는 롤링 배포로 진행했다."}]
+30:["$","hr","hr-0",{}]
+31:["$","h3","h3-0",{"children":["$","strong","strong-0",{"children":"롤링 배포 (Rolling Deployment)"}]}]
+32:["$","p","p-31",{"children":"그냥 하나씩 차례대로 껐다가 새로 배포하는 것이다."}]
+33:["$","p","p-32",{"children":"도커 컨테이너 기준으로는 다음과 같이 할 수 있을 것이다."}]
+34:["$","pre","pre-5",{"children":["$","code","code-0",{"className":"hljs language-bash","children":["docker pull [NEW_IMAGE]\n\ndocker stop [CONTAINER1_NAME]\ndocker ",["$","span","span-0",{"className":"hljs-built_in","children":"rm"}]," [CONTAINER1_NAME]\ndocker run -d --name [CONTAINER1_NAME] [NEW_IMAGE]\n\ndocker stop [CONTAINER2_NAME]\ndocker ",["$","span","span-1",{"className":"hljs-built_in","children":"rm"}]," [CONTAINER2_NAME]\ndocker run -d --name [CONTAINER2_NAME] [NEW_IMAGE]\n\ndocker stop [CONTAINER3_NAME]\ndocker ",["$","span","span-2",{"className":"hljs-built_in","children":"rm"}]," [CONTAINER3_NAME]\ndocker run -d --name [CONTAINER3_NAME] [NEW_IMAGE]\n\ndocker rmi [OLD_IMAGE]\n"]}]}]
+35:["$","p","p-33",{"children":"단점은 하나씩 배포하기 때문에 그 사이에 구버전과 신버전의 호환 문제가 발생할 수 있다."}]
+36:["$","p","p-34",{"children":"예를 들어, 웹을 새로 배포하는데 구버전과 신버전의 웹 UI가 전혀 다르다면"}]
+37:["$","p","p-35",{"children":"배포 중에 새로고침 할 때마다 UI가 예전꺼 뜨다가 새거 뜨다가를 반복할 수도 있다."}]
+38:["$","p","p-36",{"children":"그래서 롤링 배포를 할 때에는 각 유저마다 접속하는 서버가 항상 일정하도록 하는 ip_hash 방식을 적용하는게 낫다."}]
+39:["$","hr","hr-1",{}]
+3a:["$","h3","h3-1",{"children":["$","strong","strong-0",{"children":"블루-그린 배포 (Blue-Green Deployment)"}]}]
+3b:["$","p","p-37",{"children":"기존에 띄워져 있는 서버 수 만큼의 여분 서버에 새 버전을 배포해놓고,"}]
+3c:["$","p","p-38",{"children":"upstream의 연결을 그 여분 서버로 몽땅 갈아타는 것이다."}]
+3d:["$","pre","pre-6",{"children":["$","code","code-0",{"className":"hljs language-bash","children":"docker pull [NEW_IMAGE]\n\ndocker run -d --name [CONTAINER4_NAME] [NEW_IMAGE]\ndocker run -d --name [CONTAINER5_NAME] [NEW_IMAGE]\ndocker run -d --name [CONTAINER6_NAME] [NEW_IMAGE]\n\nvi nginx.conf\n"}]}]
+4d:T5fe,user  nginx;
+worker_processes  3;
+
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    upstream loadbalancer {
+        # least_conn, ip_hash
+        least_conn;
+        server [애플리케이션 IP 4]:[포트4] weight=10 max_fails=3 fail_timeout=30s;    # 변경
+        server [애플리케이션 IP 5]:[포트5] weight=10 max_fails=3 fail_timeout=30s;    # 변경
+        server [애플리케이션 IP 6]:[포트6] weight=10 max_fails=3 fail_timeout=30s;    # 변경
+    }
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            proxy_http_version 1.1;
+            proxy_pass         http://loadbalancer;
+            proxy_redirect     off;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    }
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    keepalive_timeout  65;
+    include /etc/nginx/conf.d/*.conf;
+}
+3e:["$","pre","pre-7",{"children":["$","code","code-0",{"className":"hljs language-shell","children":"$4d"}]}]
+3f:["$","pre","pre-8",{"children":["$","code","code-0",{"className":"hljs language-bash","children":["docker ",["$","span","span-0",{"className":"hljs-built_in","children":"cp"}]," nginx.conf [LOADBALANCER_CONTAINER]:/etc/nginx\ndocker ",["$","span","span-1",{"className":"hljs-built_in","children":"exec"}]," [LOADBALANCER_CONTAINER] nginx reload\n\ndocker stop [CONTAINER1_NAME]\ndocker stop [CONTAINER2_NAME]\ndocker stop [CONTAINER3_NAME]\ndocker ",["$","span","span-2",{"className":"hljs-built_in","children":"rm"}]," [CONTAINER1_NAME]\ndocker ",["$","span","span-3",{"className":"hljs-built_in","children":"rm"}]," [CONTAINER2_NAME]\ndocker ",["$","span","span-4",{"className":"hljs-built_in","children":"rm"}]," [CONTAINER3_NAME]\n"]}]}]
+40:["$","p","p-39",{"children":"이렇게 하면 upstream 서버를 통째로 갈아탐으로써"}]
+41:["$","p","p-40",{"children":"구버전과 신버전의 호환성 문제가 생기지 않는다."}]
+42:["$","p","p-41",{"children":"다만, 저게 도커 컨테이너 기반으로 설명해서 그렇지,"}]
+43:["$","p","p-42",{"children":"물리 서버 갖다가 하게 되면 비용이 두 배로 들며"}]
+44:["$","p","p-43",{"children":"새로 배포할 서버에 대한 테스트가 전제되어야 한다는 단점이 있다."}]
+45:["$","hr","hr-2",{}]
+46:["$","h3","h3-2",{"children":["$","strong","strong-0",{"children":"카나리 배포 (Canary Deployment)"}]}]
+47:["$","p","p-44",{"children":"로드밸런싱하고 있는 서버 중 일부에만 배포하고,"}]
+48:["$","p","p-45",{"children":"문제가 없으면 전부 배포하는 방식이다."}]
+49:["$","pre","pre-9",{"children":["$","code","code-0",{"className":"hljs language-bash","children":["docker pull [NEW_IMAGE]\n\ndocker stop [CONTAINER1_NAME]\ndocker ",["$","span","span-0",{"className":"hljs-built_in","children":"rm"}]," [CONTAINER1_NAME]\ndocker run -d --name [CONTAINER1_NAME] [NEW_IMAGE]\n\n",["$","span","span-1",{"className":"hljs-comment","children":"# 문제가 없으면... 배포하자."}],"\n\ndocker stop [CONTAINER2_NAME] [CONTAINER3_NAME]\ndocker ",["$","span","span-2",{"className":"hljs-built_in","children":"rm"}]," [CONTAINER2_NAME] [CONTAINER3_NAME]\ndocker run -d --name [CONTAINER2_NAME] [NEW_IMAGE]\ndocker run -d --name [CONTAINER3_NAME] [NEW_IMAGE]\n\ndocker rmi [OLD_IMAGE]\n"]}]}]
+4a:["$","p","p-46",{"children":"롤링 배포와 마찬가지로 구버전과 신버전이 공존하는 상태라는 단점이 있다."}]
+4b:["$","p","p-47",{"children":["그래서 되도록이면 Nginx의 ",["$","code","code-0",{"children":"upstream"}]," 설정 시 ",["$","code","code-1",{"children":"ip_hash"}],"로 설정했을 때에만 하는 게 좋다."]}]

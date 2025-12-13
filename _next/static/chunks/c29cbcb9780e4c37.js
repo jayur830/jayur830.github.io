@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,89697,e=>{"use strict";var t=e.i(475254);let o=[["path",{d:"M12 20V10",key:"g8npz5"}],["path",{d:"M18 20v-4",key:"8uic4z"}],["path",{d:"M6 20V4",key:"1w1bmo"}]],a=(0,t.default)("chart-no-axes-column-decreasing",o);e.s(["__iconNode",()=>o,"default",()=>a])}]);

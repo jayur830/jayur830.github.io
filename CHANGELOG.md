@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/jayur830/jayur830.github.io/compare/release-2.2.0...release-2.2.1) (2025-12-13)
+
+
+### Bug Fixes
+
+* ci 워크플로우 수정 - .env 생성 스크립트 추가 ([81b38f7](https://github.com/jayur830/jayur830.github.io/commit/81b38f78133408760a9cf8ef156ac274908b64e3))
+
 # [2.2.0](https://github.com/jayur830/jayur830.github.io/compare/release-2.1.0...release-2.2.0) (2025-12-13)
 
 

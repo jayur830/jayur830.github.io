@@ -1,3 +1,15 @@
+# [2.3.0](https://github.com/jayur830/jayur830.github.io/compare/release-2.2.1...release-2.3.0) (2026-01-03)
+
+
+### Bug Fixes
+
+* 블로그 목록 최신순 정렬 ([8b65e2d](https://github.com/jayur830/jayur830.github.io/commit/8b65e2dfcde9a06da2614ade4c2e6152730b6889))
+
+
+### Features
+
+* 블로그 상세 페이지 타이틀 적용 ([c93b36b](https://github.com/jayur830/jayur830.github.io/commit/c93b36b41b2bb7ba533e48999def741a4b8f6a40))
+
 ## [2.2.1](https://github.com/jayur830/jayur830.github.io/compare/release-2.2.0...release-2.2.1) (2025-12-13)
 
 

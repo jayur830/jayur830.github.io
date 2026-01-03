@@ -2,6 +2,6 @@
 2:I[897367,["/_next/static/chunks/d96012bcfc98706a.js","/_next/static/chunks/d80b3790a119a285.js"],"ViewportBoundary"]
 4:I[897367,["/_next/static/chunks/d96012bcfc98706a.js","/_next/static/chunks/d80b3790a119a285.js"],"MetadataBoundary"]
 5:"$Sreact.suspense"
-0:{"buildId":"WIyHQZYl97jZnaEVwjsEh","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"mw_8NOeE36EaX7Y8wJXXi","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
 3:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 6:[["$","title","0",{"children":"안녕하세요. 5년차 개발자 이재열입니다."}],["$","meta","1",{"name":"description","content":"복잡한 구조를 단순하게 만들고, 반복되는 작업은 자동화하며, 유지보수 가능한 시스템을 만드는 데 집중합니다"}],["$","meta","2",{"name":"application-name","content":"jayur830.github.io"}],["$","meta","3",{"name":"keywords","content":"프론트엔드,개발자,이재열,5년차,개발,유지보수,리팩토링,시스템,자동화"}]]

@@ -1,5 +1,6 @@
 import BlogContent from '@/app/(main)/blog/_components/BlogContent';
 import { getChildPages } from '@/lib/notion';
+import dayjs from 'dayjs';
 
 export default async function Page() {
   // 빌드 타임에 카테고리 목록 조회
@@ -11,7 +12,7 @@ export default async function Page() {
       const posts = await getChildPages(category.id);
       return {
         category,
-        posts,
+        posts: posts.sort((a, b) => dayjs(b.createdTime).diff(dayjs(a.createdTime), 'day')),
       };
     }),
   );

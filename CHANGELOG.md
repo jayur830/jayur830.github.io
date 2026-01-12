@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/jayur830/jayur830.github.io/compare/release-2.3.0...release-2.3.1) (2026-01-12)
+
+
+### Bug Fixes
+
+* 이력서 내용 중 불필요한 내용 삭제 ([c45f1d3](https://github.com/jayur830/jayur830.github.io/commit/c45f1d392f57d3eb91adaaad48a230a0fce88cdc))
+
 # [2.3.0](https://github.com/jayur830/jayur830.github.io/compare/release-2.2.1...release-2.3.0) (2026-01-03)
 
 
